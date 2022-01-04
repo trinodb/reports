@@ -41,6 +41,7 @@ jobs:
           echo "SERVER_IP=$SERVER_IP" >> $GITHUB_ENV
           # give it some time to start up
           sleep 30
+          docker logs trino
       - name: Run Sync
         run: |
           docker run \
