@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Download trino-rest
         run:
-          curl -fLsS https://github.com/nineinchnick/trino-rest/releases/download/v$TRINO_REST_VERSION/trino-rest-github-$TRINO_REST_VERSION.zip
+          curl -fLOsS https://github.com/nineinchnick/trino-rest/releases/download/v$TRINO_REST_VERSION/trino-rest-github-$TRINO_REST_VERSION.zip
           unzip trino-rest-github-$TRINO_REST_VERSION.zip
       - name: Start Trino
         run: |
