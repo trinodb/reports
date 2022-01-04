@@ -64,7 +64,6 @@ jobs:
       - name: Optimize tables
         run: |
           docker exec \
-            -it \
             trino \
             trino --catalog hive --schema v2 \
             -f /sql/optimize.sql
