@@ -9,14 +9,14 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     env:
-      TRINO_VERSION=367
-      TRINO_REST_VERSION=0.48
-      GITHUB_OWNER=trinodb
-      GITHUB_REPO=trino
-      TRINO_DEST_SCHEMA=hive.v2
-      TRINO_SRC_SCHEMA=github.default
-      EMPTY_INSERT_LIMIT=5
-      SYNC_TABLES=runs,jobs,steps,check_suites,check_runs,check_run_annotations,artifacts
+      TRINO_VERSION: 367
+      TRINO_REST_VERSION: 0.48
+      GITHUB_OWNER: trinodb
+      GITHUB_REPO: trino
+      TRINO_DEST_SCHEMA: hive.v2
+      TRINO_SRC_SCHEMA: github.default
+      EMPTY_INSERT_LIMIT: 5
+      SYNC_TABLES: runs,jobs,steps,check_suites,check_runs,check_run_annotations,artifacts
     steps:
       - uses: actions/checkout@v2
       - name: Download trino-rest
