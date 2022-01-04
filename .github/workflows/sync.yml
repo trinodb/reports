@@ -43,7 +43,7 @@ jobs:
           sleep 30
       - name: Run Sync
         run: |
-          docker run \                                                                                                                                                                                            :(
+          docker run \
             -e GITHUB_OWNER \
             -e GITHUB_REPO \
             -e TRINO_DEST_SCHEMA \
