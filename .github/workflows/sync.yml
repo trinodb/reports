@@ -37,14 +37,10 @@ jobs:
             -d \
             trinodb/trino:$TRINO_VERSION)
           export CONTAINER_ID
-          # give it some time to start up
-          sleep 30
-      - name: Prepare environment
-        run: |
-          set -a
-          source .env
           SERVER_IP=$(docker inspect --format '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$CONTAINER_ID")
           export SERVER_IP
+          # give it some time to start up
+          sleep 30
       - name: Run Sync
         run: |
           docker run \                                                                                                                                                                                            :(
