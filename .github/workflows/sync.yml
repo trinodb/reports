@@ -9,6 +9,10 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     env:
+      GITHUB_TOKEN: ${{ github.token }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
       TRINO_VERSION: 367
       TRINO_REST_VERSION: 0.48
       GITHUB_OWNER: trinodb
