@@ -33,6 +33,7 @@ jobs:
             -v $(pwd)/trino-rest-github-$TRINO_REST_VERSION:/usr/lib/trino/plugin/github \
             -v $(pwd)/catalog:/etc/trino/catalog \
             -v $(pwd)/hive-cache:/opt/hive-cache \
+            -v $(pwd)/sql:/sql
             -e AWS_ACCESS_KEY_ID \
             -e AWS_SECRET_ACCESS_KEY \
             -e AWS_REGION \
@@ -64,7 +65,6 @@ jobs:
         run: |
           docker exec \
             -it \
-            -v $(pwd)/optimize.sql:/optimize.sql
             trino \
             trino --catalog hive --schema v2 \
-            -f /optimize.sql
+            -f /sql/optimize.sql
