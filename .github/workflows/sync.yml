@@ -33,7 +33,7 @@ jobs:
             -v $(pwd)/trino-rest-github-$TRINO_REST_VERSION:/usr/lib/trino/plugin/github \
             -v $(pwd)/catalog:/etc/trino/catalog \
             -v $(pwd)/hive-cache:/opt/hive-cache \
-            -v $(pwd)/sql:/sql
+            -v $(pwd)/sql:/sql \
             -e AWS_ACCESS_KEY_ID \
             -e AWS_SECRET_ACCESS_KEY \
             -e AWS_REGION \
