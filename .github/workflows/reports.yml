@@ -1,0 +1,61 @@
+name: Reports
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: '0 6,18 * * *'
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      TRINO_VERSION: 367
+    steps:
+      - uses: actions/checkout@v2
+      - name: Start Trino
+        run: |
+          CONTAINER_ID=$(docker run \
+            -v $(pwd)/catalog/hive.properties:/etc/trino/catalog/hive.properties \
+            -v $(pwd)/hive-cache:/opt/hive-cache \
+            -v $(pwd)/sql:/sql \
+            -e AWS_ACCESS_KEY_ID \
+            -e AWS_SECRET_ACCESS_KEY \
+            -e AWS_REGION \
+            -p 8080:8080 \
+            --name trino \
+            -d \
+            trinodb/trino:$TRINO_VERSION)
+          SERVER_IP=$(docker inspect --format '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$CONTAINER_ID")
+          echo "CONTAINER_ID=$CONTAINER_ID" >> $GITHUB_ENV
+          echo "SERVER_IP=$SERVER_IP" >> $GITHUB_ENV
+          # give it some time to start up
+          sleep 30
+          docker logs trino
+      - name: Execute queries
+        run: |
+          mkdir -p reports
+          {
+            echo "Trino CI/CD reports"
+            echo "==================="
+            echo ""
+            echo "# Runs queue time per week"
+            echo "```"
+          } > reports/index.md
+          docker exec \
+            trino \
+            trino --catalog hive --schema v2 \
+            -f /sql/runs-queue-time-per-week.sql >> reports/index.md
+          {
+            echo "```"
+            echo "[query](https://github.com/${{ env.GITHUB_REPOSITORY }}/blob/${{ env.GITHUB_SHA }}/sql/runs-queue-time-per-week.sql)"
+          } >> reports/index.md
+      - name: Commit report
+        run: |
+          git config --global user.name 'Jan Was'
+          git config --global user.email 'nineinchnick@users.noreply.github.com'
+          git add --all reports/
+          git commit -m "Automated report"
+          git push
