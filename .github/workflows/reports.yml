@@ -36,22 +36,7 @@ jobs:
           docker logs trino
       - name: Execute queries
         run: |
-          mkdir -p reports
-          {
-            echo "Trino CI/CD reports"
-            echo "==================="
-            echo ""
-            echo "# Runs queue time per week"
-            echo "```"
-          } > reports/index.md
-          docker exec \
-            trino \
-            trino --catalog hive --schema v2 \
-            -f /sql/runs-queue-time-per-week.sql >> reports/index.md
-          {
-            echo "```"
-            echo "[query](https://github.com/${{ env.GITHUB_REPOSITORY }}/blob/${{ env.GITHUB_SHA }}/sql/runs-queue-time-per-week.sql)"
-          } >> reports/index.md
+          ./bin/reports.sh
       - name: Commit report
         run: |
           git config --global user.name 'Jan Was'
