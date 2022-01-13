@@ -6,7 +6,7 @@ This repo is an example of using Trino to perform ETL (extract, transform, and l
 and generate basic reports. The complete workflow is:
 
 1. Use [a custom connector](https://github.com/nineinchnick/trino-rest) to read Github's API data and save it into an S3 bucket.
-1. Run some [queries](/sql) to analyze the data stored in the S3 bucket, save results to a file and publish it to [Github Pages](https://nineinchnick.github.io/trino-cicd/).
+1. Run some [queries](/sql) to analyze the data stored in the S3 bucket, save results to a file and publish it to [Github Pages](https://nineinchnick.github.io/trino-cicd/reports/).
 
 All the of the above is repeatable and executed on a schedule using Github Actions.
 
@@ -37,4 +37,4 @@ Materialized views are not used, because incremental updates are tricky and diff
 [The reports workflow](/.github/workflows/reports.yml):
 1. Starts Trino in a container with only the connector required to read data from the S3 bucket.
 1. Executes multiple [queries](/sql), saving results as a simple text table in a file.
-1. Commits the updated results file to this repository, which triggers publishing it to [Github Pages](https://nineinchnick.github.io/trino-cicd/).
+1. Commits the updated results file to this repository, which triggers publishing it to [Github Pages](https://nineinchnick.github.io/trino-cicd/reports/).
