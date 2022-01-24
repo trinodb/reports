@@ -19,5 +19,52 @@ Trino CI/CD reports
  success        | 2022-01-24 00:00:00.000 | 0 00:00:10.000     | 0 00:00:10.000     | 0 00:00:10.000     | [0 00:00:10.000, 0 00:00:10.000, 0 00:00:10.000, 0 00:00:10.000] | 0 01:08:50.000   | 0 01:08:50.000   | 0 01:08:50.000   | [0 01:08:50.000, 0 01:08:50.000, 0 01:08:50.000, 0 01:08:50.000] 
 (12 rows)
 ```
-[query](https://github.com/nineinchnick/trino-cicd/blob/e199efe3923bb0a9108e8df18a691a9e46be3396/sql/runs-queue-time-per-week.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/d3b5a8f95d10448b9afcddf82baf502742d58b6a/sql/runs-queue-time-per-week.sql)
+
+# Flaky test ratio per week/run
+```
+ year_week | flaky_ratio_percent |                          name                          | success_count | failure_count |   run_id   |       created_at        
+-----------+---------------------+--------------------------------------------------------+---------------+---------------+------------+-------------------------
+ 2021:45   |                50.0 | test (:trino-tests)                                    |             1 |             1 | 1438239899 | 2021-11-09 06:29:15.000 
+ 2021:46   |                50.0 | test (:trino-tests)                                    |             1 |             1 | 1470994553 | 2021-11-17 09:56:27.000 
+ 2021:46   |               33.33 | test (:trino-raptor-legacy)                            |             2 |             1 | 1463990002 | 2021-11-15 20:32:33.000 
+ 2021:48   |                50.0 | pt (hdp3, suite-2, 17)                                 |             1 |             1 | 1542264475 | 2021-12-05 22:06:25.000 
+ 2021:48   |                50.0 | test (:trino-phoenix,:trino-phoenix5)                  |             1 |             1 | 1533586340 | 2021-12-03 02:59:45.000 
+ 2021:48   |                50.0 | test (:trino-sqlserver,:trino-postgresql,:trino-mysql) |             1 |             1 | 1542264475 | 2021-12-05 22:06:25.000 
+ 2021:48   |                50.0 | test (:trino-tests)                                    |             1 |             1 | 1542127963 | 2021-12-05 20:47:51.000 
+ 2021:48   |                50.0 | test-other-modules                                     |             1 |             1 | 1531338640 | 2021-12-02 15:48:04.000 
+ 2021:48   |                50.0 | test-other-modules                                     |             1 |             1 | 1542127963 | 2021-12-05 20:47:51.000 
+ 2021:49   |                50.0 | test (:trino-tests)                                    |             1 |             1 | 1551702008 | 2021-12-07 23:30:43.000 
+ 2021:49   |                50.0 | test (:trino-tests)                                    |             1 |             1 | 1553412392 | 2021-12-08 09:41:24.000 
+ 2021:50   |                50.0 | pt (default, suite-compatibility, 11)                  |             1 |             1 | 1583896242 | 2021-12-15 17:31:13.000 
+ 2021:50   |                50.0 | test (:trino-hive -P test-failure-recovery)            |             1 |             1 | 1571669527 | 2021-12-13 06:46:31.000 
+ 2021:50   |                50.0 | test (:trino-hive,:trino-orc)                          |             1 |             1 | 1597071585 | 2021-12-18 22:51:51.000 
+ 2021:50   |                50.0 | test-jdbc-compatibility                                |             1 |             1 | 1583896242 | 2021-12-15 17:31:13.000 
+ 2021:50   |                50.0 | test-other-modules                                     |             1 |             1 | 1583896242 | 2021-12-15 17:31:13.000 
+ 2021:51   |                50.0 | test-other-modules                                     |             1 |             1 | 1612749962 | 2021-12-22 19:24:05.000 
+ 2021:51   |               41.67 | test (:trino-hive -P test-failure-recovery)            |             7 |             5 | 1608337805 | 2021-12-21 19:23:45.000 
+ 2021:51   |               40.91 | test (:trino-hive -P test-failure-recovery)            |            13 |             9 | 1608492250 | 2021-12-21 20:10:57.000 
+ 2021:51   |               33.33 | pt (default, suite-oauth2, 11)                         |             2 |             1 | 1616520422 | 2021-12-23 17:37:51.000 
+ 2021:51   |               33.33 | test (:trino-clickhouse)                               |             2 |             1 | 1616520422 | 2021-12-23 17:37:51.000 
+ 2021:51   |               13.64 | test (:trino-hive -P test-failure-recovery)            |            19 |             3 | 1608949966 | 2021-12-21 22:37:18.000 
+ 2021:51   |                9.09 | test (:trino-hive -P test-failure-recovery)            |            20 |             2 | 1612183121 | 2021-12-22 16:32:21.000 
+ 2021:51   |                8.45 | test (:trino-hive -P test-failure-recovery)            |            65 |             6 | 1615618706 | 2021-12-23 12:53:13.000 
+ 2021:51   |                4.59 | test (:trino-hive -P test-failure-recovery)            |           104 |             5 | 1615556748 | 2021-12-23 12:31:55.000 
+ 2021:52   |               21.43 | test (:trino-hive -P test-failure-recovery)            |            11 |             3 | 1640971782 | 2021-12-31 14:23:10.000 
+ 2022:01   |                50.0 | test (:trino-hive,:trino-orc)                          |             1 |             1 | 1662937209 | 2022-01-06 12:14:06.000 
+ 2022:02   |                50.0 | test (:trino-phoenix,:trino-phoenix5)                  |             1 |             1 | 1684362985 | 2022-01-11 20:00:59.000 
+ 2022:02   |                50.0 | test (:trino-phoenix,:trino-phoenix5)                  |             1 |             1 | 1687903661 | 2022-01-12 13:53:17.000 
+ 2022:02   |                50.0 | test-docs (:trino-resource-group-managers)             |             1 |             1 | 1697683572 | 2022-01-14 12:34:46.000 
+ 2022:02   |                50.0 | test-docs (:trino-tests)                               |             1 |             1 | 1697683572 | 2022-01-14 12:34:46.000 
+ 2022:02   |               33.33 | test (:trino-hive -P test-failure-recovery)            |             2 |             1 | 1682702551 | 2022-01-11 13:31:56.000 
+ 2022:02   |               33.33 | test (:trino-phoenix,:trino-phoenix5)                  |             2 |             1 | 1682702551 | 2022-01-11 13:31:56.000 
+ 2022:02   |               33.33 | test (:trino-sqlserver,:trino-postgresql,:trino-mysql) |             2 |             1 | 1682702551 | 2022-01-11 13:31:56.000 
+ 2022:03   |                50.0 | maven-checks (17)                                      |             1 |             1 | 1712767799 | 2022-01-18 12:47:22.000 
+ 2022:03   |                50.0 | test (:trino-clickhouse, 0)                            |             1 |             1 | 1722101623 | 2022-01-20 07:09:18.000 
+ 2022:03   |                50.0 | test (:trino-clickhouse, 3)                            |             1 |             1 | 1722101623 | 2022-01-20 07:09:18.000 
+ 2022:03   |                50.0 | test (:trino-clickhouse, 5)                            |             1 |             1 | 1722101623 | 2022-01-20 07:09:18.000 
+ 2022:03   |                50.0 | test (:trino-main)                                     |             1 |             1 | 1712767799 | 2022-01-18 12:47:22.000 
+(39 rows)
+```
+[query](https://github.com/nineinchnick/trino-cicd/blob/d3b5a8f95d10448b9afcddf82baf502742d58b6a/sql/flaky-test-ratio.sql)
 
