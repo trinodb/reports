@@ -19,7 +19,7 @@ Trino CI/CD reports
  success        | 2022-01-24 00:00:00.000 | 0 00:00:08.000     | 0 03:43:01.000     | 0 00:39:42.522     | [0 00:00:11.000, 0 00:10:25.889, 0 00:59:25.120, 0 02:06:57.000] | 0 00:08:57.000   | 0 03:01:55.000   | 0 01:18:27.955   | [0 01:13:14.875, 0 01:24:10.333, 0 01:35:32.940, 0 01:49:21.000] 
 (12 rows)
 ```
-[query](https://github.com/nineinchnick/trino-cicd/blob/a09b7f1fa695101bd176001226f5a7ab600f9cc9/sql/runs-queue-time-per-week.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/aacad0315c55858286daf44478bff6aaad4fce49/sql/runs-queue-time-per-week.sql)
 
 # Flaky test ratio per week/run
 ```
@@ -66,5 +66,5 @@ Trino CI/CD reports
  2022:03   |                50.0 | test (:trino-main)                                     |             1 |             1 | 1712767799 | 2022-01-18 12:47:22.000 
 (39 rows)
 ```
-[query](https://github.com/nineinchnick/trino-cicd/blob/a09b7f1fa695101bd176001226f5a7ab600f9cc9/sql/flaky-test-ratio.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/aacad0315c55858286daf44478bff6aaad4fce49/sql/flaky-test-ratio.sql)
 
