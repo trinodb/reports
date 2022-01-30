@@ -15,3 +15,4 @@ FROM runs
 WHERE name = 'ci' AND created_at >= CURRENT_DATE - INTERVAL '30' DAY
 GROUP BY 1
 ORDER BY 1
+;
