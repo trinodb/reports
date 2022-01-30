@@ -3,6 +3,7 @@
 set -euo pipefail
 
 declare -A queries
+queries["health.sql"]="CI workflow health"
 queries["runs-queue-time-per-week.sql"]="Runs queue time per week"
 queries["jobs-duration.sql"]="Job duration in last 30 days"
 queries["flaky-tests.sql"]="Flaky tests per week"
