@@ -3,8 +3,8 @@
 set -euo pipefail
 
 declare -A queries
-queries[runs-queue-time-per-week.sql]="Runs queue time per week"
-queries[flaky-tests.sql]="Flaky tests per week"
+queries["runs-queue-time-per-week.sql"]="Runs queue time per week"
+queries["flaky-tests.sql"]="Flaky tests per week"
 
 mkdir -p reports
 {
@@ -28,3 +28,5 @@ for file in "${!queries[@]}"; do
         echo ""
     } >>reports/index.md
 done
+
+echo "Generated on $(date)" >>reports/index.md
