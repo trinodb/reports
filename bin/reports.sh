@@ -4,6 +4,7 @@ set -euo pipefail
 
 declare -A queries
 queries["runs-queue-time-per-week.sql"]="Runs queue time per week"
+queries["jobs-duration.sql"]="Job duration in last 30 days"
 queries["flaky-tests.sql"]="Flaky tests per week"
 
 mkdir -p reports
