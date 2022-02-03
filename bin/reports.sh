@@ -42,13 +42,13 @@ for index in "${!queries[@]}"; do
     title="${titles[$index]}"
     {
         echo "# $title"
-        echo '<code>'
+        echo '<pre><code>'
         docker exec \
             trino \
             trino --catalog hive --schema v2 \
             -f "/sql/$file" \
             --output-format=ALIGNED | aha -n
-        echo '</code>'
+        echo '</code></pre>'
         echo "[query]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$GITHUB_SHA/sql/$file)"
         echo ""
     } >>reports/index.md
