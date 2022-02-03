@@ -2,11 +2,33 @@
 
 set -euo pipefail
 
-declare -A queries
-queries["health.sql"]="CI workflow health"
-queries["runs-queue-time-per-week.sql"]="Runs queue time per week"
-queries["jobs-duration.sql"]="Job duration in last 30 days"
-queries["flaky-tests.sql"]="Flaky tests per week"
+for cmd in aha docker; do
+    if ! command -v "$cmd" >/dev/null; then
+        echo >&2 "Missing the $cmd command"
+        exit 1
+    fi
+done
+
+queries=(
+    "health.sql"
+    "runs-queue-time-per-day.sql"
+    "runs-duration-per-day.sql"
+    "jobs-duration.sql"
+    "flaky-tests.sql"
+)
+
+titles=(
+    "CI workflow health"
+    "Runs queue time per day"
+    "Runs duration per day"
+    "Job duration in last 30 days"
+    "Flaky tests per week"
+)
+
+if [ "${#queries[@]}" -ne "${#titles[@]}" ]; then
+    echo >&2 "Length of queries (${#queries[@]}) is different than titles (${#titles[@]})"
+    exit 1
+fi
 
 mkdir -p reports
 {
@@ -15,8 +37,9 @@ mkdir -p reports
     echo ""
 } >reports/index.md
 
-for file in "${!queries[@]}"; do
-    title="${queries[$file]}"
+for index in "${!queries[@]}"; do
+    file=${queries[$index]}
+    title="${titles[$index]}"
     {
         echo "# $title"
         echo '```'
@@ -24,7 +47,7 @@ for file in "${!queries[@]}"; do
             trino \
             trino --catalog hive --schema v2 \
             -f "/sql/$file" \
-            --output-format=ALIGNED
+            --output-format=ALIGNED | aha -n
         echo '```'
         echo "[query]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$GITHUB_SHA/sql/$file)"
         echo ""
