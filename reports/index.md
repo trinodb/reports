@@ -2,17 +2,17 @@ Trino CI/CD reports
 ===================
 
 # CI workflow health
-```
+<code>
  branch  | today_count | today_success | 3day_count | 3day_success | week_count | week_success | month_count | month_success 
 ---------+-------------+---------------+------------+--------------+------------+--------------+-------------+---------------
  &lt;other&gt; |          97 |          0.15 |        218 |         0.11 |        345 |         0.14 |        1320 |           0.2 
  master  |          21 |          0.43 |         47 |         0.26 |         66 |         0.18 |         234 |          0.31 
 (2 rows)
-```
-[query](https://github.com/nineinchnick/trino-cicd/blob/1d4b785082b7e01d503d5492b75422ce58226757/sql/health.sql)
+</code>
+[query](https://github.com/nineinchnick/trino-cicd/blob/c8e86ec7ca593d31ec2d6915aa985e351b0d8e8d/sql/health.sql)
 
 # Runs queue time per day
-```
+<code>
            Day           |           Avg queue dur chart            | Avg queue dur  | Max queue dur  | Min queue dur  |                 Queue percentiles 75, 90, 95, 99                 
 -------------------------+------------------------------------------+----------------+----------------+----------------+------------------------------------------------------------------
  2022-02-03 00:00:00.000 | <span style="color: rgb(0,175,0);">█████</span><span style="color: rgb(95,175,0);">█</span>                                   | 0 00:53:06.167 | 0 01:39:09.000 | 0 00:09:39.000 | [0 01:09:08.000, 0 01:39:09.000, 0 01:39:09.000, 0 01:39:09.000] 
@@ -31,11 +31,11 @@ Trino CI/CD reports
  2022-01-21 00:00:00.000 | <span style="color: rgb(0,175,0);">█████</span><span style="color: rgb(95,175,0);">██</span><span style="color: rgb(95,215,0);">███</span><span style="color: rgb(135,215,0);">███</span>                            | 0 01:51:15.667 | 0 04:00:58.000 | 0 00:00:08.000 | [0 03:15:55.000, 0 03:38:42.000, 0 03:52:06.000, 0 04:00:58.000] 
  2022-01-20 00:00:00.000 | <span style="color: rgb(0,175,0);">█████</span><span style="color: rgb(95,175,0);">██</span><span style="color: rgb(95,215,0);">██</span>                                | 0 01:23:22.778 | 0 04:30:40.000 | 0 00:00:08.000 | [0 01:55:04.000, 0 03:53:37.000, 0 04:30:40.000, 0 04:30:40.000] 
 (15 rows)
-```
-[query](https://github.com/nineinchnick/trino-cicd/blob/1d4b785082b7e01d503d5492b75422ce58226757/sql/runs-queue-time-per-day.sql)
+</code>
+[query](https://github.com/nineinchnick/trino-cicd/blob/c8e86ec7ca593d31ec2d6915aa985e351b0d8e8d/sql/runs-queue-time-per-day.sql)
 
 # Runs duration per day
-```
+<code>
            Day           |            Avg run dur chart             |  Avg run dur   |  Max run dur   |  Min run dur   |                  Run percentiles 75, 90, 95, 99                  
 -------------------------+------------------------------------------+----------------+----------------+----------------+------------------------------------------------------------------
  2022-02-03 00:00:00.000 | <span style="color: rgb(0,175,0);">█████</span><span style="color: rgb(95,175,0);">██</span><span style="color: rgb(95,215,0);">███</span><span style="color: rgb(135,215,0);">████</span><span style="color: rgb(175,215,0);">███</span><span style="color: rgb(215,215,0);">██████</span><span style="color: rgb(255,215,0);">█</span><span style="color: rgb(255,175,0);">█████</span><span style="color: rgb(255,135,0);">███</span><span style="color: rgb(255,95,0);">████</span><span style="color: rgb(255,0,0);">████</span> | 0 03:01:43.500 | 0 04:41:15.000 | 0 01:23:49.000 | [0 04:32:48.000, 0 04:41:15.000, 0 04:41:15.000, 0 04:41:15.000] 
@@ -54,11 +54,11 @@ Trino CI/CD reports
  2022-01-21 00:00:00.000 | <span style="color: rgb(0,175,0);">█████</span><span style="color: rgb(95,175,0);">██</span><span style="color: rgb(95,215,0);">███</span><span style="color: rgb(135,215,0);">████</span><span style="color: rgb(175,215,0);">███</span><span style="color: rgb(215,215,0);">████</span>                    | 0 01:37:09.000 | 0 02:27:55.000 | 0 01:13:27.000 | [0 01:49:33.000, 0 01:56:12.000, 0 02:10:21.000, 0 02:27:55.000] 
  2022-01-20 00:00:00.000 | <span style="color: rgb(0,175,0);">█████</span><span style="color: rgb(95,175,0);">██</span><span style="color: rgb(95,215,0);">███</span><span style="color: rgb(135,215,0);">████</span><span style="color: rgb(175,215,0);">███</span><span style="color: rgb(215,215,0);">█████</span>                   | 0 01:42:54.389 | 0 06:26:46.000 | 0 00:50:37.000 | [0 01:37:21.000, 0 01:50:51.000, 0 06:26:46.000, 0 06:26:46.000] 
 (15 rows)
-```
-[query](https://github.com/nineinchnick/trino-cicd/blob/1d4b785082b7e01d503d5492b75422ce58226757/sql/runs-duration-per-day.sql)
+</code>
+[query](https://github.com/nineinchnick/trino-cicd/blob/c8e86ec7ca593d31ec2d6915aa985e351b0d8e8d/sql/runs-duration-per-day.sql)
 
 # Job duration in last 30 days
-```
+<code>
          name         |                              name                               | invocations | success_percent | min_minutes | max_minutes | avg_minutes | %tile (50, 75, 90, 99) 
 ----------------------+-----------------------------------------------------------------+-------------+-----------------+-------------+-------------+-------------+------------------------
  Annotate checks      | annotate                                                        |        1915 |            0.99 |           0 |           2 |        0.01 | [0, 0, 0, 1]           
@@ -68,42 +68,42 @@ Trino CI/CD reports
  ci                   | error-prone-checks                                              |        1463 |            0.71 |          12 |          28 |       20.53 | [19, 22, 23, 30]       
  ci                   | hive-tests (config-empty)                                       |        1459 |            0.71 |          30 |          59 |       38.51 | [34, 39, 49, 60]       
  ci                   | hive-tests (config-hdp3)                                        |        1460 |            0.76 |          11 |          59 |        19.0 | [13, 15, 38, 51]       
- ci                   | maven-checks (11)                                               |        1462 |            0.64 |          23 |          44 |       28.34 | [26, 30, 32, 35]       
+ ci                   | maven-checks (11)                                               |        1462 |            0.64 |          23 |          44 |       28.34 | [27, 30, 32, 35]       
  ci                   | maven-checks (17)                                               |        1463 |             0.6 |          22 |          43 |       27.02 | [26, 30, 32, 40]       
  ci                   | pt (apache-hive3, suite-hms-only, 11)                           |        1455 |            0.74 |          10 |          61 |        13.7 | [13, 14, 15, 31]       
  ci                   | pt (cdh5, suite-1, 11)                                          |         551 |            0.76 |          27 |          79 |       31.89 | [30, 33, 35, 40]       
- ci                   | pt (cdh5, suite-2, 11)                                          |         551 |            0.66 |          41 |          63 |       46.38 | [45, 49, 51, 57]       
- ci                   | pt (cdh5, suite-3, 11)                                          |         551 |            0.76 |          31 |          54 |       37.73 | [36, 40, 42, 46]       
- ci                   | pt (cdh5, suite-5, 11)                                          |         551 |            0.76 |          25 |          82 |       31.22 | [30, 33, 34, 58]       
+ ci                   | pt (cdh5, suite-2, 11)                                          |         551 |            0.66 |          41 |          63 |       46.38 | [45, 48, 51, 57]       
+ ci                   | pt (cdh5, suite-3, 11)                                          |         551 |            0.76 |          31 |          54 |       37.73 | [36, 39, 41, 46]       
+ ci                   | pt (cdh5, suite-5, 11)                                          |         551 |            0.76 |          25 |          82 |       31.22 | [30, 32, 34, 58]       
  ci                   | pt (default, suite-1, 11)                                       |         551 |            0.75 |          57 |         113 |       68.88 | [64, 72, 77, 85]       
  ci                   | pt (default, suite-2, 11)                                       |         551 |            0.71 |          86 |         128 |      101.65 | [95, 106, 113, 127]    
  ci                   | pt (default, suite-3, 11)                                       |         551 |            0.76 |          36 |          89 |       45.43 | [42, 48, 51, 58]       
  ci                   | pt (default, suite-5, 11)                                       |         551 |            0.76 |          31 |          82 |       38.67 | [36, 40, 43, 49]       
  ci                   | pt (default, suite-6-non-generic, 11)                           |        1455 |            0.71 |          29 |          96 |       34.93 | [33, 36, 38, 50]       
- ci                   | pt (default, suite-7-non-generic, 11)                           |        1455 |            0.68 |          35 |         120 |       42.02 | [39, 43, 47, 60]       
+ ci                   | pt (default, suite-7-non-generic, 11)                           |        1455 |            0.68 |          35 |         120 |       42.02 | [39, 44, 47, 59]       
  ci                   | pt (default, suite-8-non-generic, 11)                           |        1455 |            0.71 |          34 |          99 |       40.97 | [38, 42, 45, 50]       
- ci                   | pt (default, suite-compatibility, 11)                           |        1455 |            0.71 |          18 |          80 |       22.51 | [21, 23, 25, 86]       
- ci                   | pt (default, suite-ldap, 11)                                    |        1455 |            0.73 |          16 |          67 |       19.95 | [19, 21, 23, 36]       
+ ci                   | pt (default, suite-compatibility, 11)                           |        1455 |            0.71 |          18 |          80 |       22.51 | [21, 23, 25, 85]       
+ ci                   | pt (default, suite-ldap, 11)                                    |        1455 |            0.73 |          16 |          67 |       19.95 | [19, 21, 23, 35]       
  ci                   | pt (default, suite-oauth2, 11)                                  |        1465 |            0.72 |          10 |          58 |       17.85 | [14, 20, 28, 44]       
  ci                   | pt (default, suite-tpcds, 11)                                   |        1455 |            0.72 |          25 |          98 |       31.67 | [29, 33, 35, 43]       
- ci                   | pt (hdp3, suite-1, 11)                                          |        1460 |            0.67 |          54 |         115 |       65.38 | [60, 68, 73, 80]       
+ ci                   | pt (hdp3, suite-1, 11)                                          |        1460 |            0.67 |          54 |         115 |       65.38 | [60, 68, 72, 80]       
  ci                   | pt (hdp3, suite-1, 17)                                          |        1455 |            0.67 |          53 |         119 |       65.63 | [60, 68, 73, 81]       
  ci                   | pt (hdp3, suite-2, 11)                                          |        1460 |            0.65 |          58 |         117 |       69.26 | [64, 72, 76, 87]       
- ci                   | pt (hdp3, suite-2, 17)                                          |        1455 |            0.65 |          57 |         121 |       69.07 | [64, 71, 76, 87]       
+ ci                   | pt (hdp3, suite-2, 17)                                          |        1455 |            0.65 |          57 |         121 |       69.07 | [64, 72, 76, 87]       
  ci                   | pt (hdp3, suite-3, 11)                                          |        1460 |            0.69 |          39 |          98 |       47.58 | [44, 49, 52, 64]       
- ci                   | pt (hdp3, suite-5, 11)                                          |        1460 |            0.69 |          44 |         101 |       53.74 | [50, 55, 59, 69]       
+ ci                   | pt (hdp3, suite-5, 11)                                          |        1460 |            0.69 |          44 |         101 |       53.74 | [50, 56, 59, 69]       
  ci                   | test (:trino-accumulo)                                          |        1455 |            0.76 |           8 |          26 |        9.71 | [9, 10, 11, 30]        
  ci                   | test (:trino-cassandra)                                         |        1455 |            0.76 |           7 |          22 |        8.85 | [8, 9, 10, 30]         
- ci                   | test (:trino-clickhouse)                                        |        1657 |            0.62 |           4 |          15 |        6.01 | [5, 6, 7, 30]          
+ ci                   | test (:trino-clickhouse)                                        |        1657 |            0.62 |           4 |          15 |        6.01 | [6, 6, 7, 30]          
  ci                   | test (:trino-druid)                                             |         268 |            0.68 |          16 |          21 |       17.48 | [17, 18, 19, 30]       
- ci                   | test (:trino-elasticsearch -P test-stats)                       |        1187 |             0.8 |           2 |           7 |        3.24 | [3, 3, 4, 5]           
+ ci                   | test (:trino-elasticsearch -P test-stats)                       |        1187 |             0.8 |           2 |           7 |        3.24 | [3, 3, 4, 6]           
  ci                   | test (:trino-elasticsearch,:trino-elasticsearch -P test-stats)  |         268 |             0.7 |           3 |           5 |        3.18 | [3, 3, 4, 30]          
- ci                   | test (:trino-hive -P test-failure-recovery)                     |        1587 |            0.65 |          17 |          52 |        40.9 | [39, 42, 46, 60]       
+ ci                   | test (:trino-hive -P test-failure-recovery)                     |        1587 |            0.65 |          17 |          52 |        40.9 | [39, 43, 46, 60]       
  ci                   | test (:trino-hive -P test-fault-tolerant-execution)             |         663 |            0.68 |          12 |          20 |       15.23 | [14, 16, 18, 60]       
  ci                   | test (:trino-hive -P test-parquet)                              |         268 |            0.67 |          18 |          35 |       25.27 | [23, 26, 30, 34]       
  ci                   | test (:trino-hive)                                              |         268 |            0.44 |          38 |          58 |       46.44 | [42, 48, 52, 57]       
  ci                   | test (:trino-hive,:trino-orc)                                   |        1187 |            0.65 |          36 |          59 |       46.07 | [43, 48, 52, 60]       
- ci                   | test (:trino-hive,:trino-parquet -P test-parquet)               |        1187 |            0.76 |          19 |          45 |       25.16 | [23, 27, 29, 35]       
+ ci                   | test (:trino-hive,:trino-parquet -P test-parquet)               |        1187 |            0.76 |          19 |          45 |       25.16 | [23, 26, 29, 35]       
  ci                   | test (:trino-iceberg)                                           |         268 |             0.6 |          15 |          26 |       19.27 | [18, 20, 23, 34]       
  ci                   | test (:trino-iceberg,:trino-druid)                              |        1187 |            0.72 |          28 |          48 |       34.69 | [33, 36, 38, 42]       
  ci                   | test (:trino-jdbc,:trino-base-jdbc,:trino-thrift,:trino-memory) |         268 |            0.66 |          13 |          21 |       16.51 | [16, 17, 19, 30]       
@@ -123,8 +123,8 @@ Trino CI/CD reports
  ci                   | test (:trino-sqlserver,:trino-postgresql,:trino-mysql)          |        1185 |            0.73 |          27 |          50 |       33.18 | [30, 35, 38, 43]       
  ci                   | test (:trino-tests)                                             |        1455 |            0.67 |          37 |          59 |       46.43 | [44, 48, 52, 58]       
  ci                   | test-bigquery                                                   |        1455 |            0.78 |           1 |           4 |         1.7 | [2, 2, 2, 30]          
- ci                   | test-jdbc-compatibility                                         |        1459 |            0.72 |          13 |          21 |        16.3 | [16, 17, 18, 30]       
- ci                   | test-memsql                                                     |        1455 |            0.77 |           1 |          29 |        5.25 | [3, 4, 12, 30]         
+ ci                   | test-jdbc-compatibility                                         |        1459 |            0.72 |          13 |          21 |        16.3 | [15, 17, 18, 30]       
+ ci                   | test-memsql                                                     |        1455 |            0.77 |           1 |          29 |        5.25 | [3, 4, 13, 30]         
  ci                   | test-other-modules                                              |        1461 |            0.67 |          21 |          52 |       36.92 | [35, 40, 44, 50]       
  ci                   | web-ui-checks                                                   |        1459 |             0.8 |           0 |           1 |         0.0 | [0, 0, 0, 0]           
  cleanup              | cancel                                                          |         296 |            0.99 |           0 |           0 |         0.0 | [0, 0, 0, 0]           
@@ -139,11 +139,11 @@ Trino CI/CD reports
  milestone            | Test Report                                                     |         198 |            0.78 |           0 |           0 |         0.0 | [0, 0, 0, 0]           
  milestone            | set-milestone                                                   |         229 |            0.98 |           0 |           0 |         0.0 | [0, 0, 0, 0]           
 (77 rows)
-```
-[query](https://github.com/nineinchnick/trino-cicd/blob/1d4b785082b7e01d503d5492b75422ce58226757/sql/jobs-duration.sql)
+</code>
+[query](https://github.com/nineinchnick/trino-cicd/blob/c8e86ec7ca593d31ec2d6915aa985e351b0d8e8d/sql/jobs-duration.sql)
 
 # Flaky tests per week
-```
+<code>
  year_week |                          name                          | failure_count | fail_percent |                                                                                                                                                                                                                                                                    runs                                                                                                                                                                                                                                                                    
 -----------+--------------------------------------------------------+---------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  2022:05   | test (:trino-clickhouse)                               |            11 |        15.71 | [https://github.com/trinodb/trino/actions/runs/1772667545, https://github.com/trinodb/trino/actions/runs/1773246905, https://github.com/trinodb/trino/actions/runs/1776811244, https://github.com/trinodb/trino/actions/runs/1772064115, https://github.com/trinodb/trino/actions/runs/1772064115, https://github.com/trinodb/trino/actions/runs/1779222104, https://github.com/trinodb/trino/actions/runs/1779222104, https://github.com/trinodb/trino/actions/runs/1777943506]                                                           
@@ -212,7 +212,7 @@ Trino CI/CD reports
  2021:52   | test (:trino-tests)                                    |             1 |        100.0 | [https://github.com/trinodb/trino/actions/runs/1640554139]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
  2021:52   | test-other-modules                                     |             1 |        100.0 | [https://github.com/trinodb/trino/actions/runs/1630105377]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 (65 rows)
-```
-[query](https://github.com/nineinchnick/trino-cicd/blob/1d4b785082b7e01d503d5492b75422ce58226757/sql/flaky-tests.sql)
+</code>
+[query](https://github.com/nineinchnick/trino-cicd/blob/c8e86ec7ca593d31ec2d6915aa985e351b0d8e8d/sql/flaky-tests.sql)
 
-Generated on Thu Feb  3 14:19:36 UTC 2022
+Generated on Thu Feb  3 14:53:08 UTC 2022
