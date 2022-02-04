@@ -1,4 +1,3 @@
--- get avg queue and run time
 WITH longest_jobs AS (
   SELECT
     run_id
@@ -10,11 +9,12 @@ WITH longest_jobs AS (
 ),
 main AS (
   SELECT
-    date_trunc('day', created_at) AS day
+    cast(created_at AS date) AS day
     , min(duration) AS min_dur
     , max(duration) AS max_dur
     , avg(duration) AS avg_dur
-    , transform(approx_percentile(to_milliseconds(duration), ARRAY[0.75, 0.90, 0.95, 0.99]), m -> parse_duration(cast(m as varchar) || 'ms')) AS perc
+    , count(*) AS runs_count
+    , approx_percentile(to_milliseconds(duration), ARRAY[0.75, 0.90, 0.95, 0.99]) AS perc
   FROM runs r
   JOIN longest_jobs j ON j.run_id = r.id
   WHERE r.owner = 'trinodb' AND r.repo = 'trino' AND r.name = 'ci' AND r.conclusion = 'success' AND r.created_at > CURRENT_DATE - INTERVAL '14' DAY
@@ -23,9 +23,10 @@ main AS (
 )
 SELECT
    day AS "Day"
-   , bar(CAST(to_milliseconds(avg_dur) AS double) / to_milliseconds((SELECT max(avg_dur) FROM main)), 40, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Avg run dur chart"
+   , bar(CAST(perc[3] AS double) / max(perc[3]) OVER (), 40, rgb(0, 155, 0), rgb(255, 0, 0)) AS "P₉₅ run duration"
+   , runs_count AS "Runs count"
+   , transform(perc, m -> parse_duration(cast(m as varchar) || 'ms')) AS "Run percentiles 75, 90, 95, 99"
+   , min_dur AS "Min run dur"
    , avg_dur AS "Avg run dur"
    , max_dur AS "Max run dur"
-   , min_dur AS "Min run dur"
-   , perc AS "Run percentiles 75, 90, 95, 99"
 FROM main;
