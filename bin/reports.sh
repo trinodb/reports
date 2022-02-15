@@ -9,51 +9,55 @@ for cmd in aha docker; do
     fi
 done
 
-queries=(
-    "health.sql"
-    "runs-queue-time-per-day.sql"
-    "runs-duration-per-day.sql"
-    "jobs-duration.sql"
-    "flaky-tests.sql"
-)
-
-titles=(
-    "CI workflow health"
-    "Runs queue time per day"
-    "Runs duration per day"
-    "Job duration in last 30 days"
-    "Flaky tests per week"
-)
-
-if [ "${#queries[@]}" -ne "${#titles[@]}" ]; then
-    echo >&2 "Length of queries (${#queries[@]}) is different than titles (${#titles[@]})"
+if [ "$#" -le 2 ]; then
+    echo >&2 "Usage: $0 output-file title input-file [input-file ...]"
+    echo >&2 ""
+    echo >&2 "arguments:"
+    echo >&2 " output-file - file where to write the report, as markdown"
+    echo >&2 " title - report title"
+    echo >&2 " input-file - one or more files with an SQL query"
     exit 1
 fi
 
-target_dir=${1:-reports}
-title=${2:-Reports}
-target="$target_dir/index.md"
+target=$1
+shift
+title=$1
+shift
 
-mkdir -p "$target"
+queries=("$@")
+
+GITHUB_SERVER_URL=${GITHUB_SERVER_URL:-https://github.com}
+GITHUB_REPOSITORY=${GITHUB_REPOSITORY:-}
+GITHUB_SHA=${GITHUB_SHA:-master}
+
+mkdir -p "$(dirname $target)"
 {
     echo "$title"
     echo "======="
     echo ""
 } >"$target"
 
-for index in "${!queries[@]}"; do
-    file=${queries[$index]}
-    title="${titles[$index]}"
+for file in "${queries[@]}"; do
+    docker cp "$file" trino:/tmp/
+    title=$(head -n 1 "$file")
+    if [[ $title != --* ]]; then
+        echo >&2 "First line of file $file needs to be an SQL comment with the report title (should start with --)"
+        exit 1
+    fi
+    title=${title#--}
     {
         echo "# $title"
         echo '<pre><code>'
+        echo >&2 "Executing query from $file"
         docker exec \
             trino \
             trino --catalog hive --schema v2 \
-            -f "/sql/$file" \
+            -f "/tmp/$(basename "$file")" \
             --output-format=ALIGNED | aha -n
         echo '</code></pre>'
-        echo "[query]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$GITHUB_SHA/sql/$file)"
+        if [ -n "$GITHUB_REPOSITORY" ]; then
+            echo "[query]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$GITHUB_SHA/$file)"
+        fi
         echo ""
     } >>"$target"
 done

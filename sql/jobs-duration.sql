@@ -1,3 +1,4 @@
+-- Job duration in last 30 days
 WITH job_duration AS (
   SELECT
     run_id

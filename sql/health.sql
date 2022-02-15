@@ -1,3 +1,4 @@
+-- CI workflow health
 SELECT
   CASE head_branch
     WHEN 'master' THEN head_branch

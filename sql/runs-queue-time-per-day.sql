@@ -1,3 +1,4 @@
+-- Runs queue time per day
 WITH longest_jobs AS (
   SELECT
     run_id
