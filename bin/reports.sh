@@ -9,6 +9,12 @@ for cmd in aha docker; do
     fi
 done
 
+container_name=trino
+if ! status=$(docker inspect $container_name --format "{{json .State.Status}}") || [ "$status" != '"running"' ]; then
+    echo >&2 "Container '$container_name' does not exist or is not running (status is $status)"
+    exit 1
+fi
+
 if [ "$#" -le 2 ]; then
     echo >&2 "Usage: $0 output-file title input-file [input-file ...]"
     echo >&2 ""
@@ -30,7 +36,7 @@ GITHUB_SERVER_URL=${GITHUB_SERVER_URL:-https://github.com}
 GITHUB_REPOSITORY=${GITHUB_REPOSITORY:-}
 GITHUB_SHA=${GITHUB_SHA:-master}
 
-mkdir -p "$(dirname $target)"
+mkdir -p "$(dirname "$target")"
 {
     echo "$title"
     echo "======="
@@ -38,7 +44,7 @@ mkdir -p "$(dirname $target)"
 } >"$target"
 
 for file in "${queries[@]}"; do
-    docker cp "$file" trino:/tmp/
+    docker cp "$file" $container_name:/tmp/
     title=$(head -n 1 "$file")
     if [[ $title != --* ]]; then
         echo >&2 "First line of file $file needs to be an SQL comment with the report title (should start with --)"
@@ -50,7 +56,7 @@ for file in "${queries[@]}"; do
         echo '<pre><code>'
         echo >&2 "Executing query from $file"
         docker exec \
-            trino \
+            $container_name \
             trino --catalog hive --schema v2 \
             -f "/tmp/$(basename "$file")" \
             --output-format=ALIGNED | aha -n
