@@ -30,12 +30,16 @@ if [ "${#queries[@]}" -ne "${#titles[@]}" ]; then
     exit 1
 fi
 
-mkdir -p reports
+target_dir=${1:-reports}
+title=${2:-Reports}
+target="$target_dir/index.md"
+
+mkdir -p "$target"
 {
-    echo "Trino CI/CD reports"
-    echo "==================="
+    echo "$title"
+    echo "======="
     echo ""
-} >reports/index.md
+} >"$target"
 
 for index in "${!queries[@]}"; do
     file=${queries[$index]}
@@ -51,7 +55,7 @@ for index in "${!queries[@]}"; do
         echo '</code></pre>'
         echo "[query]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$GITHUB_SHA/sql/$file)"
         echo ""
-    } >>reports/index.md
+    } >>"$target"
 done
 
-echo "Generated on $(date)" >>reports/index.md
+echo "Generated on $(date)" >>"$target"

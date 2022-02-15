@@ -43,7 +43,7 @@ jobs:
           docker logs trino
       - name: Execute queries
         run: |
-          ./bin/reports.sh
+          ./bin/reports.sh reports "Trino CI/CD Reports"
       - name: Commit report
         run: |
           git config --global user.name 'Jan Was'
