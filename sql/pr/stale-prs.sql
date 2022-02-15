@@ -1,6 +1,7 @@
 -- Stale PRs
 SELECT
-  title
+  number
+, title
 , updated_at
 , current_timestamp - updated_at AS untouched_for
 FROM
