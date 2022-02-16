@@ -42,7 +42,8 @@ jobs:
           docker logs trino
       - name: Execute queries
         run: |
-          ./bin/reports.sh reports/index.md "Trino CI/CD Reports" sql/{health,runs-queue-time-per-day,runs-duration-per-day,jobs-duration,flaky-tests}.sql
+          ./bin/reports.sh reports/ci-cd/index.md "Trino CI/CD Reports" sql/ci-cd/{health,runs-queue-time-per-day,runs-duration-per-day,jobs-duration,flaky-tests}.sql
+          ./bin/reports.sh reports/pr/index.md "Trino PR Reports" sql/pr/{stale-prs,running-prs,awaiting-review,abandoned-prs}.sql
       - name: Commit report
         run: |
           git config --global user.name 'Jan Was'
