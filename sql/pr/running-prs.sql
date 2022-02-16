@@ -15,6 +15,6 @@ LEFT JOIN
   pull_commits ON pulls.number = pull_commits.pull_number
 WHERE pulls.owner = 'trinodb' AND pulls.repo = 'trino' AND pulls.state = 'open' AND NOT pulls.draft
 GROUP BY 1, 2, 3, 4
-ORDER BY untouched_for DESC
+ORDER BY running_time DESC
 LIMIT 20
 ;
