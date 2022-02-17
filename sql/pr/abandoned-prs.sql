@@ -3,6 +3,7 @@ SELECT
   pulls.number
 , pulls.title
 , current_timestamp - max(pull_commits.committer_date) AS time_since_push
+, format('<a href="https://github.com/trinodb/trino/pull/%s">link</a>', pulls.number) AS link
 FROM
   pulls
 LEFT JOIN

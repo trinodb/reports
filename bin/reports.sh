@@ -36,6 +36,8 @@ GITHUB_SERVER_URL=${GITHUB_SERVER_URL:-https://github.com}
 GITHUB_REPOSITORY=${GITHUB_REPOSITORY:-}
 GITHUB_SHA=${GITHUB_SHA:-master}
 
+SED_PR_LINK_UNESCAPE_PATTERN='s!&lt;a href=&quot;https://github.com/trinodb/trino/pull/([0-9]+)&quot;&gt;link&lt;/a&gt;!<a href="https://github.com/trinodb/trino/pull/\1">link</a>!'
+
 mkdir -p "$(dirname "$target")"
 {
     echo "$title"
@@ -59,7 +61,9 @@ for file in "${queries[@]}"; do
             $container_name \
             trino --catalog hive --schema v2 \
             -f "/tmp/$(basename "$file")" \
-            --output-format=ALIGNED | aha -n
+            --output-format=ALIGNED | aha -n \
+            | sed -E "${SED_PR_LINK_UNESCAPE_PATTERN}" # Unescape PR links which were escaped by aha
+
         echo '</code></pre>'
         if [ -n "$GITHUB_REPOSITORY" ]; then
             echo "[query]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$GITHUB_SHA/$file)"
