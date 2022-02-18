@@ -1,20 +1,15 @@
--- Stale PRs
+-- Longest time since review
 SELECT
   pulls.number
 , pulls.title
-, pulls.updated_at
-, current_timestamp - pulls.updated_at AS untouched_for
-, max(reviews.submitted_at) - pulls.updated_at AS running_time
 , current_timestamp - max(reviews.submitted_at) AS time_since_review
-, current_timestamp - max(pull_commits.committer_date) AS time_since_push
+, format('<a href="https://github.com/trinodb/trino/pull/%s">link</a>', pulls.number) AS link
 FROM
   pulls
 LEFT JOIN
   reviews ON pulls.number = reviews.pull_number
-LEFT JOIN
-  pull_commits ON pulls.number = pull_commits.pull_number
 WHERE pulls.owner = 'trinodb' AND pulls.repo = 'trino' AND pulls.state = 'open' AND NOT pulls.draft
-GROUP BY 1, 2, 3, 4
+GROUP BY 1, 2, 4
 ORDER BY time_since_review DESC
 LIMIT 20
 ;
