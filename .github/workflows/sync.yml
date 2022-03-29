@@ -3,7 +3,7 @@ name: Incremental data sync
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: '0 5,17 * * *'
+    - cron: '30 */2 * * *'
 
 jobs:
   sync:
