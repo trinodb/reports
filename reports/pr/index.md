@@ -5,29 +5,29 @@ Trino PR Reports
 <pre><code>
  number |                                title                                 |  untouched_for   |                             link                              
 --------+----------------------------------------------------------------------+------------------+---------------------------------------------------------------
-   1364 | Filter tables based on table privilege of user                       | 903 21:26:14.255 | <a href="https://github.com/trinodb/trino/pull/1364">link</a> 
-   2786 | Categorize user errors when parsing data via GenericHiveRecordCursor | 779 10:18:41.255 | <a href="https://github.com/trinodb/trino/pull/2786">link</a> 
-   2832 | Use file extension based on the file format                          | 759 16:52:27.255 | <a href="https://github.com/trinodb/trino/pull/2832">link</a> 
-   4834 | Reuse containers in product tests                                    | 583 14:41:26.255 | <a href="https://github.com/trinodb/trino/pull/4834">link</a> 
-   4872 | CachingHiveMetastore: refactor cache creation and flushCache()       | 577 18:11:17.255 | <a href="https://github.com/trinodb/trino/pull/4872">link</a> 
-   2976 | [WIP] Add sybase connector                                           | 529 13:01:28.255 | <a href="https://github.com/trinodb/trino/pull/2976">link</a> 
-   4426 | Fix type mismatch between partition and table                        | 526 23:40:59.255 | <a href="https://github.com/trinodb/trino/pull/4426">link</a> 
-   5624 | Ability to run product tests from IntelliJ                           | 523 23:21:31.255 | <a href="https://github.com/trinodb/trino/pull/5624">link</a> 
-   4413 | Add deterministic UUID functions uuid_v3 and uuid_v5                 | 492 21:33:26.255 | <a href="https://github.com/trinodb/trino/pull/4413">link</a> 
-   5699 | Add support for HDFS only iceberg tables                             | 441 10:14:22.255 | <a href="https://github.com/trinodb/trino/pull/5699">link</a> 
-   7870 | Isaac Scafe Writing Exercises                                        | 300 12:55:44.255 | <a href="https://github.com/trinodb/trino/pull/7870">link</a> 
-   5834 | Throw SQLException in getTime                                        | 244 08:20:00.255 | <a href="https://github.com/trinodb/trino/pull/5834">link</a> 
-   8255 | Add aggregation push down into Oracle                                | 176 10:37:26.255 | <a href="https://github.com/trinodb/trino/pull/8255">link</a> 
-   1832 | Feature/add sortkey distkey redshift                                 | 176 10:37:23.255 | <a href="https://github.com/trinodb/trino/pull/1832">link</a> 
-   5767 | add missing jars when `hive.s3-file-system-type=HADOOP_DEFAULT`      | 176 02:00:41.255 | <a href="https://github.com/trinodb/trino/pull/5767">link</a> 
-   9804 | Not implement GroupedAccumulator in generateGroupedStateClass        | 143 11:26:53.255 | <a href="https://github.com/trinodb/trino/pull/9804">link</a> 
-   9789 | allow push down join on redshift                                     | 143 11:26:53.255 | <a href="https://github.com/trinodb/trino/pull/9789">link</a> 
-   9817 | Fix bug in iceberg connector with external table locations           | 143 11:26:53.255 | <a href="https://github.com/trinodb/trino/pull/9817">link</a> 
-   9758 | Print error when DateTimeZoneIndex init with failure for debug       | 143 11:26:53.255 | <a href="https://github.com/trinodb/trino/pull/9758">link</a> 
-   9851 | Use smaller load factors for small join hash arrays                  | 143 11:26:53.255 | <a href="https://github.com/trinodb/trino/pull/9851">link</a> 
+   1364 | Filter tables based on table privilege of user                       | 904 09:27:16.218 | <a href="https://github.com/trinodb/trino/pull/1364">link</a> 
+   2786 | Categorize user errors when parsing data via GenericHiveRecordCursor | 779 22:19:43.218 | <a href="https://github.com/trinodb/trino/pull/2786">link</a> 
+   2832 | Use file extension based on the file format                          | 760 04:53:29.218 | <a href="https://github.com/trinodb/trino/pull/2832">link</a> 
+   4834 | Reuse containers in product tests                                    | 584 02:42:28.218 | <a href="https://github.com/trinodb/trino/pull/4834">link</a> 
+   4872 | CachingHiveMetastore: refactor cache creation and flushCache()       | 578 06:12:19.218 | <a href="https://github.com/trinodb/trino/pull/4872">link</a> 
+   2976 | [WIP] Add sybase connector                                           | 530 01:02:30.218 | <a href="https://github.com/trinodb/trino/pull/2976">link</a> 
+   4426 | Fix type mismatch between partition and table                        | 527 11:42:01.218 | <a href="https://github.com/trinodb/trino/pull/4426">link</a> 
+   5624 | Ability to run product tests from IntelliJ                           | 524 11:22:33.218 | <a href="https://github.com/trinodb/trino/pull/5624">link</a> 
+   4413 | Add deterministic UUID functions uuid_v3 and uuid_v5                 | 493 09:34:28.218 | <a href="https://github.com/trinodb/trino/pull/4413">link</a> 
+   5699 | Add support for HDFS only iceberg tables                             | 441 22:15:24.218 | <a href="https://github.com/trinodb/trino/pull/5699">link</a> 
+   7870 | Isaac Scafe Writing Exercises                                        | 301 00:56:46.218 | <a href="https://github.com/trinodb/trino/pull/7870">link</a> 
+   5834 | Throw SQLException in getTime                                        | 244 20:21:02.218 | <a href="https://github.com/trinodb/trino/pull/5834">link</a> 
+   8255 | Add aggregation push down into Oracle                                | 176 22:38:28.218 | <a href="https://github.com/trinodb/trino/pull/8255">link</a> 
+   1832 | Feature/add sortkey distkey redshift                                 | 176 22:38:25.218 | <a href="https://github.com/trinodb/trino/pull/1832">link</a> 
+   5767 | add missing jars when `hive.s3-file-system-type=HADOOP_DEFAULT`      | 176 14:01:43.218 | <a href="https://github.com/trinodb/trino/pull/5767">link</a> 
+   9758 | Print error when DateTimeZoneIndex init with failure for debug       | 143 23:27:55.218 | <a href="https://github.com/trinodb/trino/pull/9758">link</a> 
+   9804 | Not implement GroupedAccumulator in generateGroupedStateClass        | 143 23:27:55.218 | <a href="https://github.com/trinodb/trino/pull/9804">link</a> 
+   9817 | Fix bug in iceberg connector with external table locations           | 143 23:27:55.218 | <a href="https://github.com/trinodb/trino/pull/9817">link</a> 
+   9789 | allow push down join on redshift                                     | 143 23:27:55.218 | <a href="https://github.com/trinodb/trino/pull/9789">link</a> 
+   9851 | Use smaller load factors for small join hash arrays                  | 143 23:27:55.218 | <a href="https://github.com/trinodb/trino/pull/9851">link</a> 
 (20 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/0bd0a092794d92195a733966f208763e1486fe7e/sql/pr/stale-prs.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/5c835ee74c6ae9bf0fa7e88e9e20378d892fc386/sql/pr/stale-prs.sql)
 
 #  Longest running PRs
 <pre><code>
@@ -55,62 +55,62 @@ Trino PR Reports
    8202 | Fixed #2748 - Metadata for alias in elasticsearch connector only uses the first mapping | 55 18:54:03.000 | <a href="https://github.com/trinodb/trino/pull/8202">link</a> 
 (20 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/0bd0a092794d92195a733966f208763e1486fe7e/sql/pr/running-prs.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/5c835ee74c6ae9bf0fa7e88e9e20378d892fc386/sql/pr/running-prs.sql)
 
 #  Longest time since review
 <pre><code>
  number |                                         title                                         | time_since_review |                             link                              
 --------+---------------------------------------------------------------------------------------+-------------------+---------------------------------------------------------------
-    685 | Add SampleNode stats and cost rule                                                    | 1068 20:46:27.098 | <a href="https://github.com/trinodb/trino/pull/685">link</a>  
-    624 | Optimize distinct aggregation on multiple columns                                     | 1053 05:52:16.098 | <a href="https://github.com/trinodb/trino/pull/624">link</a>  
-    821 | Distributed sort for unpartitioned window functions                                   | 1038 13:45:41.098 | <a href="https://github.com/trinodb/trino/pull/821">link</a>  
-    855 | Change client to assume types are encoded as text                                     | 1036 22:31:25.098 | <a href="https://github.com/trinodb/trino/pull/855">link</a>  
-    819 | Remove TableLayout from TPCDS connector                                               | 1032 00:14:19.098 | <a href="https://github.com/trinodb/trino/pull/819">link</a>  
-   1255 | Remove no longer needed ConnectorSplitSource#isFinished                               | 968 21:42:01.098  | <a href="https://github.com/trinodb/trino/pull/1255">link</a> 
-   1224 | Add graceful shutdown script for Docker                                               | 968 14:33:40.098  | <a href="https://github.com/trinodb/trino/pull/1224">link</a> 
-   1319 | Add execution statistic warnings                                                      | 955 22:04:56.098  | <a href="https://github.com/trinodb/trino/pull/1319">link</a> 
-   1317 | Add connector table metadata warnings                                                 | 948 09:44:22.098  | <a href="https://github.com/trinodb/trino/pull/1317">link</a> 
-   1364 | Filter tables based on table privilege of user                                        | 904 13:54:12.098  | <a href="https://github.com/trinodb/trino/pull/1364">link</a> 
-   1637 | [WIP] patch to add support for array by table subquery                                | 904 12:27:56.098  | <a href="https://github.com/trinodb/trino/pull/1637">link</a> 
-   1606 | Improve property derivation for FULL JOIN                                             | 897 20:17:40.098  | <a href="https://github.com/trinodb/trino/pull/1606">link</a> 
-   1780 | Remove unused binding                                                                 | 896 00:36:32.098  | <a href="https://github.com/trinodb/trino/pull/1780">link</a> 
-   1965 | Node local partition pruning                                                          | 875 12:02:23.098  | <a href="https://github.com/trinodb/trino/pull/1965">link</a> 
-   2026 | Add pattern for files ending with &lt;query_id&gt;.&lt;number&gt; to cleanup them during rollback | 864 18:11:32.098  | <a href="https://github.com/trinodb/trino/pull/2026">link</a> 
-   1832 | Feature/add sortkey distkey redshift                                                  | 842 09:28:12.098  | <a href="https://github.com/trinodb/trino/pull/1832">link</a> 
-   2227 | Adding changes for adding _timestamp field in kafka topic metadata.                   | 826 10:45:30.098  | <a href="https://github.com/trinodb/trino/pull/2227">link</a> 
-   2489 | Derive non-null from symbol-to-symbol comparisons in domain translator                | 807 12:00:31.098  | <a href="https://github.com/trinodb/trino/pull/2489">link</a> 
-   2010 | Query debugging tracer                                                                | 804 23:49:31.098  | <a href="https://github.com/trinodb/trino/pull/2010">link</a> 
-   2397 | Influx Connector                                                                      | 800 03:15:40.098  | <a href="https://github.com/trinodb/trino/pull/2397">link</a> 
+    685 | Add SampleNode stats and cost rule                                                    | 1069 08:47:23.845 | <a href="https://github.com/trinodb/trino/pull/685">link</a>  
+    624 | Optimize distinct aggregation on multiple columns                                     | 1053 17:53:12.845 | <a href="https://github.com/trinodb/trino/pull/624">link</a>  
+    821 | Distributed sort for unpartitioned window functions                                   | 1039 01:46:37.845 | <a href="https://github.com/trinodb/trino/pull/821">link</a>  
+    855 | Change client to assume types are encoded as text                                     | 1037 10:32:21.845 | <a href="https://github.com/trinodb/trino/pull/855">link</a>  
+    819 | Remove TableLayout from TPCDS connector                                               | 1032 12:15:15.845 | <a href="https://github.com/trinodb/trino/pull/819">link</a>  
+   1255 | Remove no longer needed ConnectorSplitSource#isFinished                               | 969 09:42:57.845  | <a href="https://github.com/trinodb/trino/pull/1255">link</a> 
+   1224 | Add graceful shutdown script for Docker                                               | 969 02:34:36.845  | <a href="https://github.com/trinodb/trino/pull/1224">link</a> 
+   1319 | Add execution statistic warnings                                                      | 956 10:05:52.845  | <a href="https://github.com/trinodb/trino/pull/1319">link</a> 
+   1317 | Add connector table metadata warnings                                                 | 948 21:45:18.845  | <a href="https://github.com/trinodb/trino/pull/1317">link</a> 
+   1364 | Filter tables based on table privilege of user                                        | 905 01:55:08.845  | <a href="https://github.com/trinodb/trino/pull/1364">link</a> 
+   1637 | [WIP] patch to add support for array by table subquery                                | 905 00:28:52.845  | <a href="https://github.com/trinodb/trino/pull/1637">link</a> 
+   1606 | Improve property derivation for FULL JOIN                                             | 898 08:18:36.845  | <a href="https://github.com/trinodb/trino/pull/1606">link</a> 
+   1780 | Remove unused binding                                                                 | 896 12:37:28.845  | <a href="https://github.com/trinodb/trino/pull/1780">link</a> 
+   1965 | Node local partition pruning                                                          | 876 00:03:19.845  | <a href="https://github.com/trinodb/trino/pull/1965">link</a> 
+   2026 | Add pattern for files ending with &lt;query_id&gt;.&lt;number&gt; to cleanup them during rollback | 865 06:12:28.845  | <a href="https://github.com/trinodb/trino/pull/2026">link</a> 
+   1832 | Feature/add sortkey distkey redshift                                                  | 842 21:29:08.845  | <a href="https://github.com/trinodb/trino/pull/1832">link</a> 
+   2227 | Adding changes for adding _timestamp field in kafka topic metadata.                   | 826 22:46:26.845  | <a href="https://github.com/trinodb/trino/pull/2227">link</a> 
+   2489 | Derive non-null from symbol-to-symbol comparisons in domain translator                | 808 00:01:27.845  | <a href="https://github.com/trinodb/trino/pull/2489">link</a> 
+   2010 | Query debugging tracer                                                                | 805 11:50:27.845  | <a href="https://github.com/trinodb/trino/pull/2010">link</a> 
+   2397 | Influx Connector                                                                      | 800 15:16:36.845  | <a href="https://github.com/trinodb/trino/pull/2397">link</a> 
 (20 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/0bd0a092794d92195a733966f208763e1486fe7e/sql/pr/awaiting-review.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/5c835ee74c6ae9bf0fa7e88e9e20378d892fc386/sql/pr/awaiting-review.sql)
 
 #  Abandoned PRs
 <pre><code>
- number |                                  title                                   | time_since_push |                              link                              
---------+--------------------------------------------------------------------------+-----------------+----------------------------------------------------------------
-   7994 | ConnectorExpression pushdown                                             | NULL            | <a href="https://github.com/trinodb/trino/pull/7994">link</a>  
-  10854 | [WIP] Add comments at column level for views                             | NULL            | <a href="https://github.com/trinodb/trino/pull/10854">link</a> 
-  10831 | Document existing Hive properties                                        | NULL            | <a href="https://github.com/trinodb/trino/pull/10831">link</a> 
-  11324 | Improve CBO estimates for correlated columns                             | NULL            | <a href="https://github.com/trinodb/trino/pull/11324">link</a> 
-  11396 | Translate IN predicate to connector expression                           | NULL            | <a href="https://github.com/trinodb/trino/pull/11396">link</a> 
-  10984 | Gib prune pt matrix                                                      | NULL            | <a href="https://github.com/trinodb/trino/pull/10984">link</a> 
-  11264 | Gn/fix kudu schemas table race                                           | NULL            | <a href="https://github.com/trinodb/trino/pull/11264">link</a> 
-  11390 | Normalize generated SQL queries IN list length                           | NULL            | <a href="https://github.com/trinodb/trino/pull/11390">link</a> 
-  11217 | Use shared Zstd(De)Compressor in ResolvedFunction encoding               | NULL            | <a href="https://github.com/trinodb/trino/pull/11217">link</a> 
-  11235 | Allocate new Slice for VariableWidthBlockEncoding readBlock              | NULL            | <a href="https://github.com/trinodb/trino/pull/11235">link</a> 
-  11387 | Update maven wrapper `0.5.6` -&gt; `3.1.0`                                  | NULL            | <a href="https://github.com/trinodb/trino/pull/11387">link</a> 
-  11412 | Improve Phoenix type mapping tests                                       | NULL            | <a href="https://github.com/trinodb/trino/pull/11412">link</a> 
-  11014 | Support GET method on user info endpoint (oauth)                         | NULL            | <a href="https://github.com/trinodb/trino/pull/11014">link</a> 
-  11125 | DSL for JDBC expression rewrites                                         | NULL            | <a href="https://github.com/trinodb/trino/pull/11125">link</a> 
-  11410 | Re-enable Delta ADLS smoke test                                          | NULL            | <a href="https://github.com/trinodb/trino/pull/11410">link</a> 
-  11401 | rename tables support for delta tables                                   | NULL            | <a href="https://github.com/trinodb/trino/pull/11401">link</a> 
-  11356 | Add support to redirect table operations from Iceberg to Hive            | NULL            | <a href="https://github.com/trinodb/trino/pull/11356">link</a> 
-  11332 | Add catalog.skip-load-error config param for silent catalog file loading | NULL            | <a href="https://github.com/trinodb/trino/pull/11332">link</a> 
-  10575 | Increase OrcReader#MAX_BATCH_SIZE to 8196                                | NULL            | <a href="https://github.com/trinodb/trino/pull/10575">link</a> 
-  10767 | Support for AWS Atena partition projection                               | NULL            | <a href="https://github.com/trinodb/trino/pull/10767">link</a> 
+ number |                                          title                                          | time_since_push |                              link                              
+--------+-----------------------------------------------------------------------------------------+-----------------+----------------------------------------------------------------
+  11301 | Update memsql plugin JDBC driver dependency                                             | NULL            | <a href="https://github.com/trinodb/trino/pull/11301">link</a> 
+  11304 | Add redirection awareness for DROP COLUMN task                                          | NULL            | <a href="https://github.com/trinodb/trino/pull/11304">link</a> 
+  11316 | Forbid usage of static inner test classes in TestNG                                     | NULL            | <a href="https://github.com/trinodb/trino/pull/11316">link</a> 
+  11307 | [WIP] testing                                                                           | NULL            | <a href="https://github.com/trinodb/trino/pull/11307">link</a> 
+  11321 | Add redirection awareness in retrieving the KDB index table in extracting spatial joins | NULL            | <a href="https://github.com/trinodb/trino/pull/11321">link</a> 
+  11083 | Fix expression predicate pushdown not firing before AddExchanges                        | NULL            | <a href="https://github.com/trinodb/trino/pull/11083">link</a> 
+  10897 | Add Delta Lake connector                                                                | NULL            | <a href="https://github.com/trinodb/trino/pull/10897">link</a> 
+  11082 | Add check for used Cassandra partition columns                                          | NULL            | <a href="https://github.com/trinodb/trino/pull/11082">link</a> 
+  11091 | Escape the deprecated data file from Iceberg                                            | NULL            | <a href="https://github.com/trinodb/trino/pull/11091">link</a> 
+  10482 | Add new use system truststore flag to JDBC driver and CLI                               | NULL            | <a href="https://github.com/trinodb/trino/pull/10482">link</a> 
+  11098 | Compress large prepared statements headers                                              | NULL            | <a href="https://github.com/trinodb/trino/pull/11098">link</a> 
+  10915 | Invalidate CachingDirectoryLister when writing through Trino                            | NULL            | <a href="https://github.com/trinodb/trino/pull/10915">link</a> 
+  11097 | Released memory retained by ExchangeSource                                              | NULL            | <a href="https://github.com/trinodb/trino/pull/11097">link</a> 
+  10767 | Support for AWS Athena partition projection                                             | NULL            | <a href="https://github.com/trinodb/trino/pull/10767">link</a> 
+  11102 | Check all queries returned memory on query runner teardown                              | NULL            | <a href="https://github.com/trinodb/trino/pull/11102">link</a> 
+  11101 | Disable ganglia metrics reporter for rubix                                              | NULL            | <a href="https://github.com/trinodb/trino/pull/11101">link</a> 
+  11062 | Delete Iceberg table data on DROP                                                       | NULL            | <a href="https://github.com/trinodb/trino/pull/11062">link</a> 
+  11094 | Add Trino 372 release notes                                                             | NULL            | <a href="https://github.com/trinodb/trino/pull/11094">link</a> 
+  10845 | Support Glue catalog in Iceberg connector                                               | NULL            | <a href="https://github.com/trinodb/trino/pull/10845">link</a> 
+  11308 | Add support for LIKE escape parameter in Elasticsearch connector expression pushdown    | NULL            | <a href="https://github.com/trinodb/trino/pull/11308">link</a> 
 (20 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/0bd0a092794d92195a733966f208763e1486fe7e/sql/pr/abandoned-prs.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/5c835ee74c6ae9bf0fa7e88e9e20378d892fc386/sql/pr/abandoned-prs.sql)
 
-Generated on Fri Apr  1 06:35:05 UTC 2022
+Generated on Fri Apr  1 18:35:56 UTC 2022
