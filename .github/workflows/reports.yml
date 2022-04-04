@@ -42,7 +42,7 @@ jobs:
       - name: Execute queries
         run: |
           ./bin/reports.sh reports/ci-cd/index.md "Trino CI/CD Reports" sql/ci-cd/{health,runs-queue-time-per-day,runs-duration-per-day,runs-job-cumulative-duration-per-day,concurrent-jobs-per-day,jobs-duration,flaky-tests}.sql
-          ./bin/reports.sh reports/pr/index.md "Trino PR Reports" sql/pr/{avg-time-to-merge-since-creation,avg-time-elapsed-before-merge,stale-prs,running-prs,awaiting-review,abandoned-prs}.sql
+          ./bin/reports.sh reports/pr/index.md "Trino PR Reports" sql/pr/{avg-time-to-merge-since-creation,avg-time-elapsed-before-merge,avg-time-to-first-review,stale-prs,running-prs,awaiting-review,abandoned-prs}.sql
       - name: Commit report
         run: |
           git config --global user.name 'Jan Was'
