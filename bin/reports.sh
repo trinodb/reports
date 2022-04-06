@@ -32,11 +32,21 @@ shift
 
 queries=("$@")
 
+function run_query() {
+    local file=$1
+    local SED_PR_LINK_UNESCAPE_PATTERN='s!&lt;a href=&quot;https://github.com/trinodb/trino/pull/([0-9]+)&quot;&gt;link&lt;/a&gt;!<a href="https://github.com/trinodb/trino/pull/\1">link</a>!'
+    echo >&2 "Executing query from $file"
+    docker exec \
+        $container_name \
+        trino --catalog hive --schema v2 \
+        -f "/tmp/$(basename "$file")" \
+        --output-format=ALIGNED | aha -n |
+        sed -E "${SED_PR_LINK_UNESCAPE_PATTERN}" # Unescape PR links which were escaped by aha
+}
+
 GITHUB_SERVER_URL=${GITHUB_SERVER_URL:-https://github.com}
 GITHUB_REPOSITORY=${GITHUB_REPOSITORY:-}
 GITHUB_SHA=${GITHUB_SHA:-master}
-
-SED_PR_LINK_UNESCAPE_PATTERN='s!&lt;a href=&quot;https://github.com/trinodb/trino/pull/([0-9]+)&quot;&gt;link&lt;/a&gt;!<a href="https://github.com/trinodb/trino/pull/\1">link</a>!'
 
 mkdir -p "$(dirname "$target")"
 {
@@ -49,21 +59,15 @@ for file in "${queries[@]}"; do
     docker cp "$file" $container_name:/tmp/
     title=$(head -n 1 "$file")
     if [[ $title != --* ]]; then
-        echo >&2 "First line of file $file needs to be an SQL comment with the report title (should start with --)"
-        exit 1
+        echo >&2 "First line of file $file needs to be an SQL comment with the report title (should start with --), query will run but results will be ignored"
+        run_query "$file"
+        continue
     fi
     title=${title#--}
     {
         echo "# $title"
         echo '<pre><code>'
-        echo >&2 "Executing query from $file"
-        docker exec \
-            $container_name \
-            trino --catalog hive --schema v2 \
-            -f "/tmp/$(basename "$file")" \
-            --output-format=ALIGNED | aha -n \
-            | sed -E "${SED_PR_LINK_UNESCAPE_PATTERN}" # Unescape PR links which were escaped by aha
-
+        run_query "$file"
         echo '</code></pre>'
         if [ -n "$GITHUB_REPOSITORY" ]; then
             echo "[query]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$GITHUB_SHA/$file)"
