@@ -31,7 +31,8 @@ jobs:
         run: |
           CONTAINER_ID=$(docker run \
             -v $(pwd)/trino-rest-github-$TRINO_REST_VERSION:/usr/lib/trino/plugin/github \
-            -v $(pwd)/catalog:/etc/trino/catalog \
+            -v $(pwd)/catalog/github.properties:/etc/trino/catalog/github.properties \
+            -v $(pwd)/catalog/hive.properties:/etc/trino/catalog/hive.properties \
             -v $(pwd)/hive-cache:/opt/hive-cache \
             -v $(pwd)/sql:/sql \
             -e AWS_ACCESS_KEY_ID \
