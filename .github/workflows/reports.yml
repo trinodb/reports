@@ -15,16 +15,21 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
-      TRINO_VERSION: 371
+      TRINO_VERSION: 375
+      TRINO_GIT_VERSION: "0.18"
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: |
           sudo apt update
           sudo apt install -y aha
+          curl -fLOsS https://github.com/nineinchnick/trino-git/releases/download/v$TRINO_GIT_VERSION/trino-git-$TRINO_GIT_VERSION.zip
+          unzip trino-git-$TRINO_GIT_VERSION.zip
       - name: Start Trino
         run: |
           CONTAINER_ID=$(docker run \
+            -v $(pwd)/trino-git-$TRINO_GIT_VERSION:/usr/lib/trino/plugin/git \
+            -v $(pwd)/catalog/git.properties:/etc/trino/catalog/git.properties \
             -v $(pwd)/catalog/hive.properties:/etc/trino/catalog/hive.properties \
             -v $(pwd)/hive-cache:/opt/hive-cache \
             -e AWS_ACCESS_KEY_ID \
@@ -42,7 +47,7 @@ jobs:
       - name: Execute queries
         run: |
           ./bin/reports.sh reports/ci-cd/index.md "Trino CI/CD Reports" sql/ci-cd/{health,runs-queue-time-per-day,runs-duration-per-day,runs-job-cumulative-duration-per-day,concurrent-jobs-per-day,jobs-duration,flaky-tests}.sql
-          ./bin/reports.sh reports/pr/index.md "Trino PR Reports" sql/pr/{avg-time-to-merge-since-creation,avg-time-elapsed-before-merge,avg-time-to-first-review,stale-prs,running-prs,awaiting-review,abandoned-prs}.sql
+          ./bin/reports.sh reports/pr/index.md "Trino PR Reports" sql/pr/{top-mergers,avg-time-to-merge-since-creation,avg-time-elapsed-before-merge,avg-time-to-first-review,stale-prs,running-prs,awaiting-review,abandoned-prs}.sql
       - name: Commit report
         run: |
           git config --global user.name 'Jan Was'
