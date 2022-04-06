@@ -45,8 +45,16 @@ jobs:
           SERVER_IP=$(docker inspect --format '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$CONTAINER_ID")
           echo "CONTAINER_ID=$CONTAINER_ID" >> $GITHUB_ENV
           echo "SERVER_IP=$SERVER_IP" >> $GITHUB_ENV
-          until docker logs trino 2>&1 | grep --quiet --fixed-strings --max-count=1 "SERVER STARTED"; do sleep 1 ; done
-          docker logs trino
+          i=0
+          until docker inspect "${CONTAINER_ID}" --format "{{json .State.Health.Status }}" | grep -q '"healthy"'; do
+              if [[ $((i++)) -ge 10 ]]; then
+                  echo "🚨 Too many retries waiting for Trino to start"
+                  docker logs "${CONTAINER_ID}"
+                  exit 1
+              fi
+              sleep 10
+          done
+          docker logs "${CONTAINER_ID}"
       - name: Run Sync
         run: |
           docker run \
