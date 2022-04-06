@@ -1,7 +1,7 @@
 -- Burndown chart
 WITH open_prs AS (
   SELECT d.month, count(*) AS count
-  FROM pulls
+  FROM unique_pulls
   CROSS JOIN unnest(sequence(
         date_trunc('month', date(created_at)),
         date_trunc('month', date(coalesce(closed_at, current_date))),
@@ -12,13 +12,13 @@ WITH open_prs AS (
 ),
 new_prs AS (
   SELECT date_trunc('month', date(created_at)) AS month, count(*) AS count
-  FROM pulls
+  FROM unique_pulls
   WHERE owner = 'trinodb' AND repo = 'trino'
   GROUP BY 1
 ),
 closed_prs AS (
   SELECT date_trunc('month', date(closed_at)) AS month, count(*) AS count
-  FROM pulls
+  FROM unique_pulls
   WHERE owner = 'trinodb' AND repo = 'trino'
   GROUP BY 1
 ),
@@ -60,7 +60,7 @@ SELECT
 , ni.count AS "New issues"
 , ci.count AS "Closed issues"
 FROM
-  unnest(sequence(date_trunc('month', current_date), date_trunc('month', current_date) - interval '1' year, interval '-1' month)) AS d(month)
+  unnest(sequence(date_trunc('month', current_date), date_trunc('month', current_date) - interval '3' year, interval '-1' month)) AS d(month)
 LEFT JOIN open_prs op ON op.month = d.month
 LEFT JOIN new_prs np ON np.month = d.month
 LEFT JOIN closed_prs cp ON cp.month = d.month
