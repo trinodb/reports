@@ -4,8 +4,7 @@
 SELECT count(*)
 FROM git.default.commits;
 
-DROP TABLE IF EXISTS memory.default.nodes;
-CREATE TABLE memory.default.nodes AS
+CREATE TABLE IF NOT EXISTS memory.default.nodes AS
     SELECT email, name, count(*) AS count
     FROM (
         SELECT author_email AS email, author_name AS name
@@ -16,14 +15,12 @@ CREATE TABLE memory.default.nodes AS
     ) names
     GROUP BY email, name;
 
-DROP TABLE IF EXISTS memory.default.edges;
-CREATE TABLE memory.default.edges AS
+CREATE TABLE IF NOT EXISTS memory.default.edges AS
     SELECT n1.name AS name1, n2.name AS name2
     FROM memory.default.nodes n1
     INNER JOIN memory.default.nodes n2 USING (email);
 
-DROP TABLE IF EXISTS memory.default.idents;
-CREATE TABLE memory.default.idents AS
+CREATE TABLE IF NOT EXISTS memory.default.idents AS
 WITH RECURSIVE
     walk (name1, name2, visited) AS (
         SELECT name1, name2, ARRAY[name1]
