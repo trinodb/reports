@@ -44,390 +44,502 @@ Trino PR Reports
  2019-04-01 | <span style="color: rgb(0,175,0);">███</span>                  | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                       | NULL              | NULL             | NULL                |      161 |      89 |                   101 |        NULL |       NULL |          NULL 
 (37 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/f633986d39748554e73337373e624a4f6b611bde/sql/pr/burndown.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/ebd46bba162a971aa05521810d9174cda7d0aa3f/sql/pr/burndown.sql)
 
 #  Authors per month
 <pre><code>
-   Month    | Authors count chart  | New authors count chart | All authors count chart | Authors count | New authors count | All authors count |                                                                                                       New authors                                                                                                        
-------------+----------------------+-------------------------+-------------------------+---------------+-------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 2022-04-01 | <span style="color: rgb(0,175,0);">███████</span>              | <span style="color: rgb(0,175,0);">█</span>                       | <span style="color: rgb(0,175,0);">████████████████████</span>    |            21 |                 1 |               654 | [yushengnan]                                                                                                                                                                                                             
- 2022-03-01 | <span style="color: rgb(0,175,0);">████████████████████</span> | <span style="color: rgb(0,175,0);">████████████</span>            | <span style="color: rgb(0,175,0);">███████████████████</span>     |            55 |                 9 |               653 | [Brennan Toomey, Eduard Tudenhoefner, Jack Klamer, JackieTien97, John Levey, Michiel De Smet, dch nguyen, rameshbyndoor, theosib-amazon]                                                                                 
- 2022-02-01 | <span style="color: rgb(0,175,0);">███████████████</span>      | <span style="color: rgb(0,175,0);">█████████</span>               | <span style="color: rgb(0,175,0);">███████████████████</span>     |            43 |                 7 |               644 | [Assaf Bern, BlueStalker, Shivam Papat, Yi Tang, mgoutham1206, przemekak, zhangbutao]                                                                                                                                    
- 2022-01-01 | <span style="color: rgb(0,175,0);">████████████████████</span> | <span style="color: rgb(0,175,0);">████████████████████</span>    | <span style="color: rgb(0,175,0);">███████████████████</span>     |            55 |                15 |               637 | [Bernd Lunghamer, D01B, Daniel del Castillo, Don Smith, Jordan Zimmerman, Ritesh Varyani, Saulius Valatka, Victoria Bukta, XuPengfei-1020, austenLacy, cpeter, liqinrae, q-li, rkondziolka, tangjiangling]               
- 2021-12-01 | <span style="color: rgb(0,175,0);">██████████████████</span>   | <span style="color: rgb(0,175,0);">█████████████</span>           | <span style="color: rgb(0,175,0);">███████████████████</span>     |            51 |                10 |               622 | [Anish Asthana, HiLany, Hide On Bush, Juacall Bernard, Martijn Atema, Mateusz Chrzonstowski, Ray Zhang, guanwang92, rtotaro, xuedongluan]                                                                                
- 2021-11-01 | <span style="color: rgb(0,175,0);">██████████████████</span>   | <span style="color: rgb(0,175,0);">██████████</span>              | <span style="color: rgb(0,175,0);">██████████████████</span>      |            51 |                 8 |               612 | [Andrew DiBiasio, Anton Tanasenko, Jacob Stein, Kenneth Jung, Kenny Kwan, Ranganath Govardhanagiri, Sebastian Bernauer, 小雨]                                                                                            
- 2021-10-01 | <span style="color: rgb(0,175,0);">███████████████</span>      | <span style="color: rgb(0,175,0);">██████</span>                  | <span style="color: rgb(0,175,0);">██████████████████</span>      |            42 |                 5 |               604 | [Gary Gao, Josh Howard, Kenan Dominic, Rob Speller, Zebing Lin]                                                                                                                                                          
- 2021-09-01 | <span style="color: rgb(0,175,0);">██████████████████</span>   | <span style="color: rgb(0,175,0);">██████████████</span>          | <span style="color: rgb(0,175,0);">██████████████████</span>      |            50 |                11 |               599 | [Arkadiusz Czajkowski, Chris Snowden, Clemens von Schwerin, Cristian Osiac, Joe Chu, Junhyung Song, Li Xiangqun, Liu Yang, Mario Rial, caneGuy, jier]                                                                    
- 2021-08-01 | <span style="color: rgb(0,175,0);">███████████████</span>      | <span style="color: rgb(0,175,0);">█████████████</span>           | <span style="color: rgb(0,175,0);">█████████████████</span>       |            43 |                10 |               588 | [Dariusz Pakulski, Jack Ye, Jiajie Zhong, Kartik Bhat, Sunning Go, Young Chen, albericgenius, bitsondatadev, rvazquezglez, serhiish]                                                                                     
- 2021-07-01 | <span style="color: rgb(0,175,0);">██████████████</span>       | <span style="color: rgb(0,175,0);">████████</span>                | <span style="color: rgb(0,175,0);">█████████████████</span>       |            39 |                 6 |               578 | [Gaurav Sehgal, Jessie212, Justin-Kwan, Lucas Lemos, Lukasz Stec, Yash Doiphode]                                                                                                                                         
- 2021-06-01 | <span style="color: rgb(0,175,0);">██████████████████</span>   | <span style="color: rgb(0,175,0);">██████████████</span>          | <span style="color: rgb(0,175,0);">█████████████████</span>       |            51 |                11 |               572 | [Artsem Semianenka, Joe Lodin, Konrad Dziedzic, Megan Albert, Paulo Vítor, Sergey Melnychuk, Suman, academy-codex, ans76, gaojun2048, jessica]                                                                           
- 2021-05-01 | <span style="color: rgb(0,175,0);">██████████████████</span>   | <span style="color: rgb(0,175,0);">████████████████████</span>    | <span style="color: rgb(0,175,0);">█████████████████</span>       |            50 |                15 |               561 | [Aakash Nand, Damans227, Joe L, Ratandeep S. Ratti, Sam Wheating, Siva Tharun Kola, Wei Zheng, Yan, cccs-tom, ckodonnell, cwise827, hguercan, songgane, xiaojian, zhangchunyang]                                         
- 2021-04-01 | <span style="color: rgb(0,175,0);">████████████████</span>     | <span style="color: rgb(0,175,0);">████████████</span>            | <span style="color: rgb(0,175,0);">████████████████</span>        |            45 |                 9 |               546 | [Henry Zhu, MariyaR, Matthias Strobl, Przemek Denkiewicz, Xinbin Huang, findinpath, gtangthousandeyes, guhanjie, mkDoku]                                                                                                 
- 2021-03-01 | <span style="color: rgb(0,175,0);">██████████████</span>       | <span style="color: rgb(0,175,0);">█████████</span>               | <span style="color: rgb(0,175,0);">████████████████</span>        |            41 |                 7 |               537 | [Amit Singh, Josef Jankowski, Kyle Fraser, Rahul Sharma, Rumeshkrishnan Mohan, Xi Chen, leadermags]                                                                                                                      
- 2021-02-01 | <span style="color: rgb(0,175,0);">█████████████</span>        | <span style="color: rgb(0,175,0);">█████</span>                   | <span style="color: rgb(0,175,0);">████████████████</span>        |            36 |                 4 |               530 | [Akshay Rai, GaruGaru, Jan Was, Krzysztof Sobolewski]                                                                                                                                                                    
- 2021-01-01 | <span style="color: rgb(0,175,0);">███████████</span>          | <span style="color: rgb(0,175,0);">████</span>                    | <span style="color: rgb(0,175,0);">████████████████</span>        |            32 |                 3 |               526 | [Mateusz Zarkowski, m2yi, yangruochen]                                                                                                                                                                                   
- 2020-12-01 | <span style="color: rgb(0,175,0);">█████████████</span>        | <span style="color: rgb(0,175,0);">████████</span>                | <span style="color: rgb(0,175,0);">███████████████</span>         |            36 |                 6 |               523 | [CoachLuck, John Humphreys, Miguel Sanseverino, Nick Rushton, ashasomayajula, shandeep00]                                                                                                                                
- 2020-11-01 | <span style="color: rgb(0,175,0);">██████████████</span>       | <span style="color: rgb(0,175,0);">██</span>                      | <span style="color: rgb(0,175,0);">███████████████</span>         |            40 |                 2 |               517 | [Lasse Mammen, Yanwen Lin]                                                                                                                                                                                               
- 2020-10-01 | <span style="color: rgb(0,175,0);">███████████████</span>      | <span style="color: rgb(0,175,0);">████████</span>                | <span style="color: rgb(0,175,0);">███████████████</span>         |            42 |                 6 |               515 | [Jordan Duabe, Varun Wachaspati J, brandboat, choiwaiyiu, jetsasank, shandhanumohan]                                                                                                                                     
- 2020-09-01 | <span style="color: rgb(0,175,0);">█████████████████</span>    | <span style="color: rgb(0,175,0);">████████████████████</span>    | <span style="color: rgb(0,175,0);">███████████████</span>         |            49 |                15 |               509 | [Alec Heifetz, Annie Elliott, Barton Wright, Corey Sunwold, David Leach, Hossein Torabi, Ke Zhu, Li Wang, Roman Vainbrand, Sasha Sheikin, Sven Pfennig, XuQianJin-Stars, amommendes, timflannagan1, tinkerrrr]           
- 2020-08-01 | <span style="color: rgb(0,175,0);">███████████████████</span>  | <span style="color: rgb(0,175,0);">██████████████████</span>      | <span style="color: rgb(0,175,0);">███████████████</span>         |            54 |                14 |               494 | [Anjali Norwood, Brian Weissler, Dheeraj Kulakarni, Igor Dvorzhak, Irek Matysiewicz, Konstantin Kosinsky, Laura Chen, Matthew Neal, Padraig O'Sullivan, Rose Williams, Sven Teresniak, agrawalreetika, wgzhao, y1275963] 
- 2020-07-01 | <span style="color: rgb(0,175,0);">█████████████████</span>    | <span style="color: rgb(0,175,0);">██████████████</span>          | <span style="color: rgb(0,175,0);">██████████████</span>          |            49 |                11 |               480 | [Brian Luisi, David Zhu, Douglas Drinka, JeongHoon Baek, Naveen Kumar Mahadevuni, Raihan Nismara, Raj Datta Manohar, Raphael Claude, jerroldlaw, shenh062326, yashaswaj]                                                 
- 2020-06-01 | <span style="color: rgb(0,175,0);">████████████████</span>     | <span style="color: rgb(0,175,0);">██████████</span>              | <span style="color: rgb(0,175,0);">██████████████</span>          |            44 |                 8 |               469 | [Achyudh Ram, Ashhar Hasan, David Stryker, Tetsuya Morimoto, bs102, haldes, samarthjain, yuya.ebihara]                                                                                                                   
- 2020-05-01 | <span style="color: rgb(0,175,0);">██████████</span>           | <span style="color: rgb(0,175,0);">████████</span>                | <span style="color: rgb(0,175,0);">██████████████</span>          |            30 |                 6 |               461 | [Arvin Zheng, Charles Morgan, Victor Azevedo, bentito, pbrahmbhatt, tom-kita]                                                                                                                                            
+   Month    | Authors count chart  | New authors count chart | All authors count chart | Authors count | New authors count | All authors count |                                                                                                                                                                                                                                        New authors                                                                                                                                                                                                                                         
+------------+----------------------+-------------------------+-------------------------+---------------+-------------------+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 2022-04-01 | <span style="color: rgb(0,175,0);">███████</span>              |                         | <span style="color: rgb(0,175,0);">████████████████████</span>    |            21 |                 1 |               654 | [yushengnan]                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+ 2022-03-01 | <span style="color: rgb(0,175,0);">████████████████████</span> | <span style="color: rgb(0,175,0);">█████</span>                   | <span style="color: rgb(0,175,0);">███████████████████</span>     |            55 |                 9 |               653 | [Brennan Toomey, Eduard Tudenhoefner, Jack Klamer, JackieTien97, John Levey, Michiel De Smet, dch nguyen, rameshbyndoor, theosib-amazon]                                                                                                                                                                                                                                                                                                                                                   
+ 2022-02-01 | <span style="color: rgb(0,175,0);">███████████████</span>      | <span style="color: rgb(0,175,0);">████</span>                    | <span style="color: rgb(0,175,0);">███████████████████</span>     |            43 |                 7 |               644 | [Assaf Bern, BlueStalker, Shivam Papat, Yi Tang, mgoutham1206, przemekak, zhangbutao]                                                                                                                                                                                                                                                                                                                                                                                                      
+ 2022-01-01 | <span style="color: rgb(0,175,0);">████████████████████</span> | <span style="color: rgb(0,175,0);">████████</span>                | <span style="color: rgb(0,175,0);">███████████████████</span>     |            55 |                15 |               637 | [Bernd Lunghamer, D01B, Daniel del Castillo, Don Smith, Jordan Zimmerman, Ritesh Varyani, Saulius Valatka, Victoria Bukta, XuPengfei-1020, austenLacy, cpeter, liqinrae, q-li, rkondziolka, tangjiangling]                                                                                                                                                                                                                                                                                 
+ 2021-12-01 | <span style="color: rgb(0,175,0);">██████████████████</span>   | <span style="color: rgb(0,175,0);">█████</span>                   | <span style="color: rgb(0,175,0);">███████████████████</span>     |            51 |                10 |               622 | [Anish Asthana, HiLany, Hide On Bush, Juacall Bernard, Martijn Atema, Mateusz Chrzonstowski, Ray Zhang, guanwang92, rtotaro, xuedongluan]                                                                                                                                                                                                                                                                                                                                                  
+ 2021-11-01 | <span style="color: rgb(0,175,0);">██████████████████</span>   | <span style="color: rgb(0,175,0);">████</span>                    | <span style="color: rgb(0,175,0);">██████████████████</span>      |            51 |                 8 |               612 | [Andrew DiBiasio, Anton Tanasenko, Jacob Stein, Kenneth Jung, Kenny Kwan, Ranganath Govardhanagiri, Sebastian Bernauer, 小雨]                                                                                                                                                                                                                                                                                                                                                              
+ 2021-10-01 | <span style="color: rgb(0,175,0);">███████████████</span>      | <span style="color: rgb(0,175,0);">██</span>                      | <span style="color: rgb(0,175,0);">██████████████████</span>      |            42 |                 5 |               604 | [Gary Gao, Josh Howard, Kenan Dominic, Rob Speller, Zebing Lin]                                                                                                                                                                                                                                                                                                                                                                                                                            
+ 2021-09-01 | <span style="color: rgb(0,175,0);">██████████████████</span>   | <span style="color: rgb(0,175,0);">████████████████████</span>    | <span style="color: rgb(0,175,0);">██████████████████</span>      |            50 |                34 |               599 | [Alex, Arkadiusz Czajkowski, Ashhar Hasan, Chris Snowden, Clemens von Schwerin, Cristian Osiac, David Stryker, Gaurav Sehgal, Jan Was, Jiajie Zhong, Joe Chu, Joe Lodin, Junhyung Song, Justin-Kwan, Konrad Dziedzic, Krzysztof Sobolewski, Li Xiangqun, Liu Yang, Lukasz Stec, Manfred Moser, Mario Rial, Mateusz Gajewski, Padraig O'Sullivan, Pawel Palucha, Przemek Denkiewicz, Rose Williams, caneGuy, findinpath, guhanjie, jessica, jier, skrzypo987, tinkerrrr, Łukasz Walkiewicz] 
+ 2021-08-01 | <span style="color: rgb(0,175,0);">███████████████</span>      | <span style="color: rgb(0,175,0);">█████</span>                   | <span style="color: rgb(0,175,0);">█████████████████</span>       |            43 |                10 |               588 | [Dariusz Pakulski, Jack Ye, Jiajie Zhong, Kartik Bhat, Sunning Go, Young Chen, albericgenius, bitsondatadev, rvazquezglez, serhiish]                                                                                                                                                                                                                                                                                                                                                       
+ 2021-07-01 | <span style="color: rgb(0,175,0);">██████████████</span>       | <span style="color: rgb(0,175,0);">███</span>                     | <span style="color: rgb(0,175,0);">█████████████████</span>       |            39 |                 6 |               578 | [Gaurav Sehgal, Jessie212, Justin-Kwan, Lucas Lemos, Lukasz Stec, Yash Doiphode]                                                                                                                                                                                                                                                                                                                                                                                                           
+ 2021-06-01 | <span style="color: rgb(0,175,0);">██████████████████</span>   | <span style="color: rgb(0,175,0);">██████</span>                  | <span style="color: rgb(0,175,0);">█████████████████</span>       |            51 |                11 |               572 | [Artsem Semianenka, Joe Lodin, Konrad Dziedzic, Megan Albert, Paulo Vítor, Sergey Melnychuk, Suman, academy-codex, ans76, gaojun2048, jessica]                                                                                                                                                                                                                                                                                                                                             
+ 2021-05-01 | <span style="color: rgb(0,175,0);">██████████████████</span>   | <span style="color: rgb(0,175,0);">████████</span>                | <span style="color: rgb(0,175,0);">█████████████████</span>       |            50 |                15 |               561 | [Aakash Nand, Damans227, Joe L, Ratandeep S. Ratti, Sam Wheating, Siva Tharun Kola, Wei Zheng, Yan, cccs-tom, ckodonnell, cwise827, hguercan, songgane, xiaojian, zhangchunyang]                                                                                                                                                                                                                                                                                                           
+ 2021-04-01 | <span style="color: rgb(0,175,0);">████████████████</span>     | <span style="color: rgb(0,175,0);">█████</span>                   | <span style="color: rgb(0,175,0);">████████████████</span>        |            45 |                 9 |               546 | [Henry Zhu, MariyaR, Matthias Strobl, Przemek Denkiewicz, Xinbin Huang, findinpath, gtangthousandeyes, guhanjie, mkDoku]                                                                                                                                                                                                                                                                                                                                                                   
+ 2021-03-01 | <span style="color: rgb(0,175,0);">██████████████</span>       | <span style="color: rgb(0,175,0);">████</span>                    | <span style="color: rgb(0,175,0);">████████████████</span>        |            41 |                 7 |               537 | [Amit Singh, Josef Jankowski, Kyle Fraser, Rahul Sharma, Rumeshkrishnan Mohan, Xi Chen, leadermags]                                                                                                                                                                                                                                                                                                                                                                                        
+ 2021-02-01 | <span style="color: rgb(0,175,0);">█████████████</span>        | <span style="color: rgb(0,175,0);">██</span>                      | <span style="color: rgb(0,175,0);">████████████████</span>        |            36 |                 4 |               530 | [Akshay Rai, GaruGaru, Jan Was, Krzysztof Sobolewski]                                                                                                                                                                                                                                                                                                                                                                                                                                      
+ 2021-01-01 | <span style="color: rgb(0,175,0);">███████████</span>          | <span style="color: rgb(0,175,0);">█</span>                       | <span style="color: rgb(0,175,0);">████████████████</span>        |            32 |                 3 |               526 | [Mateusz Zarkowski, m2yi, yangruochen]                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+ 2020-12-01 | <span style="color: rgb(0,175,0);">█████████████</span>        | <span style="color: rgb(0,175,0);">███</span>                     | <span style="color: rgb(0,175,0);">███████████████</span>         |            36 |                 6 |               523 | [CoachLuck, John Humphreys, Miguel Sanseverino, Nick Rushton, ashasomayajula, shandeep00]                                                                                                                                                                                                                                                                                                                                                                                                  
+ 2020-11-01 | <span style="color: rgb(0,175,0);">██████████████</span>       | <span style="color: rgb(0,175,0);">█</span>                       | <span style="color: rgb(0,175,0);">███████████████</span>         |            40 |                 2 |               517 | [Lasse Mammen, Yanwen Lin]                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+ 2020-10-01 | <span style="color: rgb(0,175,0);">███████████████</span>      | <span style="color: rgb(0,175,0);">███</span>                     | <span style="color: rgb(0,175,0);">███████████████</span>         |            42 |                 6 |               515 | [Jordan Duabe, Varun Wachaspati J, brandboat, choiwaiyiu, jetsasank, shandhanumohan]                                                                                                                                                                                                                                                                                                                                                                                                       
+ 2020-09-01 | <span style="color: rgb(0,175,0);">█████████████████</span>    | <span style="color: rgb(0,175,0);">████████</span>                | <span style="color: rgb(0,175,0);">███████████████</span>         |            49 |                15 |               509 | [Alec Heifetz, Annie Elliott, Barton Wright, Corey Sunwold, David Leach, Hossein Torabi, Ke Zhu, Li Wang, Roman Vainbrand, Sasha Sheikin, Sven Pfennig, XuQianJin-Stars, amommendes, timflannagan1, tinkerrrr]                                                                                                                                                                                                                                                                             
+ 2020-08-01 | <span style="color: rgb(0,175,0);">███████████████████</span>  | <span style="color: rgb(0,175,0);">████████</span>                | <span style="color: rgb(0,175,0);">███████████████</span>         |            54 |                14 |               494 | [Anjali Norwood, Brian Weissler, Dheeraj Kulakarni, Igor Dvorzhak, Irek Matysiewicz, Konstantin Kosinsky, Laura Chen, Matthew Neal, Padraig O'Sullivan, Rose Williams, Sven Teresniak, agrawalreetika, wgzhao, y1275963]                                                                                                                                                                                                                                                                   
+ 2020-07-01 | <span style="color: rgb(0,175,0);">█████████████████</span>    | <span style="color: rgb(0,175,0);">██████</span>                  | <span style="color: rgb(0,175,0);">██████████████</span>          |            49 |                11 |               480 | [Brian Luisi, David Zhu, Douglas Drinka, JeongHoon Baek, Naveen Kumar Mahadevuni, Raihan Nismara, Raj Datta Manohar, Raphael Claude, jerroldlaw, shenh062326, yashaswaj]                                                                                                                                                                                                                                                                                                                   
+ 2020-06-01 | <span style="color: rgb(0,175,0);">████████████████</span>     | <span style="color: rgb(0,175,0);">████</span>                    | <span style="color: rgb(0,175,0);">██████████████</span>          |            44 |                 8 |               469 | [Achyudh Ram, Ashhar Hasan, David Stryker, Tetsuya Morimoto, bs102, haldes, samarthjain, yuya.ebihara]                                                                                                                                                                                                                                                                                                                                                                                     
+ 2020-05-01 | <span style="color: rgb(0,175,0);">██████████</span>           | <span style="color: rgb(0,175,0);">███</span>                     | <span style="color: rgb(0,175,0);">██████████████</span>          |            30 |                 6 |               461 | [Arvin Zheng, Charles Morgan, Victor Azevedo, bentito, pbrahmbhatt, tom-kita]                                                                                                                                                                                                                                                                                                                                                                                                              
 (24 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/f633986d39748554e73337373e624a4f6b611bde/sql/pr/unique-authors-per-month.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/ebd46bba162a971aa05521810d9174cda7d0aa3f/sql/pr/authors-per-month.sql)
+
+#  Top 10 authors per year
+<pre><code>
+ year |                     identifier                      | commits_count 
+------+-----------------------------------------------------+---------------
+ 2012 | Dain Sundstrom &lt;d***@i***.com&gt;                      |           304 
+ 2012 | Martin Traverso &lt;m********@g****.com&gt;               |           240 
+ 2012 | David Phillips &lt;d****@a**.org&gt;                      |           115 
+ 2012 | Eric Hwang &lt;e*****@f*.com&gt;                          |            92 
+ 2013 | Dain Sundstrom &lt;d***@i***.com&gt;                      |           564 
+ 2013 | David Phillips &lt;d****@a**.org&gt;                      |           389 
+ 2013 | Martin Traverso &lt;m********@g****.com&gt;               |           250 
+ 2013 | Eric Hwang &lt;e*****@f*.com&gt;                          |           122 
+ 2013 | Henning Schmiedehausen &lt;h*******@f*.com&gt;            |           116 
+ 2013 | Nileema Shingte &lt;n**************@g****.com&gt;         |            15 
+ 2013 | amleshjk &lt;a*******@f*.com&gt;                          |            10 
+ 2013 | Christopher Berner &lt;c****************@g****.com&gt;    |            10 
+ 2013 | Amlesh Jayakumar &lt;a**************@y****.ca&gt;         |             5 
+ 2013 | sameeragarwal &lt;s*******@c**********.edu&gt;            |             4 
+ 2014 | Dain Sundstrom &lt;d***@i***.com&gt;                      |           520 
+ 2014 | David Phillips &lt;d****@a**.org&gt;                      |           452 
+ 2014 | Christopher Berner &lt;c****************@g****.com&gt;    |           414 
+ 2014 | Martin Traverso &lt;m********@g****.com&gt;               |           338 
+ 2014 | Eric Hwang &lt;e*****@f*.com&gt;                          |            51 
+ 2014 | Nileema Shingte &lt;n**************@g****.com&gt;         |            45 
+ 2014 | Zhenxiao Luo &lt;z***@n******.com&gt;                     |            23 
+ 2014 | Nezih Yigitbasi &lt;n*****@f*.com&gt;                     |            23 
+ 2014 | Henning Schmiedehausen &lt;h*******@f*.com&gt;            |            16 
+ 2014 | Min(Dongmin Yu) &lt;m******@g****.com&gt;                 |            14 
+ 2015 | David Phillips &lt;d****@a**.org&gt;                      |           476 
+ 2015 | Christopher Berner &lt;c****************@g****.com&gt;    |           357 
+ 2015 | Dain Sundstrom &lt;d***@i***.com&gt;                      |           308 
+ 2015 | Nileema Shingte &lt;n**************@g****.com&gt;         |           204 
+ 2015 | Haozhun Jin &lt;h**********@g****.com&gt;                 |           172 
+ 2015 | Martin Traverso &lt;m********@g****.com&gt;               |           134 
+ 2015 | Eric Hwang &lt;e*****@f*.com&gt;                          |           127 
+ 2015 | Nezih Yigitbasi &lt;n*****@f*.com&gt;                     |            64 
+ 2015 | Joy Yao &lt;j***@f*.com&gt;                               |            41 
+ 2015 | Zhenxiao Luo &lt;z***@n******.com&gt;                     |            36 
+ 2016 | David Phillips &lt;d****@a**.org&gt;                      |           537 
+ 2016 | Dain Sundstrom &lt;d***@i***.com&gt;                      |           268 
+ 2016 | Christopher Berner &lt;c****************@g****.com&gt;    |           267 
+ 2016 | Raghav Sethi &lt;r**********@f*.com&gt;                   |           176 
+ 2016 | Haozhun Jin &lt;h**********@g****.com&gt;                 |           171 
+ 2016 | Grzegorz Kokosiński &lt;g***********@g****.com&gt;        |           169 
+ 2016 | Martin Traverso &lt;m********@g****.com&gt;               |           132 
+ 2016 | Nileema Shingte &lt;n**************@g****.com&gt;         |           110 
+ 2016 | Andrii Rosa &lt;a*********@f*.com&gt;                     |           107 
+ 2016 | Yang Yang &lt;g**********@g****.com&gt;                   |           103 
+ 2017 | David Phillips &lt;d****@a**.org&gt;                      |           368 
+ 2017 | Piotr Findeisen &lt;p**************@g****.com&gt;         |           295 
+ 2017 | Dain Sundstrom &lt;d***@i***.com&gt;                      |           192 
+ 2017 | Nezih Yigitbasi &lt;n*****@f*.com&gt;                     |           154 
+ 2017 | Haozhun Jin &lt;h**********@g****.com&gt;                 |           149 
+ 2017 | Grzegorz Kokosiński &lt;g***********@g****.com&gt;        |           142 
+ 2017 | Raghav Sethi &lt;r**********@f*.com&gt;                   |           125 
+ 2017 | Łukasz Osipiuk &lt;l*****@o******.net&gt;                 |           121 
+ 2017 | Martin Traverso &lt;m********@g****.com&gt;               |           113 
+ 2017 | Karol Sobczak &lt;n***********@g****.com&gt;              |           111 
+ 2018 | Piotr Findeisen &lt;p**************@g****.com&gt;         |           326 
+ 2018 | David Phillips &lt;d****@a**.org&gt;                      |           230 
+ 2018 | Grzegorz Kokosiński &lt;g***********@g****.com&gt;        |           230 
+ 2018 | Karol Sobczak &lt;n***********@g****.com&gt;              |           207 
+ 2018 | Andrii Rosa &lt;a*********@f*.com&gt;                     |           190 
+ 2018 | Nezih Yigitbasi &lt;n*****@f*.com&gt;                     |           174 
+ 2018 | Dain Sundstrom &lt;d***@i***.com&gt;                      |           167 
+ 2018 | Haozhun Jin &lt;h**********@g****.com&gt;                 |           160 
+ 2018 | Łukasz Osipiuk &lt;l*****@o******.net&gt;                 |           134 
+ 2018 | Wenlei Xie &lt;w*********@g****.com&gt;                   |           126 
+ 2019 | Piotr Findeisen &lt;p**************@g****.com&gt;         |           675 
+ 2019 | David Phillips &lt;d****@a**.org&gt;                      |           427 
+ 2019 | Karol Sobczak &lt;n***********@g****.com&gt;              |           291 
+ 2019 | Martin Traverso &lt;m********@g****.com&gt;               |           281 
+ 2019 | Grzegorz Kokosiński &lt;g***********@g****.com&gt;        |           260 
+ 2019 | Dain Sundstrom &lt;d***@i***.com&gt;                      |           215 
+ 2019 | praveenkrishna &lt;p*************@t*******.com&gt;        |           104 
+ 2019 | kasiafi &lt;3***************@u*******************.com&gt; |            89 
+ 2019 | Yuya Ebihara &lt;e*****@g****.com&gt;                     |            54 
+ 2019 | Xingyuan Lin &lt;l**************@g****.com&gt;            |            42 
+ 2020 | Piotr Findeisen &lt;p**************@g****.com&gt;         |           925 
+ 2020 | David Phillips &lt;d****@a**.org&gt;                      |           351 
+ 2020 | Karol Sobczak &lt;n***********@g****.com&gt;              |           338 
+ 2020 | Grzegorz Kokosiński &lt;g***********@g****.com&gt;        |           272 
+ 2020 | Martin Traverso &lt;m********@g****.com&gt;               |           257 
+ 2020 | Mateusz Gajewski &lt;m***************@g****.com&gt;       |           239 
+ 2020 | Dain Sundstrom &lt;d***@i***.com&gt;                      |           223 
+ 2020 | kasiafi &lt;3***************@u*******************.com&gt; |           173 
+ 2020 | Łukasz Osipiuk &lt;l*****@o******.net&gt;                 |           154 
+ 2020 | Pratham Desai &lt;p*********@g****.com&gt;                |            71 
+ 2021 | Piotr Findeisen &lt;p**************@g****.com&gt;         |           737 
+ 2021 | Łukasz Osipiuk &lt;l*****@o******.net&gt;                 |           221 
+ 2021 | Karol Sobczak &lt;n***********@g****.com&gt;              |           206 
+ 2021 | David Phillips &lt;d****@a**.org&gt;                      |           187 
+ 2021 | Grzegorz Kokosiński &lt;g***********@g****.com&gt;        |           160 
+ 2021 | Dain Sundstrom &lt;d***@i***.com&gt;                      |           148 
+ 2021 | Yuya Ebihara &lt;e*****@g****.com&gt;                     |           142 
+ 2021 | Raunaq Morarka &lt;r************@g****.com&gt;            |           137 
+ 2021 | Ashhar Hasan &lt;h**********@o******.com&gt;              |           132 
+ 2021 | Martin Traverso &lt;m********@g****.com&gt;               |           120 
+ 2022 | Piotr Findeisen &lt;p**************@g****.com&gt;         |           236 
+ 2022 | Yuya Ebihara &lt;e*****@g****.com&gt;                     |           181 
+ 2022 | Łukasz Osipiuk &lt;l*****@o******.net&gt;                 |           110 
+ 2022 | Andrii Rosa &lt;a*********@f*.com&gt;                     |            69 
+ 2022 | findinpath &lt;f*********@g****.com&gt;                   |            67 
+ 2022 | Dain Sundstrom &lt;d***@i***.com&gt;                      |            52 
+ 2022 | David Phillips &lt;d****@a**.org&gt;                      |            39 
+ 2022 | Mateusz Gajewski &lt;m***************@g****.com&gt;       |            38 
+ 2022 | Karol Sobczak &lt;n***********@g****.com&gt;              |            35 
+ 2022 | tangjiangling &lt;s*************@g****.com&gt;            |            34 
+(104 rows)
+</code></pre>
+[query](https://github.com/nineinchnick/trino-cicd/blob/ebd46bba162a971aa05521810d9174cda7d0aa3f/sql/pr/top-authors.sql)
 
 #  Top 10 mergers per year
 <pre><code>
  year |                      identifier                       | commits_count 
 ------+-------------------------------------------------------+---------------
- 2012 | Martin Traverso &lt;mtraverso@gmail.com&gt;                 |            46 
- 2012 | Dain Sundstrom &lt;dain@iq80.com&gt;                        |             9 
- 2013 | Martin Traverso &lt;mtraverso@gmail.com&gt;                 |            18 
- 2013 | David Phillips &lt;david@acz.org&gt;                        |             8 
- 2013 | Dain Sundstrom &lt;dain@iq80.com&gt;                        |             5 
- 2013 | amleshjk &lt;amleshjk@fb.com&gt;                            |             1 
- 2013 | Henning Schmiedehausen &lt;hgschmie@fb.com&gt;              |             1 
- 2014 | Dain Sundstrom &lt;dain@iq80.com&gt;                        |            66 
- 2014 | David Phillips &lt;david@acz.org&gt;                        |            37 
- 2014 | Martin Traverso &lt;mtraverso@gmail.com&gt;                 |            31 
- 2014 | Christopher Berner &lt;christopherberner@gmail.com&gt;      |            29 
- 2014 | Nileema Shingte &lt;nileema.shingte@gmail.com&gt;           |             2 
- 2014 | Eric Hwang &lt;ehwang@fb.com&gt;                            |             2 
- 2015 | David Phillips &lt;david@acz.org&gt;                        |           125 
- 2015 | Martin Traverso &lt;mtraverso@gmail.com&gt;                 |            98 
- 2015 | Christopher Berner &lt;christopherberner@gmail.com&gt;      |            70 
- 2015 | Dain Sundstrom &lt;dain@iq80.com&gt;                        |            35 
- 2015 | Haozhun Jin &lt;haozhun.jin@gmail.com&gt;                   |            10 
- 2015 | Nileema Shingte &lt;nileema.shingte@gmail.com&gt;           |             4 
- 2015 | Eric Hwang &lt;ehwang@fb.com&gt;                            |             1 
- 2016 | Martin Traverso &lt;mtraverso@gmail.com&gt;                 |           562 
- 2016 | David Phillips &lt;david@acz.org&gt;                        |           223 
- 2016 | Christopher Berner &lt;christopherberner@gmail.com&gt;      |           118 
- 2016 | Dain Sundstrom &lt;dain@iq80.com&gt;                        |            89 
- 2016 | Haozhun Jin &lt;haozhun.jin@gmail.com&gt;                   |            56 
- 2016 | Eric Hwang &lt;ehwang@fb.com&gt;                            |            34 
- 2016 | Raghav Sethi &lt;raghavsethi@fb.com&gt;                     |             9 
- 2016 | Nileema Shingte &lt;nileema.shingte@gmail.com&gt;           |             4 
- 2016 | Greg &lt;ggregl@gmail.com&gt;                               |             1 
- 2017 | Martin Traverso &lt;mtraverso@gmail.com&gt;                 |           477 
- 2017 | David Phillips &lt;david@acz.org&gt;                        |           208 
- 2017 | Grzegorz Kokosiński &lt;g.kokosinski@gmail.com&gt;          |           175 
- 2017 | Łukasz Osipiuk &lt;lukasz@osipiuk.net&gt;                   |           116 
- 2017 | Dain Sundstrom &lt;dain@iq80.com&gt;                        |            64 
- 2017 | Christina Wallin &lt;christina.wallin@teradata.com&gt;      |            54 
- 2017 | Nezih Yigitbasi &lt;nezihy@fb.com&gt;                       |            26 
- 2017 | Karol Sobczak &lt;napewnotrafi@gmail.com&gt;                |            24 
- 2017 | Raghav Sethi &lt;raghavsethi@fb.com&gt;                     |            24 
- 2017 | Haozhun Jin &lt;haozhun.jin@gmail.com&gt;                   |            22 
- 2018 | Piotr Findeisen &lt;piotr.findeisen@gmail.com&gt;           |           124 
- 2018 | Grzegorz Kokosiński &lt;g.kokosinski@gmail.com&gt;          |           104 
- 2018 | Maria Basmanova &lt;mbasmanova@fb.com&gt;                   |            60 
- 2018 | David Phillips &lt;david@acz.org&gt;                        |            49 
- 2018 | Nezih Yigitbasi &lt;nezihy@fb.com&gt;                       |            36 
- 2018 | Andrii Rosa &lt;andriirosa@fb.com&gt;                       |            34 
- 2018 | Martin Traverso &lt;mtraverso@gmail.com&gt;                 |            27 
- 2018 | Karol Sobczak &lt;napewnotrafi@gmail.com&gt;                |            22 
- 2018 | yingsu00 &lt;33299678+yingsu00@users.noreply.github.com&gt; |            18 
- 2018 | Dain Sundstrom &lt;dain@iq80.com&gt;                        |            17 
- 2019 | David Phillips &lt;david@acz.org&gt;                        |           197 
- 2019 | Martin Traverso &lt;mtraverso@gmail.com&gt;                 |           167 
- 2019 | Karol Sobczak &lt;napewnotrafi@gmail.com&gt;                |           124 
- 2019 | Piotr Findeisen &lt;piotr.findeisen@gmail.com&gt;           |           122 
- 2019 | Grzegorz Kokosiński &lt;g.kokosinski@gmail.com&gt;          |           118 
- 2019 | Dain Sundstrom &lt;dain@iq80.com&gt;                        |            52 
- 2019 | Raghav Sethi &lt;raghavsethi@fb.com&gt;                     |             2 
- 2019 | Yuya Ebihara &lt;ebyhry@gmail.com&gt;                       |             2 
- 2019 | yingsu00 &lt;33299678+yingsu00@users.noreply.github.com&gt; |             1 
- 2020 | Martin Traverso &lt;mtraverso@gmail.com&gt;                 |           322 
- 2020 | Piotr Findeisen &lt;piotr.findeisen@gmail.com&gt;           |           270 
- 2020 | David Phillips &lt;david@acz.org&gt;                        |           244 
- 2020 | Łukasz Osipiuk &lt;lukasz@osipiuk.net&gt;                   |           232 
- 2020 | Karol Sobczak &lt;napewnotrafi@gmail.com&gt;                |           187 
- 2020 | Grzegorz Kokosiński &lt;g.kokosinski@gmail.com&gt;          |           146 
- 2020 | Dain Sundstrom &lt;dain@iq80.com&gt;                        |            69 
- 2020 | Yuya Ebihara &lt;ebyhry@gmail.com&gt;                       |            55 
- 2020 | Pratham Desai &lt;prathamd94@gmail.com&gt;                  |             9 
- 2020 | praveenkrishna &lt;praveenkrishna@tutanota.com&gt;          |             9 
- 2021 | Piotr Findeisen &lt;piotr.findeisen@gmail.com&gt;           |           359 
- 2021 | Karol Sobczak &lt;napewnotrafi@gmail.com&gt;                |           292 
- 2021 | Martin Traverso &lt;mtraverso@gmail.com&gt;                 |           201 
- 2021 | Ashhar Hasan &lt;hashhar_dev@outlook.com&gt;                |           167 
- 2021 | Grzegorz Kokosiński &lt;g.kokosinski@gmail.com&gt;          |           156 
- 2021 | Łukasz Osipiuk &lt;lukasz@osipiuk.net&gt;                   |           155 
- 2021 | David Phillips &lt;david@acz.org&gt;                        |            95 
- 2021 | Yuya Ebihara &lt;ebyhry@gmail.com&gt;                       |            72 
- 2021 | Dain Sundstrom &lt;dain@iq80.com&gt;                        |            35 
- 2021 | Pratham Desai &lt;prathamd94@gmail.com&gt;                  |            27 
- 2022 | Piotr Findeisen &lt;piotr.findeisen@gmail.com&gt;           |           157 
- 2022 | Ashhar Hasan &lt;hashhar_dev@outlook.com&gt;                |           131 
- 2022 | Łukasz Osipiuk &lt;lukasz@osipiuk.net&gt;                   |            82 
- 2022 | Yuya Ebihara &lt;ebyhry@gmail.com&gt;                       |            56 
- 2022 | Karol Sobczak &lt;napewnotrafi@gmail.com&gt;                |            51 
- 2022 | Martin Traverso &lt;mtraverso@gmail.com&gt;                 |            46 
- 2022 | Grzegorz Kokosiński &lt;g.kokosinski@gmail.com&gt;          |            44 
- 2022 | Andrii Rosa &lt;andriirosa@fb.com&gt;                       |            17 
- 2022 | David Phillips &lt;david@acz.org&gt;                        |            12 
- 2022 | Pratham Desai &lt;prathamd94@gmail.com&gt;                  |            10 
+ 2012 | Martin Traverso &lt;m********@g****.com&gt;                 |            46 
+ 2012 | Dain Sundstrom &lt;d***@i***.com&gt;                        |             9 
+ 2013 | Martin Traverso &lt;m********@g****.com&gt;                 |            18 
+ 2013 | David Phillips &lt;d****@a**.org&gt;                        |             8 
+ 2013 | Dain Sundstrom &lt;d***@i***.com&gt;                        |             5 
+ 2013 | Henning Schmiedehausen &lt;h*******@f*.com&gt;              |             1 
+ 2013 | amleshjk &lt;a*******@f*.com&gt;                            |             1 
+ 2014 | Dain Sundstrom &lt;d***@i***.com&gt;                        |            66 
+ 2014 | David Phillips &lt;d****@a**.org&gt;                        |            37 
+ 2014 | Martin Traverso &lt;m********@g****.com&gt;                 |            31 
+ 2014 | Christopher Berner &lt;c****************@g****.com&gt;      |            29 
+ 2014 | Eric Hwang &lt;e*****@f*.com&gt;                            |             2 
+ 2014 | Nileema Shingte &lt;n**************@g****.com&gt;           |             2 
+ 2015 | David Phillips &lt;d****@a**.org&gt;                        |           125 
+ 2015 | Martin Traverso &lt;m********@g****.com&gt;                 |            98 
+ 2015 | Christopher Berner &lt;c****************@g****.com&gt;      |            70 
+ 2015 | Dain Sundstrom &lt;d***@i***.com&gt;                        |            35 
+ 2015 | Haozhun Jin &lt;h**********@g****.com&gt;                   |            10 
+ 2015 | Nileema Shingte &lt;n**************@g****.com&gt;           |             4 
+ 2015 | Eric Hwang &lt;e*****@f*.com&gt;                            |             1 
+ 2016 | Martin Traverso &lt;m********@g****.com&gt;                 |           562 
+ 2016 | David Phillips &lt;d****@a**.org&gt;                        |           223 
+ 2016 | Christopher Berner &lt;c****************@g****.com&gt;      |           118 
+ 2016 | Dain Sundstrom &lt;d***@i***.com&gt;                        |            89 
+ 2016 | Haozhun Jin &lt;h**********@g****.com&gt;                   |            56 
+ 2016 | Eric Hwang &lt;e*****@f*.com&gt;                            |            34 
+ 2016 | Raghav Sethi &lt;r**********@f*.com&gt;                     |             9 
+ 2016 | Nileema Shingte &lt;n**************@g****.com&gt;           |             4 
+ 2016 | Greg &lt;g*****@g****.com&gt;                               |             1 
+ 2017 | Martin Traverso &lt;m********@g****.com&gt;                 |           477 
+ 2017 | David Phillips &lt;d****@a**.org&gt;                        |           208 
+ 2017 | Grzegorz Kokosiński &lt;g***********@g****.com&gt;          |           175 
+ 2017 | Łukasz Osipiuk &lt;l*****@o******.net&gt;                   |           116 
+ 2017 | Dain Sundstrom &lt;d***@i***.com&gt;                        |            64 
+ 2017 | Christina Wallin &lt;c***************@t*******.com&gt;      |            54 
+ 2017 | Nezih Yigitbasi &lt;n*****@f*.com&gt;                       |            26 
+ 2017 | Raghav Sethi &lt;r**********@f*.com&gt;                     |            24 
+ 2017 | Karol Sobczak &lt;n***********@g****.com&gt;                |            24 
+ 2017 | Haozhun Jin &lt;h**********@g****.com&gt;                   |            22 
+ 2018 | Piotr Findeisen &lt;p**************@g****.com&gt;           |           124 
+ 2018 | Grzegorz Kokosiński &lt;g***********@g****.com&gt;          |           104 
+ 2018 | Maria Basmanova &lt;m*********@f*.com&gt;                   |            60 
+ 2018 | David Phillips &lt;d****@a**.org&gt;                        |            49 
+ 2018 | Nezih Yigitbasi &lt;n*****@f*.com&gt;                       |            36 
+ 2018 | Andrii Rosa &lt;a*********@f*.com&gt;                       |            34 
+ 2018 | Martin Traverso &lt;m********@g****.com&gt;                 |            27 
+ 2018 | Karol Sobczak &lt;n***********@g****.com&gt;                |            22 
+ 2018 | yingsu00 &lt;3****************@u*******************.com&gt; |            18 
+ 2018 | Dain Sundstrom &lt;d***@i***.com&gt;                        |            17 
+ 2019 | David Phillips &lt;d****@a**.org&gt;                        |           197 
+ 2019 | Martin Traverso &lt;m********@g****.com&gt;                 |           167 
+ 2019 | Karol Sobczak &lt;n***********@g****.com&gt;                |           124 
+ 2019 | Piotr Findeisen &lt;p**************@g****.com&gt;           |           122 
+ 2019 | Grzegorz Kokosiński &lt;g***********@g****.com&gt;          |           118 
+ 2019 | Dain Sundstrom &lt;d***@i***.com&gt;                        |            52 
+ 2019 | Raghav Sethi &lt;r**********@f*.com&gt;                     |             2 
+ 2019 | Yuya Ebihara &lt;e*****@g****.com&gt;                       |             2 
+ 2019 | yingsu00 &lt;3****************@u*******************.com&gt; |             1 
+ 2020 | Martin Traverso &lt;m********@g****.com&gt;                 |           322 
+ 2020 | Piotr Findeisen &lt;p**************@g****.com&gt;           |           270 
+ 2020 | David Phillips &lt;d****@a**.org&gt;                        |           244 
+ 2020 | Łukasz Osipiuk &lt;l*****@o******.net&gt;                   |           232 
+ 2020 | Karol Sobczak &lt;n***********@g****.com&gt;                |           187 
+ 2020 | Grzegorz Kokosiński &lt;g***********@g****.com&gt;          |           146 
+ 2020 | Dain Sundstrom &lt;d***@i***.com&gt;                        |            69 
+ 2020 | Yuya Ebihara &lt;e*****@g****.com&gt;                       |            55 
+ 2020 | Pratham Desai &lt;p*********@g****.com&gt;                  |             9 
+ 2020 | praveenkrishna &lt;p*************@t*******.com&gt;          |             9 
+ 2021 | Piotr Findeisen &lt;p**************@g****.com&gt;           |           359 
+ 2021 | Karol Sobczak &lt;n***********@g****.com&gt;                |           292 
+ 2021 | Martin Traverso &lt;m********@g****.com&gt;                 |           201 
+ 2021 | Ashhar Hasan &lt;h**********@o******.com&gt;                |           167 
+ 2021 | Grzegorz Kokosiński &lt;g***********@g****.com&gt;          |           156 
+ 2021 | Łukasz Osipiuk &lt;l*****@o******.net&gt;                   |           155 
+ 2021 | David Phillips &lt;d****@a**.org&gt;                        |            95 
+ 2021 | Yuya Ebihara &lt;e*****@g****.com&gt;                       |            72 
+ 2021 | Dain Sundstrom &lt;d***@i***.com&gt;                        |            35 
+ 2021 | Pratham Desai &lt;p*********@g****.com&gt;                  |            27 
+ 2022 | Piotr Findeisen &lt;p**************@g****.com&gt;           |           157 
+ 2022 | Ashhar Hasan &lt;h**********@o******.com&gt;                |           131 
+ 2022 | Łukasz Osipiuk &lt;l*****@o******.net&gt;                   |            82 
+ 2022 | Yuya Ebihara &lt;e*****@g****.com&gt;                       |            56 
+ 2022 | Karol Sobczak &lt;n***********@g****.com&gt;                |            51 
+ 2022 | Martin Traverso &lt;m********@g****.com&gt;                 |            46 
+ 2022 | Grzegorz Kokosiński &lt;g***********@g****.com&gt;          |            44 
+ 2022 | Andrii Rosa &lt;a*********@f*.com&gt;                       |            17 
+ 2022 | David Phillips &lt;d****@a**.org&gt;                        |            12 
+ 2022 | Pratham Desai &lt;p*********@g****.com&gt;                  |            10 
 (88 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/f633986d39748554e73337373e624a4f6b611bde/sql/pr/top-mergers.sql)
-
-#  Average time to merge per create month
-<pre><code>
- month_created | num_merged | Duration ratio chart | avg_time_to_merge | rolling_average |       Day percentiles 50, 75, 90, 99       
----------------+------------+----------------------+-------------------+-----------------+--------------------------------------------
- 2022-04-01    |         27 |                      | 1 00:57:32.259    | 5 02:14:03.522  | [0.49, 1.328, 3.074, 4.064]                
- 2022-03-01    |        238 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 3 23:53:34.554    | 6 09:27:16.682  | [1.7416308, 5.212754, 10.929175, 25.591]   
- 2022-02-01    |        191 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 5 16:06:30.863    | 7 11:30:30.385  | [1.5456375, 7.0884166, 18.93375, 41.03]    
- 2022-01-01    |        201 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 6 09:18:26.786    | 8 19:52:50.467  | [2.4600303, 6.79775, 19.35815, 59.662]     
- 2021-12-01    |        168 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 10 14:53:50.297   | 9 01:33:08.942  | [1.633, 12.524, 36.522, 85.676]            
- 2021-11-01    |        156 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 7 17:12:59.147    | 9 18:19:16.783  | [1.8670624, 9.103666, 19.991, 76.871]      
- 2021-10-01    |        203 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 10 14:46:03.541   | 10 11:40:41.697 | [1.9153125, 7.79699, 29.611376, 126.656]   
- 2021-09-01    |        204 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 7 06:29:33.926    | 10 06:17:02.364 | [1.1650417, 5.477468, 13.817826, 91.114]   
- 2021-08-01    |        153 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 14 01:01:56.535   | 11 01:53:57.537 | [2.0958235, 10.014833, 37.074, 179.357]    
- 2021-07-01    |        144 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 11 01:58:49.479   | 9 07:35:23.692  | [2.497841, 9.22372, 30.4894, 121.497]      
- 2021-06-01    |        152 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 9 16:37:48.736    | 8 09:26:55.169  | [1.9481235, 6.922064, 27.411448, 129.833]  
- 2021-05-01    |        189 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 9 19:00:35.058    | 8 11:26:21.925  | [1.2931979, 6.629175, 20.6487, 175.334]    
- 2021-04-01    |        165 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 6 21:11:08.369    | 8 07:17:15.173  | [1.50405, 6.5108767, 19.015, 93.054]       
- 2021-03-01    |        200 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 7 07:57:08.775    | 9 21:07:09.960  | [1.1248538, 5.4837008, 23.518936, 73.907]  
- 2021-02-01    |        158 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 10 00:25:01.702   | 11 00:24:57.840 | [2.7098422, 8.338, 21.79226, 176.678]      
- 2021-01-01    |        138 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 9 10:47:24.528    | 9 15:32:18.384  | [1.43925, 6.929509, 23.1907, 119.536]      
- 2020-12-01    |        165 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 13 04:44:32.939   | 10 09:28:05.082 | [1.290565, 6.03861, 21.937666, 227.11]     
- 2020-11-01    |        208 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 11 02:06:01.567   | 9 12:41:23.986  | [1.1620947, 4.6021366, 14.3048, 273.209]   
- 2020-10-01    |        189 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 5 02:35:04.142    | 9 09:33:34.232  | [1.1011945, 4.604054, 13.224705, 72.184]   
- 2020-09-01    |        180 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 12 13:48:28.927   | 9 14:17:22.317  | [1.0038223, 5.283606, 22.578846, 338.334]  
- 2020-08-01    |        192 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 9 08:03:41.302    | 11 17:30:58.570 | [1.3606458, 9.166754, 24.349289, 107.619]  
- 2020-07-01    |        200 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 10 15:41:07.255   | 11 20:50:16.680 | [2.0112634, 9.117066, 30.921875, 126.498]  
- 2020-06-01    |        221 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 6 10:28:02.398    | 12 11:47:51.943 | [0.93150765, 3.6276975, 11.165013, 58.218] 
- 2020-05-01    |        162 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">██</span><span style="color: rgb(255,0,0);">██</span> | 23 02:49:14.574   | 14 05:04:04.147 | [2.0261, 10.042907, 46.443886, 367.605]    
- 2020-04-01    |        172 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 9 15:57:41.000    | 11 05:47:08.188 | [1.5179892, 6.8576417, 25.292267, 125.417] 
- 2020-03-01    |        174 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 13 02:00:20.137   | 11 22:11:40.016 | [1.2019008, 4.3924193, 15.807042, 273.051] 
- 2020-02-01    |        144 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 10 23:37:03.243   | 11 11:10:53.982 | [2.8741765, 11.803805, 30.04886, 120.927]  
- 2020-01-01    |        172 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">█</span>           | 11 04:02:22.546   | 12 09:25:05.199 | [1.5180627, 5.585992, 16.791634, 238.876]  
- 2019-12-01    |        119 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 12 11:05:23.873   | 11 17:12:01.033 | [1.4573061, 5.454425, 33.649426, 179.319]  
- 2019-11-01    |        145 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 11 11:31:00.027   | 10 20:11:29.857 | [1.9604445, 6.487846, 22.777666, 182.829]  
- 2019-10-01    |        166 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 14 09:47:26.789   | 12 11:23:14.553 | [2.07882, 7.020662, 27.930109, 197.46]     
- 2019-09-01    |        129 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 7 19:58:10.279    | 11 15:13:04.046 | [1.2900952, 6.122859, 17.987, 115.743]     
- 2019-08-01    |        106 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 8 01:04:10.424    | 12 07:05:38.017 | [1.4365, 5.771875, 16.371, 90.389]         
- 2019-07-01    |         81 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 21 16:51:51.320   | 15 00:23:34.010 | [3.3395312, 15.628083, 43.863, 392.066]    
- 2019-06-01    |        114 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 12 02:52:44.315   | 11 15:55:34.028 | [1.8636667, 6.1585336, 33.0575, 155.212]   
- 2019-05-01    |        100 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 9 09:10:14.510    | 11 20:58:54.468 | [1.4369, 5.1074376, 12.384, 454.043]       
- 2019-04-01    |         78 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 19 12:42:29.051   | 11 20:42:58.718 | [1.01, 6.0573335, 24.902, 1034.705]        
- 2019-03-01    |        135 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 8 10:09:45.340    | 10 03:28:36.402 | [1.4708594, 4.810018, 26.0065, 77.754]     
- 2019-02-01    |        146 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 12 16:22:21.253   | 11 05:39:42.568 | [0.94708645, 3.483619, 13.4678, 341.575]   
- 2019-01-01    |         67 | <span style="color: rgb(0,175,0);">██</span>                   | 8 02:01:24.537    | 8 02:01:24.537  | [1.536, 4.70925, 10.838, 125.501]          
-(40 rows)
-</code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/f633986d39748554e73337373e624a4f6b611bde/sql/pr/avg-time-to-merge-since-creation.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/ebd46bba162a971aa05521810d9174cda7d0aa3f/sql/pr/top-mergers.sql)
 
 #  Average time to merge a PR
 <pre><code>
- month_merged | num_merged | Duration ratio chart | avg_time_to_merge | rolling_average |       Day percentiles 50, 75, 90, 99       
---------------+------------+----------------------+-------------------+-----------------+--------------------------------------------
- 2022-04-01   |         53 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 12 01:48:16.132   | 12 04:03:08.743 | [2.141875, 12.148, 29.476, 160.886]        
- 2022-03-01   |        265 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">██</span><span style="color: rgb(255,0,0);">██</span> | 11 23:59:38.875   | 12 02:17:44.646 | [2.1726947, 7.3067403, 22.049734, 234.761] 
- 2022-02-01   |        204 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">██</span>   | 14 12:30:13.960   | 12 01:45:04.418 | [1.7424306, 8.102074, 26.97876, 126.656]   
- 2022-01-01   |        191 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 9 22:00:47.272    | 11 23:53:33.041 | [2.4697778, 7.134028, 24.3538, 104.326]    
- 2021-12-01   |        174 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 11 18:56:51.701   | 11 15:16:00.908 | [1.6707479, 9.724343, 32.34948, 125.274]   
- 2021-11-01   |        160 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 11 20:00:10.050   | 13 05:56:19.712 | [2.3078, 13.584534, 32.255, 121.497]       
- 2021-10-01   |        200 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">█</span>    | 14 06:56:27.910   | 13 14:08:39.225 | [1.5815834, 6.214, 19.622, 323.889]        
- 2021-09-01   |        211 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 8 20:17:08.677    | 12 02:11:48.200 | [1.2133669, 6.3873973, 18.773878, 116.327] 
- 2021-08-01   |        141 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">█</span>    | 19 23:05:18.539   | 13 23:24:33.453 | [1.6798985, 8.625568, 26.995934, 338.334]  
- 2021-07-01   |        143 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 13 07:50:52.552   | 11 14:44:25.510 | [2.4853358, 8.234792, 30.964907, 206.347]  
- 2021-06-01   |        157 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 8 06:15:22.719    | 9 16:42:09.554  | [2.0326526, 7.08326, 21.647911, 117.569]   
- 2021-05-01   |        185 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">█</span>    | 14 18:19:32.356   | 10 05:45:05.182 | [1.333719, 6.70467, 27.849, 367.605]       
- 2021-04-01   |        173 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">█</span>           | 9 20:58:25.421    | 8 12:39:53.680  | [1.6397686, 7.7585177, 26.646143, 135.886] 
- 2021-03-01   |        206 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 6 02:08:38.533    | 9 09:18:11.141  | [1.1923285, 5.185139, 12.684947, 45.991]   
- 2021-02-01   |        148 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">█</span>           | 10 18:56:12.621   | 10 04:42:27.607 | [2.3529012, 7.7809615, 23.411266, 151.995] 
- 2021-01-01   |        136 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 8 01:08:50.926    | 10 04:45:10.797 | [1.3601875, 6.4118333, 17.73365, 111.842]  
- 2020-12-01   |        161 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">█</span>        | 13 10:49:54.788   | 10 22:20:00.574 | [1.1618246, 4.459959, 16.1426, 273.051]    
- 2020-11-01   |        210 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 8 16:10:32.228    | 11 01:33:43.673 | [1.2163048, 5.458074, 13.621667, 126.498]  
- 2020-10-01   |        198 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">█</span>        | 10 15:30:18.065   | 11 06:05:22.136 | [1.1934167, 6.7319803, 23.629906, 170.102] 
- 2020-09-01   |        190 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">█</span>        | 11 14:02:37.526   | 11 07:47:46.133 | [1.0927777, 7.807857, 23.842655, 238.876]  
- 2020-08-01   |        192 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span>     | 13 14:20:54.307   | 11 12:38:02.639 | [1.3420416, 9.693792, 28.84614, 392.066]   
- 2020-07-01   |        188 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">█</span>           | 9 03:57:17.590    | 9 22:28:58.185  | [1.5756875, 6.9329667, 26.927757, 116.982] 
- 2020-06-01   |        229 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">█</span>      | 10 23:26:02.519   | 9 09:01:14.246  | [1.0214223, 4.436167, 24.8311, 179.319]    
- 2020-05-01   |        151 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 12 16:00:25.794   | 8 23:39:04.026  | [1.7661111, 7.46725, 23.371267, 193.102]   
- 2020-04-01   |        167 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 6 21:52:46.389    | 8 14:58:16.781  | [1.228875, 5.4480247, 14.647201, 79.064]   
- 2020-03-01   |        176 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 6 19:23:22.164    | 8 19:26:24.680  | [1.3306156, 5.3226013, 21.879827, 49.139]  
- 2020-02-01   |        144 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 10 04:35:47.402   | 9 10:15:32.364  | [2.8741765, 9.190278, 17.30526, 120.02]    
- 2020-01-01   |        167 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 10 21:33:01.443   | 8 17:59:54.489  | [1.4377, 4.8268876, 32.138023, 115.743]    
- 2019-12-01   |        117 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 7 03:23:20.333    | 7 14:57:52.062  | [1.4022449, 4.1046667, 13.789175, 137.945] 
- 2019-11-01   |        145 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 8 19:40:35.027    | 7 23:52:42.522  | [1.7616667, 6.525676, 23.191668, 144.233]  
- 2019-10-01   |        157 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 7 14:23:09.503    | 7 14:49:47.024  | [1.5841334, 5.279398, 16.999466, 113.009]  
- 2019-09-01   |        122 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 6 16:41:06.524    | 7 08:10:38.783  | [1.4773164, 6.8671665, 17.5916, 75.017]    
- 2019-08-01   |        110 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 8 21:55:33.090    | 8 05:23:02.263  | [1.5316666, 6.6795, 25.1395, 98.712]       
- 2019-07-01   |         69 | <span style="color: rgb(0,175,0);">███</span>                  | 7 05:25:12.304    | 8 01:09:04.267  | [1.9802222, 9.229, 21.648, 43.35]          
- 2019-06-01   |        114 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 6 14:00:06.929    | 6 16:25:45.544  | [1.7031667, 4.8042, 13.362101, 77.754]     
- 2019-05-01   |        102 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 9 23:46:14.656    | 5 09:55:09.780  | [1.6813333, 7.834375, 33.6432, 102.956]    
- 2019-04-01   |         82 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 8 08:37:48.195    | 3 18:23:19.169  | [1.20275, 7.273222, 32.802, 62.802]        
- 2019-03-01   |        130 | <span style="color: rgb(0,175,0);">██</span>                   | 3 02:56:53.046    | 2 13:35:58.213  | [1.1047536, 3.2100606, 8.8745, 20.135]     
- 2019-02-01   |        137 | <span style="color: rgb(0,175,0);">██</span>                   | 2 09:58:17.868    | 2 04:10:06.429  | [0.8622969, 2.646507, 7.2136, 24.17]       
- 2019-01-01   |         47 |                      | 1 11:15:10.106    | 1 11:15:10.106  | [0.81375, 2.743, 3.914, 6.861]             
+ Merged in month | Merged PRs |    Avg TTM chart     |     Avg TTM     | 3 month avg TTM |   Day percentiles 50, 95, 99   
+-----------------+------------+----------------------+-----------------+-----------------+--------------------------------
+ 2022-04-01      |         53 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 12 01:48:16.132 | 12 04:03:08.743 | [2.14, 72.0, 160.89]           
+ 2022-03-01      |        265 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">██</span><span style="color: rgb(255,0,0);">██</span> | 11 23:59:38.875 | 12 02:17:44.646 | [2.1732, 34.061253, 234.76]    
+ 2022-02-01      |        204 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">██</span>   | 14 12:30:13.960 | 12 01:45:04.418 | [1.6711111, 48.36, 126.66]     
+ 2022-01-01      |        191 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 9 22:00:47.272  | 11 23:53:33.041 | [2.4864, 69.61, 104.33]        
+ 2021-12-01      |        174 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 11 18:56:51.701 | 11 15:16:00.908 | [1.5935556, 84.5, 125.27]      
+ 2021-11-01      |        160 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 11 20:00:10.050 | 13 05:56:19.712 | [2.3111668, 61.02, 121.5]      
+ 2021-10-01      |        200 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">█</span>    | 14 06:56:27.910 | 13 14:08:39.225 | [1.543125, 74.99, 323.89]      
+ 2021-09-01      |        211 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 8 20:17:08.677  | 12 02:11:48.200 | [1.2124261, 41.63, 116.33]     
+ 2021-08-01      |        141 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">█</span>    | 19 23:05:18.539 | 13 23:24:33.453 | [1.6800781, 75.62, 338.33]     
+ 2021-07-01      |        143 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 13 07:50:52.552 | 11 14:44:25.510 | [2.5021093, 45.07, 206.35]     
+ 2021-06-01      |        157 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 8 06:15:22.719  | 9 16:42:09.554  | [2.0340703, 34.87, 117.57]     
+ 2021-05-01      |        185 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">█</span>    | 14 18:19:32.356 | 10 05:45:05.182 | [1.3349587, 65.705, 367.61]    
+ 2021-04-01      |        173 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">█</span>           | 9 20:58:25.421  | 8 12:39:53.680  | [1.6154546, 41.75, 135.89]     
+ 2021-03-01      |        206 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 6 02:08:38.533  | 9 09:18:11.141  | [1.1939645, 22.4375, 45.99]    
+ 2021-02-01      |        148 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">█</span>           | 10 18:56:12.621 | 10 04:42:27.607 | [2.3528395, 42.92, 152.0]      
+ 2021-01-01      |        136 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 8 01:08:50.926  | 10 04:45:10.797 | [1.359375, 45.3, 111.84]       
+ 2020-12-01      |        161 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">█</span>        | 13 10:49:54.788 | 10 22:20:00.574 | [1.1689825, 40.99, 273.05]     
+ 2020-11-01      |        210 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 8 16:10:32.228  | 11 01:33:43.673 | [1.2173077, 37.8525, 126.5]    
+ 2020-10-01      |        198 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">█</span>        | 10 15:30:18.065 | 11 06:05:22.136 | [1.1927778, 66.131, 170.1]     
+ 2020-09-01      |        190 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">█</span>        | 11 14:02:37.526 | 11 07:47:46.133 | [1.0941666, 47.215, 238.88]    
+ 2020-08-01      |        192 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span>     | 13 14:20:54.307 | 11 12:38:02.639 | [1.3422917, 45.208, 392.07]    
+ 2020-07-01      |        188 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">█</span>           | 9 03:57:17.590  | 9 22:28:58.185  | [1.5765277, 50.728, 116.98]    
+ 2020-06-01      |        229 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">█</span>      | 10 23:26:02.519 | 9 09:01:14.246  | [1.0213333, 49.041126, 179.32] 
+ 2020-05-01      |        151 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 12 16:00:25.794 | 8 23:39:04.026  | [1.7666667, 58.09, 193.1]      
+ 2020-04-01      |        167 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 6 21:52:46.389  | 8 14:58:16.781  | [1.2298, 35.96, 79.06]         
+ 2020-03-01      |        176 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 6 19:23:22.164  | 8 19:26:24.680  | [1.3304958, 38.07, 49.14]      
+ 2020-02-01      |        144 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 10 04:35:47.402 | 9 10:15:32.364  | [2.8737419, 59.68, 120.02]     
+ 2020-01-01      |        167 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 10 21:33:01.443 | 8 17:59:54.489  | [1.43885, 62.51, 115.74]       
+ 2019-12-01      |        117 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 7 03:23:20.333  | 7 14:57:52.062  | [1.4016327, 34.11, 137.95]     
+ 2019-11-01      |        145 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 8 19:40:35.027  | 7 23:52:42.522  | [1.7633333, 33.63, 144.23]     
+ 2019-10-01      |        157 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 7 14:23:09.503  | 7 14:49:47.024  | [1.5848771, 30.67, 113.01]     
+ 2019-09-01      |        122 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 6 16:41:06.524  | 7 08:10:38.783  | [1.4786735, 21.95, 75.02]      
+ 2019-08-01      |        110 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 8 21:55:33.090  | 8 05:23:02.263  | [1.5305556, 43.86, 98.71]      
+ 2019-07-01      |         69 | <span style="color: rgb(0,175,0);">███</span>                  | 7 05:25:12.304  | 8 01:09:04.267  | [1.9811112, 29.91, 43.35]      
+ 2019-06-01      |        114 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 6 14:00:06.929  | 6 16:25:45.544  | [1.7033334, 41.95, 77.75]      
+ 2019-05-01      |        102 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 9 23:46:14.656  | 5 09:55:09.780  | [1.6816666, 54.64, 102.96]     
+ 2019-04-01      |         82 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 8 08:37:48.195  | 3 18:23:19.169  | [1.2049999, 47.95, 62.8]       
+ 2019-03-01      |        130 | <span style="color: rgb(0,175,0);">██</span>                   | 3 02:56:53.046  | 2 13:35:58.213  | [1.1056905, 13.86, 20.14]      
+ 2019-02-01      |        137 | <span style="color: rgb(0,175,0);">██</span>                   | 2 09:58:17.868  | 2 04:10:06.429  | [0.8634375, 10.84, 24.17]      
+ 2019-01-01      |         47 |                      | 1 11:15:10.106  | 1 11:15:10.106  | [0.81625, 4.9, 6.86]           
 (40 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/f633986d39748554e73337373e624a4f6b611bde/sql/pr/avg-time-elapsed-before-merge.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/ebd46bba162a971aa05521810d9174cda7d0aa3f/sql/pr/avg-time-to-merge.sql)
+
+#  Average time to merge per create month
+<pre><code>
+ Created in month | Merged PRs |    Avg TTM chart     |     Avg TTM     | 3 month avg TTM |   Day percentiles 50, 95, 99   
+------------------+------------+----------------------+-----------------+-----------------+--------------------------------
+ 2022-04-01       |         27 |                      | 1 00:57:32.259  | 5 02:14:03.522  | [0.49, 4.04, 4.06]             
+ 2022-03-01       |        238 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 3 23:53:34.554  | 6 09:27:16.682  | [1.8006508, 16.4145, 25.59]    
+ 2022-02-01       |        191 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 5 16:06:30.863  | 7 11:30:30.385  | [1.68, 24.47, 41.03]           
+ 2022-01-01       |        201 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 6 09:18:26.786  | 8 19:52:50.467  | [2.3988514, 27.619, 59.66]     
+ 2021-12-01       |        168 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 10 14:53:50.297 | 9 01:33:08.942  | [1.6303126, 60.42, 85.68]      
+ 2021-11-01       |        156 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 7 17:12:59.147  | 9 18:19:16.783  | [1.81, 29.2, 76.87]            
+ 2021-10-01       |        203 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 10 14:46:03.541 | 10 11:40:41.697 | [1.8879339, 53.16, 126.66]     
+ 2021-09-01       |        204 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 7 06:29:33.926  | 10 06:17:02.364 | [1.1654166, 45.32, 91.11]      
+ 2021-08-01       |        153 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 14 01:01:56.535 | 11 01:53:57.537 | [2.1139843, 76.88, 179.36]     
+ 2021-07-01       |        144 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 11 01:58:49.479 | 9 07:35:23.692  | [2.5250757, 54.78, 121.5]      
+ 2021-06-01       |        152 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 9 16:37:48.736  | 8 09:26:55.169  | [1.9503704, 44.87, 129.83]     
+ 2021-05-01       |        189 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 9 19:00:35.058  | 8 11:26:21.925  | [1.2940625, 33.11, 175.33]     
+ 2021-04-01       |        165 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 6 21:11:08.369  | 8 07:17:15.173  | [1.5059999, 32.48, 93.05]      
+ 2021-03-01       |        200 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 7 07:57:08.775  | 9 21:07:09.960  | [1.127359, 41.8825, 73.91]     
+ 2021-02-01       |        158 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 10 00:25:01.702 | 11 00:24:57.840 | [2.7105262, 45.99, 176.68]     
+ 2021-01-01       |        138 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 9 10:47:24.528  | 9 15:32:18.384  | [1.4384375, 42.92, 119.54]     
+ 2020-12-01       |        165 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 13 04:44:32.939 | 10 09:28:05.082 | [1.31875, 71.02, 227.11]       
+ 2020-11-01       |        208 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 11 02:06:01.567 | 9 12:41:23.986  | [1.1631657, 34.023, 273.21]    
+ 2020-10-01       |        189 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 5 02:35:04.142  | 9 09:33:34.232  | [1.1071528, 22.54225, 72.18]   
+ 2020-09-01       |        180 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 12 13:48:28.927 | 9 14:17:22.317  | [1.005248, 40.66, 338.33]      
+ 2020-08-01       |        192 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 9 08:03:41.302  | 11 17:30:58.570 | [1.3614583, 54.413998, 107.62] 
+ 2020-07-01       |        200 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 10 15:41:07.255 | 11 20:50:16.680 | [2.0083897, 52.7425, 126.5]    
+ 2020-06-01       |        221 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 6 10:28:02.398  | 12 11:47:51.943 | [0.93117344, 27.98625, 58.22]  
+ 2020-05-01       |        162 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">██</span><span style="color: rgb(255,0,0);">██</span> | 23 02:49:14.574 | 14 05:04:04.147 | [2.0266, 134.25, 367.61]       
+ 2020-04-01       |        172 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 9 15:57:41.000  | 11 05:47:08.188 | [1.517749, 58.13, 125.42]      
+ 2020-03-01       |        174 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 13 02:00:20.137 | 11 22:11:40.016 | [1.2106612, 54.2, 273.05]      
+ 2020-02-01       |        144 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 10 23:37:03.243 | 11 11:10:53.982 | [2.8737419, 45.31, 120.93]     
+ 2020-01-01       |        172 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">█</span>           | 11 04:02:22.546 | 12 09:25:05.199 | [1.5192857, 48.28, 238.88]     
+ 2019-12-01       |        119 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 12 11:05:23.873 | 11 17:12:01.033 | [1.4563265, 69.29, 179.32]     
+ 2019-11-01       |        145 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 11 11:31:00.027 | 10 20:11:29.857 | [1.9611111, 62.51, 182.83]     
+ 2019-10-01       |        166 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 14 09:47:26.789 | 12 11:23:14.553 | [2.08, 77.41, 197.46]          
+ 2019-09-01       |        129 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 7 19:58:10.279  | 11 15:13:04.046 | [1.2924286, 32.75, 115.74]     
+ 2019-08-01       |        106 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 8 01:04:10.424  | 12 07:05:38.017 | [1.4361111, 21.25, 90.39]      
+ 2019-07-01       |         81 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 21 16:51:51.320 | 15 00:23:34.010 | [3.34125, 86.82, 392.07]       
+ 2019-06-01       |        114 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 12 02:52:44.315 | 11 15:55:34.028 | [1.8641667, 75.02, 155.21]     
+ 2019-05-01       |        100 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 9 09:10:14.510  | 11 20:58:54.468 | [1.436, 22.41, 454.04]         
+ 2019-04-01       |         78 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 19 12:42:29.051 | 11 20:42:58.718 | [1.01, 41.95, 1034.71]         
+ 2019-03-01       |        135 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 8 10:09:45.340  | 10 03:28:36.402 | [1.4714844, 48.01, 77.75]      
+ 2019-02-01       |        146 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 12 16:22:21.253 | 11 05:39:42.568 | [0.94901234, 40.0, 341.58]     
+ 2019-01-01       |         67 | <span style="color: rgb(0,175,0);">██</span>                   | 8 02:01:24.537  | 8 02:01:24.537  | [1.5366666, 27.49, 125.5]      
+(40 rows)
+</code></pre>
+[query](https://github.com/nineinchnick/trino-cicd/blob/ebd46bba162a971aa05521810d9174cda7d0aa3f/sql/pr/avg-time-to-merge-since-creation.sql)
 
 #  Average time to first review
 <pre><code>
- month_updated | num_pulls | num_first_reviews | Duration ratio chart | avg_time_to_first_review |        Day percentiles 50, 75, 90, 99        |  avg_num_reviews   | avg_num_reviewers  
----------------+-----------+-------------------+----------------------+--------------------------+----------------------------------------------+--------------------+--------------------
- 2022-04-01    |       146 |               112 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 3 07:55:40.580           | [0.40899998, 1.451, 7.871, 45.267]           |   5.86986301369863 | 1.8835616438356164 
- 2022-03-01    |       451 |               307 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 3 02:34:11.046           | [0.21275309, 1.5829725, 5.404227, 48.924]    |  6.279379157427938 | 1.7494456762749446 
- 2022-02-01    |       300 |               254 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 2 09:09:54.681           | [0.20138334, 0.85028, 4.6186, 40.214]        |               6.31 |               2.01 
- 2022-01-01    |       309 |               274 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 1 17:28:18.339           | [0.15335938, 0.941, 3.9519067, 25.952]       | 6.9870550161812295 |  2.174757281553398 
- 2021-12-01    |       504 |               394 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">██</span><span style="color: rgb(255,0,0);">██</span> | 5 12:48:25.746           | [0.30693385, 1.9002942, 8.3725, 87.39]       |  6.061507936507937 | 1.8988095238095237 
- 2021-11-01    |       198 |               182 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 3 02:49:59.077           | [0.14086, 1.0587143, 5.469, 59.847]          |  5.429292929292929 |  2.106060606060606 
- 2021-10-01    |       244 |               209 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 1 16:54:05.852           | [0.13446061, 0.7026875, 2.5185, 15.034]      |  5.655737704918033 |  2.069672131147541 
- 2021-09-01    |       315 |               280 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 1 05:17:22.814           | [0.15096977, 0.6127424, 2.2104332, 20.739]   |  6.174603174603175 |  2.184126984126984 
- 2021-08-01    |       150 |               135 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 1 16:15:41.859           | [0.1575, 0.86325, 3.231, 20.811]             |  7.726666666666667 |               2.36 
- 2021-07-01    |       179 |               157 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 2 00:13:04.376           | [0.13534375, 1.1151944, 4.034, 35.028]       |  7.687150837988827 |  2.357541899441341 
- 2021-06-01    |       228 |               206 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 1 22:26:59.141           | [0.14005555, 0.5885937, 3.0482001, 34.818]   |  7.785087719298246 |  2.412280701754386 
- 2021-05-01    |       215 |               189 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">█</span>        | 3 15:37:23.767           | [0.1064, 0.7765833, 4.944, 69.06]            |  4.906976744186046 |  1.986046511627907 
- 2021-04-01    |       223 |               200 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 1 11:19:16.985           | [0.1513889, 0.8701905, 2.9955, 32.936]       |  7.304932735426009 |  2.233183856502242 
- 2021-03-01    |       269 |               244 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 2 05:43:23.504           | [0.08996939, 0.61228335, 2.8292866, 31.225]  |  6.951672862453532 |  2.356877323420074 
- 2021-02-01    |       174 |               162 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 3 06:05:06.463           | [0.1581875, 1.1566666, 4.409, 100.783]       |   7.14367816091954 | 2.2413793103448274 
- 2021-01-01    |       181 |               159 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 1 12:09:03.704           | [0.07234375, 0.58356667, 1.415, 25.137]      |   5.81767955801105 | 2.0662983425414363 
- 2020-12-01    |       199 |               175 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 1 19:34:20.360           | [0.12855555, 0.83555555, 3.399, 30.907]      | 5.0954773869346734 | 1.9195979899497488 
- 2020-11-01    |       283 |               256 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 2 08:41:38.742           | [0.09857143, 0.56496, 3.1696, 43.063]        |  5.982332155477032 |  2.091872791519435 
- 2020-10-01    |       220 |               201 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 2 06:27:19.682           | [0.11255152, 0.6784107, 2.92705, 44.757]     | 5.3090909090909095 |  2.022727272727273 
- 2020-09-01    |       243 |               224 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 3 07:01:28.045           | [0.105153844, 0.89316666, 6.2483997, 41.101] |  6.617283950617284 | 2.0082304526748973 
- 2020-08-01    |       219 |               175 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 2 05:11:10.149           | [0.0706, 0.4801875, 3.535, 39.009]           |  5.059360730593608 | 1.6210045662100456 
- 2020-07-01    |       213 |               184 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">█</span>           | 3 00:32:39.293           | [0.117, 0.7985, 2.97, 77.257]                |  4.666666666666667 | 1.7934272300469483 
- 2020-06-01    |       253 |               229 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 2 09:08:32.594           | [0.082956046, 0.641125, 3.224625, 34.336]    |  4.138339920948616 | 1.7351778656126482 
- 2020-05-01    |       195 |               178 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">█</span>        | 3 14:23:25.871           | [0.21223333, 1.3963333, 8.72, 72.09]         |  5.128205128205129 | 1.7897435897435898 
- 2020-04-01    |       201 |               166 | <span style="color: rgb(0,175,0);">███</span>                  | 0 22:13:16.657           | [0.11975, 0.6528889, 2.252, 17.099]          |  3.517412935323383 | 1.6467661691542288 
- 2020-03-01    |       221 |               197 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 2 14:49:18.391           | [0.141, 1.5771488, 8.0008, 41.427]           |  3.828054298642534 | 1.7285067873303168 
- 2020-02-01    |       174 |               162 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">█</span>        | 3 17:32:30.179           | [0.3995625, 2.2205555, 8.323, 46.185]        |  3.603448275862069 | 1.6494252873563218 
- 2020-01-01    |       198 |               171 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 2 00:36:15.094           | [0.20021875, 0.83425, 2.704, 47.978]         | 3.8535353535353534 | 1.6111111111111112 
- 2019-12-01    |       147 |               131 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 1 19:02:50.580           | [0.13384375, 0.844625, 3.107, 32.063]        | 3.5510204081632653 | 1.6870748299319729 
- 2019-11-01    |       173 |               152 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 2 15:31:47.934           | [0.17, 1.02675, 4.608, 25.846]               |  4.236994219653179 | 1.8034682080924855 
- 2019-10-01    |       191 |               176 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 3 10:56:56.761           | [0.18125, 1.3430834, 5.952, 111.998]         | 5.0732984293193715 | 1.7853403141361257 
- 2019-09-01    |       151 |               138 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 1 04:52:52.486           | [0.13122222, 0.64566666, 3.479, 12.902]      |  4.953642384105961 | 1.6754966887417218 
- 2019-08-01    |       119 |               109 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">█</span>           | 2 23:14:12.064           | [0.186125, 0.778125, 6.328, 69.652]          | 3.6218487394957983 | 1.7394957983193278 
- 2019-07-01    |        90 |                78 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 2 09:19:26.026           | [0.307, 1.085, 9.596, 27.838]                | 3.2111111111111112 |  1.511111111111111 
- 2019-06-01    |       129 |               122 | <span style="color: rgb(0,175,0);">███</span>                  | 1 02:03:40.451           | [0.16094445, 0.81299996, 3.124, 7.962]       |  4.093023255813954 | 1.7829457364341086 
- 2019-05-01    |       117 |                99 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">█</span>      | 4 07:30:40.556           | [0.14337501, 1.0916251, 13.894, 94.312]      |  3.641025641025641 | 1.5726495726495726 
- 2019-04-01    |        87 |                78 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 1 06:56:31.244           | [0.116, 0.584, 5.372, 23.067]                | 3.5632183908045976 | 1.7241379310344827 
- 2019-03-01    |       128 |               112 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 1 05:23:54.661           | [0.1215, 0.6405, 2.839, 18.847]              |           2.265625 |             1.4375 
- 2019-02-01    |       149 |               127 | <span style="color: rgb(0,175,0);">███</span>                  | 0 22:21:50.654           | [0.076, 0.5195625, 2.445, 10.444]            | 2.9798657718120807 | 1.4697986577181208 
- 2019-01-01    |        46 |                35 | <span style="color: rgb(0,175,0);">█</span>                    | 0 12:17:19.543           | [0.129, 0.607, 1.317, 5.065]                 | 2.3260869565217392 | 1.3043478260869565 
+ Updated in month | Updated PRs | Reviewed PRs |    Avg TTFR chart    |    Avg TTFR    |       Day percentiles 50, 75, 90, 99       | Avg reviews | Avg reviewers | Avg comments 
+------------------+-------------+--------------+----------------------+----------------+--------------------------------------------+-------------+---------------+--------------
+ 2022-04-01       |         149 |          124 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">█</span>    | 4 18:56:15.742 | [0.45166665, 1.8599999, 12.18, 70.65]      |        6.24 |          2.01 |          0.0 
+ 2022-03-01       |         449 |          375 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">██</span>   | 5 02:44:40.339 | [0.23422925, 1.3377124, 5.4816666, 78.87]  |         7.0 |          2.08 |          0.0 
+ 2022-02-01       |         300 |          254 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 2 09:09:54.681 | [0.20216666, 0.8504, 4.6165, 40.21]        |        6.31 |          2.01 |          0.0 
+ 2022-01-01       |         309 |          274 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 1 17:28:18.339 | [0.153125, 0.94272727, 3.9531999, 25.95]   |        6.99 |          2.17 |          0.0 
+ 2021-12-01       |         503 |          393 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">██</span><span style="color: rgb(255,95,0);">██</span><span style="color: rgb(255,0,0);">██</span> | 5 13:02:17.550 | [0.31201538, 1.8782475, 8.411438, 87.39]   |        6.06 |           1.9 |          0.0 
+ 2021-11-01       |         198 |          182 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 3 02:49:59.077 | [0.1424, 1.0583333, 5.47, 59.85]           |        5.33 |          2.11 |          0.0 
+ 2021-10-01       |         244 |          209 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 1 16:54:05.852 | [0.13515152, 0.7015625, 2.5175, 15.03]     |        5.66 |          2.07 |          0.0 
+ 2021-09-01       |         315 |          280 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 1 05:17:22.814 | [0.15179738, 0.61348486, 2.2120001, 20.74] |        6.17 |          2.18 |          0.0 
+ 2021-08-01       |         150 |          135 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 1 16:15:41.859 | [0.15904762, 0.8625, 3.23, 20.81]          |        7.73 |          2.36 |          0.0 
+ 2021-07-01       |         179 |          157 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 2 00:13:04.376 | [0.13499999, 1.115, 4.03, 35.03]           |        7.69 |          2.36 |          0.0 
+ 2021-06-01       |         228 |          206 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 1 22:26:59.141 | [0.14166667, 0.5896875, 3.05, 34.82]       |        7.79 |          2.41 |          0.0 
+ 2021-05-01       |         215 |          189 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">█</span>        | 3 15:37:23.767 | [0.10525, 0.77666664, 4.94, 69.06]         |        4.91 |          1.99 |          0.0 
+ 2021-04-01       |         223 |          200 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 1 11:19:16.985 | [0.15166667, 0.87035716, 2.9975, 32.94]    |         7.3 |          2.23 |          0.0 
+ 2021-03-01       |         269 |          244 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 2 05:43:23.504 | [0.09234694, 0.6128333, 2.8292, 31.23]     |        6.95 |          2.36 |          0.0 
+ 2021-02-01       |         174 |          162 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 3 06:05:06.463 | [0.15875, 1.16, 4.41, 100.78]              |        7.14 |          2.24 |          0.0 
+ 2021-01-01       |         181 |          159 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span>                | 1 12:09:03.704 | [0.071875, 0.5843333, 1.42, 25.14]         |        5.82 |          2.07 |          0.0 
+ 2020-12-01       |         199 |          175 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 1 19:34:20.360 | [0.12888889, 0.83555555, 3.4, 30.91]       |         5.1 |          1.92 |          0.0 
+ 2020-11-01       |         283 |          256 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 2 08:41:38.742 | [0.09836735, 0.564, 3.171, 43.06]          |        5.98 |          2.09 |          0.0 
+ 2020-10-01       |         220 |          201 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 2 06:27:19.682 | [0.11187879, 0.67660713, 2.927, 44.76]     |        5.31 |          2.02 |          0.0 
+ 2020-09-01       |         243 |          224 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">██</span>          | 3 07:01:28.045 | [0.10543956, 0.8933333, 6.25, 41.1]        |        6.62 |          2.01 |          0.0 
+ 2020-08-01       |         219 |          175 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 2 05:11:10.149 | [0.07, 0.48078126, 3.54, 39.01]            |        5.06 |          1.62 |          0.0 
+ 2020-07-01       |         213 |          184 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">█</span>           | 3 00:32:39.293 | [0.12, 0.7975, 2.97, 77.26]                |        4.67 |          1.79 |          0.0 
+ 2020-06-01       |         253 |          229 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 2 09:08:32.594 | [0.08197802, 0.64285713, 3.224, 34.34]     |        4.14 |          1.74 |          0.0 
+ 2020-05-01       |         195 |          178 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 3 14:23:25.871 | [0.21272223, 1.3988096, 8.72, 72.09]       |        5.13 |          1.79 |          0.0 
+ 2020-04-01       |         201 |          166 | <span style="color: rgb(0,175,0);">███</span>                  | 0 22:13:16.657 | [0.118666664, 0.6533333, 2.25, 17.1]       |        3.52 |          1.65 |          0.0 
+ 2020-03-01       |         221 |          197 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 2 14:49:18.391 | [0.142, 1.5776786, 7.9995, 41.43]          |        3.83 |          1.73 |          0.0 
+ 2020-02-01       |         174 |          162 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">█</span>        | 3 17:32:30.179 | [0.4, 2.22, 8.32, 46.19]                   |         3.6 |          1.65 |          0.0 
+ 2020-01-01       |         198 |          171 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span>              | 2 00:36:15.094 | [0.2003125, 0.835625, 2.7, 47.98]          |        3.85 |          1.61 |          0.0 
+ 2019-12-01       |         147 |          131 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">█</span>               | 1 19:02:50.580 | [0.13374999, 0.843125, 3.11, 32.06]        |        3.55 |          1.69 |          0.0 
+ 2019-11-01       |         173 |          152 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span>            | 2 15:31:47.934 | [0.17041667, 1.0275, 4.61, 25.85]          |        4.24 |           1.8 |          0.0 
+ 2019-10-01       |         191 |          176 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span>         | 3 10:56:56.761 | [0.18, 1.3408333, 5.95, 112.0]             |        5.07 |          1.79 |          0.0 
+ 2019-09-01       |         151 |          138 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 1 04:52:52.486 | [0.13277778, 0.64666665, 3.48, 12.9]       |        4.95 |          1.68 |          0.0 
+ 2019-08-01       |         119 |          109 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">█</span>           | 2 23:14:12.064 | [0.1875, 0.778125, 6.33, 69.65]            |        3.62 |          1.74 |          0.0 
+ 2019-07-01       |          90 |           78 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">█</span>             | 2 09:19:26.026 | [0.31, 1.09, 9.6, 27.84]                   |        3.21 |          1.51 |          0.0 
+ 2019-06-01       |         129 |          122 | <span style="color: rgb(0,175,0);">███</span>                  | 1 02:03:40.451 | [0.16166666, 0.8125, 3.12, 7.96]           |        4.09 |          1.78 |          0.0 
+ 2019-05-01       |         117 |           99 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">██</span><span style="color: rgb(135,215,0);">██</span><span style="color: rgb(175,215,0);">██</span><span style="color: rgb(215,215,0);">███</span><span style="color: rgb(255,175,0);">██</span><span style="color: rgb(255,135,0);">█</span>      | 4 07:30:40.556 | [0.14625, 1.09375, 13.89, 94.31]           |        3.64 |          1.57 |          0.0 
+ 2019-04-01       |          87 |           78 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 1 06:56:31.244 | [0.12, 0.58, 5.37, 23.07]                  |        3.56 |          1.72 |          0.0 
+ 2019-03-01       |         128 |          112 | <span style="color: rgb(0,175,0);">███</span><span style="color: rgb(95,215,0);">█</span>                 | 1 05:23:54.661 | [0.125, 0.64, 2.84, 18.85]                 |        2.27 |          1.44 |          0.0 
+ 2019-02-01       |         149 |          127 | <span style="color: rgb(0,175,0);">███</span>                  | 0 22:21:50.654 | [0.07333333, 0.518125, 2.45, 10.44]        |        2.98 |          1.47 |          0.0 
+ 2019-01-01       |          46 |           35 | <span style="color: rgb(0,175,0);">█</span>                    | 0 12:17:19.543 | [0.13, 0.61, 1.32, 5.07]                   |        2.33 |           1.3 |          0.0 
 (40 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/f633986d39748554e73337373e624a4f6b611bde/sql/pr/avg-time-to-first-review.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/ebd46bba162a971aa05521810d9174cda7d0aa3f/sql/pr/avg-time-to-first-review.sql)
 
 #  Stale PRs
 <pre><code>
- number |                                title                                 |  untouched_for   |                             link                              
---------+----------------------------------------------------------------------+------------------+---------------------------------------------------------------
-   1364 | Filter tables based on table privilege of user                       | 910 00:53:08.439 | <a href="https://github.com/trinodb/trino/pull/1364">link</a> 
-   2786 | Categorize user errors when parsing data via GenericHiveRecordCursor | 785 13:45:35.439 | <a href="https://github.com/trinodb/trino/pull/2786">link</a> 
-   2832 | Use file extension based on the file format                          | 765 20:19:21.439 | <a href="https://github.com/trinodb/trino/pull/2832">link</a> 
-   4834 | Reuse containers in product tests                                    | 589 18:08:20.439 | <a href="https://github.com/trinodb/trino/pull/4834">link</a> 
-   4872 | CachingHiveMetastore: refactor cache creation and flushCache()       | 583 21:38:11.439 | <a href="https://github.com/trinodb/trino/pull/4872">link</a> 
-   2976 | [WIP] Add sybase connector                                           | 535 16:28:22.439 | <a href="https://github.com/trinodb/trino/pull/2976">link</a> 
-   4426 | Fix type mismatch between partition and table                        | 533 03:07:53.439 | <a href="https://github.com/trinodb/trino/pull/4426">link</a> 
-   5624 | Ability to run product tests from IntelliJ                           | 530 02:48:25.439 | <a href="https://github.com/trinodb/trino/pull/5624">link</a> 
-   4413 | Add deterministic UUID functions uuid_v3 and uuid_v5                 | 499 01:00:20.439 | <a href="https://github.com/trinodb/trino/pull/4413">link</a> 
-   5699 | Add support for HDFS only iceberg tables                             | 447 13:41:16.439 | <a href="https://github.com/trinodb/trino/pull/5699">link</a> 
-   7870 | Isaac Scafe Writing Exercises                                        | 306 16:22:38.439 | <a href="https://github.com/trinodb/trino/pull/7870">link</a> 
-   5834 | Throw SQLException in getTime                                        | 250 11:46:54.439 | <a href="https://github.com/trinodb/trino/pull/5834">link</a> 
-   8255 | Add aggregation push down into Oracle                                | 182 14:04:20.439 | <a href="https://github.com/trinodb/trino/pull/8255">link</a> 
-   1832 | Feature/add sortkey distkey redshift                                 | 182 14:04:17.439 | <a href="https://github.com/trinodb/trino/pull/1832">link</a> 
-   5767 | add missing jars when `hive.s3-file-system-type=HADOOP_DEFAULT`      | 182 05:27:35.439 | <a href="https://github.com/trinodb/trino/pull/5767">link</a> 
-   9804 | Not implement GroupedAccumulator in generateGroupedStateClass        | 149 14:53:47.439 | <a href="https://github.com/trinodb/trino/pull/9804">link</a> 
-   9758 | Print error when DateTimeZoneIndex init with failure for debug       | 149 14:53:47.439 | <a href="https://github.com/trinodb/trino/pull/9758">link</a> 
-   9817 | Fix bug in iceberg connector with external table locations           | 149 14:53:47.439 | <a href="https://github.com/trinodb/trino/pull/9817">link</a> 
-   9789 | allow push down join on redshift                                     | 149 14:53:47.439 | <a href="https://github.com/trinodb/trino/pull/9789">link</a> 
-   9851 | Use smaller load factors for small join hash arrays                  | 149 14:53:47.439 | <a href="https://github.com/trinodb/trino/pull/9851">link</a> 
+ number |                                           title                                           |  untouched_for   |                              link                              
+--------+-------------------------------------------------------------------------------------------+------------------+----------------------------------------------------------------
+   1364 | Filter tables based on table privilege of user                                            | 910 03:23:05.419 | <a href="https://github.com/trinodb/trino/pull/1364">link</a>  
+   2786 | Categorize user errors when parsing data via GenericHiveRecordCursor                      | 785 16:15:32.419 | <a href="https://github.com/trinodb/trino/pull/2786">link</a>  
+   2832 | Use file extension based on the file format                                               | 765 22:49:18.419 | <a href="https://github.com/trinodb/trino/pull/2832">link</a>  
+   4834 | Reuse containers in product tests                                                         | 589 20:38:17.419 | <a href="https://github.com/trinodb/trino/pull/4834">link</a>  
+   4872 | CachingHiveMetastore: refactor cache creation and flushCache()                            | 584 00:08:08.419 | <a href="https://github.com/trinodb/trino/pull/4872">link</a>  
+   2976 | [WIP] Add sybase connector                                                                | 535 18:58:19.419 | <a href="https://github.com/trinodb/trino/pull/2976">link</a>  
+   4426 | Fix type mismatch between partition and table                                             | 533 05:37:50.419 | <a href="https://github.com/trinodb/trino/pull/4426">link</a>  
+   4413 | Add deterministic UUID functions uuid_v3 and uuid_v5                                      | 499 03:30:17.419 | <a href="https://github.com/trinodb/trino/pull/4413">link</a>  
+   7870 | Isaac Scafe Writing Exercises                                                             | 306 18:52:35.419 | <a href="https://github.com/trinodb/trino/pull/7870">link</a>  
+   5834 | Throw SQLException in getTime                                                             | 250 14:16:51.419 | <a href="https://github.com/trinodb/trino/pull/5834">link</a>  
+   5767 | add missing jars when `hive.s3-file-system-type=HADOOP_DEFAULT`                           | 182 07:57:32.419 | <a href="https://github.com/trinodb/trino/pull/5767">link</a>  
+   9440 | [Doc] update the example of explain analyze statement doc                                 | 149 17:23:43.419 | <a href="https://github.com/trinodb/trino/pull/9440">link</a>  
+  10235 | [WIP] Add tests for iceberg partitioning on FIXED and BINARY columns                      | 108 11:03:44.419 | <a href="https://github.com/trinodb/trino/pull/10235">link</a> 
+  10168 | Handle HTTP 504 returned from Trino coordinator/Proxy layer.                              | 108 11:03:44.419 | <a href="https://github.com/trinodb/trino/pull/10168">link</a> 
+   9523 | [WIP] Arbitrary table properties                                                          | 108 11:03:43.419 | <a href="https://github.com/trinodb/trino/pull/9523">link</a>  
+   9652 | fix resource leak due to newDirectoryStream                                               | 108 11:03:43.419 | <a href="https://github.com/trinodb/trino/pull/9652">link</a>  
+   9720 | Allow MemSQL to push down string aggregations/joins by forcing a case-sensitive collation | 108 11:03:43.419 | <a href="https://github.com/trinodb/trino/pull/9720">link</a>  
+   9580 | test cdh5                                                                                 | 108 11:03:43.419 | <a href="https://github.com/trinodb/trino/pull/9580">link</a>  
+   9752 | Fix description in IfStatement                                                            | 108 11:03:43.419 | <a href="https://github.com/trinodb/trino/pull/9752">link</a>  
+   9708 | Add testDivide expected result verification using BigDecimal.divide                       | 108 11:03:43.419 | <a href="https://github.com/trinodb/trino/pull/9708">link</a>  
 (20 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/f633986d39748554e73337373e624a4f6b611bde/sql/pr/stale-prs.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/ebd46bba162a971aa05521810d9174cda7d0aa3f/sql/pr/stale-prs.sql)
 
 #  Longest running PRs
 <pre><code>
- number |                                          title                                          |  running_time   |                             link                              
---------+-----------------------------------------------------------------------------------------+-----------------+---------------------------------------------------------------
-   9482 | Simplify Hive metastore creation and use                                                | 84 19:18:28.000 | <a href="https://github.com/trinodb/trino/pull/9482">link</a> 
-   8743 | Add support for optional Kafka properties from external file                            | 80 19:34:26.000 | <a href="https://github.com/trinodb/trino/pull/8743">link</a> 
-   7994 | ConnectorExpression pushdown                                                            | 80 03:48:14.000 | <a href="https://github.com/trinodb/trino/pull/7994">link</a> 
-   9906 | Refactor Iceberg table statistics to be deterministic                                   | 73 07:48:27.000 | <a href="https://github.com/trinodb/trino/pull/9906">link</a> 
-   3507 | Upgrade gcs to 2.2.2                                                                    | 73 01:58:13.000 | <a href="https://github.com/trinodb/trino/pull/3507">link</a> 
-   9788 | Add support for OpenID connect metadata discovery mechanism                             | 72 14:48:00.000 | <a href="https://github.com/trinodb/trino/pull/9788">link</a> 
-   9841 | Make map and array functions use IS DISTINCT semantics as appropriate                   | 69 08:56:34.000 | <a href="https://github.com/trinodb/trino/pull/9841">link</a> 
-   9722 | Remove usage of @test with exceptions in plugin tests                                   | 69 06:17:46.000 | <a href="https://github.com/trinodb/trino/pull/9722">link</a> 
-   3316 | Allow merging consecutive 'long' values in SortedRangeSet                               | 63 17:10:25.000 | <a href="https://github.com/trinodb/trino/pull/3316">link</a> 
-   9812 | Add PostgreSQL and Oracle migration files for DB backed resource group manager          | 63 06:57:32.000 | <a href="https://github.com/trinodb/trino/pull/9812">link</a> 
-   9965 | Improve performance/memory overhead for Spatial Join                                    | 63 01:07:44.000 | <a href="https://github.com/trinodb/trino/pull/9965">link</a> 
-   9818 | [WIP] Implement task level retries                                                      | 62 07:56:01.000 | <a href="https://github.com/trinodb/trino/pull/9818">link</a> 
-   7828 | Use Datastax Cassandra java driver v4                                                   | 61 01:29:54.000 | <a href="https://github.com/trinodb/trino/pull/7828">link</a> 
-   9541 | [Pinot connector] Add support for basic authentication                                  | 60 23:08:27.000 | <a href="https://github.com/trinodb/trino/pull/9541">link</a> 
-   8474 | Implement timestamp predicate pushdown in Druid connector                               | 60 12:34:24.000 | <a href="https://github.com/trinodb/trino/pull/8474">link</a> 
-   9938 | Support Metrics mode when creating/writing Iceberg tables                               | 59 20:19:39.000 | <a href="https://github.com/trinodb/trino/pull/9938">link</a> 
-   9868 | Allow ValueSet expansion into a discrete set for Bloom filtering                        | 59 17:17:39.000 | <a href="https://github.com/trinodb/trino/pull/9868">link</a> 
-   9613 | Support ALTER MATERIALIZED VIEW ... SET PROPERTIES ...                                  | 58 07:34:38.000 | <a href="https://github.com/trinodb/trino/pull/9613">link</a> 
-   9817 | Fix bug in iceberg connector with external table locations                              | 56 21:07:27.000 | <a href="https://github.com/trinodb/trino/pull/9817">link</a> 
-   8202 | Fixed #2748 - Metadata for alias in elasticsearch connector only uses the first mapping | 55 18:54:03.000 | <a href="https://github.com/trinodb/trino/pull/8202">link</a> 
+ number |                                 title                                  |  running_time  |                              link                              
+--------+------------------------------------------------------------------------+----------------+----------------------------------------------------------------
+  10681 | Return exception message in HTTP header                                | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/10681">link</a> 
+  11334 | Document DENY statement                                                | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/11334">link</a> 
+  10150 | Proactively enforce memory limits in distincting accumulators          | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/10150">link</a> 
+   9754 | Use RowType in decimal aggregation serde                               | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/9754">link</a>  
+  10297 | Document proxy configuration for OAuth 2.0 client                      | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/10297">link</a> 
+  11564 | Improve SQL Server type mapping documentation                          | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/11564">link</a> 
+  10717 | Elasticsearch connector optimize the search query of deep nesting      | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/10717">link</a> 
+  11475 | Upgrade Pinot Connector to use 0.9.3 Libraries                         | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/11475">link</a> 
+  11261 | Document the hive.fs.cache.max-size property                           | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/11261">link</a> 
+  11423 | Support renaming table in MongoDB                                      | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/11423">link</a> 
+  10779 | Add hive iceberg support based on Trino created iceberg table.         | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/10779">link</a> 
+  10367 | Migrate deprecated `rollback()` call                                   | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/10367">link</a> 
+  10728 | Negate method invocation                                               | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/10728">link</a> 
+  11677 | Fix creating empty ORC files when using ZSTD                           | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/11677">link</a> 
+  11785 | Drop support of resource over commit                                   | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/11785">link</a> 
+  11555 | Prevent DROP/RENAME TABLE IF EXISTS from silently ignoring views       | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/11555">link</a> 
+  11740 | Allow some tasks waiting for node per stage before blocking scheduling | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/11740">link</a> 
+  11430 | Deny comment on unsupported table                                      | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/11430">link</a> 
+   2832 | Use file extension based on the file format                            | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/2832">link</a>  
+  11420 | Remove unnecessary MAVEN_INSTALL_OPTS from CI                          | 0 00:00:00.000 | <a href="https://github.com/trinodb/trino/pull/11420">link</a> 
 (20 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/f633986d39748554e73337373e624a4f6b611bde/sql/pr/running-prs.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/ebd46bba162a971aa05521810d9174cda7d0aa3f/sql/pr/running-prs.sql)
 
 #  Longest time since review
 <pre><code>
  number |                                         title                                         | time_since_review |                             link                              
 --------+---------------------------------------------------------------------------------------+-------------------+---------------------------------------------------------------
-    685 | Add SampleNode stats and cost rule                                                    | 1075 00:13:33.499 | <a href="https://github.com/trinodb/trino/pull/685">link</a>  
-    624 | Optimize distinct aggregation on multiple columns                                     | 1059 09:19:22.499 | <a href="https://github.com/trinodb/trino/pull/624">link</a>  
-    821 | Distributed sort for unpartitioned window functions                                   | 1044 17:12:47.499 | <a href="https://github.com/trinodb/trino/pull/821">link</a>  
-    855 | Change client to assume types are encoded as text                                     | 1043 01:58:31.499 | <a href="https://github.com/trinodb/trino/pull/855">link</a>  
-    819 | Remove TableLayout from TPCDS connector                                               | 1038 03:41:25.499 | <a href="https://github.com/trinodb/trino/pull/819">link</a>  
-   1255 | Remove no longer needed ConnectorSplitSource#isFinished                               | 975 01:09:07.499  | <a href="https://github.com/trinodb/trino/pull/1255">link</a> 
-   1224 | Add graceful shutdown script for Docker                                               | 974 18:00:46.499  | <a href="https://github.com/trinodb/trino/pull/1224">link</a> 
-   1319 | Add execution statistic warnings                                                      | 962 01:32:02.499  | <a href="https://github.com/trinodb/trino/pull/1319">link</a> 
-   1317 | Add connector table metadata warnings                                                 | 954 13:11:28.499  | <a href="https://github.com/trinodb/trino/pull/1317">link</a> 
-   1364 | Filter tables based on table privilege of user                                        | 910 17:21:18.499  | <a href="https://github.com/trinodb/trino/pull/1364">link</a> 
-   1637 | [WIP] patch to add support for array by table subquery                                | 910 15:55:02.499  | <a href="https://github.com/trinodb/trino/pull/1637">link</a> 
-   1606 | Improve property derivation for FULL JOIN                                             | 903 23:44:46.499  | <a href="https://github.com/trinodb/trino/pull/1606">link</a> 
-   1780 | Remove unused binding                                                                 | 902 04:03:38.499  | <a href="https://github.com/trinodb/trino/pull/1780">link</a> 
-   1965 | Node local partition pruning                                                          | 881 15:29:29.499  | <a href="https://github.com/trinodb/trino/pull/1965">link</a> 
-   2026 | Add pattern for files ending with &lt;query_id&gt;.&lt;number&gt; to cleanup them during rollback | 870 21:38:38.499  | <a href="https://github.com/trinodb/trino/pull/2026">link</a> 
-   1832 | Feature/add sortkey distkey redshift                                                  | 848 12:55:18.499  | <a href="https://github.com/trinodb/trino/pull/1832">link</a> 
-   2227 | Adding changes for adding _timestamp field in kafka topic metadata.                   | 832 14:12:36.499  | <a href="https://github.com/trinodb/trino/pull/2227">link</a> 
-   2489 | Derive non-null from symbol-to-symbol comparisons in domain translator                | 813 15:27:37.499  | <a href="https://github.com/trinodb/trino/pull/2489">link</a> 
-   2010 | Query debugging tracer                                                                | 811 03:16:37.499  | <a href="https://github.com/trinodb/trino/pull/2010">link</a> 
-   2397 | Influx Connector                                                                      | 806 06:42:46.499  | <a href="https://github.com/trinodb/trino/pull/2397">link</a> 
+    685 | Add SampleNode stats and cost rule                                                    | 1075 02:43:28.438 | <a href="https://github.com/trinodb/trino/pull/685">link</a>  
+    624 | Optimize distinct aggregation on multiple columns                                     | 1059 11:49:17.438 | <a href="https://github.com/trinodb/trino/pull/624">link</a>  
+    821 | Distributed sort for unpartitioned window functions                                   | 1044 19:42:42.438 | <a href="https://github.com/trinodb/trino/pull/821">link</a>  
+    855 | Change client to assume types are encoded as text                                     | 1043 04:28:26.438 | <a href="https://github.com/trinodb/trino/pull/855">link</a>  
+   1255 | Remove no longer needed ConnectorSplitSource#isFinished                               | 975 03:39:02.438  | <a href="https://github.com/trinodb/trino/pull/1255">link</a> 
+   1224 | Add graceful shutdown script for Docker                                               | 974 20:30:41.438  | <a href="https://github.com/trinodb/trino/pull/1224">link</a> 
+   1319 | Add execution statistic warnings                                                      | 962 04:01:57.438  | <a href="https://github.com/trinodb/trino/pull/1319">link</a> 
+   1317 | Add connector table metadata warnings                                                 | 954 15:41:23.438  | <a href="https://github.com/trinodb/trino/pull/1317">link</a> 
+   1364 | Filter tables based on table privilege of user                                        | 910 19:51:13.438  | <a href="https://github.com/trinodb/trino/pull/1364">link</a> 
+   1637 | [WIP] patch to add support for array by table subquery                                | 910 18:24:57.438  | <a href="https://github.com/trinodb/trino/pull/1637">link</a> 
+   1606 | Improve property derivation for FULL JOIN                                             | 904 02:14:41.438  | <a href="https://github.com/trinodb/trino/pull/1606">link</a> 
+   1965 | Node local partition pruning                                                          | 881 17:59:24.438  | <a href="https://github.com/trinodb/trino/pull/1965">link</a> 
+   2026 | Add pattern for files ending with &lt;query_id&gt;.&lt;number&gt; to cleanup them during rollback | 871 00:08:33.438  | <a href="https://github.com/trinodb/trino/pull/2026">link</a> 
+   2227 | Adding changes for adding _timestamp field in kafka topic metadata.                   | 832 16:42:31.438  | <a href="https://github.com/trinodb/trino/pull/2227">link</a> 
+   2489 | Derive non-null from symbol-to-symbol comparisons in domain translator                | 813 17:57:32.438  | <a href="https://github.com/trinodb/trino/pull/2489">link</a> 
+   2010 | Query debugging tracer                                                                | 811 05:46:32.438  | <a href="https://github.com/trinodb/trino/pull/2010">link</a> 
+   2397 | Influx Connector                                                                      | 806 09:12:41.438  | <a href="https://github.com/trinodb/trino/pull/2397">link</a> 
+   2769 | Add missing catalogName at building ConnectorSession                                  | 787 02:39:07.438  | <a href="https://github.com/trinodb/trino/pull/2769">link</a> 
+   2786 | Categorize user errors when parsing data via GenericHiveRecordCursor                  | 785 16:16:16.438  | <a href="https://github.com/trinodb/trino/pull/2786">link</a> 
+   2703 | Support views in iceberg connector                                                    | 770 16:22:23.438  | <a href="https://github.com/trinodb/trino/pull/2703">link</a> 
 (20 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/f633986d39748554e73337373e624a4f6b611bde/sql/pr/awaiting-review.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/ebd46bba162a971aa05521810d9174cda7d0aa3f/sql/pr/awaiting-review.sql)
 
 #  Abandoned PRs
 <pre><code>
- number |                                        title                                         | time_since_push |                              link                              
---------+--------------------------------------------------------------------------------------+-----------------+----------------------------------------------------------------
-  10528 | Add LDAP group-provider                                                              | NULL            | <a href="https://github.com/trinodb/trino/pull/10528">link</a> 
-  10510 | Add 'ldap.ignore-ssl-certificate' config to password-authenticator                   | NULL            | <a href="https://github.com/trinodb/trino/pull/10510">link</a> 
-  10075 | Support Iceberg row-level delete and update                                          | NULL            | <a href="https://github.com/trinodb/trino/pull/10075">link</a> 
-  10549 | Avoid firing RemoveRedundantTableScanPredicate when there is no TableScan predicate  | NULL            | <a href="https://github.com/trinodb/trino/pull/10549">link</a> 
-   7933 | Support SQL MERGE in the Trino engine and Hive and Kudu connectors                   | NULL            | <a href="https://github.com/trinodb/trino/pull/7933">link</a>  
-   7131 | Elasticsearch Connector support applyAggregation                                     | NULL            | <a href="https://github.com/trinodb/trino/pull/7131">link</a>  
-  10562 | WIP: Fix time boundary                                                               | NULL            | <a href="https://github.com/trinodb/trino/pull/10562">link</a> 
-  10506 | Improvements to Unnest Operator                                                      | NULL            | <a href="https://github.com/trinodb/trino/pull/10506">link</a> 
-  10531 | fix a bug of planning infinite in some cases                                         | NULL            | <a href="https://github.com/trinodb/trino/pull/10531">link</a> 
-   9447 | Support correlated subqueries for DELETE                                             | NULL            | <a href="https://github.com/trinodb/trino/pull/9447">link</a>  
-  10508 | Disable running tests in separate threads                                            | NULL            | <a href="https://github.com/trinodb/trino/pull/10508">link</a> 
-  10177 | Update jline to 3.21.0                                                               | NULL            | <a href="https://github.com/trinodb/trino/pull/10177">link</a> 
-  11139 | Optimize queries on system.jdbc.tables when filters are specified                    | NULL            | <a href="https://github.com/trinodb/trino/pull/11139">link</a> 
-  11333 | Improve estimation of row count from partition samples                               | NULL            | <a href="https://github.com/trinodb/trino/pull/11333">link</a> 
-  11308 | Add support for LIKE escape parameter in Elasticsearch connector expression pushdown | NULL            | <a href="https://github.com/trinodb/trino/pull/11308">link</a> 
-  11301 | Update memsql plugin JDBC driver dependency                                          | NULL            | <a href="https://github.com/trinodb/trino/pull/11301">link</a> 
-  10387 | Add Snowflake JDBC Connector                                                         | NULL            | <a href="https://github.com/trinodb/trino/pull/10387">link</a> 
-  10228 | Add Hudi connector                                                                   | NULL            | <a href="https://github.com/trinodb/trino/pull/10228">link</a> 
-  10378 | Add function management abstractions                                                 | NULL            | <a href="https://github.com/trinodb/trino/pull/10378">link</a> 
-  10116 | Introduce LDAP Group Provider                                                        | NULL            | <a href="https://github.com/trinodb/trino/pull/10116">link</a> 
+ number |                                            title                                             | time_since_push |                              link                              
+--------+----------------------------------------------------------------------------------------------+-----------------+----------------------------------------------------------------
+  11477 | Rewrite most aggregations as annotated functions                                             | NULL            | <a href="https://github.com/trinodb/trino/pull/11477">link</a> 
+  10892 | Estimate BETWEEN when the value is an expression                                             | NULL            | <a href="https://github.com/trinodb/trino/pull/10892">link</a> 
+  10614 | Enable writer scaling by default                                                             | NULL            | <a href="https://github.com/trinodb/trino/pull/10614">link</a> 
+  11845 | Add delta catalog settings                                                                   | NULL            | <a href="https://github.com/trinodb/trino/pull/11845">link</a> 
+   8178 | Remove write only objects                                                                    | NULL            | <a href="https://github.com/trinodb/trino/pull/8178">link</a>  
+  11824 | Upgrade Error Prone to 2.12.0                                                                | NULL            | <a href="https://github.com/trinodb/trino/pull/11824">link</a> 
+  11265 | Skip certain table properties when doing create table (like including…                       | NULL            | <a href="https://github.com/trinodb/trino/pull/11265">link</a> 
+   5715 | Document for add hive.metastore=file explanation                                             | NULL            | <a href="https://github.com/trinodb/trino/pull/5715">link</a>  
+  11359 | Add support for COMMENT ON VIEW statement                                                    | NULL            | <a href="https://github.com/trinodb/trino/pull/11359">link</a> 
+  10171 | expose physicalInputDataSize and inputDataSize in JDBC client                                | NULL            | <a href="https://github.com/trinodb/trino/pull/10171">link</a> 
+   7734 | handle InvalidCodePointException and add a testcase                                          | NULL            | <a href="https://github.com/trinodb/trino/pull/7734">link</a>  
+   7599 | Fix use kudu connector to query values of UNIXTIME_MICROS type, time zone didn't take effect | NULL            | <a href="https://github.com/trinodb/trino/pull/7599">link</a>  
+   7407 | Kafka insert                                                                                 | NULL            | <a href="https://github.com/trinodb/trino/pull/7407">link</a>  
+   7404 | FutureTask replaces CompletableFuture to solve the thread can't be cancelled                 | NULL            | <a href="https://github.com/trinodb/trino/pull/7404">link</a>  
+   7252 | Added a new JDBC driver parameter - 'TimeZoneID'                                             | NULL            | <a href="https://github.com/trinodb/trino/pull/7252">link</a>  
+   7197 | Support tables with non-lowercase names in Druid                                             | NULL            | <a href="https://github.com/trinodb/trino/pull/7197">link</a>  
+   7164 | [WIP] Pinot create table                                                                     | NULL            | <a href="https://github.com/trinodb/trino/pull/7164">link</a>  
+   6599 | Document for assume canonical hive partition key                                             | NULL            | <a href="https://github.com/trinodb/trino/pull/6599">link</a>  
+  11722 | Verify that no non deprecated SPI is removed                                                 | NULL            | <a href="https://github.com/trinodb/trino/pull/11722">link</a> 
+  11805 | Document aggregation pushdown in Oracle connector                                            | NULL            | <a href="https://github.com/trinodb/trino/pull/11805">link</a> 
 (20 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/f633986d39748554e73337373e624a4f6b611bde/sql/pr/abandoned-prs.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/ebd46bba162a971aa05521810d9174cda7d0aa3f/sql/pr/abandoned-prs.sql)
 
-Generated on Thu Apr  7 10:02:24 UTC 2022
+Generated on Thu Apr  7 12:32:14 UTC 2022
