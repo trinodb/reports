@@ -6,11 +6,15 @@ FROM git.default.commits;
 
 DROP TABLE IF EXISTS memory.default.nodes;
 CREATE TABLE memory.default.nodes AS
-    SELECT DISTINCT author_email AS email, author_name AS name
-    FROM git.default.commits
-    UNION
-    SELECT DISTINCT committer_email AS email, committer_name AS name
-    FROM git.default.commits;
+    SELECT email, name, count(*) AS count
+    FROM (
+        SELECT author_email AS email, author_name AS name
+        FROM git.default.commits
+        UNION ALL
+        SELECT committer_email AS email, committer_name AS name
+        FROM git.default.commits
+    ) names
+    GROUP BY email, name;
 
 DROP TABLE IF EXISTS memory.default.edges;
 CREATE TABLE memory.default.edges AS
@@ -38,8 +42,8 @@ WITH RECURSIVE
     ),
     grouped (names, emails) AS (
         SELECT
-            array_agg(DISTINCT n.name ORDER BY n.name) AS names,
-            array_agg(DISTINCT n.email ORDER BY n.email) AS emails
+            array_distinct(array_agg(n.name ORDER BY n.count DESC)) AS names,
+            array_distinct(array_agg(n.email ORDER BY n.count DESC)) AS emails
         FROM result r
         INNER JOIN memory.default.nodes n ON n.name = r.name1
         GROUP BY r.name2s
