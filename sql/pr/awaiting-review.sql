@@ -5,7 +5,7 @@ SELECT
 , current_timestamp - max(reviews.submitted_at) AS time_since_review
 , format('<a href="https://github.com/trinodb/trino/pull/%s">link</a>', pulls.number) AS link
 FROM
-  unique_pulls
+  unique_pulls pulls
 LEFT JOIN
   reviews ON pulls.number = reviews.pull_number
 WHERE pulls.owner = 'trinodb' AND pulls.repo = 'trino' AND pulls.state = 'open' AND NOT pulls.draft
