@@ -24,7 +24,7 @@ closed_prs AS (
 ),
 open_issues AS (
   SELECT d.month, count(*) AS count
-  FROM issues
+  FROM unique_issues
   CROSS JOIN unnest(sequence(
         date_trunc('month', date(created_at)),
         date_trunc('month', date(coalesce(closed_at, current_date))),
@@ -35,13 +35,13 @@ open_issues AS (
 ),
 new_issues AS (
   SELECT date_trunc('month', date(created_at)) AS month, count(*) AS count
-  FROM issues
+  FROM unique_issues
   WHERE owner = 'trinodb' AND repo = 'trino'
   GROUP BY 1
 ),
 closed_issues AS (
   SELECT date_trunc('month', date(closed_at)) AS month, count(*) AS count
-  FROM issues
+  FROM unique_issues
   WHERE owner = 'trinodb' AND repo = 'trino'
   GROUP BY 1
 )
@@ -65,6 +65,6 @@ LEFT JOIN open_prs op ON op.month = d.month
 LEFT JOIN new_prs np ON np.month = d.month
 LEFT JOIN closed_prs cp ON cp.month = d.month
 LEFT JOIN open_issues oi ON oi.month = d.month
-LEFT JOIN new_issues ni ON oi.month = d.month
+LEFT JOIN new_issues ni ON ni.month = d.month
 LEFT JOIN closed_issues ci ON ci.month = d.month
 ;
