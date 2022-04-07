@@ -2,7 +2,7 @@
 WITH mergers_per_year AS (
     SELECT
         year(c.commit_time AT TIME ZONE 'UTC') AS year,
-        ci.name || ' <' || ci.email || '>' AS identifier,
+        ci.name || ' <' || regexp_replace(ci.email, '(?<=.)[^@](?=[^@]*?@)|(?:(?<=@.)|(?!^)\G(?=[^@]*$)).(?=.*\.)', '*') || '>' AS identifier,
         count(*) AS commits_count
     FROM git.default.commits c
     JOIN memory.default.idents ai ON ai.email = c.author_email OR CONTAINS(ai.extra_emails, c.author_email)
