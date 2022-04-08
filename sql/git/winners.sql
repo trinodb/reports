@@ -29,7 +29,8 @@ SELECT
   acq.description,
   acq.achieved_in,
   acq.achieved_at,
-  acq.num_achieved
+  acq.num_achieved,
+  format('<img src="aches/%s.png">', acq.id) AS icon
 FROM acq
 CROSS JOIN (SELECT COUNT(*) AS achievements_count FROM acha) a
 WINDOW w AS (PARTITION BY acq.email)

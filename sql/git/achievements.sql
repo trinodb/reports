@@ -33,7 +33,8 @@ SELECT
   min(a.achieved_at) AS first_achieved_at,
   min_by(a.achieved_in, a.achieved_at) AS first_achieved_in,
   slice(array_agg(a.fullname ORDER BY a.num_achieved DESC, a.achieved_at) FILTER (WHERE year(a.achieved_at) = year(current_date)), 1, 3) AS recent_top3,
-  slice(array_agg(a.fullname ORDER BY a.num_achieved DESC, a.achieved_at), 1, 3) AS alltime_top3
+  slice(array_agg(a.fullname ORDER BY a.num_achieved DESC, a.achieved_at), 1, 3) AS alltime_top3,
+  format('<img src="aches/%s.png">', acha.id) AS icon
 FROM acha
 LEFT JOIN masked a ON a.id = acha.id
 CROSS JOIN (SELECT COUNT(*) AS idents_count FROM memory.default.idents) i
