@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-for cmd in aha docker; do
+for cmd in ansi2html docker; do
     if ! command -v "$cmd" >/dev/null; then
         echo >&2 "Missing the $cmd command"
         exit 1
