@@ -5,4 +5,4 @@ Trino Project Reports
 
 # [Pull request pipeline reports](https://nineinchnick.github.io/trino-cicd/reports/pr/)
 
-# [Git Achievements](https://nineinchnick.github.io/trino-cicd/reports/git/)
+# [Git Achievements](https://MiguelWeezardo.github.io/trino-cicd/reports/git/)
