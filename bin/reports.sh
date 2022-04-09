@@ -34,14 +34,12 @@ queries=("$@")
 
 function run_query() {
     local file=$1
-    local SED_PR_LINK_UNESCAPE_PATTERN='s!&lt;a href=&quot;https://github.com/trinodb/trino/pull/([0-9]+)&quot;&gt;link&lt;/a&gt;!<a href="https://github.com/trinodb/trino/pull/\1">link</a>!'
     echo >&2 "Executing query from $file"
     docker exec \
         $container_name \
         trino --catalog hive --schema v2 \
         -f "/tmp/$(basename "$file")" \
-        --output-format=ALIGNED | aha -n |
-        sed -E "${SED_PR_LINK_UNESCAPE_PATTERN}" # Unescape PR links which were escaped by aha
+        --output-format=ALIGNED | ansi2html --inline --unescape
 }
 
 GITHUB_SERVER_URL=${GITHUB_SERVER_URL:-https://github.com}
