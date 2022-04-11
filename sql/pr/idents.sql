@@ -5,15 +5,17 @@ SELECT count(*)
 FROM git.default.commits;
 
 CREATE TABLE IF NOT EXISTS memory.default.nodes AS
-    SELECT email, name, count(*) AS count
+    SELECT email, name, login, count(*) AS count
     FROM (
-        SELECT author_email AS email, author_name AS name
-        FROM git.default.commits
+        SELECT g.author_email AS email, g.author_name AS name, gh.author_login AS login
+        FROM git.default.commits g
+        LEFT JOIN commits gh ON gh.sha = g.object_id
         UNION ALL
-        SELECT committer_email AS email, committer_name AS name
-        FROM git.default.commits
+        SELECT g.committer_email AS email, g.committer_name AS name, gh.committer_login AS login
+        FROM git.default.commits g
+        LEFT JOIN commits gh ON gh.sha = g.object_id
     ) names
-    GROUP BY email, name;
+    GROUP BY email, name, login;
 
 CREATE TABLE IF NOT EXISTS memory.default.edges AS
     SELECT n1.name AS name1, n2.name AS name2
@@ -37,10 +39,11 @@ WITH RECURSIVE
         FROM walk
         GROUP BY name1
     ),
-    grouped (names, emails) AS (
+    grouped (names, emails, logins) AS (
         SELECT
             array_distinct(array_agg(n.name ORDER BY n.count DESC)) AS names,
-            array_distinct(array_agg(n.email ORDER BY n.count DESC)) AS emails
+            array_distinct(array_agg(n.email ORDER BY n.count DESC)) AS emails,
+            array_distinct(array_agg(n.login ORDER BY n.count DESC)) AS logins
         FROM result r
         INNER JOIN memory.default.nodes n ON n.name = r.name1
         GROUP BY r.name2s
@@ -49,6 +52,7 @@ SELECT
     emails[1] AS email,
     names[1] AS name,
     slice(emails, 2, cardinality(emails)) AS extra_emails,
-    slice(names, 2, cardinality(emails)) AS extra_names
+    slice(names, 2, cardinality(emails)) AS extra_names,
+    logins
 FROM grouped
 ORDER BY name, names;

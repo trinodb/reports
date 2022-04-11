@@ -21,7 +21,7 @@ jobs:
       TRINO_SRC_SCHEMA: github.default
       EMPTY_INSERT_LIMIT: 5
       # sync for reviews takes too long, sync for review_comments is broken because Github return a Server Error
-      SYNC_TABLES: runs,jobs,steps,check_suites,check_runs,check_run_annotations,pulls,issues,issue_comments,artifacts
+      SYNC_TABLES: runs,jobs,steps,check_suites,check_runs,check_run_annotations,pulls,issues,issue_comments,commits,artifacts
     steps:
       - uses: actions/checkout@v2
       - name: Download trino-rest
