@@ -48,14 +48,16 @@ closed_issues AS (
 SELECT
   d.month AS "Month"
 , bar(op.count / CAST(max(op.count) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Open PRs chart"
-, bar(np.count / CAST(max(np.count) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "New PRs chart"
-, bar(cp.count / CAST(max(cp.count) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Closed and merged PRs chart"
+-- can't reverse a string with ansi escape codes so just swap the padding spaces
+, regexp_replace(bar((cp.count - np.count) / CAST(max(abs(np.count - cp.count)) OVER () AS double), 10, rgb(0, 155, 0), rgb(0, 155, 0)), '([^\s]*)(\s*)', '$2$1')
+  || bar((np.count - cp.count) / CAST(max(abs(np.count - cp.count)) OVER () AS double), 10, rgb(255, 0, 0), rgb(255, 0, 0))
+  AS "PRs delta"
 , bar(oi.count / CAST(max(oi.count) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Open issues chart"
-, bar(ni.count / CAST(max(ni.count) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "New issues chart"
-, bar(ci.count / CAST(max(ci.count) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Closed issues chart"
+, regexp_replace(bar((ci.count - ni.count) / CAST(max(abs(ni.count - ci.count)) OVER () AS double), 10, rgb(0, 155, 0), rgb(0, 155, 0)), '([^\s]*)(\s*)', '$2$1')
+  || bar((ni.count - ci.count) / CAST(max(abs(ni.count - ci.count)) OVER () AS double), 10, rgb(255, 0, 0), rgb(255, 0, 0)) AS "Issues delta"
 , op.count AS "Open PRs"
 , np.count AS "New PRs"
-, cp.count AS "Closed and merged PRs"
+, cp.count AS "Closed/merged PRs"
 , oi.count AS "Open issues"
 , ni.count AS "New issues"
 , ci.count AS "Closed issues"
