@@ -39,7 +39,7 @@ function run_query() {
         $container_name \
         trino --catalog hive --schema v2 \
         -f "/tmp/$(basename "$file")" \
-        --output-format=ALIGNED | ansi2html --inline | sed 's,| \(.*\) @https://\([^ ]*\),| <a href="\2">\1</a>,g'
+        --output-format=ALIGNED | ansi2html --inline | sed 's,| \(.*\) @https://\([^ ]*\),| <a href="https://\2">\1</a>,g'
 }
 
 GITHUB_SERVER_URL=${GITHUB_SERVER_URL:-https://github.com}
