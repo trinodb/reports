@@ -7,8 +7,8 @@ WITH mergers_per_year AS (
         m.org,
         count(*) AS commits_count
     FROM git.default.commits c
-    JOIN memory.default.idents ai ON ai.email = c.author_email OR CONTAINS(ai.extra_emails, c.author_email)
-    JOIN memory.default.idents ci ON ci.email = c.committer_email OR CONTAINS(ci.extra_emails, c.committer_email)
+    JOIN memory.default.gh_idents ai ON ai.email = c.author_email OR CONTAINS(ai.extra_emails, c.author_email)
+    JOIN memory.default.gh_idents ci ON ci.email = c.committer_email OR CONTAINS(ci.extra_emails, c.committer_email)
     LEFT JOIN members m ON CONTAINS(ci.logins, m.login)
     WHERE ai.email != ci.email
     GROUP BY 1, 2, 3, 4
@@ -31,5 +31,5 @@ SELECT
     commits_count
 FROM ranked_per_year
 WHERE in_year_rank < 11
-ORDER BY 1, 3 DESC
+ORDER BY 1 DESC, 5 DESC
 ;

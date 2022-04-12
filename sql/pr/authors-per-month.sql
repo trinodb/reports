@@ -8,7 +8,7 @@ authors AS (
     , count(*) AS num_commits
     , array_agg(distinct ai.name order by ai.name) AS names
     FROM git.default.commits c
-    JOIN memory.default.idents ai ON ai.name = c.author_name OR CONTAINS(ai.extra_names, c.author_name)
+    JOIN memory.default.gh_idents ai ON ai.name = c.author_name OR CONTAINS(ai.extra_names, c.author_name)
     LEFT JOIN members m ON CONTAINS(ai.logins, m.login)
     GROUP BY 1, 2
 )
