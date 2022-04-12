@@ -8,7 +8,7 @@ FROM
 JOIN
   reviews ON pulls.number = reviews.pull_number
 WHERE pulls.owner = 'trinodb' AND pulls.repo = 'trino' AND pulls.state = 'open' AND NOT pulls.draft
-GROUP BY 1, 2, pulls.updated_at, 4
+GROUP BY 1, 2, pulls.updated_at
 ORDER BY running_time DESC
 LIMIT 20
 ;
