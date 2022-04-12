@@ -44,7 +44,7 @@ Trino PR Reports
  2019-04-01 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span>                  | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span>                 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span>                       | <span style="color: #00af00">█</span><span style="color: #00af00">█</span>                   | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span>                | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span>                |      161 |      89 |                   101 |         295 |        132 |           114 
 (37 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/4eef510d02870c5dc1e6c778796135c3ba08e92f/sql/pr/burndown.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/539600c2a2ae69d60b0c032e5cc5155921324aee/sql/pr/burndown.sql)
 
 #  Authors per month
 <pre><code>
@@ -76,7 +76,7 @@ Trino PR Reports
  2020-05-01 | <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span>           | <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #00ff00">█</span><span style="color: #00ff00">█</span><span style="color: #00ff00">█</span><span style="color: #00ff00">█</span>            | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span>                  | <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #00ff00">█</span>             |           296 |            30 |                 5 |               457 | [Arvin Zheng, Brett Tofel, Victor Azevedo, tom-kita, Charles Morgan]                                                                                                                                                     
 (24 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/4eef510d02870c5dc1e6c778796135c3ba08e92f/sql/pr/authors-per-month.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/539600c2a2ae69d60b0c032e5cc5155921324aee/sql/pr/authors-per-month.sql)
 
 #  Changes per month
 <pre><code>
@@ -108,7 +108,7 @@ Trino PR Reports
  2020-05-01 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span>          | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span>              | <span style="color: #00af00">█</span><span style="color: #00af00">█</span>                   |           296 |       37735 |          9245 |         212 |            0 |             8 |           1434 |            24 
 (24 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/4eef510d02870c5dc1e6c778796135c3ba08e92f/sql/pr/changes-per-month.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/539600c2a2ae69d60b0c032e5cc5155921324aee/sql/pr/changes-per-month.sql)
 
 #  Top 10 reviewers per year
 <pre><code>
@@ -143,7 +143,7 @@ Trino PR Reports
  2020 | Karol Sobczak       | n***********@g****.com          |           862 |            333 |             525 
  2020 | David Stryker       | d************@s************.com |           433 |              4 |             429 
  2020 | Dain Sundstrom      | d***@i***.com                   |           424 |            205 |             189 
- 2020 | Raunaq Morarka      | r************@g****.com         |           387 |             22 |             364 
+ 2020 | Mateusz Gajewski    | m***************@g****.com      |           387 |             58 |             328 
  2019 | Piotr Findeisen     | p**************@g****.com       |          1243 |            244 |             975 
  2019 | David Phillips      | d****@a**.org                   |           895 |            309 |             568 
  2019 | Grzegorz Kokosiński | g***********@g****.com          |           800 |            270 |             519 
@@ -156,7 +156,7 @@ Trino PR Reports
  2019 | Roman Zeyde         | z****@v*****.io                 |           121 |              2 |             119 
 (40 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/4eef510d02870c5dc1e6c778796135c3ba08e92f/sql/pr/top-reviewers.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/539600c2a2ae69d60b0c032e5cc5155921324aee/sql/pr/top-reviewers.sql)
 
 #  Top 10 authors per year
 <pre><code>
@@ -203,8 +203,8 @@ Trino PR Reports
  2019 | Yuya Ebihara           | e*****@g****.com                          | starburstdata |            54 
  2019 | Xingyuan Lin           | l**************@g****.com                 | NULL          |            42 
  2018 | Piotr Findeisen        | p**************@g****.com                 | starburstdata |           326 
- 2018 | David Phillips         | d****@a**.org                             | starburstdata |           230 
  2018 | Grzegorz Kokosiński    | g***********@g****.com                    | starburstdata |           230 
+ 2018 | David Phillips         | d****@a**.org                             | starburstdata |           230 
  2018 | Karol Sobczak          | n***********@g****.com                    | starburstdata |           207 
  2018 | Andrii Rosa            | a*********@f*.com                         | starburstdata |           190 
  2018 | Nezih Yigitbasi        | n*****@f*.com                             | NULL          |           174 
@@ -248,8 +248,8 @@ Trino PR Reports
  2014 | Martin Traverso        | m********@g****.com                       | starburstdata |           338 
  2014 | Eric Hwang             | e*****@f*.com                             | starburstdata |            51 
  2014 | Nileema Shingte        | n**************@g****.com                 | NULL          |            45 
- 2014 | Zhenxiao Luo           | z***@n******.com                          | NULL          |            23 
  2014 | Nezih Yigitbasi        | n*****@f*.com                             | NULL          |            23 
+ 2014 | Zhenxiao Luo           | z***@n******.com                          | NULL          |            23 
  2014 | Henning Schmiedehausen | h******@s*************.org                | NULL          |            16 
  2014 | Min(Dongmin Yu)        | m******@g****.com                         | NULL          |            14 
  2013 | Dain Sundstrom         | d***@i***.com                             | starburstdata |           564 
@@ -268,7 +268,7 @@ Trino PR Reports
  2012 | Eric Hwang             | e*****@f*.com                             | starburstdata |            92 
 (104 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/4eef510d02870c5dc1e6c778796135c3ba08e92f/sql/pr/top-authors.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/539600c2a2ae69d60b0c032e5cc5155921324aee/sql/pr/top-authors.sql)
 
 #  Top 10 mergers per year
 <pre><code>
@@ -302,16 +302,16 @@ Trino PR Reports
  2020 | Grzegorz Kokosiński | g***********@g****.com                     | starburstdata |           146 
  2020 | Dain Sundstrom      | d***@i***.com                              | starburstdata |            69 
  2020 | Yuya Ebihara        | e*****@g****.com                           | starburstdata |            43 
- 2020 | Pratham Desai       | p*********@g****.com                       | NULL          |             9 
  2020 | praveenkrishna      | p*************@t*******.com                | starburstdata |             9 
+ 2020 | Pratham Desai       | p*********@g****.com                       | NULL          |             9 
  2019 | David Phillips      | d****@a**.org                              | starburstdata |           193 
  2019 | Martin Traverso     | m********@g****.com                        | starburstdata |           167 
  2019 | Karol Sobczak       | n***********@g****.com                     | starburstdata |           124 
  2019 | Piotr Findeisen     | p**************@g****.com                  | starburstdata |           121 
  2019 | Grzegorz Kokosiński | g***********@g****.com                     | starburstdata |           117 
  2019 | Dain Sundstrom      | d***@i***.com                              | starburstdata |            52 
- 2019 | Yuya Ebihara        | e*****@g****.com                           | starburstdata |             2 
  2019 | Raghav Sethi        | r*************@g****.com                   | NULL          |             2 
+ 2019 | Yuya Ebihara        | e*****@g****.com                           | starburstdata |             2 
  2019 | yingsu00            | 3****************@u*******************.com | NULL          |             1 
  2018 | Piotr Findeisen     | p**************@g****.com                  | starburstdata |           124 
  2018 | Grzegorz Kokosiński | g***********@g****.com                     | starburstdata |            95 
@@ -352,34 +352,34 @@ Trino PR Reports
  2014 | David Phillips      | d****@a**.org                              | starburstdata |            34 
  2014 | Martin Traverso     | m********@g****.com                        | starburstdata |            31 
  2014 | Christopher Berner  | c****************@g****.com                | NULL          |            28 
- 2014 | Eric Hwang          | e*****@f*.com                              | starburstdata |             2 
  2014 | Nileema Shingte     | n**************@g****.com                  | NULL          |             2 
+ 2014 | Eric Hwang          | e*****@f*.com                              | starburstdata |             2 
  2013 | Martin Traverso     | m********@g****.com                        | starburstdata |            18 
- 2013 | David Phillips      | d****@a**.org                              | starburstdata |             5 
  2013 | Dain Sundstrom      | d***@i***.com                              | starburstdata |             5 
+ 2013 | David Phillips      | d****@a**.org                              | starburstdata |             5 
  2012 | Martin Traverso     | m********@g****.com                        | starburstdata |            46 
  2012 | Dain Sundstrom      | d***@i***.com                              | starburstdata |             9 
 (85 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/4eef510d02870c5dc1e6c778796135c3ba08e92f/sql/pr/top-mergers.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/539600c2a2ae69d60b0c032e5cc5155921324aee/sql/pr/top-mergers.sql)
 
 #  Average time to merge a PR
 <pre><code>
  Merged in month | Merged PRs |    Avg TTM chart     |     Avg TTM     | 3 month avg TTM |   Day percentiles 50, 95, 99   
 -----------------+------------+----------------------+-----------------+-----------------+--------------------------------
- 2022-04-01      |         85 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span>      | 15 18:17:28.588 | 12 14:03:06.052 | [2.14, 73.94, 253.02]          
- 2022-03-01      |        265 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span>         | 11 23:59:38.875 | 12 02:17:44.646 | [2.1580567, 34.9, 234.76]      
- 2022-02-01      |        204 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span>       | 14 12:30:13.960 | 12 01:45:04.418 | [1.7011364, 48.36, 126.66]     
- 2022-01-01      |        191 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span>            | 9 22:00:47.272  | 11 23:53:33.041 | [2.424381, 69.61, 104.33]      
- 2021-12-01      |        174 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span>          | 11 18:56:51.701 | 11 15:16:00.908 | [1.6713636, 84.5, 125.27]      
- 2021-11-01      |        160 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span>          | 11 20:00:10.050 | 13 05:56:19.712 | [2.3111668, 61.02, 121.5]      
- 2021-10-01      |        200 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span>       | 14 06:56:27.910 | 13 14:08:39.225 | [1.5952778, 77.274994, 323.89] 
+ 2022-04-01      |         85 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span>      | 15 18:17:28.588 | 12 14:03:06.052 | [2.1966667, 73.94, 253.02]     
+ 2022-03-01      |        265 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span>         | 11 23:59:38.875 | 12 02:17:44.646 | [2.207159, 34.64, 234.76]      
+ 2022-02-01      |        204 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span>       | 14 12:30:13.960 | 12 01:45:04.418 | [1.6723052, 48.36, 126.66]     
+ 2022-01-01      |        191 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span>            | 9 22:00:47.272  | 11 23:53:33.041 | [2.507625, 69.61, 104.33]      
+ 2021-12-01      |        174 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span>          | 11 18:56:51.701 | 11 15:16:00.908 | [1.7261112, 84.5, 125.27]      
+ 2021-11-01      |        160 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span>          | 11 20:00:10.050 | 13 05:56:19.712 | [2.3011029, 61.02, 121.5]      
+ 2021-10-01      |        200 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span>       | 14 06:56:27.910 | 13 14:08:39.225 | [1.543125, 74.99, 323.89]      
  2021-09-01      |        211 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span>             | 8 20:17:08.677  | 12 02:11:48.200 | [1.2124261, 41.63, 116.33]     
- 2021-08-01      |        141 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span> | 19 23:05:18.539 | 13 23:24:33.453 | [1.6717187, 75.62, 338.33]     
- 2021-07-01      |        143 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span>        | 13 07:50:52.552 | 11 14:44:25.510 | [2.4966667, 45.07, 206.35]     
+ 2021-08-01      |        141 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span> | 19 23:05:18.539 | 13 23:24:33.453 | [1.6800781, 75.62, 338.33]     
+ 2021-07-01      |        143 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span>        | 13 07:50:52.552 | 11 14:44:25.510 | [2.4985938, 45.07, 206.35]     
  2021-06-01      |        157 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span>             | 8 06:15:22.719  | 9 16:42:09.554  | [2.0340703, 34.87, 117.57]     
  2021-05-01      |        185 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span>       | 14 18:19:32.356 | 10 05:45:05.182 | [1.3349587, 65.705, 367.61]    
- 2021-04-01      |        173 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span>            | 9 20:58:25.421  | 8 12:39:53.680  | [1.6421487, 41.75, 135.89]     
+ 2021-04-01      |        173 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span>            | 9 20:58:25.421  | 8 12:39:53.680  | [1.6154546, 41.75, 135.89]     
  2021-03-01      |        206 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span>               | 6 02:08:38.533  | 9 09:18:11.141  | [1.1939645, 22.4375, 45.99]    
  2021-02-01      |        148 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span>           | 10 18:56:12.621 | 10 04:42:27.607 | [2.3528395, 42.92, 152.0]      
  2021-01-01      |        136 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span>             | 8 01:08:50.926  | 10 04:45:10.797 | [1.359375, 45.3, 111.84]       
@@ -409,38 +409,38 @@ Trino PR Reports
  2019-01-01      |         47 | <span style="color: #00af00">█</span>                    | 1 11:15:10.106  | 1 11:15:10.106  | [0.81625, 4.9, 6.86]           
 (40 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/4eef510d02870c5dc1e6c778796135c3ba08e92f/sql/pr/avg-time-to-merge.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/539600c2a2ae69d60b0c032e5cc5155921324aee/sql/pr/avg-time-to-merge.sql)
 
 #  Average time to merge per create month
 <pre><code>
  Created in month | Merged PRs |    Avg TTM chart     |     Avg TTM     | 3 month avg TTM |   Day percentiles 50, 95, 99   
 ------------------+------------+----------------------+-----------------+-----------------+--------------------------------
  2022-04-01       |         47 |                      | 1 03:38:32.638  | 5 07:04:29.713  | [0.63625, 3.8, 4.06]           
- 2022-03-01       |        247 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span>                  | 4 13:15:51.951  | 6 15:26:08.426  | [1.85, 19.486376, 29.48]       
- 2022-02-01       |        191 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span>                 | 5 16:06:30.863  | 7 19:16:10.094  | [1.5844628, 24.47, 41.03]      
- 2022-01-01       |        202 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span>                | 6 19:26:47.980  | 9 03:25:31.605  | [2.42071, 28.588001, 72.0]     
+ 2022-03-01       |        247 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span>                  | 4 13:15:51.951  | 6 15:26:08.426  | [1.9005274, 19.525167, 29.48]  
+ 2022-02-01       |        191 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span>                 | 5 16:06:30.863  | 7 19:16:10.094  | [1.5870486, 25.00925, 41.03]   
+ 2022-01-01       |        202 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span>                | 6 19:26:47.980  | 9 03:25:31.605  | [2.4167752, 28.692, 72.0]      
  2021-12-01       |        168 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span>            | 10 14:53:50.297 | 9 06:21:03.307  | [1.5724, 60.42, 85.68]         
- 2021-11-01       |        157 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span>              | 8 15:47:40.961  | 10 07:19:16.536 | [1.81, 42.97, 92.75]           
- 2021-10-01       |        203 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span>            | 10 14:46:03.541 | 10 19:56:05.485 | [1.8879339, 53.16, 126.66]     
- 2021-09-01       |        204 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span>               | 7 06:29:33.926  | 10 15:11:33.755 | [1.1654166, 45.32, 91.11]      
- 2021-08-01       |        154 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span>        | 15 14:16:34.428 | 11 10:59:11.269 | [2.1614063, 95.34, 234.76]     
- 2021-07-01       |        144 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span>            | 11 01:58:49.479 | 9 07:35:23.692  | [2.4979544, 54.78, 121.5]      
+ 2021-11-01       |        157 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span>              | 8 15:47:40.961  | 10 07:19:16.536 | [1.9061053, 42.97, 92.75]      
+ 2021-10-01       |        203 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span>            | 10 14:46:03.541 | 10 19:56:05.485 | [1.9011242, 60.971, 126.66]    
+ 2021-09-01       |        204 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span>               | 7 06:29:33.926  | 10 15:11:33.755 | [1.1634911, 45.662, 91.11]     
+ 2021-08-01       |        154 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span>        | 15 14:16:34.428 | 11 10:59:11.269 | [2.1496913, 95.34, 234.76]     
+ 2021-07-01       |        144 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span>            | 11 01:58:49.479 | 9 07:35:23.692  | [2.4997303, 54.78, 121.5]      
  2021-06-01       |        152 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span>             | 9 16:37:48.736  | 8 09:26:55.169  | [1.9503704, 44.87, 129.83]     
- 2021-05-01       |        189 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span>             | 9 19:00:35.058  | 8 11:26:21.925  | [1.2940625, 33.11, 175.33]     
- 2021-04-01       |        165 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span>                | 6 21:11:08.369  | 8 07:17:15.173  | [1.5059999, 32.48, 93.05]      
- 2021-03-01       |        200 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span>               | 7 07:57:08.775  | 9 21:07:09.960  | [1.127359, 41.8825, 73.91]     
+ 2021-05-01       |        189 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span>             | 9 19:00:35.058  | 8 11:26:21.925  | [1.2940625, 33.396248, 175.33] 
+ 2021-04-01       |        165 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span>                | 6 21:11:08.369  | 8 07:17:15.173  | [1.37825, 32.48, 93.05]        
+ 2021-03-01       |        200 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span>               | 7 07:57:08.775  | 9 21:07:09.960  | [1.137781, 41.8825, 73.91]     
  2021-02-01       |        158 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span>             | 10 00:25:01.702 | 11 00:24:57.840 | [2.7105262, 45.99, 176.68]     
  2021-01-01       |        138 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span>             | 9 10:47:24.528  | 9 15:32:18.384  | [1.4384375, 42.92, 119.54]     
- 2020-12-01       |        165 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span>          | 13 04:44:32.939 | 10 09:28:05.082 | [1.31875, 71.02, 227.11]       
+ 2020-12-01       |        165 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span>          | 13 04:44:32.939 | 10 09:28:05.082 | [1.29035, 71.02, 227.11]       
  2020-11-01       |        208 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span>            | 11 02:06:01.567 | 9 12:41:23.986  | [1.1631657, 34.023, 273.21]    
- 2020-10-01       |        189 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span>                 | 5 02:35:04.142  | 9 09:33:34.232  | [1.1071528, 22.54225, 72.18]   
+ 2020-10-01       |        189 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span>                 | 5 02:35:04.142  | 9 09:33:34.232  | [1.0940624, 22.54225, 72.18]   
  2020-09-01       |        180 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span>           | 12 13:48:28.927 | 9 14:17:22.317  | [1.005248, 40.66, 338.33]      
  2020-08-01       |        192 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span>             | 9 08:03:41.302  | 11 17:30:58.570 | [1.3614583, 54.413998, 107.62] 
- 2020-07-01       |        200 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span>            | 10 15:41:07.255 | 11 20:50:16.680 | [2.0083897, 52.7425, 126.5]    
+ 2020-07-01       |        200 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span>            | 10 15:41:07.255 | 11 20:50:16.680 | [2.0119822, 52.7425, 126.5]    
  2020-06-01       |        221 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span>                | 6 10:28:02.398  | 12 11:47:51.943 | [0.93117344, 27.98625, 58.22]  
- 2020-05-01       |        162 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span> | 23 02:49:14.574 | 14 05:04:04.147 | [2.0266, 134.25, 367.61]       
+ 2020-05-01       |        162 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span> | 23 02:49:14.574 | 14 05:04:04.147 | [2.027, 134.25, 367.61]        
  2020-04-01       |        172 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span>             | 9 15:57:41.000  | 11 05:47:08.188 | [1.517749, 58.13, 125.42]      
- 2020-03-01       |        174 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span>          | 13 02:00:20.137 | 11 22:11:40.016 | [1.2106612, 54.2, 273.05]      
+ 2020-03-01       |        174 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span>          | 13 02:00:20.137 | 11 22:11:40.016 | [1.202438, 54.2, 273.05]       
  2020-02-01       |        144 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span>            | 10 23:37:03.243 | 11 11:10:53.982 | [2.8737419, 45.31, 120.93]     
  2020-01-01       |        172 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span>            | 11 04:02:22.546 | 12 09:25:05.199 | [1.5192857, 48.28, 238.88]     
  2019-12-01       |        119 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span>           | 12 11:05:23.873 | 11 17:12:01.033 | [1.4563265, 69.29, 179.32]     
@@ -451,13 +451,13 @@ Trino PR Reports
  2019-07-01       |         81 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span>   | 21 16:51:51.320 | 15 00:23:34.010 | [3.34125, 86.82, 392.07]       
  2019-06-01       |        114 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span>           | 12 02:52:44.315 | 11 15:55:34.028 | [1.8641667, 75.02, 155.21]     
  2019-05-01       |        100 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span>             | 9 09:10:14.510  | 11 20:58:54.468 | [1.436, 22.41, 454.04]         
- 2019-04-01       |         78 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span>     | 19 12:42:29.051 | 11 20:42:58.718 | [1.01, 41.95, 1034.71]         
+ 2019-04-01       |         78 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span>     | 19 12:42:29.051 | 11 20:42:58.718 | [1.05125, 41.95, 1034.71]      
  2019-03-01       |        135 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span>              | 8 10:09:45.340  | 10 03:28:36.402 | [1.4714844, 48.01, 77.75]      
  2019-02-01       |        146 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span>           | 12 16:22:21.253 | 11 05:39:42.568 | [0.94901234, 40.0, 341.58]     
  2019-01-01       |         67 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span>               | 8 02:01:24.537  | 8 02:01:24.537  | [1.5366666, 27.49, 125.5]      
 (40 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/4eef510d02870c5dc1e6c778796135c3ba08e92f/sql/pr/avg-time-to-merge-since-creation.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/539600c2a2ae69d60b0c032e5cc5155921324aee/sql/pr/avg-time-to-merge-since-creation.sql)
 
 #  Average time to first review
 <pre><code>
@@ -505,91 +505,91 @@ Trino PR Reports
  2019-01-01       |          46 |           35 | <span style="color: #00af00">█</span>                    | 0 12:17:19.543 | [0.13, 0.61, 1.32, 5.07]                   |        2.33 |           1.3 |          0.0 
 (40 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/4eef510d02870c5dc1e6c778796135c3ba08e92f/sql/pr/avg-time-to-first-review.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/539600c2a2ae69d60b0c032e5cc5155921324aee/sql/pr/avg-time-to-first-review.sql)
 
 #  Stale PRs
 <pre><code>
- number |                                                                 title                                                                  |  untouched_for   
---------+----------------------------------------------------------------------------------------------------------------------------------------+------------------
-   1364 | <a href="github.com/trinodb/trino/pull/1364">Filter tables based on table privilege of user</a>                                             | 915 02:53:34.919 
-   2786 | <a href="github.com/trinodb/trino/pull/2786">Categorize user errors when parsing data via GenericHiveRecordCursor</a>                       | 790 15:46:01.919 
-   2832 | <a href="github.com/trinodb/trino/pull/2832">Use file extension based on the file format</a>                                                | 770 22:19:47.919 
-   4834 | <a href="github.com/trinodb/trino/pull/4834">Reuse containers in product tests</a>                                                          | 594 20:08:46.919 
-   4872 | <a href="github.com/trinodb/trino/pull/4872">CachingHiveMetastore: refactor cache creation and flushCache()</a>                             | 588 23:38:37.919 
-   2976 | <a href="github.com/trinodb/trino/pull/2976">[WIP] Add sybase connector</a>                                                                 | 540 18:28:48.919 
-   4426 | <a href="github.com/trinodb/trino/pull/4426">Fix type mismatch between partition and table</a>                                              | 538 05:08:19.919 
-   4413 | <a href="github.com/trinodb/trino/pull/4413">Add deterministic UUID functions uuid_v3 and uuid_v5</a>                                       | 504 03:00:46.919 
-   7870 | <a href="github.com/trinodb/trino/pull/7870">Isaac Scafe Writing Exercises</a>                                                              | 311 18:23:04.919 
-   5834 | <a href="github.com/trinodb/trino/pull/5834">Throw SQLException in getTime</a>                                                              | 255 13:47:20.919 
-   5767 | <a href="github.com/trinodb/trino/pull/5767">add missing jars when `hive.s3-file-system-type=HADOOP_DEFAULT`</a>                            | 187 07:28:01.919 
-   9440 | <a href="github.com/trinodb/trino/pull/9440">[Doc] update the example of explain analyze statement doc</a>                                  | 154 16:54:12.919 
-  10168 | <a href="github.com/trinodb/trino/pull/10168">Handle HTTP 504 returned from Trino coordinator/Proxy layer.</a>                              | 113 10:34:13.919 
-  10235 | <a href="github.com/trinodb/trino/pull/10235">[WIP] Add tests for iceberg partitioning on FIXED and BINARY columns</a>                      | 113 10:34:13.919 
-   9859 | <a href="github.com/trinodb/trino/pull/9859"> Allow NON-ASCII Chars on extra credentials values and session property values.</a>            | 113 10:34:12.919 
-   9932 | <a href="github.com/trinodb/trino/pull/9932">Use default etc-dir catalog folder (`/etc/trino/catalog`/) in Hive connector docs</a>          | 113 10:34:12.919 
-   9924 | <a href="github.com/trinodb/trino/pull/9924">Opentelemetry tracing introduction with auto instrumentation using opentelemetry-javaagent</a> | 113 10:34:12.919 
-   9752 | <a href="github.com/trinodb/trino/pull/9752">Fix description in IfStatement</a>                                                             | 113 10:34:12.919 
-   9804 | <a href="github.com/trinodb/trino/pull/9804">Not implement GroupedAccumulator in generateGroupedStateClass</a>                              | 113 10:34:12.919 
-   9789 | <a href="github.com/trinodb/trino/pull/9789">allow push down join on redshift</a>                                                           | 113 10:34:12.919 
+ number |                                                                 title                                                                 |  untouched_for   
+--------+---------------------------------------------------------------------------------------------------------------------------------------+------------------
+   1364 | <a href="https://github.com/trinodb/trino/pull/1364">Filter tables based on table privilege of user</a>                                            | 915 03:16:02.221 
+   2786 | <a href="https://github.com/trinodb/trino/pull/2786">Categorize user errors when parsing data via GenericHiveRecordCursor</a>                      | 790 16:08:29.221 
+   2832 | <a href="https://github.com/trinodb/trino/pull/2832">Use file extension based on the file format</a>                                               | 770 22:42:15.221 
+   4834 | <a href="https://github.com/trinodb/trino/pull/4834">Reuse containers in product tests</a>                                                         | 594 20:31:14.221 
+   4872 | <a href="https://github.com/trinodb/trino/pull/4872">CachingHiveMetastore: refactor cache creation and flushCache()</a>                            | 589 00:01:05.221 
+   2976 | <a href="https://github.com/trinodb/trino/pull/2976">[WIP] Add sybase connector</a>                                                                | 540 18:51:16.221 
+   4426 | <a href="https://github.com/trinodb/trino/pull/4426">Fix type mismatch between partition and table</a>                                             | 538 05:30:47.221 
+   4413 | <a href="https://github.com/trinodb/trino/pull/4413">Add deterministic UUID functions uuid_v3 and uuid_v5</a>                                      | 504 03:23:14.221 
+   7870 | <a href="https://github.com/trinodb/trino/pull/7870">Isaac Scafe Writing Exercises</a>                                                             | 311 18:45:32.221 
+   5834 | <a href="https://github.com/trinodb/trino/pull/5834">Throw SQLException in getTime</a>                                                             | 255 14:09:48.221 
+   5767 | <a href="https://github.com/trinodb/trino/pull/5767">add missing jars when `hive.s3-file-system-type=HADOOP_DEFAULT`</a>                           | 187 07:50:29.221 
+   9440 | <a href="https://github.com/trinodb/trino/pull/9440">[Doc] update the example of explain analyze statement doc</a>                                 | 154 17:16:40.221 
+  10235 | <a href="https://github.com/trinodb/trino/pull/10235">[WIP] Add tests for iceberg partitioning on FIXED and BINARY columns</a>                     | 113 10:56:41.221 
+  10168 | <a href="https://github.com/trinodb/trino/pull/10168">Handle HTTP 504 returned from Trino coordinator/Proxy layer.</a>                             | 113 10:56:41.221 
+  10057 | <a href="https://github.com/trinodb/trino/pull/10057">Add xml-related functions for parsing XML data using XPath expressions</a>                   | 113 10:56:40.221 
+   9580 | <a href="https://github.com/trinodb/trino/pull/9580">test cdh5</a>                                                                                 | 113 10:56:40.221 
+   9982 | <a href="https://github.com/trinodb/trino/pull/9982">Skip empty union nodes when stats are available.</a>                                          | 113 10:56:40.221 
+   9652 | <a href="https://github.com/trinodb/trino/pull/9652">fix resource leak due to newDirectoryStream</a>                                               | 113 10:56:40.221 
+   9720 | <a href="https://github.com/trinodb/trino/pull/9720">Allow MemSQL to push down string aggregations/joins by forcing a case-sensitive collation</a> | 113 10:56:40.221 
+   9523 | <a href="https://github.com/trinodb/trino/pull/9523">[WIP] Arbitrary table properties</a>                                                          | 113 10:56:40.221 
 (20 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/4eef510d02870c5dc1e6c778796135c3ba08e92f/sql/pr/stale-prs.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/539600c2a2ae69d60b0c032e5cc5155921324aee/sql/pr/stale-prs.sql)
 
 #  Longest running PRs
 <pre><code>
  number |                                                      title                                                       |  running_time  
 --------+------------------------------------------------------------------------------------------------------------------+----------------
-  10150 | <a href="github.com/trinodb/trino/pull/10150">Proactively enforce memory limits in distincting accumulators</a>       | 0 00:00:00.000 
-  11785 | <a href="github.com/trinodb/trino/pull/11785">Drop support of resource over commit</a>                                | 0 00:00:00.000 
-  10108 | <a href="github.com/trinodb/trino/pull/10108">Add parquet tests for array-of-nested-structs</a>                       | 0 00:00:00.000 
-  10942 | <a href="github.com/trinodb/trino/pull/10942">Implement maxDriversPerQuery</a>                                        | 0 00:00:00.000 
-  11420 | <a href="github.com/trinodb/trino/pull/11420">Remove unnecessary MAVEN_INSTALL_OPTS from CI</a>                       | 0 00:00:00.000 
-  11533 | <a href="github.com/trinodb/trino/pull/11533">Push down IF in PostgreSQL connector</a>                                | 0 00:00:00.000 
-   4872 | <a href="github.com/trinodb/trino/pull/4872">CachingHiveMetastore: refactor cache creation and flushCache()</a>       | 0 00:00:00.000 
-  11564 | <a href="github.com/trinodb/trino/pull/11564">Improve SQL Server type mapping documentation</a>                       | 0 00:00:00.000 
-   3507 | <a href="github.com/trinodb/trino/pull/3507">Upgrade gcs to 2.2.2</a>                                                 | 0 00:00:00.000 
-  10367 | <a href="github.com/trinodb/trino/pull/10367">Migrate deprecated `rollback()` call</a>                                | 0 00:00:00.000 
-  11261 | <a href="github.com/trinodb/trino/pull/11261">Document the hive.fs.cache.max-size property</a>                        | 0 00:00:00.000 
-   2832 | <a href="github.com/trinodb/trino/pull/2832">Use file extension based on the file format</a>                          | 0 00:00:00.000 
-   4834 | <a href="github.com/trinodb/trino/pull/4834">Reuse containers in product tests</a>                                    | 0 00:00:00.000 
-  10297 | <a href="github.com/trinodb/trino/pull/10297">Document proxy configuration for OAuth 2.0 client</a>                   | 0 00:00:00.000 
-  11423 | <a href="github.com/trinodb/trino/pull/11423">Support renaming table in MongoDB</a>                                   | 0 00:00:00.000 
-  11430 | <a href="github.com/trinodb/trino/pull/11430">Deny comment on unsupported table</a>                                   | 0 00:00:00.000 
-  10681 | <a href="github.com/trinodb/trino/pull/10681">Return exception message in HTTP header</a>                             | 0 00:00:00.000 
-  11677 | <a href="github.com/trinodb/trino/pull/11677">Fix creating empty ORC files when using ZSTD</a>                        | 0 00:00:00.000 
-   9754 | <a href="github.com/trinodb/trino/pull/9754">Use RowType in decimal aggregation serde</a>                             | 0 00:00:00.000 
-   2786 | <a href="github.com/trinodb/trino/pull/2786">Categorize user errors when parsing data via GenericHiveRecordCursor</a> | 0 00:00:00.000 
+   9754 | <a href="https://github.com/trinodb/trino/pull/9754">Use RowType in decimal aggregation serde</a>                             | 0 00:00:00.000 
+  11430 | <a href="https://github.com/trinodb/trino/pull/11430">Deny comment on unsupported table</a>                                   | 0 00:00:00.000 
+  10681 | <a href="https://github.com/trinodb/trino/pull/10681">Return exception message in HTTP header</a>                             | 0 00:00:00.000 
+   3507 | <a href="https://github.com/trinodb/trino/pull/3507">Upgrade gcs to 2.2.2</a>                                                 | 0 00:00:00.000 
+  10150 | <a href="https://github.com/trinodb/trino/pull/10150">Proactively enforce memory limits in distincting accumulators</a>       | 0 00:00:00.000 
+  11785 | <a href="https://github.com/trinodb/trino/pull/11785">Drop support of resource over commit</a>                                | 0 00:00:00.000 
+  10779 | <a href="https://github.com/trinodb/trino/pull/10779">Add hive iceberg support based on Trino created iceberg table.</a>      | 0 00:00:00.000 
+  11423 | <a href="https://github.com/trinodb/trino/pull/11423">Support renaming table in MongoDB</a>                                   | 0 00:00:00.000 
+  11677 | <a href="https://github.com/trinodb/trino/pull/11677">Fix creating empty ORC files when using ZSTD</a>                        | 0 00:00:00.000 
+  11147 | <a href="https://github.com/trinodb/trino/pull/11147">Improve long decimal implementation of xxHash64</a>                     | 0 00:00:00.000 
+  10942 | <a href="https://github.com/trinodb/trino/pull/10942">Implement maxDriversPerQuery</a>                                        | 0 00:00:00.000 
+  10108 | <a href="https://github.com/trinodb/trino/pull/10108">Add parquet tests for array-of-nested-structs</a>                       | 0 00:00:00.000 
+  11533 | <a href="https://github.com/trinodb/trino/pull/11533">Push down IF in PostgreSQL connector</a>                                | 0 00:00:00.000 
+   2786 | <a href="https://github.com/trinodb/trino/pull/2786">Categorize user errors when parsing data via GenericHiveRecordCursor</a> | 0 00:00:00.000 
+  10728 | <a href="https://github.com/trinodb/trino/pull/10728">Negate method invocation</a>                                            | 0 00:00:00.000 
+  11564 | <a href="https://github.com/trinodb/trino/pull/11564">Improve SQL Server type mapping documentation</a>                       | 0 00:00:00.000 
+  10717 | <a href="https://github.com/trinodb/trino/pull/10717">Elasticsearch connector optimize the search query of deep nesting</a>   | 0 00:00:00.000 
+  11420 | <a href="https://github.com/trinodb/trino/pull/11420">Remove unnecessary MAVEN_INSTALL_OPTS from CI</a>                       | 0 00:00:00.000 
+  11475 | <a href="https://github.com/trinodb/trino/pull/11475">Upgrade Pinot Connector to use 0.9.3 Libraries</a>                      | 0 00:00:00.000 
+   4872 | <a href="https://github.com/trinodb/trino/pull/4872">CachingHiveMetastore: refactor cache creation and flushCache()</a>       | 0 00:00:00.000 
 (20 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/4eef510d02870c5dc1e6c778796135c3ba08e92f/sql/pr/running-prs.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/539600c2a2ae69d60b0c032e5cc5155921324aee/sql/pr/running-prs.sql)
 
 #  Longest time since last review
 <pre><code>
  number |                                                               title                                                               | time_since_review 
 --------+-----------------------------------------------------------------------------------------------------------------------------------+-------------------
-    685 | <a href="github.com/trinodb/trino/pull/685">Add SampleNode stats and cost rule</a>                                                     | 1080 02:14:03.427 
-    624 | <a href="github.com/trinodb/trino/pull/624">Optimize distinct aggregation on multiple columns</a>                                      | 1064 11:19:52.427 
-    821 | <a href="github.com/trinodb/trino/pull/821">Distributed sort for unpartitioned window functions</a>                                    | 1049 19:13:17.427 
-    855 | <a href="github.com/trinodb/trino/pull/855">Change client to assume types are encoded as text</a>                                      | 1048 03:59:01.427 
-   1255 | <a href="github.com/trinodb/trino/pull/1255">Remove no longer needed ConnectorSplitSource#isFinished</a>                               | 980 03:09:37.427  
-   1224 | <a href="github.com/trinodb/trino/pull/1224">Add graceful shutdown script for Docker</a>                                               | 979 20:01:16.427  
-   1319 | <a href="github.com/trinodb/trino/pull/1319">Add execution statistic warnings</a>                                                      | 967 03:32:32.427  
-   1317 | <a href="github.com/trinodb/trino/pull/1317">Add connector table metadata warnings</a>                                                 | 959 15:11:58.427  
-   1364 | <a href="github.com/trinodb/trino/pull/1364">Filter tables based on table privilege of user</a>                                        | 915 19:21:48.427  
-   1637 | <a href="github.com/trinodb/trino/pull/1637">[WIP] patch to add support for array by table subquery</a>                                | 915 17:55:32.427  
-   1606 | <a href="github.com/trinodb/trino/pull/1606">Improve property derivation for FULL JOIN</a>                                             | 909 01:45:16.427  
-   1965 | <a href="github.com/trinodb/trino/pull/1965">Node local partition pruning</a>                                                          | 886 17:29:59.427  
-   2026 | <a href="github.com/trinodb/trino/pull/2026">Add pattern for files ending with &lt;query_id&gt;.&lt;number&gt; to cleanup them during rollback</a> | 875 23:39:08.427  
-   2227 | <a href="github.com/trinodb/trino/pull/2227">Adding changes for adding _timestamp field in kafka topic metadata.</a>                   | 837 16:13:06.427  
-   2489 | <a href="github.com/trinodb/trino/pull/2489">Derive non-null from symbol-to-symbol comparisons in domain translator</a>                | 818 17:28:07.427  
-   2010 | <a href="github.com/trinodb/trino/pull/2010">Query debugging tracer</a>                                                                | 816 05:17:07.427  
-   2397 | <a href="github.com/trinodb/trino/pull/2397">Influx Connector</a>                                                                      | 811 08:43:16.427  
-   2769 | <a href="github.com/trinodb/trino/pull/2769">Add missing catalogName at building ConnectorSession</a>                                  | 792 02:09:42.427  
-   2786 | <a href="github.com/trinodb/trino/pull/2786">Categorize user errors when parsing data via GenericHiveRecordCursor</a>                  | 790 15:46:51.427  
-   2703 | <a href="github.com/trinodb/trino/pull/2703">Support views in iceberg connector</a>                                                    | 775 15:52:58.427  
+    685 | <a href="https://github.com/trinodb/trino/pull/685">Add SampleNode stats and cost rule</a>                                                     | 1080 02:36:32.092 
+    624 | <a href="https://github.com/trinodb/trino/pull/624">Optimize distinct aggregation on multiple columns</a>                                      | 1064 11:42:21.092 
+    821 | <a href="https://github.com/trinodb/trino/pull/821">Distributed sort for unpartitioned window functions</a>                                    | 1049 19:35:46.092 
+    855 | <a href="https://github.com/trinodb/trino/pull/855">Change client to assume types are encoded as text</a>                                      | 1048 04:21:30.092 
+   1255 | <a href="https://github.com/trinodb/trino/pull/1255">Remove no longer needed ConnectorSplitSource#isFinished</a>                               | 980 03:32:06.092  
+   1224 | <a href="https://github.com/trinodb/trino/pull/1224">Add graceful shutdown script for Docker</a>                                               | 979 20:23:45.092  
+   1319 | <a href="https://github.com/trinodb/trino/pull/1319">Add execution statistic warnings</a>                                                      | 967 03:55:01.092  
+   1317 | <a href="https://github.com/trinodb/trino/pull/1317">Add connector table metadata warnings</a>                                                 | 959 15:34:27.092  
+   1364 | <a href="https://github.com/trinodb/trino/pull/1364">Filter tables based on table privilege of user</a>                                        | 915 19:44:17.092  
+   1637 | <a href="https://github.com/trinodb/trino/pull/1637">[WIP] patch to add support for array by table subquery</a>                                | 915 18:18:01.092  
+   1606 | <a href="https://github.com/trinodb/trino/pull/1606">Improve property derivation for FULL JOIN</a>                                             | 909 02:07:45.092  
+   1965 | <a href="https://github.com/trinodb/trino/pull/1965">Node local partition pruning</a>                                                          | 886 17:52:28.092  
+   2026 | <a href="https://github.com/trinodb/trino/pull/2026">Add pattern for files ending with &lt;query_id&gt;.&lt;number&gt; to cleanup them during rollback</a> | 876 00:01:37.092  
+   2227 | <a href="https://github.com/trinodb/trino/pull/2227">Adding changes for adding _timestamp field in kafka topic metadata.</a>                   | 837 16:35:35.092  
+   2489 | <a href="https://github.com/trinodb/trino/pull/2489">Derive non-null from symbol-to-symbol comparisons in domain translator</a>                | 818 17:50:36.092  
+   2010 | <a href="https://github.com/trinodb/trino/pull/2010">Query debugging tracer</a>                                                                | 816 05:39:36.092  
+   2397 | <a href="https://github.com/trinodb/trino/pull/2397">Influx Connector</a>                                                                      | 811 09:05:45.092  
+   2769 | <a href="https://github.com/trinodb/trino/pull/2769">Add missing catalogName at building ConnectorSession</a>                                  | 792 02:32:11.092  
+   2786 | <a href="https://github.com/trinodb/trino/pull/2786">Categorize user errors when parsing data via GenericHiveRecordCursor</a>                  | 790 16:09:20.092  
+   2703 | <a href="https://github.com/trinodb/trino/pull/2703">Support views in iceberg connector</a>                                                    | 775 16:15:27.092  
 (20 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/4eef510d02870c5dc1e6c778796135c3ba08e92f/sql/pr/awaiting-review.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/539600c2a2ae69d60b0c032e5cc5155921324aee/sql/pr/awaiting-review.sql)
 
 #  Abandoned PRs
 <pre><code>
@@ -597,6 +597,6 @@ Trino PR Reports
 --------+-------+-----------------
 (0 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/4eef510d02870c5dc1e6c778796135c3ba08e92f/sql/pr/abandoned-prs.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/539600c2a2ae69d60b0c032e5cc5155921324aee/sql/pr/abandoned-prs.sql)
 
-Generated on Tue Apr 12 12:02:49 UTC 2022
+Generated on Tue Apr 12 12:25:18 UTC 2022
