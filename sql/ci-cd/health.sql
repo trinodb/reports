@@ -2,7 +2,7 @@
 SELECT
   CASE head_branch
     WHEN 'master' THEN head_branch
-    ELSE '<other>'
+    ELSE '[other]'
   END AS branch
   , count(1) FILTER (WHERE created_at > CURRENT_DATE - INTERVAL '1' DAY) AS today_count
   , round(count(1) FILTER (WHERE created_at > CURRENT_DATE - INTERVAL '1' DAY AND conclusion = 'success') / CAST(count(1) FILTER (WHERE created_at > CURRENT_DATE - INTERVAL '1' DAY) AS double), 2) AS today_success

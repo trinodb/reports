@@ -1,9 +1,8 @@
 -- Abandoned PRs
 SELECT
   pulls.number
-, pulls.title
+, pulls.title || ' @' || format('https://github.com/trinodb/trino/pull/%s', pulls.number) AS title
 , current_timestamp - max(pull_commits.committer_date) AS time_since_push
-, format('<a href="https://github.com/trinodb/trino/pull/%s">link</a>', pulls.number) AS link
 FROM
   unique_pulls pulls
 JOIN

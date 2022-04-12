@@ -1,9 +1,8 @@
 -- Stale PRs
 SELECT
   pulls.number
-, pulls.title
+, pulls.title || ' @' || format('https://github.com/trinodb/trino/pull/%s', pulls.number) AS title
 , current_timestamp - pulls.updated_at AS untouched_for
-, format('<a href="https://github.com/trinodb/trino/pull/%s">link</a>', pulls.number) AS link
 FROM
   unique_pulls pulls
 WHERE owner = 'trinodb' AND repo = 'trino' AND state = 'open' AND NOT draft

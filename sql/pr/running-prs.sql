@@ -1,9 +1,8 @@
 -- Longest running PRs
 SELECT
   pulls.number
-, pulls.title
+, pulls.title || ' @' || format('https://github.com/trinodb/trino/pull/%s', pulls.number) AS title
 , max(reviews.submitted_at) - pulls.updated_at AS running_time
-, format('<a href="https://github.com/trinodb/trino/pull/%s">link</a>', pulls.number) AS link
 FROM
   unique_pulls pulls
 JOIN

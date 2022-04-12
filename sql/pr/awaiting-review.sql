@@ -1,9 +1,8 @@
 -- Longest time since review
 SELECT
   pulls.number
-, pulls.title
+, pulls.title || ' @' || format('https://github.com/trinodb/trino/pull/%s', pulls.number) AS title
 , current_timestamp - max(reviews.submitted_at) AS time_since_review
-, format('<a href="https://github.com/trinodb/trino/pull/%s">link</a>', pulls.number) AS link
 FROM
   unique_pulls pulls
 LEFT JOIN
