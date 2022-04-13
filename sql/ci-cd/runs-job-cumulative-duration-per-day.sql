@@ -22,8 +22,7 @@ main AS (
     , count(*) AS runs_count
     , approx_percentile(to_milliseconds(duration), ARRAY[0.75, 0.90, 0.95, 0.99]) AS perc
   FROM runs r
-  GROUP BY r.day
-  ORDER BY 1 DESC
+  GROUP BY 1
 )
 SELECT
    day AS "Day"
@@ -34,4 +33,6 @@ SELECT
    , min_dur AS "Min jobs dur"
    , avg_dur AS "Avg jobs dur"
    , max_dur AS "Max jobs dur"
-FROM main;
+FROM main
+ORDER BY 1 DESC
+;

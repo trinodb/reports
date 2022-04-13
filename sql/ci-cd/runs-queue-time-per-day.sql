@@ -21,7 +21,6 @@ main AS (
   JOIN longest_jobs j ON j.run_id = r.id
   WHERE r.owner = 'trinodb' AND r.repo = 'trino' AND r.name = 'ci' AND r.conclusion = 'success' AND r.created_at > CURRENT_DATE - INTERVAL '14' DAY
   GROUP BY 1
-  ORDER BY 1 DESC
 )
 SELECT
    day AS "Day"
@@ -31,4 +30,6 @@ SELECT
    , min_dur AS "Min queue dur"
    , avg_dur AS "Avg queue dur"
    , max_dur AS "Max queue dur"
-FROM main;
+FROM main
+ORDER BY 1 DESC
+;
