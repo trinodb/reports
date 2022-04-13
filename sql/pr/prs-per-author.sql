@@ -22,7 +22,7 @@ prs_per_author AS (
     GROUP BY 1, 2
 )
 SELECT
-  range AS "Number of PRs pet author"
+  range AS "Number of PRs per author"
   , value AS "Number of authors"
   , bar(value / CAST(max(value) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Chart"
 FROM grouped
