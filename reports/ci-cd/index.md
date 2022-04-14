@@ -9,7 +9,7 @@ Trino CI/CD Reports
  master  |           0 |           NaN |          0 |          NaN |         31 |         0.23 |         245 |          0.24 
 (2 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/e3a42706f1d1b2c4de3f42e625f72ce88fb93953/sql/ci-cd/health.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/e094a56c74c2d1063de1b83fc41db07798a5b1fb/sql/ci-cd/health.sql)
 
 #  Runs queue time per day
 <pre><code>
@@ -29,7 +29,7 @@ Trino CI/CD Reports
  2022-03-31 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span>                                       |         57 | [0 01:00:40.250, 0 01:22:13.000, 0 02:00:16.000, 0 02:21:21.000] | 0 00:00:08.000 | 0 00:35:47.754 | 0 02:21:21.000 
 (12 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/e3a42706f1d1b2c4de3f42e625f72ce88fb93953/sql/ci-cd/runs-queue-time-per-day.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/e094a56c74c2d1063de1b83fc41db07798a5b1fb/sql/ci-cd/runs-queue-time-per-day.sql)
 
 #  Runs duration per day
 <pre><code>
@@ -49,7 +49,7 @@ Trino CI/CD Reports
  2022-03-31 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5faf00">█</span><span style="color: #5faf00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span>                         |         16 | [0 02:45:38.000, 0 03:08:22.000, 0 03:09:05.000, 0 03:09:05.000] | 0 01:04:43.000 | 0 02:12:55.438 | 0 03:09:05.000 
 (12 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/e3a42706f1d1b2c4de3f42e625f72ce88fb93953/sql/ci-cd/runs-duration-per-day.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/e094a56c74c2d1063de1b83fc41db07798a5b1fb/sql/ci-cd/runs-duration-per-day.sql)
 
 #  Runs cumulative job duration on master per day
 <pre><code>
@@ -60,14 +60,14 @@ Trino CI/CD Reports
  2022-03-31 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5faf00">█</span><span style="color: #5faf00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffd700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span>   |          1 |             62 | [1 03:16:34.000, 1 03:16:34.000, 1 03:16:34.000, 1 03:16:34.000] | 1 03:16:34.000 | 1 03:16:34.000 | 1 03:16:34.000 
 (3 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/e3a42706f1d1b2c4de3f42e625f72ce88fb93953/sql/ci-cd/runs-job-cumulative-duration-per-day.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/e094a56c74c2d1063de1b83fc41db07798a5b1fb/sql/ci-cd/runs-job-cumulative-duration-per-day.sql)
 
 #  Max concurrent jobs per day
 <pre><code>
     Day     |     Max concurrent jobs count chart      | Max concurrent jobs count | Max concurrent runs count 
 ------------+------------------------------------------+---------------------------+---------------------------
- 2022-03-31 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5faf00">█</span><span style="color: #5faf00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffd700">█</span><span style="color: #ffaf00">█</span>                |                        60 |                        10 
- 2022-04-01 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5faf00">█</span><span style="color: #5faf00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffd700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span>          |                        74 |                        13 
+ 2022-03-31 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5faf00">█</span><span style="color: #5faf00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffd700">█</span><span style="color: #ffaf00">█</span>                |                        60 |                         9 
+ 2022-04-01 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5faf00">█</span><span style="color: #5faf00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffd700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span>         |                        75 |                        13 
  2022-04-02 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5faf00">█</span><span style="color: #5faf00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffd700">█</span><span style="color: #ffaf00">█</span>                |                        60 |                         3 
  2022-04-03 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5faf00">█</span><span style="color: #5faf00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffd700">█</span><span style="color: #ffaf00">█</span>                |                        59 |                         2 
  2022-04-04 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5faf00">█</span><span style="color: #5faf00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffd700">█</span><span style="color: #ffaf00">█</span>                |                        60 |                        10 
@@ -80,7 +80,7 @@ Trino CI/CD Reports
  2022-04-11 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5faf00">█</span><span style="color: #5faf00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffd700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span> |                        93 |                         4 
 (12 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/e3a42706f1d1b2c4de3f42e625f72ce88fb93953/sql/ci-cd/concurrent-jobs-per-day.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/e094a56c74c2d1063de1b83fc41db07798a5b1fb/sql/ci-cd/concurrent-jobs-per-day.sql)
 
 #  Job duration in last 30 days
 <pre><code>
@@ -161,34 +161,34 @@ Trino CI/CD Reports
  milestone            | set-milestone                                                                           |                      | <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff8700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffd700">█</span><span style="color: #ffff00">█</span><span style="color: #ffff00">█</span><span style="color: #ffff00">█</span><span style="color: #ffff00">█</span><span style="color: #d7ff00">█</span><span style="color: #afff00">█</span><span style="color: #afff00">█</span><span style="color: #87ff00">█</span><span style="color: #5fff00">█</span><span style="color: #5fff00">█</span><span style="color: #00ff00">█</span>  |         236 |          0.97 |            0.0 | [0, 0, 0, 0]               |           0 |        0.01 |           2 
 (73 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/e3a42706f1d1b2c4de3f42e625f72ce88fb93953/sql/ci-cd/jobs-duration.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/e094a56c74c2d1063de1b83fc41db07798a5b1fb/sql/ci-cd/jobs-duration.sql)
 
 #  Flaky tests per week
 <pre><code>
     Week    |                       Job name                        | Fail percent | Failure count | Success count 
 ------------+-------------------------------------------------------+--------------+---------------+---------------
- 2022-04-04 | test (plugin/trino-iceberg, test-failure-recovery)    |        71.05 |            54 |            22 
- 2022-04-04 | test (plugin/trino-iceberg)                           |        70.67 |            53 |            22 
- 2022-04-04 | test (plugin/trino-kudu)                              |        15.22 |            14 |            78 
- 2022-04-04 | test-jdbc-compatibility                               |         6.42 |             7 |           102 
- 2022-04-04 | pt (default, suite-compatibility, 11)                 |         5.77 |             6 |            98 
- 2022-04-04 | pt (default, suite-7-non-generic, 11)                 |         3.74 |             4 |           103 
- 2022-04-04 | pt (hdp3, suite-1, 11)                                |         3.74 |             4 |           103 
- 2022-04-04 | pt (hdp3, suite-1, 17)                                |         3.74 |             4 |           103 
- 2022-04-04 | pt (hdp3, suite-2, 11)                                |         3.74 |             4 |           103 
- 2022-04-04 | pt (hdp3, suite-2, 17)                                |         3.74 |             4 |           103 
- 2022-04-04 | pt (hdp3, suite-5, 11)                                |         3.74 |             4 |           103 
- 2022-04-04 | test-other-modules                                    |         3.74 |             4 |           103 
- 2022-04-04 | pt (apache-hive3, suite-hms-only, 11)                 |         3.67 |             4 |           105 
- 2022-04-04 | pt (default, suite-6-non-generic, 11)                 |         3.67 |             4 |           105 
- 2022-04-04 | pt (default, suite-8-non-generic, 11)                 |         3.67 |             4 |           105 
- 2022-04-04 | pt (default, suite-ldap, 11)                          |         3.67 |             4 |           105 
- 2022-04-04 | pt (default, suite-oauth2, 11)                        |         3.67 |             4 |           105 
- 2022-04-04 | pt (default, suite-tpcds, 11)                         |         3.67 |             4 |           105 
- 2022-04-04 | pt (hdp3, suite-3, 11)                                |         3.67 |             4 |           105 
- 2022-04-04 | test (plugin/trino-pinot)                             |         1.85 |             2 |           106 
- 2022-04-04 | test (testing/trino-tests)                            |         1.09 |             1 |            91 
- 2022-04-04 | maven-checks (17)                                     |         1.03 |             1 |            96 
+ 2022-04-04 | test (plugin/trino-iceberg, test-failure-recovery)    |        73.17 |            60 |            22 
+ 2022-04-04 | test (plugin/trino-iceberg)                           |        72.84 |            59 |            22 
+ 2022-04-04 | test (plugin/trino-kudu)                              |        20.41 |            20 |            78 
+ 2022-04-04 | test-jdbc-compatibility                               |         6.09 |             7 |           108 
+ 2022-04-04 | pt (default, suite-compatibility, 11)                 |         5.45 |             6 |           104 
+ 2022-04-04 | pt (default, suite-7-non-generic, 11)                 |         3.54 |             4 |           109 
+ 2022-04-04 | pt (hdp3, suite-1, 11)                                |         3.54 |             4 |           109 
+ 2022-04-04 | pt (hdp3, suite-1, 17)                                |         3.54 |             4 |           109 
+ 2022-04-04 | pt (hdp3, suite-2, 11)                                |         3.54 |             4 |           109 
+ 2022-04-04 | pt (hdp3, suite-2, 17)                                |         3.54 |             4 |           109 
+ 2022-04-04 | pt (hdp3, suite-5, 11)                                |         3.54 |             4 |           109 
+ 2022-04-04 | test-other-modules                                    |         3.54 |             4 |           109 
+ 2022-04-04 | pt (apache-hive3, suite-hms-only, 11)                 |         3.48 |             4 |           111 
+ 2022-04-04 | pt (default, suite-6-non-generic, 11)                 |         3.48 |             4 |           111 
+ 2022-04-04 | pt (default, suite-8-non-generic, 11)                 |         3.48 |             4 |           111 
+ 2022-04-04 | pt (default, suite-ldap, 11)                          |         3.48 |             4 |           111 
+ 2022-04-04 | pt (default, suite-oauth2, 11)                        |         3.48 |             4 |           111 
+ 2022-04-04 | pt (default, suite-tpcds, 11)                         |         3.48 |             4 |           111 
+ 2022-04-04 | pt (hdp3, suite-3, 11)                                |         3.48 |             4 |           111 
+ 2022-04-04 | test (plugin/trino-pinot)                             |         1.75 |             2 |           112 
+ 2022-04-04 | test (testing/trino-tests)                            |         1.02 |             1 |            97 
+ 2022-04-04 | maven-checks (17)                                     |         0.97 |             1 |           102 
  2022-03-28 | test (plugin/trino-iceberg, test-failure-recovery)    |        68.18 |            30 |            14 
  2022-03-28 | maven-checks (11)                                     |         50.0 |             1 |             1 
  2022-03-28 | test (plugin/trino-iceberg)                           |        41.89 |            31 |            43 
@@ -246,6 +246,6 @@ Trino CI/CD Reports
  2022-02-28 | test (plugin/trino-bigquery)                          |         50.0 |             1 |             1 
 (77 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/e3a42706f1d1b2c4de3f42e625f72ce88fb93953/sql/ci-cd/flaky-tests.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/e094a56c74c2d1063de1b83fc41db07798a5b1fb/sql/ci-cd/flaky-tests.sql)
 
-Generated on Thu Apr 14 07:45:19 UTC 2022
+Generated on Thu Apr 14 18:32:59 UTC 2022
