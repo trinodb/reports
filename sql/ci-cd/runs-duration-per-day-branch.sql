@@ -1,4 +1,4 @@
--- Runs duration per day
+-- Runs duration per week and branch
 WITH longest_jobs AS (
   SELECT
     run_id
@@ -10,7 +10,7 @@ WITH longest_jobs AS (
 ),
 main AS (
   SELECT
-    cast(created_at AS date) AS day
+    date_trunc('week', date(created_at)) AS week
     , CASE r.head_branch
         WHEN 'master' THEN head_branch
         ELSE '[other]'
@@ -22,12 +22,12 @@ main AS (
     , approx_percentile(to_milliseconds(duration), ARRAY[0.75, 0.90, 0.95, 0.99]) AS perc
   FROM runs r
   JOIN longest_jobs j ON j.run_id = r.id
-  WHERE r.owner = 'trinodb' AND r.repo = 'trino' AND r.name = 'ci' AND r.created_at > CURRENT_DATE - INTERVAL '14' DAY
+  WHERE r.owner = 'trinodb' AND r.repo = 'trino' AND r.name = 'ci' AND r.created_at > CURRENT_DATE - INTERVAL '90' DAY
   GROUP BY 1, 2
 )
 SELECT
    branch AS "Branch"
-   , day AS "Day"
+   , week AS "Week"
    , bar(CAST(perc[3] AS double) / max(perc[3]) OVER (), 40, rgb(0, 155, 0), rgb(255, 0, 0)) AS "P₉₅ run duration"
    , runs_count AS "Runs count"
    , transform(perc, m -> parse_duration(cast(m as varchar) || 'ms')) AS "Run percentiles 75, 90, 95, 99"

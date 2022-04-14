@@ -1,20 +1,20 @@
--- Runs cumulative job duration on master per day
+-- Runs cumulative job duration per week and branch
 WITH runs AS (
   SELECT
     r.id AS run_id
     , r.head_branch
-    , cast(r.created_at AS date) AS day
+    , date_trunc('week', date(r.created_at)) AS week
     , count(j.id) AS jobs_count
     , sum(j.completed_at - j.started_at) AS duration
   FROM runs r
   JOIN jobs j ON r.id = j.run_id
   WHERE r.owner = 'trinodb' AND r.repo = 'trino' AND r.name = 'ci'
-  AND r.created_at > CURRENT_DATE - INTERVAL '14' DAY
+  AND r.created_at > CURRENT_DATE - INTERVAL '90' DAY
   GROUP BY 1, 2, 3
 ),
 main AS (
   SELECT
-    r.day
+    r.week
     , CASE r.head_branch
         WHEN 'master' THEN head_branch
         ELSE '[other]'
@@ -30,7 +30,7 @@ main AS (
 )
 SELECT
    branch AS "Branch"
-   , day AS "Day"
+   , week AS "Week"
    , bar(CAST(perc[1] AS double) / max(perc[1]) OVER (), 40, rgb(0, 155, 0), rgb(255, 0, 0)) AS "P50 runs cumulative job duration"
    , bar(CAST(perc[3] AS double) / max(perc[3]) OVER (), 40, rgb(0, 155, 0), rgb(255, 0, 0)) AS "P95 runs cumulative job duration"
    , runs_count AS "Runs count"
