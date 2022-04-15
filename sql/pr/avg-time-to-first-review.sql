@@ -1,5 +1,6 @@
 -- Average time to first review
-WITH first_reviews AS (
+WITH
+first_reviews AS (
     SELECT
         p.number as pull_number
       , p.created_at as created_at
@@ -13,14 +14,14 @@ WITH first_reviews AS (
     LEFT JOIN review_comments rc ON (r.owner, r.repo, r.id) = (rc.owner, rc.repo, rc.pull_request_review_id)
     WHERE p.owner = 'trinodb' AND p.repo = 'trino'
     GROUP BY 1, 2, 3
-),
-monthly_rollup AS (
+)
+, monthly_rollup AS (
     SELECT
         date_trunc('month', date(updated_at)) as month_updated
       , count(pull_number) as num_pulls
       , count(first_review) as num_first_reviews
       , avg(first_review - created_at) as avg_time_to_first_review
-      , approx_percentile(round(to_milliseconds(first_review - created_at) / (1000.0 * 3600.0 * 24.0), 2), ARRAY[0.5, 0.75, 0.9, 0.99]) AS perc
+      , approx_percentile(to_milliseconds(first_review - created_at) / (1000.0 * 3600.0 * 24.0), ARRAY[0.5, 0.75, 0.9, 0.99]) AS perc
       , round(avg(num_reviews), 2) as avg_num_reviews
       , round(avg(num_reviewers), 2) as avg_num_reviewers
       , round(avg(num_comments), 2) as avg_num_comments
@@ -34,7 +35,7 @@ SELECT
   , num_first_reviews AS "Reviewed PRs"
   , bar(to_milliseconds(avg_time_to_first_review) / CAST(max(to_milliseconds(avg_time_to_first_review)) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Avg TTFR chart"
   , avg_time_to_first_review AS "Avg TTFR"
-  , perc AS "Day percentiles 50, 75, 90, 99"
+  , transform(perc, d -> format('%.2f', d)) AS "Days to review percentiles 50, 75, 90, 99"
   , avg_num_reviews AS "Avg reviews"
   , avg_num_reviewers AS "Avg reviewers"
   , avg_num_comments AS "Avg comments"
