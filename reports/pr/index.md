@@ -5,8 +5,8 @@ Trino PR Reports
 <pre><code>
    Month    |    Open PRs chart    |      PRs delta       |  Open issues chart   |     Issues delta     | Open PRs | New PRs | Closed/merged PRs | Open issues | New issues | Closed issues 
 ------------+----------------------+----------------------+----------------------+----------------------+----------+---------+-------------------+-------------+------------+---------------
- 2022-04-01 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span>     |                      | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span>   |           <span style="color: #ff0000">█</span>          |      684 |     179 |               182 |        2307 |        249 |           238 
- 2022-03-01 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span> |           <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span>     | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span> |           <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span>      |      852 |     372 |               347 |        2513 |        515 |           455 
+ 2022-04-01 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span>     |                      | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span>   |           <span style="color: #ff0000">█</span>          |      684 |     179 |               182 |        2312 |        253 |           238 
+ 2022-03-01 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span> |           <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span>     | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span> |           <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span>      |      852 |     372 |               347 |        2514 |        516 |           455 
  2022-02-01 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span>    |          <span style="color: #00af00">█</span>           | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span>   |           <span style="color: #ff0000">█</span>          |      739 |     255 |               259 |        2343 |        359 |           345 
  2022-01-01 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span>    |           <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span>   | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span>   |           <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span>   |      739 |     287 |               255 |        2322 |        431 |           338 
  2021-12-01 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span>      |           <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span>         | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span>    |           <span style="color: #ff0000">█</span>          |      667 |     223 |               215 |        2188 |        316 |           297 
@@ -44,7 +44,7 @@ Trino PR Reports
  2019-04-01 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span>                  |        <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span>           | <span style="color: #00af00">█</span><span style="color: #00af00">█</span>                   |           <span style="color: #ff0000">█</span>          |      161 |      89 |               101 |         295 |        132 |           114 
 (37 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/439e49e134a39ec6a5448bd3c8fe7e6a04745d04/sql/pr/burndown.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/fb58af61884273de4832fcb7215f608c265be12b/sql/pr/burndown.sql)
 
 #  Authors per month
 <pre><code>
@@ -76,7 +76,7 @@ Trino PR Reports
  2020-05-01 | <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span>           | <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #00ff00">█</span><span style="color: #00ff00">█</span><span style="color: #00ff00">█</span><span style="color: #00ff00">█</span>            | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span>                  | <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #00ff00">█</span>             |           296 |            30 |                 5 |               457 | [Arvin Zheng, Brett Tofel, Victor Azevedo, tom-kita, Charles Morgan]                                                                                                                                                     
 (24 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/439e49e134a39ec6a5448bd3c8fe7e6a04745d04/sql/pr/authors-per-month.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/fb58af61884273de4832fcb7215f608c265be12b/sql/pr/authors-per-month.sql)
 
 #  Changes per month
 <pre><code>
@@ -108,7 +108,7 @@ Trino PR Reports
  2020-05-01 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span>          | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span>              | <span style="color: #00af00">█</span><span style="color: #00af00">█</span>                   |           296 |       37735 |          9245 |         212 |            0 |             8 |           1434 |            24 
 (24 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/439e49e134a39ec6a5448bd3c8fe7e6a04745d04/sql/pr/changes-per-month.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/fb58af61884273de4832fcb7215f608c265be12b/sql/pr/changes-per-month.sql)
 
 #  PRs per author
 <pre><code>
@@ -124,7 +124,7 @@ Trino PR Reports
  over 1000                |                 1 |                      
 (8 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/439e49e134a39ec6a5448bd3c8fe7e6a04745d04/sql/pr/prs-per-author.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/fb58af61884273de4832fcb7215f608c265be12b/sql/pr/prs-per-author.sql)
 
 #  Top 10 reviewers per year
 <pre><code>
@@ -172,7 +172,7 @@ Trino PR Reports
  2019 | Roman Zeyde         | z****@v*****.io                 |           121 |              2 |             119 
 (40 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/439e49e134a39ec6a5448bd3c8fe7e6a04745d04/sql/pr/top-reviewers.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/fb58af61884273de4832fcb7215f608c265be12b/sql/pr/top-reviewers.sql)
 
 #  Top 10 authors per year
 <pre><code>
@@ -187,7 +187,7 @@ Trino PR Reports
  2022 | Mateusz Gajewski       | m***************@g****.com                | starburstdata |            51 
  2022 | Karol Sobczak          | n***********@g****.com                    | starburstdata |            43 
  2022 | David Phillips         | d****@a**.org                             | starburstdata |            39 
- 2022 | tangjiangling          | s*************@g****.com                  | NULL          |            35 
+ 2022 | Jan Was                | j******@s************.com                 | starburstdata |            35 
  2021 | Piotr Findeisen        | p**************@g****.com                 | starburstdata |           737 
  2021 | Łukasz Osipiuk         | l*****@o******.net                        | starburstdata |           221 
  2021 | Karol Sobczak          | n***********@g****.com                    | starburstdata |           206 
@@ -284,7 +284,7 @@ Trino PR Reports
  2012 | Eric Hwang             | e*****@f*.com                             | starburstdata |            92 
 (104 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/439e49e134a39ec6a5448bd3c8fe7e6a04745d04/sql/pr/top-authors.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/fb58af61884273de4832fcb7215f608c265be12b/sql/pr/top-authors.sql)
 
 #  Top 10 mergers per year
 <pre><code>
@@ -318,8 +318,8 @@ Trino PR Reports
  2020 | Grzegorz Kokosiński | g***********@g****.com                     | starburstdata |           146 
  2020 | Dain Sundstrom      | d***@i***.com                              | starburstdata |            69 
  2020 | Yuya Ebihara        | e*****@g****.com                           | starburstdata |            43 
- 2020 | praveenkrishna      | p*************@t*******.com                | starburstdata |             9 
  2020 | Pratham Desai       | p*********@g****.com                       | NULL          |             9 
+ 2020 | praveenkrishna      | p*************@t*******.com                | starburstdata |             9 
  2019 | David Phillips      | d****@a**.org                              | starburstdata |           193 
  2019 | Martin Traverso     | m********@g****.com                        | starburstdata |           167 
  2019 | Karol Sobczak       | n***********@g****.com                     | starburstdata |           124 
@@ -348,7 +348,7 @@ Trino PR Reports
  2017 | Nezih Yigitbasi     | n*****@f*.com                              | NULL          |            25 
  2017 | Karol Sobczak       | n***********@g****.com                     | starburstdata |            24 
  2017 | Haozhun Jin         | h**********@g****.com                      | NULL          |            20 
- 2017 | Piotr Findeisen     | p**************@g****.com                  | starburstdata |            12 
+ 2017 | Christopher Berner  | c****************@g****.com                | NULL          |            12 
  2016 | Martin Traverso     | m********@g****.com                        | starburstdata |           527 
  2016 | David Phillips      | d****@a**.org                              | starburstdata |           205 
  2016 | Christopher Berner  | c****************@g****.com                | NULL          |           116 
@@ -368,16 +368,16 @@ Trino PR Reports
  2014 | David Phillips      | d****@a**.org                              | starburstdata |            34 
  2014 | Martin Traverso     | m********@g****.com                        | starburstdata |            31 
  2014 | Christopher Berner  | c****************@g****.com                | NULL          |            28 
- 2014 | Eric Hwang          | e*****@f*.com                              | starburstdata |             2 
  2014 | Nileema Shingte     | n**************@g****.com                  | NULL          |             2 
+ 2014 | Eric Hwang          | e*****@f*.com                              | starburstdata |             2 
  2013 | Martin Traverso     | m********@g****.com                        | starburstdata |            18 
- 2013 | Dain Sundstrom      | d***@i***.com                              | starburstdata |             5 
  2013 | David Phillips      | d****@a**.org                              | starburstdata |             5 
+ 2013 | Dain Sundstrom      | d***@i***.com                              | starburstdata |             5 
  2012 | Martin Traverso     | m********@g****.com                        | starburstdata |            46 
  2012 | Dain Sundstrom      | d***@i***.com                              | starburstdata |             9 
 (85 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/439e49e134a39ec6a5448bd3c8fe7e6a04745d04/sql/pr/top-mergers.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/fb58af61884273de4832fcb7215f608c265be12b/sql/pr/top-mergers.sql)
 
 #  Average time to merge a PR
 <pre><code>
@@ -425,7 +425,7 @@ Trino PR Reports
  2019-01-01      |         47 | <span style="color: #00af00">█</span>                    | 1 11:15:10.106  | -0 02:51:27.657           | 1 11:15:10.106  | [0.81, 4.90, 6.86]                   | [0.14, 2.70, 3.36]                                
 (40 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/439e49e134a39ec6a5448bd3c8fe7e6a04745d04/sql/pr/avg-time-to-merge.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/fb58af61884273de4832fcb7215f608c265be12b/sql/pr/avg-time-to-merge.sql)
 
 #  Average time to merge per create month
 <pre><code>
@@ -473,13 +473,13 @@ Trino PR Reports
  2019-01-01       |         67 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span>               | 8 02:01:24.537  | 8 02:01:24.537  | [1.54, 27.49, 125.50]                
 (40 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/439e49e134a39ec6a5448bd3c8fe7e6a04745d04/sql/pr/avg-time-to-merge-since-creation.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/fb58af61884273de4832fcb7215f608c265be12b/sql/pr/avg-time-to-merge-since-creation.sql)
 
 #  Average time to first review
 <pre><code>
  Updated in month | Updated PRs | Reviewed PRs |    Avg TTFR chart    |    Avg TTFR    | Days to review percentiles 50, 75, 90, 99 | Avg reviews | Avg reviewers | Avg comments 
 ------------------+-------------+--------------+----------------------+----------------+-------------------------------------------+-------------+---------------+--------------
- 2022-04-01       |         281 |          211 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span>   | 5 06:25:44.502 | [0.28, 1.74, 9.67, 84.59]                 |        7.99 |          2.02 |        12.21 
+ 2022-04-01       |         281 |          212 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff0000">█</span>  | 5 07:47:35.689 | [0.28, 1.82, 10.32, 84.59]                |        7.99 |          2.03 |        12.21 
  2022-03-01       |         434 |          363 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span>     | 4 16:00:06.824 | [0.21, 1.22, 5.39, 57.87]                 |        7.83 |          2.13 |        10.19 
  2022-02-01       |         297 |          251 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span>             | 2 09:45:13.482 | [0.20, 0.86, 4.70, 40.21]                 |        7.63 |          2.09 |        11.36 
  2022-01-01       |         308 |          273 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span>               | 1 17:36:21.436 | [0.15, 0.95, 3.97, 25.95]                 |        6.99 |          2.17 |         8.95 
@@ -521,91 +521,91 @@ Trino PR Reports
  2019-01-01       |          46 |           35 | <span style="color: #00af00">█</span>                    | 0 12:17:19.543 | [0.13, 0.61, 1.32, 5.07]                  |        2.33 |           1.3 |         2.96 
 (40 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/439e49e134a39ec6a5448bd3c8fe7e6a04745d04/sql/pr/avg-time-to-first-review.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/fb58af61884273de4832fcb7215f608c265be12b/sql/pr/avg-time-to-first-review.sql)
 
 #  Stale PRs
 <pre><code>
  number |                                                                 title                                                                 |  untouched_for   
 --------+---------------------------------------------------------------------------------------------------------------------------------------+------------------
-   1364 | <a href="https://github.com/trinodb/trino/pull/1364">Filter tables based on table privilege of user</a>                                            | 919 21:29:47.559 
-   2786 | <a href="https://github.com/trinodb/trino/pull/2786">Categorize user errors when parsing data via GenericHiveRecordCursor</a>                      | 795 10:22:14.559 
-   2832 | <a href="https://github.com/trinodb/trino/pull/2832">Use file extension based on the file format</a>                                               | 775 16:56:00.559 
-   4834 | <a href="https://github.com/trinodb/trino/pull/4834">Reuse containers in product tests</a>                                                         | 599 14:44:59.559 
-   4872 | <a href="https://github.com/trinodb/trino/pull/4872">CachingHiveMetastore: refactor cache creation and flushCache()</a>                            | 593 18:14:50.559 
-   2976 | <a href="https://github.com/trinodb/trino/pull/2976">[WIP] Add sybase connector</a>                                                                | 545 13:05:01.559 
-   4426 | <a href="https://github.com/trinodb/trino/pull/4426">Fix type mismatch between partition and table</a>                                             | 542 23:44:32.559 
-   4413 | <a href="https://github.com/trinodb/trino/pull/4413">Add deterministic UUID functions uuid_v3 and uuid_v5</a>                                      | 508 21:36:59.559 
-   7870 | <a href="https://github.com/trinodb/trino/pull/7870">Isaac Scafe Writing Exercises</a>                                                             | 316 12:59:17.559 
-   5834 | <a href="https://github.com/trinodb/trino/pull/5834">Throw SQLException in getTime</a>                                                             | 260 08:23:33.559 
-   5767 | <a href="https://github.com/trinodb/trino/pull/5767">add missing jars when `hive.s3-file-system-type=HADOOP_DEFAULT`</a>                           | 192 02:04:14.559 
-   9440 | <a href="https://github.com/trinodb/trino/pull/9440">[Doc] update the example of explain analyze statement doc</a>                                 | 159 11:30:25.559 
-  10168 | <a href="https://github.com/trinodb/trino/pull/10168">Handle HTTP 504 returned from Trino coordinator/Proxy layer.</a>                             | 118 05:10:26.559 
-  10235 | <a href="https://github.com/trinodb/trino/pull/10235">[WIP] Add tests for iceberg partitioning on FIXED and BINARY columns</a>                     | 118 05:10:26.559 
-   9652 | <a href="https://github.com/trinodb/trino/pull/9652">fix resource leak due to newDirectoryStream</a>                                               | 118 05:10:25.559 
-   9720 | <a href="https://github.com/trinodb/trino/pull/9720">Allow MemSQL to push down string aggregations/joins by forcing a case-sensitive collation</a> | 118 05:10:25.559 
-   9708 | <a href="https://github.com/trinodb/trino/pull/9708">Add testDivide expected result verification using BigDecimal.divide</a>                       | 118 05:10:25.559 
-   9522 | <a href="https://github.com/trinodb/trino/pull/9522">[not for merging] Reproduce "query already begun" error</a>                                   | 118 05:10:25.559 
-   9580 | <a href="https://github.com/trinodb/trino/pull/9580">test cdh5</a>                                                                                 | 118 05:10:25.559 
-   9523 | <a href="https://github.com/trinodb/trino/pull/9523">[WIP] Arbitrary table properties</a>                                                          | 118 05:10:25.559 
+   1364 | <a href="https://github.com/trinodb/trino/pull/1364">Filter tables based on table privilege of user</a>                                            | 920 09:28:47.968 
+   2786 | <a href="https://github.com/trinodb/trino/pull/2786">Categorize user errors when parsing data via GenericHiveRecordCursor</a>                      | 795 22:21:14.968 
+   2832 | <a href="https://github.com/trinodb/trino/pull/2832">Use file extension based on the file format</a>                                               | 776 04:55:00.968 
+   4834 | <a href="https://github.com/trinodb/trino/pull/4834">Reuse containers in product tests</a>                                                         | 600 02:43:59.968 
+   4872 | <a href="https://github.com/trinodb/trino/pull/4872">CachingHiveMetastore: refactor cache creation and flushCache()</a>                            | 594 06:13:50.968 
+   2976 | <a href="https://github.com/trinodb/trino/pull/2976">[WIP] Add sybase connector</a>                                                                | 546 01:04:01.968 
+   4426 | <a href="https://github.com/trinodb/trino/pull/4426">Fix type mismatch between partition and table</a>                                             | 543 11:43:32.968 
+   4413 | <a href="https://github.com/trinodb/trino/pull/4413">Add deterministic UUID functions uuid_v3 and uuid_v5</a>                                      | 509 09:35:59.968 
+   7870 | <a href="https://github.com/trinodb/trino/pull/7870">Isaac Scafe Writing Exercises</a>                                                             | 317 00:58:17.968 
+   5834 | <a href="https://github.com/trinodb/trino/pull/5834">Throw SQLException in getTime</a>                                                             | 260 20:22:33.968 
+   5767 | <a href="https://github.com/trinodb/trino/pull/5767">add missing jars when `hive.s3-file-system-type=HADOOP_DEFAULT`</a>                           | 192 14:03:14.968 
+   9440 | <a href="https://github.com/trinodb/trino/pull/9440">[Doc] update the example of explain analyze statement doc</a>                                 | 159 23:29:25.968 
+  10168 | <a href="https://github.com/trinodb/trino/pull/10168">Handle HTTP 504 returned from Trino coordinator/Proxy layer.</a>                             | 118 17:09:26.968 
+  10235 | <a href="https://github.com/trinodb/trino/pull/10235">[WIP] Add tests for iceberg partitioning on FIXED and BINARY columns</a>                     | 118 17:09:26.968 
+   9652 | <a href="https://github.com/trinodb/trino/pull/9652">fix resource leak due to newDirectoryStream</a>                                               | 118 17:09:25.968 
+   9720 | <a href="https://github.com/trinodb/trino/pull/9720">Allow MemSQL to push down string aggregations/joins by forcing a case-sensitive collation</a> | 118 17:09:25.968 
+   9708 | <a href="https://github.com/trinodb/trino/pull/9708">Add testDivide expected result verification using BigDecimal.divide</a>                       | 118 17:09:25.968 
+   9522 | <a href="https://github.com/trinodb/trino/pull/9522">[not for merging] Reproduce "query already begun" error</a>                                   | 118 17:09:25.968 
+   9580 | <a href="https://github.com/trinodb/trino/pull/9580">test cdh5</a>                                                                                 | 118 17:09:25.968 
+   9523 | <a href="https://github.com/trinodb/trino/pull/9523">[WIP] Arbitrary table properties</a>                                                          | 118 17:09:25.968 
 (20 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/439e49e134a39ec6a5448bd3c8fe7e6a04745d04/sql/pr/stale-prs.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/fb58af61884273de4832fcb7215f608c265be12b/sql/pr/stale-prs.sql)
 
 #  Longest running PRs
 <pre><code>
- number |                                                       title                                                        |  running_time  
---------+--------------------------------------------------------------------------------------------------------------------+----------------
-   8896 | <a href="https://github.com/trinodb/trino/pull/8896">Add support for built in Elasticsearch custom date formats</a>             | 0 00:00:00.000 
-   4872 | <a href="https://github.com/trinodb/trino/pull/4872">CachingHiveMetastore: refactor cache creation and flushCache()</a>         | 0 00:00:00.000 
-  10297 | <a href="https://github.com/trinodb/trino/pull/10297">Document proxy configuration for OAuth 2.0 client</a>                     | 0 00:00:00.000 
-   2832 | <a href="https://github.com/trinodb/trino/pull/2832">Use file extension based on the file format</a>                            | 0 00:00:00.000 
-  10367 | <a href="https://github.com/trinodb/trino/pull/10367">Migrate deprecated `rollback()` call</a>                                  | 0 00:00:00.000 
-  10506 | <a href="https://github.com/trinodb/trino/pull/10506">Improvements to Unnest Operator</a>                                       | 0 00:00:00.000 
-   4834 | <a href="https://github.com/trinodb/trino/pull/4834">Reuse containers in product tests</a>                                      | 0 00:00:00.000 
-  10681 | <a href="https://github.com/trinodb/trino/pull/10681">Return exception message in HTTP header</a>                               | 0 00:00:00.000 
-  11289 | <a href="https://github.com/trinodb/trino/pull/11289">PartitionedOutputOperator RLE blocks support</a>                          | 0 00:00:00.000 
-  11915 | <a href="https://github.com/trinodb/trino/pull/11915">Unify Delta Lake tests' container handling with Hive and Iceberg</a>      | 0 00:00:00.000 
-  11955 | <a href="https://github.com/trinodb/trino/pull/11955">Make LocalQueryRunner more consistent with production build behaviour</a> | 0 00:00:00.000 
-  11976 | <a href="https://github.com/trinodb/trino/pull/11976">Short circuit page source creation in Iceberg</a>                         | 0 00:00:00.000 
-   3507 | <a href="https://github.com/trinodb/trino/pull/3507">Upgrade gcs to 2.2.2</a>                                                   | 0 00:00:00.000 
-  11982 | <a href="https://github.com/trinodb/trino/pull/11982">Fix use DictionaryRowGroup statistics if convert to direct writer</a>     | 0 00:00:00.000 
-  11261 | <a href="https://github.com/trinodb/trino/pull/11261">Document the hive.fs.cache.max-size property</a>                          | 0 00:00:00.000 
-   9754 | <a href="https://github.com/trinodb/trino/pull/9754">Use RowType in decimal aggregation serde</a>                               | 0 00:00:00.000 
-  10580 | <a href="https://github.com/trinodb/trino/pull/10580">Optimize filter condition with case expression predicate</a>              | 0 00:00:00.000 
-  10013 | <a href="https://github.com/trinodb/trino/pull/10013">Implement adaptive remote task request size</a>                           | 0 00:00:00.000 
-  10228 | <a href="https://github.com/trinodb/trino/pull/10228">Add Hudi connector</a>                                                    | 0 00:00:00.000 
-  11334 | <a href="https://github.com/trinodb/trino/pull/11334">Document DENY statement</a>                                               | 0 00:00:00.000 
+ number |                                                                title                                                                |  running_time  
+--------+-------------------------------------------------------------------------------------------------------------------------------------+----------------
+  11147 | <a href="https://github.com/trinodb/trino/pull/11147">Improve long decimal implementation of xxHash64</a>                                        | 0 00:00:00.000 
+  11028 | <a href="https://github.com/trinodb/trino/pull/11028">Add sql type tests for cassandra</a>                                                       | 0 00:00:00.000 
+   3316 | <a href="https://github.com/trinodb/trino/pull/3316">Allow merging consecutive 'long' values in SortedRangeSet</a>                               | 0 00:00:00.000 
+  10655 | <a href="https://github.com/trinodb/trino/pull/10655">Document JSON_EXISTS, JSON_VALUE and JSON_QUERY functions</a>                              | 0 00:00:00.000 
+  10108 | <a href="https://github.com/trinodb/trino/pull/10108">Add parquet tests for array-of-nested-structs</a>                                          | 0 00:00:00.000 
+   8202 | <a href="https://github.com/trinodb/trino/pull/8202">Fixed #2748 - Metadata for alias in elasticsearch connector only uses the first mapping</a> | 0 00:00:00.000 
+  10942 | <a href="https://github.com/trinodb/trino/pull/10942">Implement maxDriversPerQuery</a>                                                           | 0 00:00:00.000 
+  10150 | <a href="https://github.com/trinodb/trino/pull/10150">Proactively enforce memory limits in distincting accumulators</a>                          | 0 00:00:00.000 
+  11900 | <a href="https://github.com/trinodb/trino/pull/11900">Update airbase to version 124</a>                                                          | 0 00:00:00.000 
+  10779 | <a href="https://github.com/trinodb/trino/pull/10779">Add hive iceberg support based on Trino created iceberg table.</a>                         | 0 00:00:00.000 
+  11966 | <a href="https://github.com/trinodb/trino/pull/11966">Fail iceberg optimize for tables with version &gt; 1</a>                                      | 0 00:00:00.000 
+  11946 | <a href="https://github.com/trinodb/trino/pull/11946">Ignore Hive views on information_schema.columns queries</a>                                | 0 00:00:00.000 
+  11522 | <a href="https://github.com/trinodb/trino/pull/11522">Push CAST into PostgreSQL</a>                                                              | 0 00:00:00.000 
+  11475 | <a href="https://github.com/trinodb/trino/pull/11475">Upgrade Pinot Connector to use 0.9.3 Libraries</a>                                         | 0 00:00:00.000 
+  11903 | <a href="https://github.com/trinodb/trino/pull/11903">Add cleanup mechanism for Iceberg Glue tests</a>                                           | 0 00:00:00.000 
+  11396 | <a href="https://github.com/trinodb/trino/pull/11396">Translate IN predicate to connector expression</a>                                         | 0 00:00:00.000 
+  10728 | <a href="https://github.com/trinodb/trino/pull/10728">Negate method invocation</a>                                                               | 0 00:00:00.000 
+  11986 | <a href="https://github.com/trinodb/trino/pull/11986">Reject info-schema queries which scan all columns in Hive</a>                              | 0 00:00:00.000 
+  11763 | <a href="https://github.com/trinodb/trino/pull/11763">Support views in Delta lake Connector</a>                                                  | 0 00:00:00.000 
+  11677 | <a href="https://github.com/trinodb/trino/pull/11677">Fix creating empty ORC files when using ZSTD</a>                                           | 0 00:00:00.000 
 (20 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/439e49e134a39ec6a5448bd3c8fe7e6a04745d04/sql/pr/running-prs.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/fb58af61884273de4832fcb7215f608c265be12b/sql/pr/running-prs.sql)
 
 #  Longest time since last review
 <pre><code>
  number |                                                               title                                                               | time_since_review 
 --------+-----------------------------------------------------------------------------------------------------------------------------------+-------------------
-    624 | <a href="https://github.com/trinodb/trino/pull/624">Optimize distinct aggregation on multiple columns</a>                                      | 1069 05:55:22.276 
-    821 | <a href="https://github.com/trinodb/trino/pull/821">Distributed sort for unpartitioned window functions</a>                                    | 1054 13:48:47.276 
-    855 | <a href="https://github.com/trinodb/trino/pull/855">Change client to assume types are encoded as text</a>                                      | 1052 22:34:31.276 
-   1255 | <a href="https://github.com/trinodb/trino/pull/1255">Remove no longer needed ConnectorSplitSource#isFinished</a>                               | 984 21:45:07.276  
-   1224 | <a href="https://github.com/trinodb/trino/pull/1224">Add graceful shutdown script for Docker</a>                                               | 984 14:36:46.276  
-   1319 | <a href="https://github.com/trinodb/trino/pull/1319">Add execution statistic warnings</a>                                                      | 971 22:08:02.276  
-   1317 | <a href="https://github.com/trinodb/trino/pull/1317">Add connector table metadata warnings</a>                                                 | 964 09:47:28.276  
-   1364 | <a href="https://github.com/trinodb/trino/pull/1364">Filter tables based on table privilege of user</a>                                        | 920 13:57:18.276  
-   1637 | <a href="https://github.com/trinodb/trino/pull/1637">[WIP] patch to add support for array by table subquery</a>                                | 920 12:31:02.276  
-   1606 | <a href="https://github.com/trinodb/trino/pull/1606">Improve property derivation for FULL JOIN</a>                                             | 913 20:20:46.276  
-   2026 | <a href="https://github.com/trinodb/trino/pull/2026">Add pattern for files ending with &lt;query_id&gt;.&lt;number&gt; to cleanup them during rollback</a> | 880 18:14:38.276  
-   2227 | <a href="https://github.com/trinodb/trino/pull/2227">Adding changes for adding _timestamp field in kafka topic metadata.</a>                   | 842 10:48:36.276  
-   2489 | <a href="https://github.com/trinodb/trino/pull/2489">Derive non-null from symbol-to-symbol comparisons in domain translator</a>                | 823 12:03:37.276  
-   2010 | <a href="https://github.com/trinodb/trino/pull/2010">Query debugging tracer</a>                                                                | 820 23:52:37.276  
-   2397 | <a href="https://github.com/trinodb/trino/pull/2397">Influx Connector</a>                                                                      | 816 03:18:46.276  
-   2769 | <a href="https://github.com/trinodb/trino/pull/2769">Add missing catalogName at building ConnectorSession</a>                                  | 796 20:45:12.276  
-   2786 | <a href="https://github.com/trinodb/trino/pull/2786">Categorize user errors when parsing data via GenericHiveRecordCursor</a>                  | 795 10:22:21.276  
-   2832 | <a href="https://github.com/trinodb/trino/pull/2832">Use file extension based on the file format</a>                                           | 775 16:56:07.276  
-   3041 | <a href="https://github.com/trinodb/trino/pull/3041">Add next_day function</a>                                                                 | 758 04:10:42.276  
-   2744 | <a href="https://github.com/trinodb/trino/pull/2744">Improve performance of FirstValue, LastValue, Lead, Lag functions with IGNORE NULLS.</a>  | 753 15:40:43.276  
+    624 | <a href="https://github.com/trinodb/trino/pull/624">Optimize distinct aggregation on multiple columns</a>                                      | 1069 17:54:23.133 
+    821 | <a href="https://github.com/trinodb/trino/pull/821">Distributed sort for unpartitioned window functions</a>                                    | 1055 01:47:48.133 
+    855 | <a href="https://github.com/trinodb/trino/pull/855">Change client to assume types are encoded as text</a>                                      | 1053 10:33:32.133 
+   1255 | <a href="https://github.com/trinodb/trino/pull/1255">Remove no longer needed ConnectorSplitSource#isFinished</a>                               | 985 09:44:08.133  
+   1224 | <a href="https://github.com/trinodb/trino/pull/1224">Add graceful shutdown script for Docker</a>                                               | 985 02:35:47.133  
+   1319 | <a href="https://github.com/trinodb/trino/pull/1319">Add execution statistic warnings</a>                                                      | 972 10:07:03.133  
+   1317 | <a href="https://github.com/trinodb/trino/pull/1317">Add connector table metadata warnings</a>                                                 | 964 21:46:29.133  
+   1364 | <a href="https://github.com/trinodb/trino/pull/1364">Filter tables based on table privilege of user</a>                                        | 921 01:56:19.133  
+   1637 | <a href="https://github.com/trinodb/trino/pull/1637">[WIP] patch to add support for array by table subquery</a>                                | 921 00:30:03.133  
+   1606 | <a href="https://github.com/trinodb/trino/pull/1606">Improve property derivation for FULL JOIN</a>                                             | 914 08:19:47.133  
+   2026 | <a href="https://github.com/trinodb/trino/pull/2026">Add pattern for files ending with &lt;query_id&gt;.&lt;number&gt; to cleanup them during rollback</a> | 881 06:13:39.133  
+   2227 | <a href="https://github.com/trinodb/trino/pull/2227">Adding changes for adding _timestamp field in kafka topic metadata.</a>                   | 842 22:47:37.133  
+   2489 | <a href="https://github.com/trinodb/trino/pull/2489">Derive non-null from symbol-to-symbol comparisons in domain translator</a>                | 824 00:02:38.133  
+   2010 | <a href="https://github.com/trinodb/trino/pull/2010">Query debugging tracer</a>                                                                | 821 11:51:38.133  
+   2397 | <a href="https://github.com/trinodb/trino/pull/2397">Influx Connector</a>                                                                      | 816 15:17:47.133  
+   2769 | <a href="https://github.com/trinodb/trino/pull/2769">Add missing catalogName at building ConnectorSession</a>                                  | 797 08:44:13.133  
+   2786 | <a href="https://github.com/trinodb/trino/pull/2786">Categorize user errors when parsing data via GenericHiveRecordCursor</a>                  | 795 22:21:22.133  
+   2832 | <a href="https://github.com/trinodb/trino/pull/2832">Use file extension based on the file format</a>                                           | 776 04:55:08.133  
+   3041 | <a href="https://github.com/trinodb/trino/pull/3041">Add next_day function</a>                                                                 | 758 16:09:43.133  
+   2744 | <a href="https://github.com/trinodb/trino/pull/2744">Improve performance of FirstValue, LastValue, Lead, Lag functions with IGNORE NULLS.</a>  | 754 03:39:44.133  
 (20 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/439e49e134a39ec6a5448bd3c8fe7e6a04745d04/sql/pr/awaiting-review.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/fb58af61884273de4832fcb7215f608c265be12b/sql/pr/awaiting-review.sql)
 
 #  Abandoned PRs
 <pre><code>
@@ -613,6 +613,6 @@ Trino PR Reports
 --------+-------+-----------------
 (0 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/439e49e134a39ec6a5448bd3c8fe7e6a04745d04/sql/pr/abandoned-prs.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/fb58af61884273de4832fcb7215f608c265be12b/sql/pr/abandoned-prs.sql)
 
-Generated on Sun Apr 17 06:37:44 UTC 2022
+Generated on Sun Apr 17 18:36:45 UTC 2022
