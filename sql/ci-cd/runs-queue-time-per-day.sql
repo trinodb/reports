@@ -6,6 +6,7 @@ WITH longest_jobs AS (
     , max(completed_at) AS completed_at
     , max(completed_at) - min(started_at) AS duration
   FROM jobs
+  WHERE owner = 'trinodb' AND repo = 'trino' AND COALESCE(run_attempt, 1) = 1
   GROUP BY 1
 ),
 main AS (
@@ -18,7 +19,7 @@ main AS (
     , count(*) AS runs_count
     , approx_percentile(to_milliseconds(j.started_at - created_at), ARRAY[0.75, 0.90, 0.95, 0.99]) AS perc
   FROM runs r
-  JOIN longest_jobs j ON j.run_id = r.id
+  LEFT JOIN longest_jobs j ON j.run_id = r.id
   WHERE r.owner = 'trinodb' AND r.repo = 'trino' AND r.name = 'ci' AND r.created_at > CURRENT_DATE - INTERVAL '14' DAY
   GROUP BY 1
 )
