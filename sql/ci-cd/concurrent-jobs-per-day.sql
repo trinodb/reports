@@ -29,4 +29,5 @@ SELECT
    , max_concurrent_jobs_count AS "Max concurrent jobs count"
    , max_concurrent_runs_count AS "Max concurrent runs count"
 FROM main
-ORDER BY 1;
+ORDER BY 1 DESC
+;
