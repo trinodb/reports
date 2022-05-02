@@ -48,7 +48,7 @@ jobs:
         run: |
           ./bin/reports.sh reports/ci-cd/index.md "Trino CI/CD Reports" sql/ci-cd/{health,runs-queue-time-per-day,runs-duration-per-day,runs-job-cumulative-duration-per-day,concurrent-jobs-per-day,jobs-duration}.sql
           ./bin/reports.sh reports/flaky/index.md "Trino Flaky Tests" sql/flaky/{jobs,tests,classes}.sql
-          ./bin/reports.sh reports/pr/index.md "Trino PR Reports" sql/pr/{idents,burndown,authors-per-month,changes-per-month,prs-per-author,reviewers-per-pr,top-reviewers,top-authors,top-mergers,sith-lords,mergers-authors,reviewers-authors,avg-time-to-merge,avg-time-to-merge-since-creation,avg-time-to-first-review,stale-prs,awaiting-review}.sql
+          ./bin/reports.sh reports/pr/index.md "Trino PR Reports" sql/pr/{idents,burndown,authors-per-month,changes-per-month,prs-per-author,reviewers-per-pr,reviews-per-author-assoc,top-reviewers,top-authors,top-mergers,sith-lords,mergers-authors,reviewers-authors,avg-time-to-merge,avg-time-to-merge-since-creation,avg-time-to-first-review,stale-prs,awaiting-review}.sql
       - name: Commit report
         run: |
           git config --global user.name 'Jan Was'
