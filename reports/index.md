@@ -5,4 +5,6 @@ Trino Project Reports
 
 # [Pull request pipeline reports](https://nineinchnick.github.io/trino-cicd/reports/pr/)
 
+# [Flaky test reports](https://nineinchnick.github.io/trino-cicd/reports/flaky/)
+
 # [Git Achievements](https://MiguelWeezardo.github.io/trino-git-achievements/reports/git/)

@@ -1,6 +1,8 @@
--- Flaky tests per week
-WITH retried_jobs AS (
-  SELECT run_id
+-- Flaky jobs per week
+WITH
+retried_jobs AS (
+  SELECT
+      run_id
     , name
     , count(DISTINCT run_attempt) AS attempts_count
     , count(*) FILTER (WHERE (conclusion = 'success')) success_count
@@ -10,9 +12,10 @@ WITH retried_jobs AS (
   GROUP BY 1, 2
   HAVING count(*) FILTER (WHERE (conclusion = 'success')) != 0
     AND count(*) FILTER (WHERE (conclusion = 'failure')) != 0
-),
-flaky_runs AS (
-  SELECT CAST(date_trunc('week', r.created_at) AS date) week
+)
+, flaky_runs AS (
+  SELECT
+      CAST(date_trunc('week', r.created_at) AS date) week
     , j.name
     , j.success_count
     , j.failure_count
@@ -21,7 +24,8 @@ flaky_runs AS (
   WHERE r.created_at > CURRENT_DATE - INTERVAL '40' DAY
     AND r.name = 'ci'
   UNION ALL
-  SELECT CAST(date_trunc('week', r.created_at) AS date) week
+  SELECT
+      CAST(date_trunc('week', r.created_at) AS date) week
     , j.name
     , count() FILTER (WHERE j.conclusion = 'success') AS success_count
     , count() FILTER (WHERE j.conclusion = 'failure' AND jp.conclusion IS NOT DISTINCT FROM 'success') AS failure_count
@@ -45,4 +49,5 @@ SELECT
   , sum(success_count) AS "Success count"
 FROM flaky_runs
 GROUP BY 1, 2
-ORDER BY 1 DESC, 3 DESC, 2;
+ORDER BY 1 DESC, 3 DESC, 2
+;
