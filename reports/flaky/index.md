@@ -1,4 +1,4 @@
-Trino Flaky tests
+Trino Flaky Tests
 =======
 
 #  Flaky jobs per week
@@ -85,4 +85,6 @@ Trino Flaky tests
  2022-03-21 | test (plugin/trino-hive, test-failure-recovery)         |         1.92 |             1 |            51 
 (78 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/1c2e91a3c9fcd336e11f0df95bc4321aacbed6e2/sql/flaky/jobs.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/927b9bc515a15be9c4a2d577b0abbefc104e1c7d/sql/flaky/jobs.sql)
+
+Generated on Mon May  2 10:08:50 UTC 2022
