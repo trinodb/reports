@@ -1,5 +1,4 @@
 -- Active Qualified Contributors
--- TODO similar to authors per month, but only count those with 3 or more commits in last 12 months
 WITH
 authors AS (
     SELECT
@@ -22,8 +21,11 @@ SELECT
     month AS "Month"
   , count(*) AS "Total contributors"
   , count(*) FILTER (WHERE org != 'starburstdata' AND commits_last_year >= 3) AS "Active contributors"
+  , count(*) FILTER (WHERE org != 'starburstdata' AND commits_last_year < 3) AS "Potential contributors"
+  --, array_agg(email) FILTER (WHERE org != 'starburstdata' AND commits_last_year < 3) AS "PC emails"
   , sum(num_commits) AS "Total commits"
   , sum(num_commits) FILTER (WHERE org != 'starburstdata' AND commits_last_year >= 3) AS "Commits by AC"
+  , sum(num_commits) FILTER (WHERE org != 'starburstdata' AND commits_last_year < 3) AS "Commits by PC"
 FROM qualified
 GROUP BY 1
 ORDER BY 1 DESC
