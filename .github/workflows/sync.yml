@@ -14,13 +14,13 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
       TRINO_VERSION: 378
-      TRINO_REST_VERSION: "0.68"
+      TRINO_REST_VERSION: "0.70"
       GITHUB_OWNER: trinodb
       GITHUB_REPO: trino
       TRINO_DEST_SCHEMA: hive.v2
       TRINO_SRC_SCHEMA: github.default
       EMPTY_INSERT_LIMIT: 5
-      SYNC_TABLES: runs,jobs,steps,check_suites,check_runs,check_run_annotations,pulls,pull_commits,review_comments,reviews,issues,issue_comments,commits,artifacts
+      SYNC_TABLES: runs,jobs,steps,check_suites,check_runs,check_run_annotations,pulls,pull_commits,review_comments,reviews,issues,issue_comments,commits,artifacts,teams,members
     steps:
       - uses: actions/checkout@v2
       - name: Download trino-rest
@@ -65,6 +65,19 @@ jobs:
             -e TRINO_SRC_SCHEMA \
             -e EMPTY_INSERT_LIMIT \
             -e SYNC_TABLES \
+            -e TRINO_URL=jdbc:trino://$SERVER_IP:8080/github/default \
+            --rm \
+            nineinchnick/trino-rest:$TRINO_REST_VERSION \
+            java -cp "/usr/lib/trino/plugin/github/*" pl.net.was.rest.github.Sync
+      - name: Run Sync for Starburst Teams
+        run: |
+          docker run \
+            -e GITHUB_OWNER=starburstdata \
+            -e GITHUB_REPO \
+            -e TRINO_DEST_SCHEMA \
+            -e TRINO_SRC_SCHEMA \
+            -e EMPTY_INSERT_LIMIT \
+            -e SYNC_TABLES=teams,members \
             -e TRINO_URL=jdbc:trino://$SERVER_IP:8080/github/default \
             --rm \
             nineinchnick/trino-rest:$TRINO_REST_VERSION \
