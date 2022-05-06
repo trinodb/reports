@@ -2,7 +2,7 @@
 WITH
 last_review_comments AS (
   SELECT
-    r.pull_number
+      r.pull_number
     , max(r.submitted_at) AS review_submitted_at
     , max(rc.created_at) AS comment_created_at
   FROM reviews r
@@ -11,7 +11,7 @@ last_review_comments AS (
 )
 , last_pull_comments AS (
   SELECT
-    p.number AS pull_number
+      p.number AS pull_number
     , max(pc.created_at) AS comment_created_at
   FROM unique_pulls p
   JOIN issue_comments pc ON pc.issue_url = p.issue_url
@@ -19,10 +19,9 @@ last_review_comments AS (
 )
 , last_commits AS (
   SELECT
-    pull_number
+      pull_number
     , max(committer_date) AS committer_date
-  FROM
-    pull_commits
+  FROM pull_commits
   GROUP BY 1
 )
 , authors AS (
@@ -38,8 +37,8 @@ last_review_comments AS (
 )
 , rolling AS (
     SELECT
-    *
-    , sum(num_commits) OVER (PARTITION BY logins ORDER BY month ROWS BETWEEN 12 PRECEDING AND CURRENT ROW) AS commits_last_year
+        *
+      , sum(num_commits) OVER (PARTITION BY logins ORDER BY month ROWS BETWEEN 12 PRECEDING AND CURRENT ROW) AS commits_last_year
     FROM authors
 )
 SELECT
