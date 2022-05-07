@@ -30,5 +30,5 @@ SELECT
     commits_count
 FROM ranked_per_year
 WHERE in_year_rank < 11
-ORDER BY 1 DESC, 5 DESC
+ORDER BY 1 DESC, 5 DESC, 2
 ;

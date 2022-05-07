@@ -24,6 +24,6 @@ SELECT
   , count(*) AS pull_requests
 FROM pairs
 GROUP BY 1, 2, 3, 4
-ORDER BY pull_requests DESC
+ORDER BY pull_requests DESC, ai_name, ci_name
 LIMIT 50
 ;

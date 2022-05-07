@@ -44,5 +44,5 @@ SELECT
   , reviews "Number of reviews"
 FROM reviewers
 WHERE author_rank < 11
-ORDER BY ri_name, comments DESC
+ORDER BY ri_name, comments DESC, ai_name
 ;
