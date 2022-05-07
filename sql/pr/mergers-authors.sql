@@ -38,5 +38,5 @@ SELECT
   , pull_requests "Number of pull requests"
 FROM mergers
 WHERE author_rank < 11
-ORDER BY ci_name, commits DESC, au_name
+ORDER BY ci_name, commits DESC, ai_name
 ;
