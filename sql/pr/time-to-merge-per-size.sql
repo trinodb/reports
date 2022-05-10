@@ -1,46 +1,27 @@
 -- Time to merge per PR size
 WITH
-stats AS (
-    SELECT
-        commit_id
-      , sum(added_lines) + sum(deleted_lines) AS size
-    FROM git.default.diff_stats
-    GROUP BY 1
-)
-, ttm_per_size AS (
+ttm_per_size AS (
     SELECT
         p.merged_at - p.created_at AS time_to_merge
-      , sum(s.size) AS size
+      , s.additions + s.deletions AS size
     FROM unique_pulls p
-    LEFT JOIN pull_commits c ON c.pull_number = p.number
-    /*
-    TODO most PRs are created in feature branches, and their commits do not exist in the trinodb/trino repo;
-         the following details are available when fetching PRs one by one:
-          "comments": 10,
-          "review_comments": 0,
-          "maintainer_can_modify": true,
-          "commits": 3,
-          "additions": 100,
-          "deletions": 3,
-          "changed_files": 5
-    */
-    LEFT JOIN stats s ON s.commit_id = c.sha
+    JOIN unique_pull_stats s ON (s.owner, s.repo, s.pull_number) = (p.owner, p.repo, p.number)
     WHERE p.owner = 'trinodb' AND p.repo = 'trino'
-    GROUP BY 1
 )
 , histogram AS (
     SELECT
         size AS key
-      , width_bucket(size, ARRAY[1, 10, 100, 1000, 10000]) AS bucket
+      , width_bucket(size, ARRAY[0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 10000]) AS bucket
       , time_to_merge AS value
     FROM ttm_per_size
 )
 , grouped AS (
     SELECT
         bucket
-      , element_at(ARRAY['1 to 10', '10 to 100', '100 to 1,000', '1,000 to 10,000', 'over 10,000'], bucket) AS range
+      , element_at(ARRAY['0 (only path renames)', '1 to 2', '2 to 5', '5 to 10', '10 to 20', '20 to 50', '50 to 100', '100 to 200', '200 to 500', '500 to 1,000', '1,000 to 10,000', 'over 10,000'], bucket) AS range
       , avg(value) AS value
       , count(*) AS num_prs
+      , approx_percentile(to_milliseconds(value) / (1000.0 * 3600.0 * 24.0), ARRAY[0.5, 0.95, 0.99]) AS perc
     FROM histogram
     GROUP BY 1, 2
 )
@@ -48,7 +29,9 @@ SELECT
     range AS "PR size (added + deleted lines)"
   , num_prs AS "Number of PRs"
   , value AS "Avg time to merge"
-  , bar(to_milliseconds(value) / CAST(to_milliseconds(max(value) OVER ()) AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Chart"
+  , bar(num_prs / CAST(max(num_prs) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Number of PRs chart"
+  , bar(to_milliseconds(value) / CAST(to_milliseconds(max(value) OVER ()) AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Avg TTM chart"
+  , transform(perc, d -> format('%.2f', d)) AS "Days to merge percentiles 50, 95, 99"
 FROM grouped
 ORDER BY bucket
 ;
