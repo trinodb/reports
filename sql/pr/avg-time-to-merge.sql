@@ -1,10 +1,11 @@
 -- Average time to merge a PR
 WITH
 last_reviews AS (
-    SELECT pull_number AS number, max(submitted_at) AS submitted_at
-    FROM reviews
-    WHERE owner = 'trinodb' AND repo = 'trino'
-    GROUP BY 1
+    SELECT p.number, p.merged_at - max(r.submitted_at) AS reviewed_ttm
+    FROM unique_pulls p
+    JOIN reviews r ON (p.owner, p.repo, p.number) = (r.owner, r.repo, r.pull_number) AND r.submitted_at <= p.merged_at
+    WHERE r.owner = 'trinodb' AND r.repo = 'trino' AND p.merged_at IS NOT NULL
+    GROUP BY p.number, p.merged_at
 )
 , per_month AS (
     SELECT
@@ -13,8 +14,8 @@ last_reviews AS (
       , count(p.merged_at - p.created_at) AS num_merged
       , sum(p.merged_at - p.created_at) / count(p.merged_at - p.created_at) AS avg_time_to_merge
       , approx_percentile(to_milliseconds(p.merged_at - p.created_at) / (1000.0 * 3600.0 * 24.0), ARRAY[0.5, 0.95, 0.99]) AS perc
-      , sum(p.merged_at - r.submitted_at) / count(p.merged_at - r.submitted_at) AS avg_reviewed_time_to_merge
-      , approx_percentile(to_milliseconds(p.merged_at - r.submitted_at) / (1000.0 * 3600.0 * 24.0), ARRAY[0.5, 0.95, 0.99]) AS perc_review
+      , sum(r.reviewed_ttm) / count(r.reviewed_ttm) AS avg_reviewed_time_to_merge
+      , approx_percentile(to_milliseconds(r.reviewed_ttm) / (1000.0 * 3600.0 * 24.0), ARRAY[0.5, 0.95, 0.99]) AS perc_review
     FROM unique_pulls p
     LEFT JOIN last_reviews r ON p.number = r.number
     WHERE owner = 'trinodb' AND repo = 'trino'
