@@ -1,4 +1,4 @@
--- Time to merge in last 12 months
+-- Time to first review in last 12 months
 WITH
 first_reviews AS (
     SELECT

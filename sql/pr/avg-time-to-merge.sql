@@ -41,9 +41,9 @@ SELECT
   , g.num_merged "Number of PRs"
   , bar(to_milliseconds(g.avg_time_to_merge) / CAST(max(to_milliseconds(g.avg_time_to_merge)) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Avg TTM chart"
   , g.avg_time_to_merge AS "Avg TTM"
-  , g3.num_merged "Number of PRs in last 3 months"
-  , bar(to_milliseconds(g3.avg_time_to_merge) / CAST(max(to_milliseconds(g3.avg_time_to_merge)) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Avg TTM in last 3 months chart"
-  , g3.avg_time_to_merge AS "Avg TTM in last 3 months"
+  , g3.num_merged "Number of PRs over 3 months"
+  , bar(to_milliseconds(g3.avg_time_to_merge) / CAST(max(to_milliseconds(g3.avg_time_to_merge)) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Avg TTM over 3 months chart"
+  , g3.avg_time_to_merge AS "Avg TTM over 3 months"
   , transform(g.perc, d -> format('%.2f', d)) AS "Days to merge percentiles 50, 95, 99"
 FROM grouped g
 JOIN grouped_3months g3 ON g.month = g3.month
