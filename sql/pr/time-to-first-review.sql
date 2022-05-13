@@ -81,18 +81,28 @@ first_reviews AS (
     GROUP BY bucket
     ORDER BY bucket
 )
+, chart AS (
+    SELECT
+        bucket
+      , range
+      , value
+      , avg_size
+      , bar(value / CAST(max(value) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS value_chart
+    FROM grouped
+    UNION ALL
+    SELECT
+        NULL
+      , 'Total'
+      , sum(value)
+      , sum(sum_size) / sum(value)
+      , ''
+    FROM histogram
+)
 SELECT
     range AS "Time to first review"
   , value AS "Number of PRs"
   , avg_size AS "Average PR size"
-  , bar(value / CAST(max(value) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Chart"
-FROM grouped
-UNION ALL
-SELECT
-    'Total'
-  , sum(value)
-  , sum(sum_size) / sum(value)
-  , ''
-FROM histogram
-ORDER BY if("Time to first review" = 'Total', 1, 0)
+  , value_chart AS "Chart"
+FROM chart
+ORDER BY bucket
 ;
