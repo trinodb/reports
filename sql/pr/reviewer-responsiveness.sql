@@ -41,19 +41,18 @@ pulls AS (
   SELECT *, 'commit' AS event FROM commits
 )
 , reviewer_events AS (
-  SELECT number, event_at - prev_event_at AS response_time
-  FROM (
-    SELECT number, min(event_at) AS event_at, lag(min(event_at)) OVER (PARTITION BY number ORDER BY flips) AS prev_event_at, is_author
-    FROM (
-      SELECT number, event_at, is_author, sum(CASE WHEN is_author IS DISTINCT FROM prev_is_author THEN 1 ELSE 0 END) OVER (PARTITION BY number ORDER BY event_at ROWS UNBOUNDED PRECEDING) AS flips
-      FROM (
-        SELECT number, event_at, is_author, lag(is_author) OVER (PARTITION BY number ORDER BY event_at) AS prev_is_author
-        FROM events
-      ) a
-    ) a
-    GROUP BY number, is_author, flips
-  ) a
-  WHERE NOT is_author
+  SELECT number, response_time
+  FROM events MATCH_RECOGNIZE (
+    PARTITION BY number
+    ORDER BY event_at
+    MEASURES
+        min(B.event_at) - min(A.event_at) AS response_time
+    ONE ROW PER MATCH
+    PATTERN (A+ B+)
+    DEFINE
+      A AS is_author
+    , B AS NOT is_author
+  )
 )
 -- uncomment for debugging
 -- SELECT * FROM reviewer_events WHERE response_time < interval '10' minute LIMIT 10;
