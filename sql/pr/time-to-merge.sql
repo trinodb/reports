@@ -49,12 +49,19 @@ pulls AS (
             'over 90 days'], bucket) AS range
         , sum(value) AS value
     FROM histogram
-    GROUP BY 1, 2
+    GROUP BY bucket
+    ORDER BY bucket
 )
 SELECT
   range AS "Time to merge"
   , value AS "Number of PRs"
   , bar(value / CAST(max(value) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Chart"
 FROM grouped
-ORDER BY bucket
+UNION ALL
+SELECT
+  'Total'
+  , count(*)
+  , ''
+FROM histogram
+ORDER BY if("Time to merge" = 'Total', 1, 0)
 ;

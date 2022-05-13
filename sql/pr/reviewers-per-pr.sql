@@ -13,7 +13,7 @@ reviews_per_pr AS (
         , width_bucket(num, ARRAY[1, 2, 3, 4, 5, 10, 20]) AS bucket
         , count(*) AS value
     FROM reviews_per_pr
-    GROUP BY 1
+    GROUP BY num
 )
 , grouped AS (
     SELECT
@@ -21,12 +21,12 @@ reviews_per_pr AS (
         , element_at(ARRAY['1', '2', '3', '4', '5 to 10', '10 to 20', 'over 20'], bucket) AS range
         , sum(value) AS value
     FROM histogram
-    GROUP BY 1, 2
+    GROUP BY bucket
+    ORDER BY bucket
 )
 SELECT
   range AS "Reviewers per PR"
   , value AS "Number of reviews"
   , bar(value / CAST(max(value) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Chart"
 FROM grouped
-ORDER BY bucket
 ;

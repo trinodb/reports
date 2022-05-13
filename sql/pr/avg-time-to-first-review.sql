@@ -1,4 +1,4 @@
--- Average time to first review over 3 months
+-- Average time to first review
 WITH
 months AS (
     SELECT *

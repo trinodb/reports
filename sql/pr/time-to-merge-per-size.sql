@@ -20,10 +20,12 @@ ttm_per_size AS (
         bucket
       , element_at(ARRAY['0 (only path renames)', '1 to 2', '2 to 5', '5 to 10', '10 to 20', '20 to 50', '50 to 100', '100 to 200', '200 to 500', '500 to 1,000', '1,000 to 10,000', 'over 10,000'], bucket) AS range
       , avg(value) AS value
+      , sum(value) AS sum_value
       , count(*) AS num_prs
       , approx_percentile(to_milliseconds(value) / (1000.0 * 3600.0 * 24.0), ARRAY[0.5, 0.95, 0.99]) AS perc
     FROM histogram
-    GROUP BY 1, 2
+    GROUP BY bucket
+    ORDER BY bucket
 )
 SELECT
     range AS "PR size (added + deleted lines)"
@@ -33,5 +35,17 @@ SELECT
   , bar(to_milliseconds(value) / CAST(to_milliseconds(max(value) OVER ()) AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Avg TTM chart"
   , transform(perc, d -> format('%.2f', d)) AS "Days to merge percentiles 50, 95, 99"
 FROM grouped
-ORDER BY bucket
+UNION ALL
+SELECT
+  'Total'
+  , count(*)
+  , avg(value)
+  , ''
+  , ''
+  , transform(
+      approx_percentile(to_milliseconds(value) / (1000.0 * 3600.0 * 24.0), ARRAY[0.5, 0.95, 0.99]),
+      d -> format('%.2f', d)
+    )
+FROM histogram
+ORDER BY if("PR size (added + deleted lines)" = 'Total', 1, 0)
 ;

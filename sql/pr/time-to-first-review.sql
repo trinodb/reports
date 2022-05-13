@@ -27,12 +27,14 @@ first_reviews AS (
   SELECT
        coalesce(r.number, c.number) AS number
      , least(coalesce(r.ttfr, c.ttfc), coalesce(c.ttfc, r.ttfr)) AS ttfr
+     , s.additions + s.deletions AS size
   FROM first_reviews r
   FULL OUTER JOIN first_comments c ON c.number = r.number
+  LEFT JOIN unique_pull_stats s ON coalesce(r.number, c.number) = s.pull_number AND s.owner = 'trinodb' AND s.repo = 'trino'
 )
 , histogram AS (
     SELECT
-        ttfr AS key
+          ttfr AS key
         , width_bucket(
             to_milliseconds(ttfr) / 60000.0,
             ARRAY[
@@ -51,12 +53,13 @@ first_reviews AS (
                 43200,
                 129600]) AS bucket
         , count(*) AS value
+        , sum(size) AS sum_size
     FROM pulls
-    GROUP BY 1
+    GROUP BY ttfr
 )
 , grouped AS (
     SELECT
-        bucket
+          bucket
         , element_at(ARRAY[
             'up to 10 minutes',
             '10 to 30 minutes',
@@ -73,13 +76,23 @@ first_reviews AS (
             '30 to 90 days',
             'over 90 days'], bucket) AS range
         , sum(value) AS value
+        , sum(sum_size) / sum(value) AS avg_size
     FROM histogram
-    GROUP BY 1, 2
+    GROUP BY bucket
+    ORDER BY bucket
 )
 SELECT
-  range AS "Time to first review"
+    range AS "Time to first review"
   , value AS "Number of PRs"
+  , avg_size AS "Average PR size"
   , bar(value / CAST(max(value) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Chart"
 FROM grouped
-ORDER BY bucket
+UNION ALL
+SELECT
+    'Total'
+  , sum(value)
+  , sum(sum_size) / sum(value)
+  , ''
+FROM histogram
+ORDER BY if("Time to first review" = 'Total', 1, 0)
 ;
