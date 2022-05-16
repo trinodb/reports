@@ -1,36 +1,43 @@
 -- Time to first review in last 12 months
 WITH
-first_reviews AS (
-    SELECT
-        p.number
-      , min(r.submitted_at) - p.created_at AS ttfr
+pulls AS (
+    SELECT *
     FROM unique_pulls p
+    WHERE p.owner = 'trinodb' AND p.repo = 'trino'
+)
+, first_reviews AS (
+    SELECT
+        p.owner
+      , p.repo
+      , p.number
+      , min(r.submitted_at) - p.created_at AS ttfr
+    FROM pulls p
     JOIN reviews r ON (p.owner, p.repo, p.number) = (r.owner, r.repo, r.pull_number)
       AND p.user_login != r.user_login
-    WHERE p.owner = 'trinodb' AND p.repo = 'trino'
-    GROUP BY p.number, p.created_at
+    GROUP BY p.owner, p.repo, p.number, p.created_at
     HAVING min(r.submitted_at) > CURRENT_DATE - interval '12' month
 )
 , first_comments AS (
     SELECT
-        p.number
+        p.owner
+      , p.repo
+      , p.number
       , min(c.created_at) - p.created_at AS ttfc
-    FROM unique_pulls p
+    FROM pulls p
     JOIN unique_issue_comments c ON (p.owner, p.repo, p.issue_url) = (c.owner, c.repo, c.issue_url)
       AND c.user_login != p.user_login
       AND c.user_login != 'cla-bot[bot]'
-    WHERE p.owner = 'trinodb' AND p.repo = 'trino'
-    GROUP BY p.number, p.created_at
+    GROUP BY p.owner, p.repo, p.number, p.created_at
     HAVING min(c.created_at) > CURRENT_DATE - interval '12' month
 )
-, pulls AS (
+, first_combined AS (
   SELECT
        coalesce(r.number, c.number) AS number
      , least(coalesce(r.ttfr, c.ttfc), coalesce(c.ttfc, r.ttfr)) AS ttfr
      , s.additions + s.deletions AS size
   FROM first_reviews r
   FULL OUTER JOIN first_comments c ON c.number = r.number
-  LEFT JOIN unique_pull_stats s ON coalesce(r.number, c.number) = s.pull_number AND s.owner = 'trinodb' AND s.repo = 'trino'
+  LEFT JOIN unique_pull_stats s ON (s.owner, s.repo, s.pull_number) = (coalesce(r.owner, c.owner), coalesce(r.repo, c.repo), coalesce(r.number, c.number))
 )
 , histogram AS (
     SELECT
@@ -54,7 +61,7 @@ first_reviews AS (
                 129600]) AS bucket
         , count(*) AS value
         , sum(size) AS sum_size
-    FROM pulls
+    FROM first_combined
     GROUP BY ttfr
 )
 , grouped AS (

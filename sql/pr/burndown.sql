@@ -1,5 +1,6 @@
 -- Burndown chart
-WITH open_prs AS (
+WITH
+open_prs AS (
   SELECT d.month, count(*) AS count
   FROM unique_pulls
   CROSS JOIN unnest(sequence(
