@@ -14,34 +14,34 @@ pulls AS (
   SELECT
       d.time AS time_label
     , d.time - interval '3' month AS time_begin
-    , d.time + interval '1' month - interval '1' day AS time_end
+    , lead(d.time) OVER (ORDER BY d.time) AS time_end
   FROM unnest(sequence(
-        date_trunc('month', current_date),
+        date_trunc('month', current_date) + interval '1' month,
         date_trunc('month', current_date) - interval '3' year,
         interval '-1' month)) AS d(time)
 )
 , new_prs AS (
   SELECT time_label, count(*) AS count
   FROM time t
-  LEFT JOIN pulls p ON date(p.created_at) BETWEEN t.time_begin AND t.time_end
+  LEFT JOIN pulls p ON date(p.created_at) >= t.time_begin AND date(p.created_at) < t.time_end
   GROUP BY 1
 ),
 closed_prs AS (
   SELECT time_label, count(*) AS count
   FROM time t
-  LEFT JOIN pulls p ON date(p.closed_at) BETWEEN t.time_begin AND t.time_end
+  LEFT JOIN pulls p ON date(p.closed_at) >= t.time_begin AND date(p.closed_at) < t.time_end
   GROUP BY 1
 ),
 new_issues AS (
   SELECT time_label, count(*) AS count
   FROM time t
-  LEFT JOIN issues i ON date(i.created_at) BETWEEN t.time_begin AND t.time_end
+  LEFT JOIN issues i ON date(i.created_at) >= t.time_begin AND date(i.created_at) < t.time_end
   GROUP BY 1
 ),
 closed_issues AS (
   SELECT time_label, count(*) AS count
   FROM time t
-  LEFT JOIN issues i ON date(i.closed_at) BETWEEN t.time_begin AND t.time_end
+  LEFT JOIN issues i ON date(i.closed_at) >= t.time_begin AND date(i.closed_at) < t.time_end
   GROUP BY 1
 )
 SELECT
@@ -62,4 +62,5 @@ LEFT JOIN new_prs np ON np.time_label = t.time_label
 LEFT JOIN closed_prs cp ON cp.time_label = t.time_label
 LEFT JOIN new_issues ni ON ni.time_label = t.time_label
 LEFT JOIN closed_issues ci ON ci.time_label = t.time_label
+WHERE t.time_label <= date_trunc('month', current_date)
 ;
