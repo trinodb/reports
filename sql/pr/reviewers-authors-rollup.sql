@@ -54,13 +54,10 @@ all_members AS (
       , sum(comments) AS num_review_comments
       , sum(replies) AS num_comment_replies
       , count(distinct pull_number) AS num_prs
-      , count(distinct pull_number)
-        / (select cast(count(distinct pull_number) AS double) FROM reviews) AS frac_prs
       , count(*) AS num_reviews
       , count(*) FILTER (WHERE comments = replies) AS num_review_replies
       , count(*) FILTER (WHERE state = 'APPROVED') AS num_approvals
-      , count(distinct pull_number) FILTER (WHERE state = 'APPROVED')
-        / (select cast(count(distinct pull_number) AS double) FROM reviews WHERE state = 'APPROVED') AS frac_approvals
+      , count(distinct pull_number) FILTER (WHERE state = 'APPROVED') AS num_approved_prs
       , row_number() OVER (PARTITION BY reviewer ORDER BY sum(comments) DESC) AS author_rank
     FROM reviews
     GROUP BY 1, 2
@@ -92,30 +89,55 @@ all_members AS (
     AND c.committer_login != p.user_login
     GROUP BY 1, 2
 )
+, per_team AS (
+    SELECT
+        ri.name || coalesce(nullif(' (' || array_join(coalesce(omr.orgs, ARRAY[]) || coalesce(tmr.teams, ARRAY[]), ', ') || ')', ' ()'), '') AS "Reviewer name"
+      , coalesce(oma.orgs, ARRAY[]) AS "Author orgs"
+      , coalesce(tma.teams, ARRAY[]) AS "Author teams"
+      , sum(num_review_comments) AS "Review comments"
+      , sum(num_comment_replies) AS "Comment replies"
+      , sum(num_prs) AS "Number of PRs"
+      , sum(num_approved_prs) AS "Number of approved PRs"
+      , sum(num_reviews) AS "Number of reviews"
+      , sum(num_review_replies) AS "Number of replies"
+      , sum(num_approvals) AS "Number of approvals"
+      , sum(num_pr_author_comments) AS "PR author comments"
+      , sum(num_pr_reviewer_comments) AS "PR reviewer comments"
+      , sum(num_merged_commits) AS "Merged commits"
+    FROM review_counts rc
+    FULL OUTER JOIN comments cnt ON (rc.reviewer, rc.author) = (cnt.reviewer, cnt.author)
+    FULL OUTER JOIN commits cit ON (rc.reviewer, rc.author) = (cit.merger, cit.author)
+    JOIN memory.default.gh_idents ri ON CONTAINS(ri.logins, coalesce(rc.reviewer, cnt.reviewer, cit.merger))
+    JOIN memory.default.gh_idents ai ON CONTAINS(ai.logins, coalesce(rc.author, cnt.author, cit.author))
+    LEFT JOIN org_members oma ON CONTAINS(ai.logins, oma.login)
+    LEFT JOIN team_members tma ON CONTAINS(ai.logins, tma.login)
+    LEFT JOIN org_members omr ON CONTAINS(ri.logins, omr.login)
+    LEFT JOIN team_members tmr ON CONTAINS(ri.logins, tmr.login)
+    GROUP BY 1, 2, 3
+)
 SELECT
-    ri.name || coalesce(nullif(' (' || array_join(coalesce(omr.orgs, ARRAY[]) || coalesce(tmr.teams, ARRAY[]), ', ') || ')', ' ()'), '') AS "Reviewer name"
-  , ai.name || coalesce(nullif(' (' || array_join(coalesce(oma.orgs, ARRAY[]) || coalesce(tma.teams, ARRAY[]), ', ') || ')', ' ()'), '') AS "Author name"
-  , author_rank AS "Author rank"
-  , bar(num_review_comments / CAST(max(num_review_comments) OVER (PARTITION BY coalesce(rc.reviewer, cnt.reviewer, cit.merger)) AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Comments chart"
-  , num_review_comments AS "Review comments"
-  , num_comment_replies AS "Comment replies"
-  , num_prs AS "Number of PRs"
-  , format('%.2f', 100 * frac_prs) AS "Reviewed PRs %"
-  , format('%.2f', 100 * frac_approvals) "Approved PRs %"
-  , num_reviews "Number of reviews"
-  , num_review_replies "Number of replies"
-  , num_approvals "Number of approvals"
-  , num_pr_author_comments AS "PR author comments"
-  , num_pr_reviewer_comments AS "PR reviewer comments"
-  , num_merged_commits AS "Merged commits"
-FROM review_counts rc
-FULL OUTER JOIN comments cnt ON (rc.reviewer, rc.author) = (cnt.reviewer, cnt.author)
-FULL OUTER JOIN commits cit ON (rc.reviewer, rc.author) = (cit.merger, cit.author)
-JOIN memory.default.gh_idents ri ON CONTAINS(ri.logins, coalesce(rc.reviewer, cnt.reviewer, cit.merger))
-JOIN memory.default.gh_idents ai ON CONTAINS(ai.logins, coalesce(rc.author, cnt.author, cit.author))
-LEFT JOIN org_members oma ON CONTAINS(ai.logins, oma.login)
-LEFT JOIN team_members tma ON CONTAINS(ai.logins, tma.login)
-LEFT JOIN org_members omr ON CONTAINS(ri.logins, omr.login)
-LEFT JOIN team_members tmr ON CONTAINS(ri.logins, tmr.login)
-ORDER BY "Reviewer name", "Review comments" DESC, "Author name"
+    "Reviewer name"
+  , "Author orgs"
+  , "Author teams"
+  , sum("Review comments") AS "Review comments"
+  , sum("Comment replies") AS "Comment replies"
+  , sum("Number of PRs") AS "Number of PRs"
+  , sum("Number of approved PRs") AS "Number of approved PRs"
+  , format('%.2f', 100 * sum("Number of PRs") / (select cast(count(distinct pull_number) AS double) FROM reviews)) AS "Reviewed PRs %"
+  , format('%.2f', 100 * sum("Number of approved PRs") / (select cast(count(distinct pull_number) AS double) FROM reviews WHERE state = 'APPROVED')) "Approved PRs %"
+  , sum("Number of reviews") AS "Number of reviews"
+  , sum("Number of replies") AS "Number of replies"
+  , sum("Number of approvals") AS "Number of approvals"
+  , sum("PR author comments") AS "PR author comments"
+  , sum("PR reviewer comments") AS "PR reviewer comments"
+  , sum("Merged commits") AS "Merged commits"
+FROM per_team
+GROUP BY GROUPING SETS (
+    ()
+  , ("Reviewer name")
+  , ("Reviewer name", "Author teams")
+  , ("Reviewer name", "Author orgs")
+  , ("Reviewer name", "Author orgs", "Author teams")
+)
+ORDER BY "Reviewer name", "Author orgs", "Author teams"
 ;

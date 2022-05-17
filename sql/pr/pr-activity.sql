@@ -72,10 +72,12 @@ pulls AS (
          date_trunc('month', event_at) AS time_label
        , count(event_at) AS num_reviews
        , count(event_at) FILTER (WHERE is_author) AS num_author_reviews
-       , count(event_at) FILTER (WHERE is_maintainer) AS num_maint_reviews
+       , count(event_at) FILTER (WHERE is_maintainer AND NOT is_author) AS num_maint_reviews
        , count(event_at) FILTER (WHERE is_response) AS num_responses
-       , count(event_at) FILTER (WHERE is_author AND is_response) AS num_author_responses
+       , count(event_at) FILTER (WHERE is_response AND is_author) AS num_author_responses
+       , count(event_at) FILTER (WHERE is_response AND is_maintainer AND NOT is_author) AS num_maint_responses
        , count(event_at) FILTER (WHERE is_approved) AS num_approvals
+       , count(event_at) FILTER (WHERE is_approved AND is_maintainer) AS num_maint_approvals
        , sum(num_comments) AS num_comments
     FROM review_comments
     GROUP BY 1
@@ -162,7 +164,9 @@ SELECT
 , r.num_maint_reviews AS "Maintainer reviews"
 , r.num_responses AS "Review responses"
 , r.num_author_responses AS "Author responses"
+, r.num_maint_responses AS "Maintainer responses"
 , r.num_approvals AS "Approvals"
+, r.num_maint_approvals AS "Maintainer approvals"
 , r.num_comments AS "Review comments"
 , cments.num_total AS "Regular comments"
 , cments.num_author AS "Author comments"
