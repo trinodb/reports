@@ -1,4 +1,4 @@
-SET SESSION hive.non_transactional_optimize_enabled=true;
+SET SESSION trinocicd.non_transactional_optimize_enabled=true;
 ALTER TABLE runs EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE jobs EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE steps EXECUTE optimize(file_size_threshold => '30MB');
@@ -10,5 +10,9 @@ ALTER TABLE issues EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE issue_comments EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE pulls EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE pull_commits EXECUTE optimize(file_size_threshold => '30MB');
+ALTER TABLE commits EXECUTE optimize(file_size_threshold => '30MB');
+ALTER TABLE pull_stats EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE reviews EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE review_comments EXECUTE optimize(file_size_threshold => '30MB');
+ALTER TABLE timestamped_members EXECUTE optimize(file_size_threshold => '30MB');
+ALTER TABLE timestamped_teams EXECUTE optimize(file_size_threshold => '30MB');
