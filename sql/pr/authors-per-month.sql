@@ -1,34 +1,53 @@
 -- Authors per month
--- note that org membership is current, so if someone joins an org, all their historical commits shift toward this org
 WITH
-authors AS (
+all_members AS (
+    SELECT
+        org
+      , team_slug
+      , login
+      -- joined_at is an approximate, recorded when membership was checked; assume membership is as old as possible, so stretch it to the end of the previous row
+      , coalesce(lag(removed_at) OVER (PARTITION BY org, login, team_slug ORDER BY joined_at) + interval '1' second, timestamp '0001-01-01') AS joined_at
+      , coalesce(removed_at, timestamp '9999-12-31') AS removed_at
+    FROM hive.v2.timestamped_members
+)
+, members AS (
+    SELECT
+        login
+      , joined_at
+      , removed_at
+      , array_agg(org ORDER BY org) AS orgs
+    FROM all_members
+    WHERE (team_slug = '' AND org != 'trinodb')
+    GROUP BY 1, 2, 3
+)
+, authors AS (
     SELECT
       date_trunc('month', date(c.commit_time AT TIME ZONE 'UTC')) AS month
-    , coalesce(m.org, '') AS org
+    , array_join(coalesce(m.orgs, ARRAY[]), ', ') AS orgs
     , count(*) AS num_commits
     , array_agg(distinct ai.name order by ai.name) AS names
     FROM git.default.commits c
     JOIN memory.default.gh_idents ai ON ai.name = c.author_name OR CONTAINS(ai.extra_names, c.author_name)
-    LEFT JOIN members m ON CONTAINS(ai.logins, m.login)
+    LEFT JOIN members m ON CONTAINS(ai.logins, m.login) AND c.commit_time AT TIME ZONE 'UTC' BETWEEN m.joined_at AND m.removed_at
     GROUP BY 1, 2
 )
 , accumulated AS (
     SELECT
       a.*
-    , array_sort(array_distinct(flatten(array_agg(a.names) OVER (PARTITION BY a.org ORDER BY a.month)))) AS all_names
+    , array_sort(array_distinct(flatten(array_agg(a.names) OVER (PARTITION BY a.orgs ORDER BY a.month)))) AS all_names
     FROM authors a
     GROUP BY 1, 2, 3, 4
 )
 , new AS (
     SELECT
       a.month
-    , a.org
+    , a.orgs
     , a.num_commits
     , a.names
     , cardinality(a.names) AS num_names
     , a.all_names
     , cardinality(a.all_names) AS num_all_names
-    , array_except(a.names, lag(a.all_names, 1, array[]) OVER (PARTITION BY a.org ORDER BY a.month)) AS new_names
+    , array_except(a.names, lag(a.all_names, 1, array[]) OVER (PARTITION BY a.orgs ORDER BY a.month)) AS new_names
     FROM accumulated a
 )
 , grouped AS (
