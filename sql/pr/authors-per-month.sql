@@ -8,7 +8,7 @@ all_members AS (
       -- joined_at is an approximate, recorded when membership was checked; assume membership is as old as possible, so stretch it to the end of the previous row
       , coalesce(lag(removed_at) OVER (PARTITION BY org, login, team_slug ORDER BY joined_at) + interval '1' second, timestamp '0001-01-01') AS joined_at
       , coalesce(removed_at, timestamp '9999-12-31') AS removed_at
-    FROM hive.v2.timestamped_members
+    FROM trinocicd.v2.timestamped_members
 )
 , members AS (
     SELECT
