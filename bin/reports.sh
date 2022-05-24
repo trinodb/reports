@@ -37,7 +37,7 @@ function run_query() {
     echo >&2 "Executing query from $file"
     docker exec \
         $container_name \
-        trino --catalog hive --schema v2 \
+        trino --catalog trinocicd --schema v2 \
         -f "/tmp/$(basename "$file")" \
         --output-format=ALIGNED | ansi2html --inline | sed 's,| \(.*\) @https://\([^ ]*\),| <a href="https://\2">\1</a>,g'
 }
