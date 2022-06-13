@@ -105,3 +105,7 @@ dist
 
 # InteliJ configuration
 .idea
+
+# custom Trino connectors
+/trino-rest-github-*
+/trino-git-*
