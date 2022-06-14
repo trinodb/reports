@@ -14,32 +14,29 @@ reviews_not_replies AS (
     SELECT
         year(r.submitted_at) AS year
       , ai.name
-      , regexp_replace(ai.email, '(?<=.)[^@](?=[^@]*?@)|(?:(?<=@.)|(?!^)\G(?=[^@]*$)).(?=.*\.)', '*') AS email
       , count(*) AS reviews_count
       , count(*) FILTER (WHERE r.state = 'APPROVED') AS approved_count
       , count(*) FILTER (WHERE r.state = 'COMMENTED') AS commented_count
     FROM reviews_not_replies r
     JOIN memory.default.gh_idents ai ON CONTAINS(ai.logins, r.user_login)
-    GROUP BY 1, 2, 3
+    GROUP BY 1, 2
 )
 , commenters_per_year AS (
     SELECT
         year(c.created_at) AS year
       , ai.name
-      , regexp_replace(ai.email, '(?<=.)[^@](?=[^@]*?@)|(?:(?<=@.)|(?!^)\G(?=[^@]*$)).(?=.*\.)', '*') AS email
       , count(*) AS reviews_count
       , 0 AS approved_count
       , count(*) AS commented_count
     FROM unique_issue_comments c
     JOIN memory.default.gh_idents ai ON CONTAINS(ai.logins, c.user_login)
     WHERE c.html_url like 'https://github.com/trinodb/trino/pull/%'
-    GROUP BY 1, 2, 3
+    GROUP BY 1, 2
 )
 , ranked_per_year AS (
     SELECT
         year
       , name
-      , email
       , sum(reviews_count) AS reviews_count
       , sum(approved_count) AS approved_count
       , sum(commented_count) AS commented_count
@@ -51,16 +48,15 @@ reviews_not_replies AS (
         SELECT *
         FROM commenters_per_year
     ) a
-    GROUP BY 1, 2, 3
+    GROUP BY 1, 2
 )
 SELECT
     year
   , name
-  , email
   , reviews_count
   , approved_count
   , commented_count
 FROM ranked_per_year
 WHERE in_year_rank < 11
-ORDER BY 1 DESC, 4 DESC, 2
+ORDER BY year DESC, reviews_count DESC,name
 ;

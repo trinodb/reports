@@ -5,9 +5,7 @@ pairs AS (
         r.submitted_at AS review_time
       , r.pull_number
       , ai.name AS ai_name
-      , ma.org AS ai_org
       , ri.name AS ri_name
-      , mr.org AS ri_org
       , count(*) AS comments
     FROM reviews r
     JOIN unique_pulls p ON (p.owner, p.repo, p.number) = (r.owner, r.repo, r.pull_number)
@@ -18,26 +16,22 @@ pairs AS (
     LEFT JOIN members mr ON CONTAINS(ri.logins, mr.login)
     WHERE r.owner = 'trinodb' AND r.repo = 'trino'
     AND r.user_login != p.user_login AND r.submitted_at > CURRENT_DATE - interval '1' year
-    GROUP BY 1, 2, 3, 4, 5, 6
+    GROUP BY 1, 2, 3, 4
 )
 , reviewers AS (
     SELECT
         ri_name
-      , ri_org
       , ai_name
-      , ai_org
       , sum(comments) AS comments
       , count(distinct pull_number) AS pull_requests
       , count(*) AS reviews
       , row_number() OVER (PARTITION BY ri_name ORDER BY sum(comments) DESC) AS author_rank
     FROM pairs
-    GROUP BY 1, 2, 3, 4
+    GROUP BY 1, 2
 )
 SELECT
     ri_name AS "Reviewer name"
-  , ri_org AS "Reviwer org"
   , ai_name AS "Author name"
-  , ai_org AS "Author org"
   , author_rank AS "Author rank"
   , bar(comments / CAST(max(comments) OVER (PARTITION BY ri_name) AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Comments chart"
   , comments AS "Number of comments"

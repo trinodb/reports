@@ -17,13 +17,13 @@ WITH pairs AS (
 )
 SELECT
     ai_name AS author_name
-  , ai_org AS author_org
+  --, ai_org AS author_org
   , ci_name AS commiter_name
-  , ci_org AS commiter_org
+  --, ci_org AS commiter_org
   , sum(commits_in_pr) AS commits
   , count(*) AS pull_requests
 FROM pairs
-GROUP BY 1, 2, 3, 4
+GROUP BY ai_name, ci_name
 ORDER BY pull_requests DESC, ai_name, ci_name
 LIMIT 50
 ;
