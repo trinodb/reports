@@ -25,7 +25,7 @@ members AS (
       , count(*) AS commits_count
     FROM git.default.commits c
     JOIN memory.default.gh_idents ai ON ai.email = c.author_email OR CONTAINS(ai.extra_emails, c.author_email)
-    LEFT JOIN members m ON CONTAINS(ai.logins, m.login) AND c.author_time AT TIME ZONE 'UTC' BETWEEN m.joined_at AND m.removed_at
+    LEFT JOIN members m ON CONTAINS(ai.logins, m.login) AND c.commit_time AT TIME ZONE 'UTC' BETWEEN m.joined_at AND m.removed_at
     GROUP BY 1, 2
 )
 , mergers_per_year AS (
