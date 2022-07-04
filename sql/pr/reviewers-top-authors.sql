@@ -1,6 +1,35 @@
 -- Reviewers top 10 authors in last 12 months
 WITH
-pairs AS (
+members AS (
+    SELECT
+        login
+      , joined_at
+      , removed_at
+      , org AS team
+    FROM all_members
+    WHERE team_slug = '' AND org != 'trinodb'
+    UNION ALL
+    SELECT
+        login
+      , joined_at
+      , removed_at
+      , team_slug AS team
+    FROM all_members
+    WHERE team_slug NOT IN ('', 'infrastructure', 'contributors') AND org = 'trinodb'
+)
+, pulls AS (
+    SELECT
+        p.owner
+      , p.repo
+      , p.number
+      , p.user_login
+      , array_agg(DISTINCT coalesce(m.team, 'external') ORDER BY coalesce(m.team, 'external')) AS author_teams
+    FROM unique_pulls p
+    LEFT JOIN members m ON m.login = p.user_login AND p.created_at BETWEEN m.joined_at AND m.removed_at
+    WHERE p.owner = 'trinodb' AND p.repo = 'trino'
+    GROUP BY 1, 2, 3, 4
+)
+, pairs AS (
     SELECT
         r.submitted_at AS review_time
       , r.pull_number
@@ -8,12 +37,11 @@ pairs AS (
       , ri.name AS ri_name
       , count(*) AS comments
     FROM reviews r
-    JOIN unique_pulls p ON (p.owner, p.repo, p.number) = (r.owner, r.repo, r.pull_number)
+    JOIN pulls p ON (p.owner, p.repo, p.number) = (r.owner, r.repo, r.pull_number)
     JOIN memory.default.gh_idents ri ON CONTAINS(ri.logins, r.user_login)
     JOIN memory.default.gh_idents ai ON CONTAINS(ai.logins, p.user_login)
-    LEFT JOIN review_comments rc ON (r.owner, r.repo, r.id) = (rc.owner, rc.repo, rc.pull_request_review_id)
-    LEFT JOIN members ma ON CONTAINS(ai.logins, ma.login)
-    LEFT JOIN members mr ON CONTAINS(ri.logins, mr.login)
+    -- ignore responses
+    JOIN review_comments rc ON (r.owner, r.repo, r.id) = (rc.owner, rc.repo, rc.pull_request_review_id) AND rc.in_reply_to_id = 0
     WHERE r.owner = 'trinodb' AND r.repo = 'trino'
     AND r.user_login != p.user_login AND r.submitted_at > CURRENT_DATE - interval '1' year
     GROUP BY 1, 2, 3, 4
