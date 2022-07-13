@@ -44,9 +44,9 @@ last_review_comments AS (
 SELECT
   p.number
 , p.title || ' @' || format('https://github.com/trinodb/trino/pull/%s', p.number) AS title
-, day(current_timestamp - commits.committer_date) AS days_since_push
-, day(current_timestamp - coalesce(rc.review_submitted_at, pc.comment_created_at)) AS days_since_review
-, day(current_timestamp - least(coalesce(rc.comment_created_at, now()), coalesce(pc.comment_created_at, now()))) AS days_since_comment
+, day(CAST(current_timestamp AT TIME ZONE 'UTC' AS TIMESTAMP) - commits.committer_date) AS days_since_push
+, day(CAST(current_timestamp AT TIME ZONE 'UTC' AS TIMESTAMP) - coalesce(rc.review_submitted_at, pc.comment_created_at)) AS days_since_review
+, day(CAST(current_timestamp AT TIME ZONE 'UTC' AS TIMESTAMP) - least(coalesce(rc.comment_created_at, now()), coalesce(pc.comment_created_at, now()))) AS days_since_comment
 , COALESCE(a.commits_last_year, 0) AS author_commits_last_year
 , COALESCE(a.org, '<unknown>') AS author_org
 FROM unique_pulls p

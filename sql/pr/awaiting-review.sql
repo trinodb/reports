@@ -31,7 +31,7 @@ pulls_without_review AS (
 SELECT
   p.number
 , p.title || ' @' || format('https://github.com/trinodb/trino/pull/%s', p.number) AS title
-, day(current_timestamp - p.created_at) AS days_without_review
+, day(CAST(current_timestamp AT TIME ZONE 'UTC' AS TIMESTAMP) - p.created_at) AS days_without_review
 , COALESCE(a.commits_last_year, 0) AS author_commits_last_year
 , COALESCE(a.org, '<unknown>') AS author_org
 FROM pulls_without_review p

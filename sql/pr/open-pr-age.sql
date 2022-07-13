@@ -2,7 +2,7 @@
 WITH
 pulls AS (
   SELECT
-    now() - p.created_at AS age
+    cast(now() AT TIME ZONE 'UTC' AS TIMESTAMP) - p.created_at AS age
   FROM unique_pulls p
   WHERE p.owner = 'trinodb' AND p.repo = 'trino' AND p.closed_at IS NULL
 )
@@ -13,6 +13,7 @@ pulls AS (
             to_milliseconds(age) / 60000.0,
             ARRAY[
             -- lower bound in minutes
+            0,
                 1440,
                 2880,
                 5760,
@@ -30,6 +31,7 @@ pulls AS (
     SELECT
         bucket
         , element_at(ARRAY[
+            'up to 1 day',
             '1 to 2 days',
             '2 to 4 days',
             '4 to 10 days',
