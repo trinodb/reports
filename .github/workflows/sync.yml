@@ -13,14 +13,14 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
-      TRINO_VERSION: 384
-      TRINO_REST_VERSION: "0.79"
+      TRINO_VERSION: 389
+      TRINO_REST_VERSION: "0.86"
       GITHUB_OWNER: trinodb
       GITHUB_REPO: trino
       TRINO_DEST_SCHEMA: trinocicd.v2
       TRINO_SRC_SCHEMA: github.default
       EMPTY_INSERT_LIMIT: 5
-      SYNC_TABLES: runs,jobs,steps,check_suites,check_runs,check_run_annotations,pulls,pull_commits,review_comments,reviews,issues,issue_comments,commits,artifacts,teams,members
+      SYNC_TABLES: runs,jobs,check_suites,check_runs,check_run_annotations,pulls,pull_commits,review_comments,reviews,issues,issue_comments,commits,artifacts,teams,members
     steps:
       - uses: actions/checkout@v3
       - name: Download trino-rest
