@@ -17,7 +17,7 @@ SELECT
     cra.title AS test_name
   , count(*) AS count
   , CAST(count(*) * 100.0 / (SELECT count(*) FROM suites) AS decimal(4,1)) AS "%"
-  , array_agg(DISTINCT substring(cra.message, 1, coalesce(nullif(strpos(cra.message, U&'\000a'), 0), length(cra.message)))) messages
+  , array_agg(DISTINCT substring(cra.message, 1, least(5000, coalesce(nullif(strpos(cra.message, U&'\000a'), 0), length(cra.message))))) messages
 FROM check_run_annotations cra
 WHERE cra.annotation_level = 'failure'
   -- for tests failures uploded as GitHub annotations, the "title" is "TestClass > testMethodName (additional info)?"
