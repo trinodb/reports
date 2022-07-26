@@ -5,16 +5,16 @@ Trino Flaky Tests
 <pre><code>
     Week    |                               Job name                                | Fail percent | Failure count | Success count 
 ------------+-----------------------------------------------------------------------+--------------+---------------+---------------
- 2022-07-25 | test (testing/trino-tests)                                            |        100.0 |             4 |             0 
- 2022-07-25 | test (plugin/trino-iceberg)                                           |         44.0 |            11 |            14 
+ 2022-07-25 | test (testing/trino-tests)                                            |        100.0 |             6 |             0 
+ 2022-07-25 | test (plugin/trino-iceberg)                                           |        65.15 |            43 |            23 
  2022-07-25 | test (plugin/trino-delta-lake)                                        |         15.0 |             3 |            17 
- 2022-07-25 | test (plugin/trino-pinot)                                             |        14.81 |             4 |            23 
- 2022-07-25 | test (plugin/trino-hive)                                              |        14.29 |             2 |            12 
- 2022-07-25 | hive-tests (config-empty)                                             |         12.5 |             2 |            14 
- 2022-07-25 | test (plugin/trino-redis)                                             |         4.55 |             1 |            21 
- 2022-07-25 | pt (default, suite-8-non-generic, )                                   |         3.57 |             1 |            27 
- 2022-07-25 | pt (default, suite-compatibility, )                                   |         3.57 |             1 |            27 
- 2022-07-25 | hive-tests (config-hdp3)                                              |         3.13 |             1 |            31 
+ 2022-07-25 | hive-tests (config-empty)                                             |         10.0 |             2 |            18 
+ 2022-07-25 | test (plugin/trino-pinot)                                             |          9.3 |             4 |            39 
+ 2022-07-25 | test (plugin/trino-hive)                                              |         7.14 |             2 |            26 
+ 2022-07-25 | test (plugin/trino-redis)                                             |         2.63 |             1 |            37 
+ 2022-07-25 | pt (default, suite-8-non-generic, )                                   |         2.27 |             1 |            43 
+ 2022-07-25 | pt (default, suite-compatibility, )                                   |         2.27 |             1 |            43 
+ 2022-07-25 | hive-tests (config-hdp3)                                              |         2.04 |             1 |            48 
  2022-07-18 | pt (apache-hive3, suite-hms-only, )                                   |         50.0 |             1 |             1 
  2022-07-18 | maven-checks (17)                                                     |         40.0 |             2 |             3 
  2022-07-18 | pt (default, suite-7-non-generic, )                                   |        33.33 |             2 |             4 
@@ -117,7 +117,7 @@ Trino Flaky Tests
  2022-06-13 | test (plugin/trino-iceberg)                                           |         9.09 |             1 |            10 
 (110 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/ac3c4c8c490c42770bdcf7cbbf6a2be7704b07ea/sql/flaky/jobs.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/feca902155f9b015474c8b9b284ee5e25d5b059d/sql/flaky/jobs.sql)
 
 #  Flaky tests in last 30 days
 <pre><code>
@@ -245,7 +245,7 @@ Trino Flaky Tests
  TestSelect &gt; testSelectClusteringMaterializedView [groups: profile_specific_tests, cassandra]                                                                                                                                                                                                                                                                                                                                                                                                                                                                |     1 | 0.1 | 2022-07-13 10:23:18.000 | 2022-07-13 10:23:18.000 | [Query timed out after PT2S]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 (105 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/ac3c4c8c490c42770bdcf7cbbf6a2be7704b07ea/sql/flaky/tests.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/feca902155f9b015474c8b9b284ee5e25d5b059d/sql/flaky/tests.sql)
 
 #  Flaky test classes in last 30 days
 <pre><code>
@@ -255,47 +255,24 @@ Trino Flaky Tests
  TestDeltaLakeAlterTableCompatibility                                                                                 |           5 |    0.5 |              8 
  TestDeltaLakeDatabricksInsertCompatibility                                                                           |           5 |    0.5 |             19 
  TestIcebergMinioParquetConnectorSmokeTest.init                                                                       |           5 |    0.5 |              5 
- TestHiveGlueMetastore.testInsertIntoExistingPartition                                                                |           4 |    0.4 |              4 
+ TestDeltaLakeSharedFileMetastoreWithTableRedirections.cleanup                                                        |           4 |    0.4 |              4 
  TestIcebergGlueCatalogMaterializedViewTest.testShowCreate                                                            |           4 |    0.4 |              4 
  TestIcebergGlueCatalogMaterializedViewTest.testSqlFeatures                                                           |           4 |    0.4 |              4 
- TestDeltaLakeSharedFileMetastoreWithTableRedirections.cleanup                                                        |           4 |    0.4 |              4 
- TestDeltaLakeColumnMappingMode                                                                                       |           3 |    0.3 |              3 
- TestDeltaLakeSharedHiveMetastoreWithViews.cleanup                                                                    |           3 |    0.3 |              3 
+ TestHiveGlueMetastore.testInsertIntoExistingPartition                                                                |           4 |    0.4 |              4 
  TestIcebergOrcConnectorTest.testLocalDynamicFilteringWithSelectiveBuildSideJoin                                      |           3 |    0.3 |              3 
  TestDeltaLakeOssDeltaLakeConnectorTest.init                                                                          |           3 |    0.3 |              3 
- TestDeltaLakeDatabricksUpdates                                                                                       |           2 |    0.2 |              2 
+ TestDeltaLakeColumnMappingMode                                                                                       |           3 |    0.3 |              3 
+ TestDeltaLakeSharedHiveMetastoreWithViews.cleanup                                                                    |           3 |    0.3 |              3 
+ TestIcebergMinioOrcConnectorSmokeTest.init                                                                           |           2 |    0.2 |              2 
+ TestDeltaLakeDatabricksPartitioningCompatibility                                                                     |           2 |    0.2 |              6 
  TestDeltaLakeWriteDatabricksCompatibility                                                                            |           2 |    0.2 |             10 
  TestHiveAndDeltaLakeRedirect                                                                                         |           2 |    0.2 |              6 
  TestDeltaLakeDatabricksCreateTableAsSelectCompatibility                                                              |           2 |    0.2 |              4 
- TestDeltaLakeDatabricksDelete                                                                                        |           2 |    0.2 |              2 
- TestIcebergParquetConnectorTest.testStatsBasedRepartitionDataOnInsert                                                |           2 |    0.2 |              2 
- TestDeltaLakeDatabricksPartitioningCompatibility                                                                     |           2 |    0.2 |              6 
- TestDeltaLakeDatabricksCreateTableCompatibility                                                                      |           2 |    0.2 |              6 
- TestIcebergMinioOrcConnectorSmokeTest.init                                                                           |           2 |    0.2 |              2 
  TestDeltaLakeDatabricksCheckpointsCompatibility                                                                      |           2 |    0.2 |              8 
- TestDbResourceGroupsPostgresqlFlywayMigration.testMigrationWithEmptyDatabase                                         |           1 |    0.1 |              1 
- TestJdbcVendorCompatibility.setupServer                                                                              |           1 |    0.1 |              1 
- TestPinotWithoutAuthenticationIntegrationSmokeTestLatestVersion.testPassthroughQueriesWithAliases                    |           1 |    0.1 |              1 
- TestElasticsearchBackpressure.destroy                                                                                |           1 |    0.1 |              1 
- TestSpilledJoinQueries.testSemiJoin                                                                                  |           1 |    0.1 |              1 
- TestHiveTransactionalTable                                                                                           |           1 |    0.1 |              1 
- TestBigQueryConnectorTest.testColumnName[adigit0](19)                                                                |           1 |    0.1 |              1 
- TestBigQueryConnectorTest.testConcurrentScans                                                                        |           1 |    0.1 |              1 
- TestDeltaTaskFailureRecoveryTest.init                                                                                |           1 |    0.1 |              1 
- TestClickHouseConnectorTest.init                                                                                     |           1 |    0.1 |              1 
- TestMySqlLegacyConnectorTest.init                                                                                    |           1 |    0.1 |              1 
- TestOracleTypeMapping.init                                                                                           |           1 |    0.1 |              1 
- TestRaptorMySqlConnectorTest.init                                                                                    |           1 |    0.1 |              1 
- TestSelect                                                                                                           |           1 |    0.1 |              3 
- TestIcebergSparkCompatibility                                                                                        |           1 |    0.1 |              1 
- TestHiveGlueMetastore.testStatisticsPartitionedTableColumnModification                                               |           1 |    0.1 |              1 
- TestJdbcVendorCompatibility.tearDown                                                                                 |           1 |    0.1 |             31 
- TestBigQueryTypeMapping.testInteger[INT](2)                                                                          |           1 |    0.1 |              1 
- TestBigQueryConnectorTest.testColumnName[lowercase](1)                                                               |           1 |    0.1 |              1 
- TestRefreshMaterializedView.shutdown                                                                                 |           1 |    0.1 |              1 
- TestSqlServerWithoutSnapshotIsolationAndReadCommittedSnapshot.init                                                   |           1 |    0.1 |              1 
- TestOAuth2WebUiAuthenticationFilterWithJwt.setup                                                                     |           1 |    0.1 |              1 
- TestOAuth2WebUiAuthenticationFilterWithOpaque.setup                                                                  |           1 |    0.1 |              1 
+ TestDeltaLakeDatabricksUpdates                                                                                       |           2 |    0.2 |              2 
+ TestDeltaLakeDatabricksCreateTableCompatibility                                                                      |           2 |    0.2 |              6 
+ TestIcebergParquetConnectorTest.testStatsBasedRepartitionDataOnInsert                                                |           2 |    0.2 |              2 
+ TestDeltaLakeDatabricksDelete                                                                                        |           2 |    0.2 |              2 
  TestCredentialPassthrough.destroy                                                                                    |           1 |    0.1 |              1 
  TestRedisConnectorTest.init                                                                                          |           1 |    0.1 |              1 
  TestRedisDistributedHash.init                                                                                        |           1 |    0.1 |              1 
@@ -327,8 +304,31 @@ Trino Flaky Tests
  TestMySqlConnectorTest.init                                                                                          |           1 |    0.1 |              1 
  TestMinimalFunctionality.stopRedis                                                                                   |           1 |    0.1 |              1 
  TestPhoenixConnectorTest.testReadMetadataWithRelationsConcurrentModifications                                        |           1 |    0.1 |              1 
+ TestDbResourceGroupsPostgresqlFlywayMigration.testMigrationWithEmptyDatabase                                         |           1 |    0.1 |              1 
+ TestJdbcVendorCompatibility.setupServer                                                                              |           1 |    0.1 |              1 
+ TestPinotWithoutAuthenticationIntegrationSmokeTestLatestVersion.testPassthroughQueriesWithAliases                    |           1 |    0.1 |              1 
+ TestElasticsearchBackpressure.destroy                                                                                |           1 |    0.1 |              1 
+ TestSpilledJoinQueries.testSemiJoin                                                                                  |           1 |    0.1 |              1 
+ TestHiveTransactionalTable                                                                                           |           1 |    0.1 |              1 
+ TestBigQueryConnectorTest.testColumnName[adigit0](19)                                                                |           1 |    0.1 |              1 
+ TestBigQueryConnectorTest.testConcurrentScans                                                                        |           1 |    0.1 |              1 
+ TestDeltaTaskFailureRecoveryTest.init                                                                                |           1 |    0.1 |              1 
+ TestClickHouseConnectorTest.init                                                                                     |           1 |    0.1 |              1 
+ TestMySqlLegacyConnectorTest.init                                                                                    |           1 |    0.1 |              1 
+ TestOracleTypeMapping.init                                                                                           |           1 |    0.1 |              1 
+ TestRaptorMySqlConnectorTest.init                                                                                    |           1 |    0.1 |              1 
+ TestSelect                                                                                                           |           1 |    0.1 |              3 
+ TestIcebergSparkCompatibility                                                                                        |           1 |    0.1 |              1 
+ TestHiveGlueMetastore.testStatisticsPartitionedTableColumnModification                                               |           1 |    0.1 |              1 
+ TestJdbcVendorCompatibility.tearDown                                                                                 |           1 |    0.1 |             31 
+ TestBigQueryTypeMapping.testInteger[INT](2)                                                                          |           1 |    0.1 |              1 
+ TestBigQueryConnectorTest.testColumnName[lowercase](1)                                                               |           1 |    0.1 |              1 
+ TestRefreshMaterializedView.shutdown                                                                                 |           1 |    0.1 |              1 
+ TestSqlServerWithoutSnapshotIsolationAndReadCommittedSnapshot.init                                                   |           1 |    0.1 |              1 
+ TestOAuth2WebUiAuthenticationFilterWithJwt.setup                                                                     |           1 |    0.1 |              1 
+ TestOAuth2WebUiAuthenticationFilterWithOpaque.setup                                                                  |           1 |    0.1 |              1 
 (76 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/ac3c4c8c490c42770bdcf7cbbf6a2be7704b07ea/sql/flaky/classes.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/feca902155f9b015474c8b9b284ee5e25d5b059d/sql/flaky/classes.sql)
 
-Generated on Tue Jul 26 06:36:36 UTC 2022
+Generated on Tue Jul 26 14:09:21 UTC 2022
