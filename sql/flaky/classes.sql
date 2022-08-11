@@ -14,7 +14,7 @@ suites AS (
     FROM check_runs cr JOIN suites s ON cr.check_suite_id = s.id
 )
 SELECT
-    regexp_replace(cra.title, '[ \.].*') AS test_class_name
+    regexp_replace(cra.title, '[ .].*') AS test_class_name
   , count(DISTINCT r.check_suite_id) AS failed_runs
   , CAST(count(DISTINCT r.check_suite_id) * 100.0 / (SELECT count(*) FROM suites) AS decimal(4,1)) AS "% runs"
   , count(*) AS failed_methods
