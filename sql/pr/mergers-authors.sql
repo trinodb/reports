@@ -22,7 +22,7 @@ WITH pairs AS (
     GROUP BY 1, 2
 )
 SELECT
-    ci_name AS "Commiter name"
+    ci_name AS "Committer name"
   , ai_name AS "Author name"
   , author_rank AS "Author rank"
   , bar(commits / CAST(max(commits) OVER (PARTITION BY ci_name) AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Commits chart"
