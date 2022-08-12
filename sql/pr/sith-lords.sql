@@ -18,8 +18,8 @@ WITH pairs AS (
 SELECT
     ai_name AS author_name
   --, ai_org AS author_org
-  , ci_name AS commiter_name
-  --, ci_org AS commiter_org
+  , ci_name AS committer_name
+  --, ci_org AS committer_org
   , sum(commits_in_pr) AS commits
   , count(*) AS pull_requests
 FROM pairs
