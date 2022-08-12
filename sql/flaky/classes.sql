@@ -10,7 +10,7 @@ suites AS (
 )
 -- jobs within workflow
 , runs AS (
-    SELECT cr.id, cr.repo, s.head_branch, cr.name, cr.check_suite_id
+    SELECT cr.id, cr.repo, s.head_branch, cr.name, cr.check_suite_id, cr.started_at
     FROM check_runs cr JOIN suites s ON cr.check_suite_id = s.id
 )
 SELECT
@@ -18,6 +18,7 @@ SELECT
   , count(DISTINCT r.check_suite_id) AS failed_runs
   , CAST(count(DISTINCT r.check_suite_id) * 100.0 / (SELECT count(*) FROM suites) AS decimal(4,1)) AS "% runs"
   , count(*) AS failed_methods
+  , max(r.started_at) AS last_occurrence_at
 FROM check_run_annotations cra
 JOIN runs r ON cra.check_run_id = r.id
 WHERE cra.annotation_level = 'failure'
