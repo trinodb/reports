@@ -35,6 +35,7 @@ queries=("$@")
 function run_query() {
     local file=$1
     echo >&2 "Executing query from $file"
+    docker cp "$file" $container_name:/tmp/
     docker exec \
         $container_name \
         java -Dorg.jline.terminal.dumb=true -jar /usr/bin/trino \
@@ -55,7 +56,6 @@ mkdir -p "$(dirname "$target")"
 } >"$target"
 
 for file in "${queries[@]}"; do
-    docker cp "$file" $container_name:/tmp/
     title=$(head -n 1 "$file")
     if [[ $title != --* ]]; then
         echo >&2 "First line of file $file needs to be an SQL comment with the report title (should start with --), query will run but results will be ignored"
