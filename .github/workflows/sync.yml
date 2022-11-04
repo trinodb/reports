@@ -13,8 +13,8 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
-      TRINO_VERSION: 396
-      TRINO_REST_VERSION: "0.99"
+      TRINO_VERSION: 402
+      TRINO_REST_VERSION: "0.100"
       GITHUB_OWNER: trinodb
       GITHUB_REPO: trino
       TRINO_DEST_SCHEMA: trinocicd.v2
