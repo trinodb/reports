@@ -57,15 +57,20 @@ mkdir -p "$(dirname "$target")"
 } >"$target"
 
 for file in "${queries[@]}"; do
-    title=$(head -n 1 "$file")
-    if [[ $title != --* ]]; then
+    # get all comments from the top of the file
+    comments=$(sed -n '/^-/!q;p' "$file" | sed 's/^-- //g')
+    if [ -z "$comments" ]; then
         echo >&2 "First line of file $file needs to be an SQL comment with the report title (should start with --), query will run but results will be ignored"
         run_query "$file"
         continue
     fi
+    title=$(echo "$comments" | head -1)
+    desc=$(echo "$comments" | tail -n +2)
     title=${title#--}
     {
         echo "# $title"
+        echo ""
+        echo "$desc"
         echo ""
         run_query "$file"
         echo ""

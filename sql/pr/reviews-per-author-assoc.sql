@@ -1,4 +1,8 @@
 -- Reviews per author association, per month
+-- * gray - maintainers
+-- * green - members of any team in the trinodb org
+-- * red - contributors
+-- * blue - others
 WITH reviews AS (
   SELECT
       date_trunc('month', date(r.submitted_at)) AS month
