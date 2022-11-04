@@ -1,4 +1,4 @@
--- ci workflow failures per day
+-- CI workflow failures per day
 WITH
 runs AS (
   SELECT

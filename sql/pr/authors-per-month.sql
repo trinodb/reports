@@ -66,7 +66,7 @@ SELECT
         transform(sequence(1, cardinality(a.num_org_commits)), x -> (x - 1) / cast(cardinality(a.num_org_commits) as double)),
         a.num_org_commits
     ),
-    x -> rtrim(bar(x[2] / a.max_num_commits, 20, color(x[1], rgb(255, 0, 0), rgb(0, 0, 255)), color(x[1], rgb(255, 0, 0), rgb(0, 0, 255))))
+    x -> rtrim(bar(x[2] / a.max_num_commits, 10, color(x[1], rgb(255, 0, 0), rgb(0, 0, 255)), color(x[1], rgb(255, 0, 0), rgb(0, 0, 255))))
   ), '') AS "Commits per org chart"
 , array_join(transform(
     -- replace size with group index and names with cardinality
@@ -74,15 +74,15 @@ SELECT
         transform(sequence(1, cardinality(a.names)), x -> (x - 1) / cast(cardinality(a.names) as double)),
         transform(a.names, x -> cardinality(x[2]))
     ),
-    x -> rtrim(bar(x[2] / a.max_num_names, 20, color(x[1], rgb(255, 0, 0), rgb(0, 0, 255)), color(x[1], rgb(255, 0, 0), rgb(0, 0, 255))))
+    x -> rtrim(bar(x[2] / a.max_num_names, 10, color(x[1], rgb(255, 0, 0), rgb(0, 0, 255)), color(x[1], rgb(255, 0, 0), rgb(0, 0, 255))))
   ), '') AS "Authors per org chart"
-, bar(cardinality(a.new_names) / CAST(max(cardinality(a.new_names)) OVER () AS double), 20, rgb(0, 155, 0), rgb(0, 155, 0)) AS "New authors count chart"
+, bar(cardinality(a.new_names) / CAST(max(cardinality(a.new_names)) OVER () AS double), 10, rgb(0, 155, 0), rgb(0, 155, 0)) AS "New authors count chart"
 , array_join(transform(
     zip(
         transform(sequence(1, cardinality(a.all_names)), x -> (x - 1) / cast(cardinality(a.all_names) as double)),
         transform(a.all_names, x -> cardinality(x[2]))
     ),
-    x -> rtrim(bar(x[2] / a.max_num_all_names, 20, color(x[1], rgb(255, 0, 0), rgb(0, 0, 255)), color(x[1], rgb(255, 0, 0), rgb(0, 0, 255))))
+    x -> rtrim(bar(x[2] / a.max_num_all_names, 10, color(x[1], rgb(255, 0, 0), rgb(0, 0, 255)), color(x[1], rgb(255, 0, 0), rgb(0, 0, 255))))
   ), '') AS "All authors per org chart"
 , a.num_commits AS "Commits count"
 , a.num_names AS "Authors count"
