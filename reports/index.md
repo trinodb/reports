@@ -1,5 +1,7 @@
-Trino Project Reports
-=====================
+---
+title: Index
+---
+
 
 # [CI/CD pipeline reports](https://nineinchnick.github.io/trino-cicd/reports/ci-cd/)
 

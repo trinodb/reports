@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-for cmd in ansi2html docker; do
+for cmd in csv2md ansi2html docker; do
     if ! command -v "$cmd" >/dev/null; then
         echo >&2 "Missing the $cmd command"
         exit 1
@@ -41,7 +41,7 @@ function run_query() {
         java -Dorg.jline.terminal.dumb=true -jar /usr/bin/trino \
         --catalog trinocicd --schema v2 \
         -f "/tmp/$(basename "$file")" \
-        --output-format=ALIGNED | ansi2html --inline | sed 's,| \(.*\) @https://\([^ ]*\),| <a href="https://\2">\1</a>,g'
+        --output-format=CSV_HEADER | csv2md | ansi2html --inline | sed 's,| \(.*\) @https://\([^ ]*\),| <a href="https://\2">\1</a>,g'
 }
 
 GITHUB_SERVER_URL=${GITHUB_SERVER_URL:-https://github.com}
@@ -50,8 +50,9 @@ GITHUB_SHA=${GITHUB_SHA:-master}
 
 mkdir -p "$(dirname "$target")"
 {
-    echo "$title"
-    echo "======="
+    echo "---"
+    echo "title: $title"
+    echo "---"
     echo ""
 } >"$target"
 
@@ -65,9 +66,9 @@ for file in "${queries[@]}"; do
     title=${title#--}
     {
         echo "# $title"
-        echo '<pre><code>'
+        echo ""
         run_query "$file"
-        echo '</code></pre>'
+        echo ""
         if [ -n "$GITHUB_REPOSITORY" ]; then
             echo "[query]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$GITHUB_SHA/$file)"
         fi

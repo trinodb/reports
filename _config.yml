@@ -1,0 +1,14 @@
+remote_theme: jekyll/minima
+plugins:
+  - jekyll-remote-theme
+
+minima:
+  skin: auto
+
+exclude:
+  - bin/
+  - catalog/
+  - sql/
+  - vendor/
+  - _site/
+  - _sass/
