@@ -34,6 +34,7 @@ queries=("$@")
 
 function run_query() {
     local file=$1
+    local format=${2:-ALIGNED}
     echo >&2 "Executing query from $file"
     docker cp "$file" $container_name:/tmp/
     docker exec \
@@ -41,7 +42,17 @@ function run_query() {
         java -Dorg.jline.terminal.dumb=true -jar /usr/bin/trino \
         --catalog trinocicd --schema v2 \
         -f "/tmp/$(basename "$file")" \
-        --output-format=CSV_HEADER | csv2md | ansi2html --inline | sed 's,| \(.*\) @https://\([^ ]*\),| <a href="https://\2">\1</a>,g'
+        --output-format=$format
+}
+
+function run_query_md() {
+    local file=$1
+    run_query "$file" CSV_HEADER | csv2md | ansi2html --inline | sed 's,| \(.*\) @https://\([^ ]*\),| <a href="https://\2">\1</a>,g'
+}
+
+function run_query_mono() {
+    local file=$1
+    run_query "$file" ALIGNED | ansi2html --inline | sed 's,| \(.*\) @https://\([^ ]*\),| <a href="https://\2">\1</a>,g'
 }
 
 GITHUB_SERVER_URL=${GITHUB_SERVER_URL:-https://github.com}
@@ -71,9 +82,15 @@ for file in "${queries[@]}"; do
         echo "# $title"
         echo ""
         echo "$desc"
-        echo ""
-        run_query "$file"
-        echo ""
+        if grep -q chart "$file"; then
+            echo '<pre><code>'
+            run_query_mono "$file"
+            echo '</code></pre>'
+        else
+            echo ""
+            run_query_md "$file"
+            echo ""
+        fi
         if [ -n "$GITHUB_REPOSITORY" ]; then
             echo "[query]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$GITHUB_SHA/$file)"
         fi

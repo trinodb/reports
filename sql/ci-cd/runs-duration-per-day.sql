@@ -23,7 +23,7 @@ main AS (
 )
 SELECT
    day AS "Day"
-   , bar(CAST(perc[3] AS double) / max(perc[3]) OVER (), 40, rgb(0, 155, 0), rgb(255, 0, 0)) AS "P₉₅ run duration"
+   , bar(CAST(perc[3] AS double) / max(perc[3]) OVER (), 40, rgb(0, 155, 0), rgb(255, 0, 0)) AS "P₉₅ run duration chart"
    , runs_count AS "Runs count"
    , transform(perc, m -> parse_duration(cast(m as varchar) || 'ms')) AS "Run percentiles 75, 90, 95, 99"
    , min_dur AS "Min run dur"
