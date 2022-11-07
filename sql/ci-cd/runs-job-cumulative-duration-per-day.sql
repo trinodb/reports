@@ -26,7 +26,7 @@ main AS (
 )
 SELECT
    day AS "Day"
-   , bar(CAST(perc[3] AS double) / max(perc[3]) OVER (), 40, rgb(0, 155, 0), rgb(255, 0, 0)) AS "P₉₅ runs cumulative job duration"
+   , bar(CAST(perc[3] AS double) / max(perc[3]) OVER (), 40, rgb(0, 155, 0), rgb(255, 0, 0)) AS "P₉₅ runs cumulative job duration chart"
    , runs_count AS "Runs count"
    , jobs_count AS "Max jobs count"
    , transform(perc, m -> parse_duration(cast(m as varchar) || 'ms')) AS "Runs job duration percentiles 75, 90, 95, 99"
