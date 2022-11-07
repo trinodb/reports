@@ -82,7 +82,7 @@ for file in "${queries[@]}"; do
         echo "# $title"
         echo ""
         echo "$desc"
-        if grep -q chart "$file"; then
+        if grep -qi chart "$file"; then
             echo '<pre><code>'
             run_query_mono "$file"
             echo '</code></pre>'
