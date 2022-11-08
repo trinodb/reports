@@ -63,6 +63,7 @@ mkdir -p "$(dirname "$target")"
 {
     echo "---"
     echo "title: $title"
+    echo "created: $(date --rfc-3339=seconds)"
     echo "---"
     echo ""
 } >"$target"
