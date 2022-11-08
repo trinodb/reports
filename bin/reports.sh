@@ -42,7 +42,7 @@ function run_query() {
         java -Dorg.jline.terminal.dumb=true -jar /usr/bin/trino \
         --catalog trinocicd --schema v2 \
         -f "/tmp/$(basename "$file")" \
-        --output-format=$format
+        --output-format="$format"
 }
 
 function run_query_md() {
@@ -79,7 +79,7 @@ for file in "${queries[@]}"; do
     desc=$(echo "$comments" | tail -n +2)
     title=${title#--}
     {
-        echo "# $title"
+        echo "## $title"
         echo ""
         echo "$desc"
         if grep -qi chart "$file"; then
