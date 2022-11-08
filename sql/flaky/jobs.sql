@@ -1,5 +1,7 @@
 -- Flaky jobs in last 3 months
 -- Counting runs of the `ci` workflow, executed on master and retried jobs from other branches.
+-- Histogram is failure percentage for every day, descending (starts from current day).
+-- Weekends are greyed out.
 WITH
 retried_jobs AS (
   SELECT
@@ -55,16 +57,18 @@ retried_jobs AS (
     GROUP BY 1, 2
 )
 SELECT
-    name AS "Job name"
-  , round(((CAST(sum(failure_num) AS double) / CAST(sum(success_num + failure_num) AS double)) * 100), 2) AS "Fail percent"
-  , sum(failure_num) AS "Failure count"
-  , sum(success_num) AS "Success count"
-  , array_join(transform(
-        array_agg(coalesce(fail_pct, 0) ORDER BY date),
+    case when length(name) > 60 then substr(name, 1, 30) || ' ... ' || substr(name, length(name) - 25) else name end AS "Job name"
+  , round(((CAST(sum(failure_num) AS double) / CAST(sum(success_num + failure_num) AS double)) * 100), 2) AS "Fail pct"
+  , sum(failure_num) AS "Failures"
+  , sum(failure_num) + sum(success_num) AS "Runs"
+  , array_join(array_agg(CASE
+        -- for weekends, if missing or zero, grey it out
+        WHEN coalesce(fail_pct, 0) = 0 AND day_of_week(date) IN (6,7) THEN '░'
         -- map [0.0, 1.0] to [1, 9]
-        d -> ARRAY[' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'][cast(d * 8 + 1 as int)]
+    ELSE ARRAY[' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'][cast(coalesce(fail_pct, 0) * 8 + 1 as int)] END
+    ORDER BY date DESC
     ), '') AS "Histogram chart"
 FROM by_day
-GROUP BY 1
-ORDER BY 1
+GROUP BY name
+ORDER BY name
 ;
