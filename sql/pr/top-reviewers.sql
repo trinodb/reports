@@ -7,7 +7,8 @@ reviews_not_replies AS (
       , r.submitted_at
     FROM reviews r
     LEFT JOIN review_comments rc ON (r.owner, r.repo, r.id) = (rc.owner, rc.repo, rc.pull_request_review_id)
-    WHERE coalesce(rc.in_reply_to_id, 0) = 0
+    WHERE r.owner = 'trinodb' AND r.repo = 'trino'
+    AND coalesce(rc.in_reply_to_id, 0) = 0
     GROUP BY 1, 2, 3
 )
 , reviewers_per_year AS (
@@ -30,7 +31,8 @@ reviews_not_replies AS (
       , count(*) AS commented_count
     FROM unique_issue_comments c
     JOIN memory.default.gh_idents ai ON CONTAINS(ai.logins, c.user_login)
-    WHERE c.html_url like 'https://github.com/trinodb/trino/pull/%'
+    WHERE c.owner = 'trinodb' AND c.repo = 'trino'
+    AND c.html_url like 'https://github.com/trinodb/trino/pull/%'
     GROUP BY 1, 2
 )
 , ranked_per_year AS (

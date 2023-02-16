@@ -8,10 +8,10 @@ WITH pairs AS (
       , mc.org AS ci_org
       , count(*) AS commits_in_pr
     FROM git.default.commits c
-        JOIN memory.default.gh_idents ai ON ai.email = c.author_email OR CONTAINS(ai.extra_emails, c.author_email)
-        JOIN memory.default.gh_idents ci ON ci.email = c.committer_email OR CONTAINS(ci.extra_emails, c.committer_email)
-        LEFT JOIN members ma ON CONTAINS(ai.logins, ma.login)
-        LEFT JOIN members mc ON CONTAINS(ci.logins, mc.login)
+    JOIN memory.default.gh_idents ai ON ai.email = c.author_email OR CONTAINS(ai.extra_emails, c.author_email)
+    JOIN memory.default.gh_idents ci ON ci.email = c.committer_email OR CONTAINS(ci.extra_emails, c.committer_email)
+    LEFT JOIN members ma ON CONTAINS(ai.logins, ma.login)
+    LEFT JOIN members mc ON CONTAINS(ci.logins, mc.login)
     WHERE ai.email != ci.email
     GROUP BY 1, 2, 3, 4, 5
 )

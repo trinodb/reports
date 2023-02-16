@@ -7,6 +7,7 @@ last_review_comments AS (
     , max(rc.created_at) AS comment_created_at
   FROM reviews r
   JOIN review_comments rc ON rc.pull_request_review_id = r.id
+  WHERE r.owner = 'trinodb' AND r.repo = 'trino'
   GROUP BY 1
 )
 , last_pull_comments AS (
@@ -15,6 +16,7 @@ last_review_comments AS (
     , max(pc.created_at) AS comment_created_at
   FROM unique_pulls p
   JOIN issue_comments pc ON pc.issue_url = p.issue_url
+  WHERE p.owner = 'trinodb' AND p.repo = 'trino'
   GROUP BY 1
 )
 , last_commits AS (
@@ -22,6 +24,7 @@ last_review_comments AS (
       pull_number
     , max(committer_date) AS committer_date
   FROM pull_commits
+  WHERE owner = 'trinodb' AND repo = 'trino'
   GROUP BY 1
 )
 , authors AS (

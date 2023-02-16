@@ -13,7 +13,8 @@ SELECT
   , count(1) AS month_count
   , round(count(1) FILTER (WHERE conclusion = 'success') / CAST(count(1) AS double), 2) AS month_success
 FROM runs
-WHERE name = 'ci' AND created_at >= CURRENT_DATE - INTERVAL '30' DAY
+WHERE owner = 'trinodb' AND repo = 'trino'
+AND name = 'ci' AND created_at >= CURRENT_DATE - INTERVAL '30' DAY
 GROUP BY 1
 ORDER BY 1
 ;

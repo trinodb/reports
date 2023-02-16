@@ -10,7 +10,8 @@ job_duration AS (
     , CAST(started_at AS date) AS started_at_date
     , date_diff('minute', started_at, completed_at) AS duration_minutes
   FROM jobs
-  WHERE started_at > CURRENT_DATE - INTERVAL '30' DAY AND status = 'completed'
+  WHERE owner = 'trinodb' AND repo = 'trino'
+  AND started_at > CURRENT_DATE - INTERVAL '30' DAY AND status = 'completed'
 )
 , main AS (
   SELECT

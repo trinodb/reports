@@ -11,7 +11,8 @@ retried_jobs AS (
     , count(*) FILTER (WHERE (conclusion = 'success')) success_num
     , count(*) FILTER (WHERE (conclusion = 'failure')) failure_num
   FROM jobs
-  WHERE name NOT LIKE 'Test Report%'
+  WHERE owner = 'trinodb' AND repo = 'trino'
+  AND name NOT LIKE 'Test Report%'
   GROUP BY 1, 2
   HAVING count(*) FILTER (WHERE (conclusion = 'success')) != 0
     AND count(*) FILTER (WHERE (conclusion = 'failure')) != 0
@@ -38,7 +39,8 @@ retried_jobs AS (
   LEFT JOIN runs rp ON rp.head_sha = p.head_sha AND rp.name = r.name
   -- join with PR run jobs, because there are so many flaky tests that PRs are being merged with failures
   LEFT JOIN jobs jp ON jp.run_id = rp.id AND jp.name = j.name
-  WHERE r.created_at > CURRENT_DATE - INTERVAL '90' DAY
+  WHERE r.owner = 'trinodb' AND r.repo = 'trino'
+    AND r.created_at > CURRENT_DATE - INTERVAL '90' DAY
     AND r.name = 'ci' AND r.head_branch = 'master'
   GROUP BY 1, 2
   HAVING count() FILTER (WHERE j.conclusion = 'failure' AND jp.conclusion IS NOT DISTINCT FROM 'success') != 0
