@@ -75,7 +75,8 @@ for file in "${queries[@]}"; do
         run_query "$file"
         continue
     fi
-    title=$(echo "$comments" | head -1)
+    # get the first line but consume the remainder in case that echo continues to print after head is done
+    title=$(echo "$comments" | (head -1; dd status=none of=/dev/null))
     desc=$(echo "$comments" | tail -n +2)
     title=${title#--}
     {
