@@ -10,96 +10,96 @@ Weekends are greyed out.
 <pre><code>
                            Job name                            | Fail pct | Failures | Runs |                                       Histogram chart                                       
 ---------------------------------------------------------------+----------+----------+------+---------------------------------------------------------------------------------------------
- build-pt                                                      |    15.56 |       40 |  257 | ░  ▁  ░▄▂    ▃▃▃▁   ░░     ░░     ░░ ▁  ▁░░     ░░ ▁   ░░     ░░   ▁ ░░   ▁ ░░     ░░     ░ 
- build-test-matrix                                             |    15.44 |       40 |  259 | ░  ▁  ░▄▂    ▃▃▃▁   ░░     ░░     ░░ ▁  ▁░░     ░░ ▁ ▄ ░░     ░░   ▁ ░░   ▁ ░░     ░░     ░ 
- check-commits-dispatcher                                      |     50.0 |        1 |    2 | ░     ░▄     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- error-prone-checks                                            |    14.24 |       41 |  288 | ░  ▁▁ ░▄▂    ▃▃▃▁   ░░     ░░     ░░ ▁  ▁░░     ░░ ▁   ░░     ░░   ▁ ░░   ▁ ░░     ░░     ░ 
- hive-tests (config-hdp3)                                      |    21.28 |       80 |  376 | ░  ▁  ░▄▂    ▃▃▃▁  ▁░░     ░░     ░░ ▁ ▁▁░░     ░░▂▁   ░░▂    ░░  ▅▅ ░░   ▁ ░░▂    █░ ▁   ░ 
- maven-checks (17)                                             |    17.07 |       63 |  369 | ░  ▁  ░▄▂ ▁  ▃▃▃▁▁ ▃░░     ░░▁    ░░ ▁  ▁░░▁    ░░ ▁   ░░     ░░   ▁ ░░   ▁ ░░  ▃  ░░ ▄  ▁░ 
- pt (apache-hive3, suite-hms-only, )                           |    11.67 |        7 |   60 | ░     ░░    ▁░░▁    ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- pt (default, suite-1, )                                       |    25.93 |        7 |   27 | ░    ▄░░     ░░     ░░     ░░    ▄░░     ░░     ░░  ▁  ░░   ▄ ░░ ▄   ░░     ░░     ░░▂    ░ 
- pt (default, suite-3, )                                       |    11.76 |        2 |   17 | ░     ░░     ░░     ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- pt (default, suite-5, )                                       |    11.76 |        2 |   17 | ░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- pt (default, suite-6-non-generic, )                           |     12.5 |       10 |   80 | ░     ░░    ▁░░▁    ░░    ▄░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- pt (default, suite-7-non-generic, )                           |    21.53 |       45 |  209 | ░     ░░    ▁░░▁ ▁▅▂░░ ▃ ▂▂░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░ ▁  ▁░ 
- pt (default, suite-8-non-generic, )                           |    14.88 |       18 |  121 | ░▁    ░░    ▁░░▁    ░░ ▁   ░░▁    ░░ ▅   ░░     ░░     ░░     ░░     ░░     ░░     ░░ ▃  ▁░ 
- pt (default, suite-all, )                                     |    11.29 |        7 |   62 | ░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- pt (default, suite-cassandra, )                               |     12.5 |       12 |   96 | ░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░    ▄░░     ░░     ░░▁    ░░     ░░    ▁░ 
- pt (default, suite-clickhouse, )                              |    11.88 |       12 |  101 | ░     ░░    ▁░░▁    ░░     ░░▁    ░░ ▁▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- pt (default, suite-clients, )                                 |    11.76 |        2 |   17 | ░     ░░     ░░     ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- pt (default, suite-compatibility, )                           |     12.5 |       10 |   80 | ░     ░░    ▁░░▁    ░░    ▄░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- pt (default, suite-delta-lake-databricks104, )                |    10.71 |        3 |   28 | ░     ░▂     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░   ▁▁░ 
- pt (default, suite-delta-lake-databricks113, )                |     25.0 |        9 |   36 | ░     ░░     ░▂     ░░     ░░     ░░▂▄   ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- pt (default, suite-delta-lake-databricks91, )                 |    14.29 |        1 |    7 | ░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░ ▁   ░ 
- pt (default, suite-delta-lake-oss, )                          |    11.25 |        9 |   80 | ░     ░░    ▁░░▁    ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- pt (default, suite-hudi, )                                    |     15.0 |        9 |   60 | ░     ░░    ▁░░▁    ░░     ░░▂    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- pt (default, suite-iceberg, )                                 |    11.54 |        9 |   78 | ░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- pt (default, suite-ignite, )                                  |     50.0 |        3 |    6 | ░  ▄  ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- pt (default, suite-kafka, )                                   |     19.2 |       24 |  125 | ░    ▁░░    ▁▄░▁    ░░▄    ░▄▂ ▄▂ ░░  ▁  ░░     ░░     ▄░   ▄ ░░     ░░     ░░     ░░    ▁░ 
- pt (default, suite-ldap, )                                    |     12.5 |       10 |   80 | ░     ░░    ▁░░▁    ░░    ▄░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- pt (default, suite-mysql, )                                   |    11.67 |        7 |   60 | ░     ░░    ▁░░▁    ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- pt (default, suite-oauth2, )                                  |    11.67 |        7 |   60 | ░     ░░    ▁░░▁    ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- pt (default, suite-parquet, )                                 |    11.54 |        9 |   78 | ░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- pt (default, suite-storage-formats-detailed, )                |    11.11 |        9 |   81 | ░     ░░     ░░ ▁   ░░     ░░     ░░   ▄ ░░     ░░    ▄░░     ░░▁    ░░     ░░   ▄ ░░▁    ░ 
- pt (default, suite-tpcds, )                                   |    11.54 |        9 |   78 | ░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- pt (hdp3, suite-1, )                                          |     8.52 |       19 |  223 | ░   ▁ ░░  ▁▁▁░░▁    ░░     ░░▁▄   ░░     ░░     ░░▂    ░░     ░░     ░░     ░░     ░░     ░ 
- pt (hdp3, suite-2, )                                          |    12.82 |       10 |   78 | ░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░ ▁ ▄ ░░     ░ 
- pt (hdp3, suite-3, )                                          |     12.5 |        8 |   64 | ░     ░░   ▄▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- pt (hdp3, suite-5, )                                          |    13.89 |       10 |   72 | ░     ▂░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░▄    ░░     ░░     ░░     ░░     ░░     ░ 
- pt (hdp3, suite-clients, )                                    |    11.29 |        7 |   62 | ░     ░░    ▁░░▁    ░░     ░░▁    ░░     ░░   ▁ ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- pt (hdp3, suite-functions, )                                  |    11.29 |        7 |   62 | ░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- pt (hdp3, suite-storage-formats-detailed, )                   |     9.38 |        6 |   64 | ░     ░░    ▁░░▁    ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- pt (hdp3, suite-tpch, )                                       |     12.5 |        8 |   64 | ░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░   ▄ ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (client/trino-jdbc,plugin ... hrift,plugin/trino-memory) |     5.56 |        1 |   18 | ░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (core/trino-main)                                        |    22.58 |        7 |   31 | ░     ░░     ░░     ░░     ░░ ▄   ░░ ▁▃  ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (core/trino-main, 19)                                    |    14.81 |        4 |   27 | ░     ░░     ░░     ░░     ░░     ░░ ▁▂  ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-accumulo)                                  |    23.08 |        3 |   13 | ░     ░░     ░░     ░░     ░▂     ░░ ▃   ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-bigquery)                                  |    22.07 |       83 |  376 | ░     ░░▃▂▂▁▃░▆▅▁▂▃▁░░▂  ▂ ░▃▂▁   ░░▅ ▁ ▃░░▁    ░░     ░░     ░░     ░░▁    ░░ ▁   ░░ ▄  ▁░ 
- test (plugin/trino-bigquery, cloud-tests-arrow)               |    18.31 |       26 |  142 | ░     ░░    ▁░░   ▂▁░░   ▂▁░░▄▁   ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-cassandra)                                 |     50.0 |        2 |    4 | ░     ░░     ░░     ░░     ░░     ░░▄    ░░ ▄   ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-clickhouse)                                |     50.0 |        2 |    4 | ░     ░░     ░░     ░░     ░░  ▄ ▄░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-delta-lake)                                |     5.26 |        2 |   38 | ░     ░░    ▁░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-delta-lake, cloud-tests)                   |     7.84 |       12 |  153 | ░     ░░    ▁░░     ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░   ▁ ░░     ░░    ▁░░     ░ 
- test (plugin/trino-delta-lake, fte-tests)                     |     7.41 |        2 |   27 | ░     ░░     ░░     ░░   ▁ ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-delta-lake, gcs-tests)                     |    16.13 |       10 |   62 | ░     ░▂    ▁░░     ░░ ▁▁  ░░     ░░     ░░     ░░     ░░     ░░  ▂  ░░     ░░     ░░     ░ 
- test (plugin/trino-druid)                                     |     4.69 |        3 |   64 | ░ ▁   ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-elasticsearch)                             |      4.0 |        1 |   25 | ░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-hive)                                      |    13.25 |       11 |   83 | ░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░ ▁▁  ░░     ░░  ▁  ░░  ▄  ░░ ▂   ░░  ▄  ░ 
- test (plugin/trino-hive, fte-tests)                           |    17.24 |       10 |   58 | ░     ░░     ░░    ▄░░   ▁ ░░▁    ░░▄▃▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-hudi)                                      |     50.0 |        1 |    2 | ░     ░░     ░░     ░░     ░░▄    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-iceberg)                                   |     12.5 |        2 |   16 | ░     ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-iceberg, additional-catalog-tests)         |     12.5 |        2 |   16 | ░     ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-iceberg, cloud-tests)                      |    24.54 |      134 |  546 | ░ ▂▁▂▃▄░ ▁▂  ▄▇▂▃▂ ▂▃░ ▃ ▁ ░░▃▂ ▁▂░░ ▁▃▁ ░░  ▁▁▃░░▃ ▁▂ ░░  ▁  ░░ ▁▅▅ ░░     ▄░     ░░     ░ 
- test (plugin/trino-iceberg, fte-tests)                        |     8.96 |        6 |   67 | ░     ░░     ░░▁    ░░   ▁ ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-kudu)                                      |     16.0 |        4 |   25 | ░     ░░▂    ░░     ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-mongodb)                                   |      8.0 |        2 |   25 | ░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░▁    ░░     ░ 
- test (plugin/trino-mongodb, fte-tests)                        |     12.5 |        4 |   32 | ░     ░░     ░░     ░░   ▁▁░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-mysql, fte-tests)                          |    26.09 |       24 |   92 | ░     ░░     ░░     ░░   ▄ ░▄▃ ▁ ▄░░  ▁▁ ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-phoenix5)                                  |    16.67 |        3 |   18 | ░     ░░     ░░     ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░   ▄ ░░     ░ 
- test (plugin/trino-pinot)                                     |    15.85 |       52 |  328 | ░ ▁▂ ▂░░     ░░   ▁ ▅░▁    ░░     ░░ ▁ ▁ ░▄▄ ▁  ░░▁▁   ░░     ░░     ░▅▄▁   ░░▄  ▁ ░░▄  ▁▁░ 
- test (plugin/trino-postgresql, fte-tests)                     |     25.0 |       10 |   40 | ░     ░░     ░░     ░░   ▃ ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (plugin/trino-raptor-legacy)                             |     9.38 |        3 |   32 | ░     ░░     ░░     ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░   ▁ ░ 
- test (plugin/trino-redis)                                     |    11.25 |        9 |   80 | ░     ░░     ░░     ░░     ░░   ▁ ░░   ▁ ░░     ░░     ░░     ░▃     ░░     ░░     ░░   ▁▁░ 
- test (plugin/trino-singlestore)                               |    11.11 |        2 |   18 | ░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- test (plugin/trino-sqlserver)                                 |    25.26 |       72 |  285 | ░     ░░     ░░▂ ▁▅▂▃░  ▃▂▅▄▄▅▁▁▄▃░░     ░░  ▁  ░░ ▂   ░░  ▁  ░░ ▂   ░░   ▁ ▄░     ░░     ░ 
- test (plugin/trino-sqlserver, fte-tests)                      |     40.0 |       10 |   25 | ░     ░░     ░░     ░░   ▃ ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (testing/trino-faulttolerant-tests, default)             |     12.5 |        2 |   16 | ░     ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
- test (testing/trino-faulttoler ... test-fault-tolerant-delta) |     12.5 |        4 |   32 | ░     ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- test (testing/trino-faulttoler ...  test-fault-tolerant-hive) |    16.13 |        5 |   31 | ░     ░░     ░░▁    ░░     ░░     ░░     ░░    ▃░░ ▁   ░░     ░░     ░░     ░░     ░░     ░ 
- test (testing/trino-faulttoler ... est-fault-tolerant-hive-1) |     12.5 |        2 |   16 | ░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- test (testing/trino-faulttoler ... est-fault-tolerant-hive-2) |    20.24 |       34 |  168 | ░     ░░     ░░     ░░     ░░     ░░     ░░     ░░ ▅ ▂ ░░  ▂▆ ░░ ▁▄  ░░▄▁  ▁░▂    ▂░░ ▄  ▁░ 
- test (testing/trino-faulttoler ... st-fault-tolerant-iceberg) |     12.0 |        6 |   50 | ░     ░░     ░░▁    ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- test (testing/trino-faulttoler ... st-fault-tolerant-mongodb) |    13.33 |        2 |   15 | ░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- test (testing/trino-faulttoler ... test-fault-tolerant-mysql) |     12.5 |        3 |   24 | ░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ▁░     ░░     ░░    ▁░ 
- test (testing/trino-faulttoler ... fault-tolerant-postgresql) |     12.5 |        2 |   16 | ░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- test (testing/trino-faulttoler ... -fault-tolerant-sqlserver) |     12.5 |        2 |   16 | ░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁░ 
- test (testing/trino-tests)                                    |    14.29 |       31 |  217 | ░ ▁   ▂░     ░░▁    ░░     ░░▅   ▄░░▁ ▁▁▄░░   ▁ ░░ ▁   ░░  ▄  ░░  ▃  ░░     ░░ ▁ ▄ ░░    ▁░ 
- test-jdbc-compatibility                                       |    14.77 |       39 |  264 | ░  ▁  ░▄▂    ▃▃▃▁   ░░     ░░     ░░    ▁░░     ░░ ▁   ░░     ░░   ▁ ░░   ▁ ░░     ░░    ▁░ 
- test-other-modules                                            |    16.98 |       55 |  324 | ░ ▁▂  ░▄▂    ▃▃▃▁▁  ░░     ░░     ▄░ ▁  ▁░▄     ░░ ▁   ░░     ░░   ▁ ░░   ▁ ░░ ▁   ░░▁   ▁░ 
- web-ui-checks                                                 |    11.59 |        8 |   69 | ░  ▁ █░█     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░ 
+ build-pt                                                      |    15.56 |       40 |  257 | ░░  ▁  ░▄▂    ▃▃▃▁   ░░     ░░     ░░ ▁  ▁░░     ░░ ▁   ░░     ░░   ▁ ░░   ▁ ░░     ░░      
+ build-test-matrix                                             |    15.44 |       40 |  259 | ░░  ▁  ░▄▂    ▃▃▃▁   ░░     ░░     ░░ ▁  ▁░░     ░░ ▁ ▄ ░░     ░░   ▁ ░░   ▁ ░░     ░░      
+ check-commits-dispatcher                                      |     50.0 |        1 |    2 | ░░     ░▄     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ error-prone-checks                                            |    14.24 |       41 |  288 | ░░  ▁▁ ░▄▂    ▃▃▃▁   ░░     ░░     ░░ ▁  ▁░░     ░░ ▁   ░░     ░░   ▁ ░░   ▁ ░░     ░░      
+ hive-tests (config-hdp3)                                      |    21.28 |       80 |  376 | ░░  ▁  ░▄▂    ▃▃▃▁  ▁░░     ░░     ░░ ▁ ▁▁░░     ░░▂▁   ░░▂    ░░  ▅▅ ░░   ▁ ░░▂    █░ ▁    
+ maven-checks (17)                                             |    17.07 |       63 |  369 | ░░  ▁  ░▄▂ ▁  ▃▃▃▁▁ ▃░░     ░░▁    ░░ ▁  ▁░░▁    ░░ ▁   ░░     ░░   ▁ ░░   ▁ ░░  ▃  ░░ ▄  ▁ 
+ pt (apache-hive3, suite-hms-only, )                           |    11.67 |        7 |   60 | ░░     ░░    ▁░░▁    ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ pt (default, suite-1, )                                       |    25.93 |        7 |   27 | ░░    ▄░░     ░░     ░░     ░░    ▄░░     ░░     ░░  ▁  ░░   ▄ ░░ ▄   ░░     ░░     ░░▂     
+ pt (default, suite-3, )                                       |    11.76 |        2 |   17 | ░░     ░░     ░░     ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ pt (default, suite-5, )                                       |    11.76 |        2 |   17 | ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ pt (default, suite-6-non-generic, )                           |     12.5 |       10 |   80 | ░░     ░░    ▁░░▁    ░░    ▄░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ pt (default, suite-7-non-generic, )                           |    21.53 |       45 |  209 | ░░     ░░    ▁░░▁ ▁▅▂░░ ▃ ▂▂░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░ ▁  ▁ 
+ pt (default, suite-8-non-generic, )                           |    14.29 |       18 |  126 | ░░▁    ░░    ▁░░▁    ░░ ▁   ░░▁    ░░ ▅   ░░     ░░     ░░     ░░     ░░     ░░     ░░ ▃  ▁ 
+ pt (default, suite-all, )                                     |    11.29 |        7 |   62 | ░░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ pt (default, suite-cassandra, )                               |     12.5 |       12 |   96 | ░░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░    ▄░░     ░░     ░░▁    ░░     ░░    ▁ 
+ pt (default, suite-clickhouse, )                              |    11.88 |       12 |  101 | ░░     ░░    ▁░░▁    ░░     ░░▁    ░░ ▁▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ pt (default, suite-clients, )                                 |    11.76 |        2 |   17 | ░░     ░░     ░░     ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ pt (default, suite-compatibility, )                           |     12.5 |       10 |   80 | ░░     ░░    ▁░░▁    ░░    ▄░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ pt (default, suite-delta-lake-databricks104, )                |    10.71 |        3 |   28 | ░░     ░▂     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░   ▁▁ 
+ pt (default, suite-delta-lake-databricks113, )                |     25.0 |        9 |   36 | ░░     ░░     ░▂     ░░     ░░     ░░▂▄   ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ pt (default, suite-delta-lake-databricks91, )                 |    14.29 |        1 |    7 | ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░ ▁    
+ pt (default, suite-delta-lake-oss, )                          |    11.25 |        9 |   80 | ░░     ░░    ▁░░▁    ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ pt (default, suite-hudi, )                                    |     15.0 |        9 |   60 | ░░     ░░    ▁░░▁    ░░     ░░▂    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ pt (default, suite-iceberg, )                                 |    11.54 |        9 |   78 | ░░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ pt (default, suite-ignite, )                                  |    43.75 |        7 |   16 | ░▃  ▄  ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ pt (default, suite-kafka, )                                   |    19.05 |       24 |  126 | ░░    ▁░░    ▁▄░▁    ░░▄    ░▄▂ ▄▂ ░░  ▁  ░░     ░░     ▄░   ▄ ░░     ░░     ░░     ░░    ▁ 
+ pt (default, suite-ldap, )                                    |     12.5 |       10 |   80 | ░░     ░░    ▁░░▁    ░░    ▄░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ pt (default, suite-mysql, )                                   |    11.67 |        7 |   60 | ░░     ░░    ▁░░▁    ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ pt (default, suite-oauth2, )                                  |    11.67 |        7 |   60 | ░░     ░░    ▁░░▁    ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ pt (default, suite-parquet, )                                 |    11.54 |        9 |   78 | ░░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ pt (default, suite-storage-formats-detailed, )                |    11.11 |        9 |   81 | ░░     ░░     ░░ ▁   ░░     ░░     ░░   ▄ ░░     ░░    ▄░░     ░░▁    ░░     ░░   ▄ ░░▁     
+ pt (default, suite-tpcds, )                                   |    11.54 |        9 |   78 | ░░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ pt (hdp3, suite-1, )                                          |     9.87 |       23 |  233 | ░▃   ▁ ░░  ▁▁▁░░▁    ░░     ░░▁▄   ░░     ░░     ░░▂    ░░     ░░     ░░     ░░     ░░      
+ pt (hdp3, suite-2, )                                          |    12.82 |       10 |   78 | ░░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░ ▁ ▄ ░░      
+ pt (hdp3, suite-3, )                                          |     12.5 |        8 |   64 | ░░     ░░   ▄▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ pt (hdp3, suite-5, )                                          |    13.89 |       10 |   72 | ░░     ▂░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░▄    ░░     ░░     ░░     ░░     ░░      
+ pt (hdp3, suite-clients, )                                    |    11.29 |        7 |   62 | ░░     ░░    ▁░░▁    ░░     ░░▁    ░░     ░░   ▁ ░░     ░░     ░░     ░░     ░░     ░░      
+ pt (hdp3, suite-functions, )                                  |    11.29 |        7 |   62 | ░░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ pt (hdp3, suite-storage-formats-detailed, )                   |     9.38 |        6 |   64 | ░░     ░░    ▁░░▁    ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ pt (hdp3, suite-tpch, )                                       |     12.5 |        8 |   64 | ░░     ░░    ▁░░▁    ░░     ░░▁    ░░  ▁  ░░   ▄ ░░     ░░     ░░     ░░     ░░     ░░      
+ test (client/trino-jdbc,plugin ... hrift,plugin/trino-memory) |     5.56 |        1 |   18 | ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (core/trino-main)                                        |    22.58 |        7 |   31 | ░░     ░░     ░░     ░░     ░░ ▄   ░░ ▁▃  ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (core/trino-main, 19)                                    |    14.81 |        4 |   27 | ░░     ░░     ░░     ░░     ░░     ░░ ▁▂  ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-accumulo)                                  |    23.08 |        3 |   13 | ░░     ░░     ░░     ░░     ░▂     ░░ ▃   ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-bigquery)                                  |    22.07 |       83 |  376 | ░░     ░░▃▂▂▁▃░▆▅▁▂▃▁░░▂  ▂ ░▃▂▁   ░░▅ ▁ ▃░░▁    ░░     ░░     ░░     ░░▁    ░░ ▁   ░░ ▄  ▁ 
+ test (plugin/trino-bigquery, cloud-tests-arrow)               |    18.31 |       26 |  142 | ░░     ░░    ▁░░   ▂▁░░   ▂▁░░▄▁   ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-cassandra)                                 |     50.0 |        2 |    4 | ░░     ░░     ░░     ░░     ░░     ░░▄    ░░ ▄   ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-clickhouse)                                |     50.0 |        2 |    4 | ░░     ░░     ░░     ░░     ░░  ▄ ▄░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-delta-lake)                                |     5.26 |        2 |   38 | ░░     ░░    ▁░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-delta-lake, cloud-tests)                   |     7.84 |       12 |  153 | ░░     ░░    ▁░░     ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░   ▁ ░░     ░░    ▁░░      
+ test (plugin/trino-delta-lake, fte-tests)                     |     7.41 |        2 |   27 | ░░     ░░     ░░     ░░   ▁ ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-delta-lake, gcs-tests)                     |    16.13 |       10 |   62 | ░░     ░▂    ▁░░     ░░ ▁▁  ░░     ░░     ░░     ░░     ░░     ░░  ▂  ░░     ░░     ░░      
+ test (plugin/trino-druid)                                     |     4.69 |        3 |   64 | ░░ ▁   ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-elasticsearch)                             |      4.0 |        1 |   25 | ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-hive)                                      |    13.25 |       11 |   83 | ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░ ▁▁  ░░     ░░  ▁  ░░  ▄  ░░ ▂   ░░  ▄   
+ test (plugin/trino-hive, fte-tests)                           |    17.24 |       10 |   58 | ░░     ░░     ░░    ▄░░   ▁ ░░▁    ░░▄▃▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-hudi)                                      |     50.0 |        1 |    2 | ░░     ░░     ░░     ░░     ░░▄    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-iceberg)                                   |     12.5 |        2 |   16 | ░░     ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-iceberg, additional-catalog-tests)         |     12.5 |        2 |   16 | ░░     ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-iceberg, cloud-tests)                      |    24.68 |      135 |  547 | ░░ ▂▁▂▃▄░ ▁▂  ▄▇▂▃▂ ▂▃░ ▃ ▁ ░░▃▂ ▁▂░░ ▁▃▁ ░░  ▁▁▃░░▃ ▁▂ ░░  ▁  ░░ ▁▅▅ ░░     ▄░     ░░      
+ test (plugin/trino-iceberg, fte-tests)                        |     8.96 |        6 |   67 | ░░     ░░     ░░▁    ░░   ▁ ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-kudu)                                      |     16.0 |        4 |   25 | ░░     ░░▂    ░░     ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-mongodb)                                   |      8.0 |        2 |   25 | ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░▁    ░░      
+ test (plugin/trino-mongodb, fte-tests)                        |     12.5 |        4 |   32 | ░░     ░░     ░░     ░░   ▁▁░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-mysql, fte-tests)                          |    26.09 |       24 |   92 | ░░     ░░     ░░     ░░   ▄ ░▄▃ ▁ ▄░░  ▁▁ ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-phoenix5)                                  |    16.67 |        3 |   18 | ░░     ░░     ░░     ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░   ▄ ░░      
+ test (plugin/trino-pinot)                                     |    16.11 |       53 |  329 | ░░ ▁▂ ▂░░     ░░   ▁ ▅░▁    ░░     ░░ ▁ ▁ ░▄▄ ▁  ░░▁▁   ░░     ░░     ░▅▄▁   ░░▄  ▁ ░░▄  ▁▁ 
+ test (plugin/trino-postgresql, fte-tests)                     |     25.0 |       10 |   40 | ░░     ░░     ░░     ░░   ▃ ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (plugin/trino-raptor-legacy)                             |     9.38 |        3 |   32 | ░░     ░░     ░░     ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░   ▁  
+ test (plugin/trino-redis)                                     |    11.25 |        9 |   80 | ░░     ░░     ░░     ░░     ░░   ▁ ░░   ▁ ░░     ░░     ░░     ░▃     ░░     ░░     ░░   ▁▁ 
+ test (plugin/trino-singlestore)                               |    11.11 |        2 |   18 | ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ test (plugin/trino-sqlserver)                                 |    25.26 |       72 |  285 | ░░     ░░     ░░▂ ▁▅▂▃░  ▃▂▅▄▄▅▁▁▄▃░░     ░░  ▁  ░░ ▂   ░░  ▁  ░░ ▂   ░░   ▁ ▄░     ░░      
+ test (plugin/trino-sqlserver, fte-tests)                      |     40.0 |       10 |   25 | ░░     ░░     ░░     ░░   ▃ ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (testing/trino-faulttolerant-tests, default)             |     12.5 |        2 |   16 | ░░     ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
+ test (testing/trino-faulttoler ... test-fault-tolerant-delta) |     12.5 |        4 |   32 | ░░     ░░     ░░▁    ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ test (testing/trino-faulttoler ...  test-fault-tolerant-hive) |    16.13 |        5 |   31 | ░░     ░░     ░░▁    ░░     ░░     ░░     ░░    ▃░░ ▁   ░░     ░░     ░░     ░░     ░░      
+ test (testing/trino-faulttoler ... est-fault-tolerant-hive-1) |     12.5 |        2 |   16 | ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ test (testing/trino-faulttoler ... est-fault-tolerant-hive-2) |    20.24 |       34 |  168 | ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░ ▅ ▂ ░░  ▂▆ ░░ ▁▄  ░░▄▁  ▁░▂    ▂░░ ▄  ▁ 
+ test (testing/trino-faulttoler ... st-fault-tolerant-iceberg) |     12.0 |        6 |   50 | ░░     ░░     ░░▁    ░░     ░░     ░░  ▁  ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ test (testing/trino-faulttoler ... st-fault-tolerant-mongodb) |    13.33 |        2 |   15 | ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ test (testing/trino-faulttoler ... test-fault-tolerant-mysql) |     12.5 |        3 |   24 | ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ▁░     ░░     ░░    ▁ 
+ test (testing/trino-faulttoler ... fault-tolerant-postgresql) |     12.5 |        2 |   16 | ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ test (testing/trino-faulttoler ... -fault-tolerant-sqlserver) |     12.5 |        2 |   16 | ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░    ▁ 
+ test (testing/trino-tests)                                    |    14.29 |       31 |  217 | ░░ ▁   ▂░     ░░▁    ░░     ░░▅   ▄░░▁ ▁▁▄░░   ▁ ░░ ▁   ░░  ▄  ░░  ▃  ░░     ░░ ▁ ▄ ░░    ▁ 
+ test-jdbc-compatibility                                       |    14.77 |       39 |  264 | ░░  ▁  ░▄▂    ▃▃▃▁   ░░     ░░     ░░    ▁░░     ░░ ▁   ░░     ░░   ▁ ░░   ▁ ░░     ░░    ▁ 
+ test-other-modules                                            |    17.66 |       59 |  334 | ░▃ ▁▂  ░▄▂    ▃▃▃▁▁  ░░     ░░     ▄░ ▁  ▁░▄     ░░ ▁   ░░     ░░   ▁ ░░   ▁ ░░ ▁   ░░▁   ▁ 
+ web-ui-checks                                                 |    15.19 |       12 |   79 | ░▃  ▁ █░█     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░     ░░      
 (87 rows)
 </code></pre>
-[query](https://github.com/nineinchnick/trino-cicd/blob/99620a0cd0f0e5e376c755f34900c07162451e1d/sql/flaky/jobs.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/ec49798824a516632e37af0fabf451ad594da593/sql/flaky/jobs.sql)
 
 ## Flaky jobs per week
 
@@ -108,24 +108,24 @@ Weekends are greyed out.
 | Week       | Job name                                                                                | Fail percent | Failure count | Success count |
 | ---------- | --------------------------------------------------------------------------------------- | ------------ | ------------- | ------------- |
 | 2023-02-20 | pt (default, suite-1, )                                                                 | 50.0         | 1             | 1             |
-| 2023-02-20 | test (plugin/trino-iceberg, cloud-tests)                                                | 20.95        | 22            | 83            |
-| 2023-02-20 | test (plugin/trino-pinot)                                                               | 11.65        | 12            | 91            |
-| 2023-02-20 | test-other-modules                                                                      | 8.27         | 11            | 122           |
-| 2023-02-20 | web-ui-checks                                                                           | 7.78         | 7             | 83            |
-| 2023-02-20 | error-prone-checks                                                                      | 6.02         | 8             | 125           |
-| 2023-02-20 | pt (default, suite-ignite, )                                                            | 5.26         | 3             | 54            |
-| 2023-02-20 | maven-checks (17)                                                                       | 4.76         | 6             | 120           |
-| 2023-02-20 | test-jdbc-compatibility                                                                 | 4.76         | 6             | 120           |
-| 2023-02-20 | build-pt                                                                                | 4.51         | 6             | 127           |
-| 2023-02-20 | build-test-matrix                                                                       | 4.51         | 6             | 127           |
-| 2023-02-20 | hive-tests (config-hdp3)                                                                | 4.51         | 6             | 127           |
-| 2023-02-20 | test (plugin/trino-druid)                                                               | 1.87         | 2             | 105           |
-| 2023-02-20 | test (testing/trino-tests)                                                              | 1.8          | 2             | 109           |
-| 2023-02-20 | test (plugin/trino-delta-lake, cloud-tests)                                             | 1.64         | 2             | 120           |
-| 2023-02-20 | pt (default, suite-8-non-generic, )                                                     | 1.57         | 2             | 125           |
-| 2023-02-20 | pt (hdp3, suite-1, )                                                                    | 1.57         | 2             | 125           |
-| 2023-02-20 | test (plugin/trino-bigquery)                                                            | 1.35         | 1             | 73            |
-| 2023-02-20 | pt (default, suite-kafka, )                                                             | 0.79         | 1             | 126           |
+| 2023-02-20 | test (plugin/trino-iceberg, cloud-tests)                                                | 19.66        | 23            | 94            |
+| 2023-02-20 | test (plugin/trino-pinot)                                                               | 11.3         | 13            | 102           |
+| 2023-02-20 | web-ui-checks                                                                           | 10.48        | 11            | 94            |
+| 2023-02-20 | test-other-modules                                                                      | 10.07        | 15            | 134           |
+| 2023-02-20 | pt (default, suite-ignite, )                                                            | 9.72         | 7             | 65            |
+| 2023-02-20 | error-prone-checks                                                                      | 5.37         | 8             | 141           |
+| 2023-02-20 | maven-checks (17)                                                                       | 4.23         | 6             | 136           |
+| 2023-02-20 | test-jdbc-compatibility                                                                 | 4.23         | 6             | 136           |
+| 2023-02-20 | pt (hdp3, suite-1, )                                                                    | 4.2          | 6             | 137           |
+| 2023-02-20 | build-pt                                                                                | 4.03         | 6             | 143           |
+| 2023-02-20 | build-test-matrix                                                                       | 4.03         | 6             | 143           |
+| 2023-02-20 | hive-tests (config-hdp3)                                                                | 4.03         | 6             | 143           |
+| 2023-02-20 | test (plugin/trino-druid)                                                               | 1.68         | 2             | 117           |
+| 2023-02-20 | test (testing/trino-tests)                                                              | 1.63         | 2             | 121           |
+| 2023-02-20 | test (plugin/trino-delta-lake, cloud-tests)                                             | 1.49         | 2             | 132           |
+| 2023-02-20 | pt (default, suite-8-non-generic, )                                                     | 1.4          | 2             | 141           |
+| 2023-02-20 | test (plugin/trino-bigquery)                                                            | 1.18         | 1             | 84            |
+| 2023-02-20 | pt (default, suite-kafka, )                                                             | 0.7          | 1             | 142           |
 | 2023-02-13 | check-commits-dispatcher                                                                | 50.0         | 1             | 1             |
 | 2023-02-13 | test (plugin/trino-bigquery)                                                            | 16.95        | 10            | 49            |
 | 2023-02-13 | test (plugin/trino-iceberg, cloud-tests)                                                | 13.85        | 9             | 56            |
@@ -283,54 +283,54 @@ Weekends are greyed out.
 | 2023-01-16 | pt (default, suite-8-non-generic, )                                                     | 66.67        | 2             | 1             |
 | 2023-01-16 | test (plugin/trino-cassandra)                                                           | 50.0         | 1             | 1             |
 | 2023-01-16 | test (plugin/trino-accumulo)                                                            | 33.33        | 1             | 2             |
-| 2023-01-16 | test (plugin/trino-bigquery)                                                            | 32.81        | 21            | 43            |
-| 2023-01-16 | test (plugin/trino-iceberg, cloud-tests)                                                | 12.0         | 12            | 88            |
-| 2023-01-16 | pt (default, suite-delta-lake-databricks113, )                                          | 8.89         | 8             | 82            |
+| 2023-01-16 | test (plugin/trino-bigquery)                                                            | 32.08        | 17            | 36            |
+| 2023-01-16 | test (plugin/trino-iceberg, cloud-tests)                                                | 13.33        | 12            | 78            |
+| 2023-01-16 | pt (default, suite-delta-lake-databricks113, )                                          | 9.64         | 8             | 75            |
 | 2023-01-16 | test (core/trino-main, 19)                                                              | 8.0          | 4             | 46            |
-| 2023-01-16 | test (testing/trino-tests)                                                              | 7.27         | 8             | 102           |
-| 2023-01-16 | test (core/trino-main)                                                                  | 6.59         | 6             | 85            |
-| 2023-01-16 | hive-tests (config-hdp3)                                                                | 6.45         | 8             | 116           |
-| 2023-01-16 | test (plugin/trino-mysql, fte-tests)                                                    | 6.25         | 6             | 90            |
-| 2023-01-16 | test (plugin/trino-hive, fte-tests)                                                     | 4.59         | 5             | 104           |
-| 2023-01-16 | pt (default, suite-clickhouse, )                                                        | 4.1          | 5             | 117           |
-| 2023-01-16 | test (plugin/trino-redis)                                                               | 4.08         | 4             | 94            |
-| 2023-01-16 | test-other-modules                                                                      | 3.97         | 5             | 121           |
-| 2023-01-16 | test (plugin/trino-pinot)                                                               | 3.81         | 4             | 101           |
-| 2023-01-16 | build-pt                                                                                | 3.23         | 4             | 120           |
-| 2023-01-16 | maven-checks (17)                                                                       | 3.23         | 4             | 120           |
-| 2023-01-16 | pt (default, suite-storage-formats-detailed, )                                          | 2.8          | 3             | 104           |
-| 2023-01-16 | build-test-matrix                                                                       | 2.42         | 3             | 121           |
-| 2023-01-16 | error-prone-checks                                                                      | 2.42         | 3             | 121           |
-| 2023-01-16 | test (plugin/trino-delta-lake, cloud-tests)                                             | 2.0          | 2             | 98            |
-| 2023-01-16 | test (plugin/trino-kudu)                                                                | 2.0          | 2             | 98            |
-| 2023-01-16 | test (plugin/trino-phoenix5)                                                            | 2.0          | 2             | 98            |
-| 2023-01-16 | test (plugin/trino-postgresql, fte-tests)                                               | 2.0          | 2             | 98            |
-| 2023-01-16 | test (plugin/trino-raptor-legacy)                                                       | 2.0          | 2             | 98            |
-| 2023-01-16 | test (testing/trino-faulttolerant-tests, test-fault-tolerant-iceberg)                   | 1.96         | 2             | 100           |
-| 2023-01-16 | pt (hdp3, suite-2, )                                                                    | 1.87         | 2             | 105           |
-| 2023-01-16 | pt (hdp3, suite-5, )                                                                    | 1.87         | 2             | 105           |
-| 2023-01-16 | pt (default, suite-3, )                                                                 | 1.8          | 2             | 109           |
-| 2023-01-16 | pt (default, suite-clients, )                                                           | 1.72         | 2             | 114           |
-| 2023-01-16 | pt (default, suite-6-non-generic, )                                                     | 1.68         | 2             | 117           |
-| 2023-01-16 | pt (default, suite-7-non-generic, )                                                     | 1.68         | 2             | 117           |
-| 2023-01-16 | pt (default, suite-all, )                                                               | 1.68         | 2             | 117           |
-| 2023-01-16 | pt (default, suite-cassandra, )                                                         | 1.68         | 2             | 117           |
-| 2023-01-16 | pt (default, suite-compatibility, )                                                     | 1.68         | 2             | 117           |
-| 2023-01-16 | pt (default, suite-iceberg, )                                                           | 1.68         | 2             | 117           |
-| 2023-01-16 | pt (default, suite-kafka, )                                                             | 1.68         | 2             | 117           |
-| 2023-01-16 | pt (default, suite-ldap, )                                                              | 1.68         | 2             | 117           |
-| 2023-01-16 | pt (default, suite-parquet, )                                                           | 1.68         | 2             | 117           |
-| 2023-01-16 | pt (default, suite-tpcds, )                                                             | 1.68         | 2             | 117           |
-| 2023-01-16 | pt (hdp3, suite-3, )                                                                    | 1.68         | 2             | 117           |
-| 2023-01-16 | pt (hdp3, suite-functions, )                                                            | 1.68         | 2             | 117           |
-| 2023-01-16 | pt (hdp3, suite-tpch, )                                                                 | 1.68         | 2             | 117           |
-| 2023-01-16 | test-jdbc-compatibility                                                                 | 1.61         | 2             | 122           |
-| 2023-01-16 | test (plugin/trino-delta-lake)                                                          | 0.98         | 1             | 101           |
-| 2023-01-16 | test (plugin/trino-iceberg, fte-tests)                                                  | 0.98         | 1             | 101           |
-| 2023-01-16 | pt (default, suite-delta-lake-oss, )                                                    | 0.84         | 1             | 118           |
-| 2023-01-16 | pt (hdp3, suite-storage-formats-detailed, )                                             | 0.84         | 1             | 118           |
+| 2023-01-16 | test (core/trino-main)                                                                  | 7.5          | 6             | 74            |
+| 2023-01-16 | test (testing/trino-tests)                                                              | 7.22         | 7             | 90            |
+| 2023-01-16 | test (plugin/trino-mysql, fte-tests)                                                    | 7.06         | 6             | 79            |
+| 2023-01-16 | hive-tests (config-hdp3)                                                                | 6.31         | 7             | 104           |
+| 2023-01-16 | test (plugin/trino-hive, fte-tests)                                                     | 5.1          | 5             | 93            |
+| 2023-01-16 | test (plugin/trino-redis)                                                               | 4.6          | 4             | 83            |
+| 2023-01-16 | pt (default, suite-clickhouse, )                                                        | 4.55         | 5             | 105           |
+| 2023-01-16 | test (plugin/trino-pinot)                                                               | 4.26         | 4             | 90            |
+| 2023-01-16 | test-other-modules                                                                      | 3.54         | 4             | 109           |
+| 2023-01-16 | pt (default, suite-storage-formats-detailed, )                                          | 3.16         | 3             | 92            |
+| 2023-01-16 | build-pt                                                                                | 2.7          | 3             | 108           |
+| 2023-01-16 | maven-checks (17)                                                                       | 2.7          | 3             | 108           |
+| 2023-01-16 | test (plugin/trino-delta-lake, cloud-tests)                                             | 2.25         | 2             | 87            |
+| 2023-01-16 | test (plugin/trino-kudu)                                                                | 2.25         | 2             | 87            |
+| 2023-01-16 | test (plugin/trino-phoenix5)                                                            | 2.25         | 2             | 87            |
+| 2023-01-16 | test (plugin/trino-postgresql, fte-tests)                                               | 2.25         | 2             | 87            |
+| 2023-01-16 | test (plugin/trino-raptor-legacy)                                                       | 2.25         | 2             | 87            |
+| 2023-01-16 | test (testing/trino-faulttolerant-tests, test-fault-tolerant-iceberg)                   | 2.2          | 2             | 89            |
+| 2023-01-16 | pt (hdp3, suite-2, )                                                                    | 2.11         | 2             | 93            |
+| 2023-01-16 | pt (hdp3, suite-5, )                                                                    | 2.11         | 2             | 93            |
+| 2023-01-16 | pt (default, suite-3, )                                                                 | 2.02         | 2             | 97            |
+| 2023-01-16 | pt (default, suite-clients, )                                                           | 1.92         | 2             | 102           |
+| 2023-01-16 | pt (default, suite-6-non-generic, )                                                     | 1.87         | 2             | 105           |
+| 2023-01-16 | pt (default, suite-7-non-generic, )                                                     | 1.87         | 2             | 105           |
+| 2023-01-16 | pt (default, suite-all, )                                                               | 1.87         | 2             | 105           |
+| 2023-01-16 | pt (default, suite-cassandra, )                                                         | 1.87         | 2             | 105           |
+| 2023-01-16 | pt (default, suite-compatibility, )                                                     | 1.87         | 2             | 105           |
+| 2023-01-16 | pt (default, suite-iceberg, )                                                           | 1.87         | 2             | 105           |
+| 2023-01-16 | pt (default, suite-kafka, )                                                             | 1.87         | 2             | 105           |
+| 2023-01-16 | pt (default, suite-ldap, )                                                              | 1.87         | 2             | 105           |
+| 2023-01-16 | pt (default, suite-parquet, )                                                           | 1.87         | 2             | 105           |
+| 2023-01-16 | pt (default, suite-tpcds, )                                                             | 1.87         | 2             | 105           |
+| 2023-01-16 | pt (hdp3, suite-3, )                                                                    | 1.87         | 2             | 105           |
+| 2023-01-16 | pt (hdp3, suite-functions, )                                                            | 1.87         | 2             | 105           |
+| 2023-01-16 | pt (hdp3, suite-tpch, )                                                                 | 1.87         | 2             | 105           |
+| 2023-01-16 | build-test-matrix                                                                       | 1.8          | 2             | 109           |
+| 2023-01-16 | error-prone-checks                                                                      | 1.8          | 2             | 109           |
+| 2023-01-16 | test (plugin/trino-delta-lake)                                                          | 1.1          | 1             | 90            |
+| 2023-01-16 | test (plugin/trino-iceberg, fte-tests)                                                  | 1.1          | 1             | 90            |
+| 2023-01-16 | pt (default, suite-delta-lake-oss, )                                                    | 0.93         | 1             | 106           |
+| 2023-01-16 | pt (hdp3, suite-storage-formats-detailed, )                                             | 0.93         | 1             | 106           |
+| 2023-01-16 | test-jdbc-compatibility                                                                 | 0.9          | 1             | 110           |
 
-[query](https://github.com/nineinchnick/trino-cicd/blob/99620a0cd0f0e5e376c755f34900c07162451e1d/sql/flaky/jobs-week.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/ec49798824a516632e37af0fabf451ad594da593/sql/flaky/jobs-week.sql)
 
 ## Flaky tests in last 30 days
 
@@ -339,7 +339,7 @@ Weekends are greyed out.
 | Test name                                                                                                                                                                                                                                                                                | Count | %   | First seen at           | Last seen at            | Messages                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- | --- | ----------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | TestIcebergGcsConnectorSmokeTest\.testDeleteRowsConcurrently                                                                                                                                                                                                                             | 12    | 0.3 | 2023-02-02 09:29:43.000 | 2023-02-19 22:26:49.000 | [Method io\.trino\.plugin\.iceberg\.BaseIcebergConnectorSmokeTest\.testDeleteRowsConcurrently\(\) didn\'t finish within the time-out 120000]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| TestSqlServerConnectorTest\.testAddColumnConcurrently                                                                                                                                                                                                                                    | 9     | 0.2 | 2023-01-26 06:57:54.000 | 2023-02-06 16:26:55.000 | [\[Rows for query \[DESCRIBE test\_add\_columnet1gp83ux8 projected with \[0\]\]\] &lt;br/&gt;, \[Rows for query \[DESCRIBE test\_add\_columneq7g7f3h1l projected with \[0\]\]\] &lt;br/&gt;, \[Rows for query \[DESCRIBE test\_add\_column2jdgs6e6g1 projected with \[0\]\]\] &lt;br/&gt;, \[Rows for query \[DESCRIBE test\_add\_columnuktwrak0xd projected with \[0\]\]\] &lt;br/&gt;, \[Rows for query \[DESCRIBE test\_add\_column6dvhyccz2h projected with \[0\]\]\] &lt;br/&gt;, \[Rows for query \[DESCRIBE test\_add\_columnf8vf2k3xsj projected with \[0\]\]\] &lt;br/&gt;, \[Rows for query \[DESCRIBE test\_add\_columnxentscjc0x projected with \[0\]\]\] &lt;br/&gt;, \[Rows for query \[DESCRIBE test\_add\_columnuy634xoaft projected with \[0\]\]\] &lt;br/&gt;, \[Rows for query \[DESCRIBE test\_add\_columneebsmio0j0 projected with \[0\]\]\] &lt;br/&gt;]                                                                                                                                                                                                                                                                                     |
+| TestSqlServerConnectorTest\.testAddColumnConcurrently                                                                                                                                                                                                                                    | 6     | 0.2 | 2023-01-28 16:54:39.000 | 2023-02-06 16:26:55.000 | [\[Rows for query \[DESCRIBE test\_add\_columneq7g7f3h1l projected with \[0\]\]\] &lt;br/&gt;, \[Rows for query \[DESCRIBE test\_add\_column6dvhyccz2h projected with \[0\]\]\] &lt;br/&gt;, \[Rows for query \[DESCRIBE test\_add\_columnf8vf2k3xsj projected with \[0\]\]\] &lt;br/&gt;, \[Rows for query \[DESCRIBE test\_add\_columnxentscjc0x projected with \[0\]\]\] &lt;br/&gt;, \[Rows for query \[DESCRIBE test\_add\_columnuy634xoaft projected with \[0\]\]\] &lt;br/&gt;, \[Rows for query \[DESCRIBE test\_add\_columneebsmio0j0 projected with \[0\]\]\] &lt;br/&gt;]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | TestDeltaLakeDatabricksCreateTableCompatibility \&gt; testCreateTableWithColumnCommentOnTrino \[groups\: profile\_specific\_tests, delta-lake-databricks\]                                                                                                                                  | 3     | 0.1 | 2023-02-11 12:07:46.000 | 2023-02-19 00:27:41.000 | [java\.sql\.SQLException\: Query failed \(\#20230218\_214436\_00347\_6j5c5\)\: Table being modified concurrently\. \(Service\: AWSGlue; Status Code\: 400; Error Code\: ConcurrentModificationException; Request ID\: c9c43614-3507-4ee9-b9dd-27d48bd8e07b; Proxy\: null\), java\.sql\.SQLException\: Query failed \(\#20230211\_104100\_00066\_stggn\)\: Table being modified concurrently\. \(Service\: AWSGlue; Status Code\: 400; Error Code\: ConcurrentModificationException; Request ID\: 8da67bd6-e6d5-413a-8f18-2ea7e2f57e34; Proxy\: null\), java\.sql\.SQLException\: Query failed \(\#20230218\_032652\_00347\_yeydn\)\: Table being modified concurrently\. \(Service\: AWSGlue; Status Code\: 400; Error Code\: ConcurrentModificationException; Request ID\: 039c5c83-9991-4105-8236-fbeb17bc9da2; Proxy\: null\)]                                                                                                                                                                                                                                                                            |
 | TestDeltaLakeAlterTableCompatibility \&gt; testCommentOnColumn \[groups\: profile\_specific\_tests, delta-lake-databricks, delta-lake-oss\]                                                                                                                                                 | 3     | 0.1 | 2023-01-28 05:02:50.000 | 2023-02-19 00:32:25.000 | [java\.sql\.SQLException\: Query failed \(\#20230211\_152409\_00183\_rmbmp\)\: Table being modified concurrently\. \(Service\: AWSGlue; Status Code\: 400; Error Code\: ConcurrentModificationException; Request ID\: 0d74facd-9798-4007-9af4-c4d35f5bd2d2; Proxy\: null\), java\.sql\.SQLException\: Query failed \(\#20230218\_232349\_00161\_vc3sm\)\: Table being modified concurrently\. \(Service\: AWSGlue; Status Code\: 400; Error Code\: ConcurrentModificationException; Request ID\: e2947f66-f2fa-402c-aef6-7557e8ec3650; Proxy\: null\), java\.sql\.SQLException\: Query failed \(\#20230128\_035525\_00118\_edisb\)\: Table being modified concurrently\. \(Service\: AWSGlue; Status Code\: 400; Error Code\: ConcurrentModificationException; Request ID\: db525343-2ea4-4208-befe-4dc11218608b; Proxy\: null\)]                                                                                                                                                                                                                                                                            |
 | TestDeltaLakeDropTableCompatibility \&gt; testDropTable\(0\: TRINO, 1\: DELTA, 2\: false\) \[groups\: profile\_specific\_tests, delta-lake-databricks, delta-lake-oss\]                                                                                                                     | 2     | 0.1 | 2023-02-16 06:17:00.000 | 2023-02-19 08:46:41.000 | [java\.sql\.SQLException\: \[Databricks\]\[DatabricksJDBCDriver\]\(500051\) ERROR processing query/statement\. Error Code\: 0, SQL state\: org\.apache\.hive\.service\.cli\.HiveSQLException\: Error running query\: org\.apache\.spark\.sql\.AnalysisException\: org\.apache\.hadoop\.hive\.ql\.metadata\.HiveException\: MetaException\(message\:Table being modified concurrently\. \(Service\: AWSGlue; Status Code\: 400; Error Code\: ConcurrentModificationException; Request ID\: 675dca0f-07ce-4b83-80c0-35e8122078f5; Proxy\: null\)\)&lt;br/&gt;, java\.sql\.SQLException\: \[Databricks\]\[DatabricksJDBCDriver\]\(500051\) ERROR processing query/statement\. Error Code\: 0, SQL state\: org\.apache\.hive\.service\.cli\.HiveSQLException\: Error running query\: org\.apache\.spark\.sql\.AnalysisException\: org\.apache\.hadoop\.hive\.ql\.metadata\.HiveException\: MetaException\(message\:Table being modified concurrently\. \(Service\: AWSGlue; Status Code\: 400; Error Code\: ConcurrentModificationException; Request ID\: 837ecea2-2e8a-4ef9-9310-8c3e474c09f5; Proxy\: null\)\)&lt;br/&gt;] |
@@ -382,7 +382,7 @@ Weekends are greyed out.
 | TestDeltaLakeDatabricksCheckpointsCompatibility \&gt; testTrinoWriteStatsAsJsonEnabled\(0\: binary, 1\: X\'65683F\', 2\: 0\.0, 3\: \[object Object\]\) \[groups\: profile\_specific\_tests, delta-lake-databricks, delta-lake-exclude-73\]                                                  | 1     | 0.0 | 2023-02-17 21:28:12.000 | 2023-02-17 21:28:12.000 | [Could not find rows\:&lt;br/&gt;]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | TestDeltaLakeDatabricksCheckpointsCompatibility \&gt; testTrinoWriteStatsAsJsonEnabled\(0\: date, 1\: date \'2021-02-03\', 2\: 0\.0, 3\: 2021-02-03\) \[groups\: profile\_specific\_tests, delta-lake-databricks, delta-lake-exclude-73\]                                                   | 1     | 0.0 | 2023-02-17 21:28:12.000 | 2023-02-17 21:28:12.000 | [Could not find rows\:&lt;br/&gt;]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
-[query](https://github.com/nineinchnick/trino-cicd/blob/99620a0cd0f0e5e376c755f34900c07162451e1d/sql/flaky/tests.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/ec49798824a516632e37af0fabf451ad594da593/sql/flaky/tests.sql)
 
 ## Flaky test classes in last 30 days
 
@@ -390,27 +390,27 @@ Weekends are greyed out.
 
 | test_class_name                                                                | failed_runs | % runs | failed_methods | last_occurrence_at      |
 | ------------------------------------------------------------------------------ | ----------- | ------ | -------------- | ----------------------- |
-| TestSqlServerConnectorTest                                                     | 7           | 0.2    | 9              | 2023-02-06 16:26:55.000 |
 | TestBigQueryAvroConnectorTest                                                  | 4           | 0.1    | 6              | 2023-02-19 22:26:49.000 |
-| TestDeltaLakeDatabricksCreateTableCompatibility                                | 3           | 0.1    | 3              | 2023-02-19 00:27:41.000 |
-| TestBigQueryArrowConnectorTest                                                 | 3           | 0.1    | 4              | 2023-02-19 22:26:49.000 |
+| TestSqlServerConnectorTest                                                     | 4           | 0.1    | 6              | 2023-02-06 16:26:55.000 |
 | TestIcebergGcsConnectorSmokeTest                                               | 3           | 0.1    | 12             | 2023-02-19 22:26:49.000 |
 | TestDeltaLakeAlterTableCompatibility                                           | 3           | 0.1    | 3              | 2023-02-19 00:32:25.000 |
+| TestBigQueryArrowConnectorTest                                                 | 3           | 0.1    | 4              | 2023-02-19 22:26:49.000 |
+| TestDeltaLakeDatabricksCreateTableCompatibility                                | 3           | 0.1    | 3              | 2023-02-19 00:27:41.000 |
 | TestDeltaLakeDropTableCompatibility                                            | 2           | 0.1    | 2              | 2023-02-19 08:46:41.000 |
 | TestHiveStorageFormats                                                         | 2           | 0.1    | 2              | 2023-01-28 05:02:50.000 |
-| TestHiveTransactionalTable                                                     | 2           | 0.1    | 2              | 2023-02-19 08:46:41.000 |
 | TestKuduConnectoKerberosSmokeTest                                              | 2           | 0.1    | 2              | 2023-02-04 11:20:22.000 |
-| TestDeltaLakeDatabricksCheckpointsCompatibility                                | 1           | 0.0    | 15             | 2023-02-17 21:28:12.000 |
+| TestHiveTransactionalTable                                                     | 2           | 0.1    | 2              | 2023-02-19 08:46:41.000 |
+| TestReadUniontype                                                              | 1           | 0.0    | 1              | 2023-01-28 16:54:41.000 |
 | TestMinWorkerRequirement                                                       | 1           | 0.0    | 1              | 2023-02-19 08:46:39.000 |
 | TestDeltaLakeColumnMappingMode                                                 | 1           | 0.0    | 1              | 2023-02-11 16:18:08.000 |
-| TestReadUniontype                                                              | 1           | 0.0    | 1              | 2023-01-28 16:54:41.000 |
+| TestBigQueryTaskFailureRecoveryTest                                            | 1           | 0.0    | 1              | 2023-02-19 22:26:49.000 |
 | TestKafkaProtobuf                                                              | 1           | 0.0    | 1              | 2023-01-28 16:54:41.000 |
 | TestPinotWithoutAuthenticationIntegrationLatestVersionNoGrpcConnectorSmokeTest | 1           | 0.0    | 1              | 2023-02-20 00:00:21.000 |
-| TestBigQueryTaskFailureRecoveryTest                                            | 1           | 0.0    | 1              | 2023-02-19 22:26:49.000 |
-| TestDeltaTaskFailureRecoveryTest                                               | 1           | 0.0    | 1              | 2023-01-31 07:53:45.000 |
-| TestAccumuloConnectorTest                                                      | 1           | 0.0    | 1              | 2023-01-28 05:02:47.000 |
 | TestPinotWithoutAuthenticationIntegrationLatestVersionConnectorSmokeTest       | 1           | 0.0    | 1              | 2023-02-05 23:38:26.000 |
+| TestAccumuloConnectorTest                                                      | 1           | 0.0    | 1              | 2023-01-28 05:02:47.000 |
+| TestDeltaLakeDatabricksCheckpointsCompatibility                                | 1           | 0.0    | 15             | 2023-02-17 21:28:12.000 |
+| TestDeltaTaskFailureRecoveryTest                                               | 1           | 0.0    | 1              | 2023-01-31 07:53:45.000 |
 
-[query](https://github.com/nineinchnick/trino-cicd/blob/99620a0cd0f0e5e376c755f34900c07162451e1d/sql/flaky/classes.sql)
+[query](https://github.com/nineinchnick/trino-cicd/blob/ec49798824a516632e37af0fabf451ad594da593/sql/flaky/classes.sql)
 
-Generated on Sat Feb 25 06:22:15 UTC 2023
+Generated on Sun Feb 26 06:20:47 UTC 2023
