@@ -50,12 +50,10 @@ jobs:
           until docker inspect "${CONTAINER_ID}" --format "{{json .State.Health.Status }}" | grep -q '"healthy"'; do
               if [[ $((i++)) -ge 10 ]]; then
                   echo "🚨 Too many retries waiting for Trino to start"
-                  docker logs "${CONTAINER_ID}"
                   exit 1
               fi
               sleep 10
           done
-          docker logs "${CONTAINER_ID}"
       - name: Run Sync
         run: |
           docker run \
@@ -88,3 +86,7 @@ jobs:
             trino \
             trino --catalog trinocicd --schema v2 \
             -f /sql/optimize.sql
+      - name: Dump Trino logs
+        if: always()
+        run: |
+          docker logs trino
