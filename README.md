@@ -32,7 +32,7 @@ trino_ver=384
 trino_git_ver=0.22
 trino_rest_ver=0.82
 curl -fLsS https://github.com/nineinchnick/trino-git/releases/download/v$trino_git_ver/trino-git-$trino_git_ver.zip | jar xv
-curl -fLsS https://github.com/nineinchnick/trino-rest/releases/download/v0.82/trino-rest-github-0.82.zip | jar xv
+curl -fLsS https://github.com/nineinchnick/trino-rest/releases/download/v$trino_rest_ver/trino-rest-github-$trino_rest_ver.zip | jar xv
 # if neede, run `aws configure`
 docker run \
   -v $(pwd)/trino-rest-github-$trino_rest_ver:/usr/lib/trino/plugin/github \
