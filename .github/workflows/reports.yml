@@ -15,14 +15,14 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
-      TRINO_VERSION: 418
-      TRINO_GIT_VERSION: "0.46"
+      TRINO_VERSION: 425
+      TRINO_GIT_VERSION: "0.50"
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo pip install csv2md ansi2html
+          sudo pip install ansi2html
           curl -fLOsS https://github.com/nineinchnick/trino-git/releases/download/v$TRINO_GIT_VERSION/trino-git-$TRINO_GIT_VERSION.zip
           unzip trino-git-$TRINO_GIT_VERSION.zip
       - name: Start Trino

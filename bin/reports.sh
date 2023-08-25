@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-for cmd in csv2md ansi2html docker; do
+for cmd in ansi2html docker; do
     if ! command -v "$cmd" >/dev/null; then
         echo >&2 "Missing the $cmd command"
         exit 1
@@ -47,7 +47,7 @@ function run_query() {
 
 function run_query_md() {
     local file=$1
-    run_query "$file" CSV_HEADER | csv2md | ansi2html --inline | sed 's,| \(.*\) @https://\([^ ]*\),| <a href="https://\2">\1</a>,g'
+    run_query "$file" MARKDOWN | ansi2html --inline | sed 's,| \(.*\) @https://\([^ ]*\),| <a href="https://\2">\1</a>,g'
 }
 
 function run_query_mono() {
