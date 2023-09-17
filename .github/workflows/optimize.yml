@@ -1,0 +1,49 @@
+name: Incremental data sync
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: '30 1 * * *'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Start Trino
+        run: |
+          CONTAINER_ID=$(docker run \
+            -v $(pwd)/catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
+            -v $(pwd)/sql:/sql \
+            -e AWS_ACCESS_KEY_ID \
+            -e AWS_SECRET_ACCESS_KEY \
+            -e AWS_REGION \
+            -p 8080:8080 \
+            --name trino \
+            -d \
+            trinodb/trino:$TRINO_VERSION)
+          SERVER_IP=$(docker inspect --format '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$CONTAINER_ID")
+          echo "CONTAINER_ID=$CONTAINER_ID" >> $GITHUB_ENV
+          echo "SERVER_IP=$SERVER_IP" >> $GITHUB_ENV
+          i=0
+          until docker inspect "${CONTAINER_ID}" --format "{{json .State.Health.Status }}" | grep -q '"healthy"'; do
+              if [[ $((i++)) -ge 10 ]]; then
+                  echo "🚨 Too many retries waiting for Trino to start"
+                  exit 1
+              fi
+              sleep 10
+          done
+      - name: Optimize tables
+        run: |
+          docker exec \
+            trino \
+            trino --catalog trinocicd --schema v2 \
+            -f /sql/optimize.sql
+      - name: Dump Trino logs
+        if: always()
+        run: |
+          docker logs trino

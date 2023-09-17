@@ -80,12 +80,6 @@ jobs:
             --rm \
             nineinchnick/trino-rest:$TRINO_REST_VERSION \
             java -cp "/usr/lib/trino/plugin/github/*" pl.net.was.rest.github.Sync
-      - name: Optimize tables
-        run: |
-          docker exec \
-            trino \
-            trino --catalog trinocicd --schema v2 \
-            -f /sql/optimize.sql
       - name: Dump Trino logs
         if: always()
         run: |
