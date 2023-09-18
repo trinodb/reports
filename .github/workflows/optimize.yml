@@ -1,4 +1,4 @@
-name: Incremental data sync
+name: Optimize
 
 on:
   workflow_dispatch: {}
