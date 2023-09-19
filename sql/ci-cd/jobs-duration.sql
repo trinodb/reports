@@ -33,12 +33,12 @@ job_duration AS (
   SELECT
     dates.date
     , r.name AS workflow_name
-    , j.name AS job_name
+    , all_jobs.name AS job_name
     , avg(duration_minutes) FILTER (WHERE j.conclusion = 'success') AS avg_minutes
-  FROM unnest(sequence(CURRENT_DATE - INTERVAL '90' DAY, CURRENT_DATE)) AS dates(date)
+  FROM unnest(sequence(CURRENT_DATE - INTERVAL '30' DAY, CURRENT_DATE)) AS dates(date)
   CROSS JOIN (SELECT DISTINCT run_id, name FROM job_duration) AS all_jobs
+  JOIN runs r ON r.id = all_jobs.run_id
   LEFT JOIN job_duration j ON (j.run_id, j.name, j.started_at_date) = (all_jobs.run_id, all_jobs.name, dates.date)
-  JOIN runs r ON r.id = j.run_id
   GROUP BY 1, 2, 3
 )
 , daily_norm AS (
@@ -50,18 +50,26 @@ job_duration AS (
     , avg_minutes / CAST(max(avg_minutes) OVER (PARTITION BY workflow_name, job_name) AS double) AS avg_minutes_norm
   FROM daily_avg
 )
+, daily_nonnull AS (
+  SELECT
+    date
+    , workflow_name
+    , job_name
+    , coalesce(case when is_nan(avg_minutes_norm) then null else avg_minutes_norm end, 0) AS avg_minutes_norm
+  FROM daily_norm
+)
 , daily_chart AS (
   SELECT
     workflow_name
     , job_name
     , array_join(array_agg(CASE
           -- for weekends, if missing or zero, grey it out
-          WHEN coalesce(avg_minutes_norm, 0) = 0 AND day_of_week(date) IN (6,7) THEN '░'
+          WHEN avg_minutes_norm = 0 AND day_of_week(date) IN (6,7) THEN '░'
           -- map [0.0, 1.0] to [1, 9]
-        ELSE ARRAY[' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'][cast(coalesce(case when is_nan(avg_minutes_norm) then null else avg_minutes_norm end, 0) * 8 + 1 as int)] END
+        ELSE ARRAY[' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'][cast(avg_minutes_norm * 8 + 1 as int)] END
       ORDER BY date DESC
       ), '') AS chart
-  FROM daily_norm
+  FROM daily_nonnull
   GROUP BY 1, 2
 )
 SELECT
