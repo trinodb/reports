@@ -22,7 +22,7 @@ jobs:
       EMPTY_INSERT_LIMIT: 5
       SYNC_TABLES: runs,jobs,check_suites,check_runs,check_run_annotations,pulls,pull_commits,pull_stats,review_comments,reviews,issues,issue_comments,commits,artifacts,teams,members
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Download trino-rest
         run: |
           curl -fLOsS https://github.com/nineinchnick/trino-rest/releases/download/v$TRINO_REST_VERSION/trino-rest-github-$TRINO_REST_VERSION.zip
