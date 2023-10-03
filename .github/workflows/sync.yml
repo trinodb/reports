@@ -34,7 +34,7 @@ jobs:
           node-scheduler.include-coordinator=true
           http-server.http.port=8080
           discovery.uri=http://localhost:8080
-          query.max-memory-per-node=4GB
+          query.max-memory-per-node=4086929818B
           EOF
           CONTAINER_ID=$(docker run \
             -v $(pwd)/config.properties:/etc/trino/config.properties \
