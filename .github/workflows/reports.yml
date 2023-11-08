@@ -43,7 +43,6 @@ jobs:
           echo "CONTAINER_ID=$CONTAINER_ID" >> $GITHUB_ENV
           echo "SERVER_IP=$SERVER_IP" >> $GITHUB_ENV
           until docker logs trino 2>&1 | grep --quiet --fixed-strings --max-count=1 "SERVER STARTED"; do sleep 1 ; done
-          docker logs trino
       - name: Execute queries
         run: |
           ./bin/reports.sh reports/ci-cd/index.md "Trino CI/CD Reports" sql/ci-cd/{health,success-ratio-per-day,runs-queue-time-per-day,runs-duration-per-day,runs-job-cumulative-duration-per-day,jobs-duration}.sql
@@ -56,3 +55,7 @@ jobs:
           git add --all reports/
           git commit -m "Automated report"
           git push
+      - name: Dump Trino logs
+        if: always()
+        run: |
+          docker logs trino

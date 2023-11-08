@@ -37,7 +37,7 @@ function run_query() {
     local format=${2:-ALIGNED}
     echo >&2 "Executing query from $file"
     docker cp "$file" $container_name:/tmp/
-    docker exec \
+    time docker exec \
         $container_name \
         java -Dorg.jline.terminal.dumb=true -jar /usr/bin/trino \
         --catalog trinocicd --schema v2 \
