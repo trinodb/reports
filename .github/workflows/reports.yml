@@ -15,8 +15,8 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
-      TRINO_VERSION: 433
-      TRINO_GIT_VERSION: "0.60"
+      TRINO_VERSION: 443
+      TRINO_GIT_VERSION: "0.72"
     steps:
       - uses: actions/checkout@v4
       - name: Install dependencies
