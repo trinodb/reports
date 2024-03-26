@@ -1,4 +1,4 @@
--- Flaky tests in last 30 days
+-- Flaky tests in last 7 days
 WITH
 -- workflow invocations (runs)
 suites AS (
@@ -6,7 +6,7 @@ suites AS (
     FROM check_suites
     WHERE owner = 'trinodb' AND repo = 'trino'
         AND head_branch = 'master'
-        AND created_at > CURRENT_DATE - INTERVAL '30' DAY
+        AND created_at > CURRENT_DATE - INTERVAL '7' DAY
 )
 -- jobs within workflow
 , runs AS (
