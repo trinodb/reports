@@ -20,8 +20,8 @@ WITH report_configuration AS (
         , jobs.run_attempt AS job_run_attempt
         , runs.head_branch
         , format('https://github.com/%s/%s/actions/runs/%s/job/%s', jobs.owner, jobs.repo, jobs.run_id, jobs.id) AS job_link
-    FROM github_rds.public.runs runs
-    JOIN github_rds.public.jobs jobs ON runs.owner = jobs.owner AND runs.repo = jobs.repo AND runs.id = jobs.run_id
+    FROM runs
+    JOIN jobs ON runs.owner = jobs.owner AND runs.repo = jobs.repo AND runs.id = jobs.run_id
     CROSS JOIN report_configuration rc
     WHERE true
     AND runs.owner = 'trinodb'
