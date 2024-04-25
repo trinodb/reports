@@ -46,7 +46,7 @@ last_review_comments AS (
 )
 SELECT
   p.number
-, p.title || ' @' || format('https://github.com/trinodb/trino/pull/%s', p.number) AS title
+, format('"%s"@https://github.com/trinodb/trino/pull/%s ', p.title, p.number) AS title
 , day(CAST(current_timestamp AT TIME ZONE 'UTC' AS TIMESTAMP) - commits.committer_date) AS days_since_push
 , day(CAST(current_timestamp AT TIME ZONE 'UTC' AS TIMESTAMP) - coalesce(rc.review_submitted_at, pc.comment_created_at)) AS days_since_review
 , day(CAST(current_timestamp AT TIME ZONE 'UTC' AS TIMESTAMP) - least(coalesce(rc.comment_created_at, now()), coalesce(pc.comment_created_at, now()))) AS days_since_comment

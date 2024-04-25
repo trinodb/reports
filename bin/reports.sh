@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
+#
+# Generate reports by executing SQL queries.
+#
+# Executes SQL queries from multiple files using the Trino CLI available in a
+# locally running container called `trino`.
+#
+# SQL query files should use the following convention:
+# * The first line should be a comment (start with `--`) used as the report
+#   title.
+# * Any additional comment lines are used as the description.
+# * If there are no comments, the query is still executed, but results are
+#   discarded.
+# * Query results are saved as a Markdown table. If the query contains the word
+#   "chart" anywhere (like in a column title), results are rendered in a
+#   code block.
+# * HTML links are rendered by replacing `"label"@http://url ` values with the
+#   anchor HTML tag
 
 set -euo pipefail
 
@@ -41,18 +58,19 @@ function run_query() {
         $container_name \
         java -Dorg.jline.terminal.dumb=true -jar /usr/bin/trino \
         --catalog trinocicd --schema v2 \
+        --debug \
         -f "/tmp/$(basename "$file")" \
         --output-format="$format"
 }
 
 function run_query_md() {
     local file=$1
-    run_query "$file" MARKDOWN | ansi2html --inline | sed 's,| \(.*\) @https://\([^ ]*\),| <a href="https://\2">\1</a>,g'
+    run_query "$file" MARKDOWN | ansi2html --inline | sed 's,"\([^"]*\)"@https://\([^ ]*\) ,<a href="https://\2">\1</a> ,g'
 }
 
 function run_query_mono() {
     local file=$1
-    run_query "$file" ALIGNED | ansi2html --inline | sed 's,| \(.*\) @https://\([^ ]*\),| <a href="https://\2">\1</a>,g'
+    run_query "$file" ALIGNED | ansi2html --inline | sed 's,"\([^"]*\)"@https://\([^ ]*\) ,<a href="https://\2">\1</a> ,g'
 }
 
 GITHUB_SERVER_URL=${GITHUB_SERVER_URL:-https://github.com}

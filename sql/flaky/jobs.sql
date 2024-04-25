@@ -2,75 +2,103 @@
 -- Counting runs of the `ci` workflow, executed on master and retried jobs from other branches.
 -- Histogram is failure percentage for every day, descending (starts from current day).
 -- Weekends are greyed out.
-WITH
-retried_jobs AS (
-  SELECT
-      run_id
-    , name
-    , count(DISTINCT run_attempt) AS attempts_num
-    , count(*) FILTER (WHERE (conclusion = 'success')) success_num
-    , count(*) FILTER (WHERE (conclusion = 'failure')) failure_num
-  FROM jobs
-  WHERE owner = 'trinodb' AND repo = 'trino'
-  AND name NOT LIKE 'Test Report%'
-  GROUP BY 1, 2
-  HAVING count(*) FILTER (WHERE (conclusion = 'success')) != 0
-    AND count(*) FILTER (WHERE (conclusion = 'failure')) != 0
-)
-, flaky_runs AS (
-  SELECT
-      CAST(r.created_at AS date) AS run_date
-    , j.name
-    , j.success_num
-    , j.failure_num
-  FROM retried_jobs j
-  JOIN runs r ON j.run_id = r.id
-  WHERE r.created_at > CURRENT_DATE - INTERVAL '90' DAY
-    AND r.name = 'ci'
-  UNION ALL
-  SELECT
-      CAST(r.created_at AS date) AS run_date
-    , j.name
-    , count() FILTER (WHERE j.conclusion = 'success') AS success_num
-    , count() FILTER (WHERE j.conclusion = 'failure' AND jp.conclusion IS NOT DISTINCT FROM 'success') AS failure_num
-  FROM runs r
-  JOIN jobs j ON j.run_id = r.id AND j.name NOT LIKE 'Test Report%'
-  LEFT JOIN pulls p ON p.merge_commit_sha = r.head_sha
-  LEFT JOIN runs rp ON rp.head_sha = p.head_sha AND rp.name = r.name
-  -- join with PR run jobs, because there are so many flaky tests that PRs are being merged with failures
-  LEFT JOIN jobs jp ON jp.run_id = rp.id AND jp.name = j.name
-  WHERE r.owner = 'trinodb' AND r.repo = 'trino'
-    AND r.created_at > CURRENT_DATE - INTERVAL '90' DAY
-    AND r.name = 'ci' AND r.head_branch = 'master'
-  GROUP BY 1, 2
-  HAVING count() FILTER (WHERE j.conclusion = 'failure' AND jp.conclusion IS NOT DISTINCT FROM 'success') != 0
-  ORDER BY 1 DESC
-)
-, by_day AS (
+WITH report_configuration AS (
     SELECT
-        dates.date
-      , all_jobs.name
-      , CAST(sum(failure_num) AS double) / CAST(sum(success_num + failure_num) AS double) AS fail_pct
-      , sum(failure_num) AS failure_num
-      , sum(success_num) AS success_num
-    FROM unnest(sequence(CURRENT_DATE - INTERVAL '90' DAY, CURRENT_DATE)) AS dates(date)
-    CROSS JOIN (SELECT DISTINCT name FROM flaky_runs) AS all_jobs
-    LEFT JOIN flaky_runs r ON r.run_date = dates.date AND r.name = all_jobs.name
-    GROUP BY 1, 2
+          date_trunc('day', CURRENT_TIMESTAMP - INTERVAL '3' MONTH) AS time_horizon
+        , 60 AS display_job_name_length
+)
+, job_runs AS (
+    SELECT
+          jobs.run_id AS run_id
+        , runs.created_at AS run_created_at
+        , (jobs.run_id, jobs.name) AS task_id -- identifies job across retries
+        , jobs.id AS job_id
+        , jobs.name AS job_name
+        , jobs.started_at AS job_started_at
+        -- known possible conclusion values are "success, skipped, failure, cancelled"
+        , jobs.conclusion = 'success'  AS job_successful
+        , jobs.run_attempt AS job_run_attempt
+        , runs.head_branch
+        , format('https://github.com/%s/%s/actions/runs/%s/job/%s', jobs.owner, jobs.repo, jobs.run_id, jobs.id) AS job_link
+    FROM github_rds.public.runs runs
+    JOIN github_rds.public.jobs jobs ON runs.owner = jobs.owner AND runs.repo = jobs.repo AND runs.id = jobs.run_id
+    CROSS JOIN report_configuration rc
+    WHERE true
+    AND runs.owner = 'trinodb'
+    AND runs.repo = 'trino'
+    AND runs.name = 'ci' -- only CI workflow
+    AND runs.created_at >= rc.time_horizon
+    AND jobs.started_at >= rc.time_horizon
+    AND jobs.conclusion IS NOT NULL -- ignore partially ingested information
+    AND jobs.conclusion != 'skipped'
+    AND jobs.conclusion != 'cancelled'
+)
+, analyzed_job_runs AS (
+    -- When using "Re-run failed jobs", previously successful jobs appear as successful, which could lead to
+    -- overoptimistic failure percentages. For analysis, take only first successful run.
+    -- Take failed runs on master (assume all failures on master are flakes) and take all failures on PR build when 1+ retry succeeded.
+    SELECT * FROM (
+        SELECT
+              *
+            , (job_successful AND NOT lag(job_successful, 1, false) OVER (PARTITION BY task_id ORDER BY job_run_attempt)) AS is_first_success
+            , max(job_successful) OVER (PARTITION BY task_id) succeeded_at_least_once
+        FROM job_runs
+    )
+    WHERE is_first_success OR (NOT job_successful AND (head_branch = 'master' OR succeeded_at_least_once))
+)
+, flaky_stats_by_day AS (
+    SELECT
+          job_name
+        , CAST(job_started_at AS date) day
+        , count(*) FILTER (WHERE NOT job_successful) AS failures
+        , count(*) AS runs
+        , array_agg(job_link ORDER BY job_link) FILTER (WHERE NOT job_successful) AS failure_links
+    FROM analyzed_job_runs
+    GROUP BY job_name, CAST(job_started_at AS date)
+)
+, days AS (
+    SELECT u.d AS day
+    FROM (SELECT min(day) AS first_day, max(day) AS last_day FROM flaky_stats_by_day)
+    CROSS JOIN UNNEST (sequence(first_day, last_day)) u(d)
+)
+, filtered_flaky_stats_by_day_without_gaps AS (
+    SELECT
+          day
+        , job_name
+        , failures
+        , runs
+        , (failures * 1e0 / runs) AS day_failure_ratio
+        , slice(failure_links, 1, least(5, cardinality(failure_links))) AS some_failure_links
+    FROM days
+    CROSS JOIN (
+        SELECT DISTINCT job_name
+        FROM flaky_stats_by_day
+        -- exclude job names with no failures
+        WHERE failures > 0)
+    LEFT OUTER JOIN flaky_stats_by_day USING (day, job_name)
 )
 SELECT
-    case when length(name) > 60 then substr(name, 1, 30) || ' ... ' || substr(name, length(name) - 25) else name end AS "Job name"
-  , round(((CAST(sum(failure_num) AS double) / CAST(sum(success_num + failure_num) AS double)) * 100), 2) AS "Fail pct"
-  , sum(failure_num) AS "Failures"
-  , sum(failure_num) + sum(success_num) AS "Runs"
-  , array_join(array_agg(CASE
-        -- for weekends, if missing or zero, grey it out
-        WHEN coalesce(fail_pct, 0) = 0 AND day_of_week(date) IN (6,7) THEN '░'
-        -- map [0.0, 1.0] to [1, 9]
-    ELSE ARRAY[' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'][cast(coalesce(fail_pct, 0) * 8 + 1 as int)] END
-    ORDER BY date DESC
-    ), '') AS "Histogram chart"
-FROM by_day
-GROUP BY name
-ORDER BY name
+      IF(
+        length(job_name) > display_job_name_length,
+        substr(job_name, 1, display_job_name_length / 2) || ' … ' || substr(job_name, length(job_name) - (display_job_name_length / 2) - 3),
+        job_name
+      ) AS "Job Name"
+    , round(sum(failures) * 100e0 / sum(runs), 1) AS "Fail %"
+    , sum(failures) AS "Fails"
+    , sum(runs) AS "Runs"
+    , array_join(array_agg(
+        CASE
+            -- for weekends, if missing or zero, grey it out
+            WHEN coalesce(day_failure_ratio, 0) = 0 AND day_of_week(day) IN (6,7) THEN '░'
+            -- map [0.0, 1.0] to [1, 9]
+            ELSE ARRAY[' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'][cast(coalesce(day_failure_ratio, 0) * 8 + 1 as int)]
+        END
+        ORDER BY day DESC), '') AS "Histogram chart"
+    , array_join(transform(
+       slice(flatten(array_agg(some_failure_links ORDER BY day DESC)), 1, least(15, cardinality(flatten(array_agg(some_failure_links))))),
+       link -> format('"job"@%s ', link)), '') AS "Failure Links"
+FROM filtered_flaky_stats_by_day_without_gaps
+CROSS JOIN report_configuration rc
+GROUP BY job_name, rc.display_job_name_length
+ORDER BY "Fail %" DESC, "Runs" DESC, "Job Name"
 ;

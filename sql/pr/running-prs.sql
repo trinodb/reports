@@ -17,7 +17,7 @@ last_reviews AS (
 )
 SELECT
   pulls.number
-, pulls.title || ' @' || format('https://github.com/trinodb/trino/pull/%s', pulls.number) AS title
+, format('"%s"@https://github.com/trinodb/trino/pull/%s ', pulls.title, pulls.number) AS title
 , day(reviews.submitted_at - commits.committer_date) AS running_days
 FROM unique_pulls pulls
 JOIN last_reviews reviews ON pulls.number = reviews.number
