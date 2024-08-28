@@ -1,4 +1,4 @@
-# trino-cicd
+# Trino reports
 
 Analysis of the [Trino](https://github.com/trinodb/trino) project CI workflows.
 
@@ -6,7 +6,7 @@ This repo is an example of using Trino to perform ETL (extract, transform, and l
 and generate basic reports. The complete workflow is:
 
 1. Use [a custom connector](https://github.com/nineinchnick/trino-rest) to read Github's API data and save it into an S3 bucket.
-1. Run some [queries](https://github.com/trinodb/trino-cicd/blob/master/sql) to analyze the data stored in the S3 bucket, save results to a file and publish it to [Github Pages](https://trinodb.github.io/trino-cicd/reports/).
+1. Run some [queries](https://github.com/trinodb/reports/blob/master/sql) to analyze the data stored in the S3 bucket, save results to a file and publish it to [Github Pages](https://trinodb.github.io/reports/reports/).
 
 All the of the above is repeatable and executed on a schedule using Github Actions.
 
@@ -23,7 +23,7 @@ Materialized views are not used, because incremental updates are tricky and diff
 
 To run the queries locally:
 * download all the custom Trino connectors
-* run `aws configure` with the proper credentials to access the S3 bucket mentioned in `catalog/trinocicd.properties`; use the `trino-cicd` profile name
+* run `aws configure` with the proper credentials to access the S3 bucket mentioned in `catalog/trinocicd.properties`; use the `trino-reports` profile name
 * make sure to have the `GITHUB_TOKEN` environment variable set
 * start Trino in a container
 
@@ -41,10 +41,10 @@ docker run \
   -v $(pwd)/hive-cache:/opt/hive-cache \
   -v $(pwd)/http-cache:/opt/trino-rest-cache \
   -v $HOME/.aws:/home/trino/.aws \
-  -e AWS_PROFILE=trino-cicd \
+  -e AWS_PROFILE=trino-reports \
   -e GITHUB_TOKEN \
   -p 8080:8080 \
-  --name trino-cicd \
+  --name trino-reports \
   -d \
   -m8G \
   trinodb/trino:$trino_ver
@@ -57,11 +57,11 @@ trino --server localhost:8080 --catalog trinocicd --schema v2 --output-format=AL
 
 ## Sync
 
-[The sync workflow](https://github.com/trinodb/trino-cicd/blob/master/.github/workflows/sync.yml):
+[The sync workflow](https://github.com/trinodb/reports/blob/master/.github/workflows/sync.yml):
 1. Downloads and extracts a zip with the custom `trino-rest` connector.
 1. Starts Trino in a container with both this additional connector (plugin)
-   and its [configuration](https://github.com/trinodb/trino-cicd/blob/master/catalog/github.properties) mounted as volumes.
-   It also includes [configuration](https://github.com/trinodb/trino-cicd/blob/master/catalog/hive.properties) for a built-in connector
+   and its [configuration](https://github.com/trinodb/reports/blob/master/catalog/github.properties) mounted as volumes.
+   It also includes [configuration](https://github.com/trinodb/reports/blob/master/catalog/hive.properties) for a built-in connector
    that can read and write to an S3 bucket. The required credentials are passed
    as environmental variables, populated from Github Secrets.
 1. It runs a series of queries similar to `INSERT INTO hive.<table> SELECT * FROM github.<table>`
@@ -70,7 +70,7 @@ trino --server localhost:8080 --catalog trinocicd --schema v2 --output-format=AL
 
 ## Reports
 
-[The reports workflow](https://github.com/trinodb/trino-cicd/blob/master/.github/workflows/reports.yml):
+[The reports workflow](https://github.com/trinodb/reports/blob/master/.github/workflows/reports.yml):
 1. Starts Trino in a container with only the connector required to read data from the S3 bucket.
 1. Executes multiple [queries](/sql), saving results as a simple text table in a file.
-1. Commits the updated results file to this repository, which triggers publishing it to [Github Pages](https://trinodb.github.io/trino-cicd/reports/).
+1. Commits the updated results file to this repository, which triggers publishing it to [Github Pages](https://trinodb.github.io/reports/reports/).
