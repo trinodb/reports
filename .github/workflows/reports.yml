@@ -47,3 +47,80 @@ jobs:
         if: always()
         run: |
           docker logs trino
+      - name: Generate Slack message
+        id: message
+        run: |
+          output=$(docker exec trino \
+            java -Dorg.jline.terminal.dumb=true -jar /usr/bin/trino \
+            trino://localhost:8080/trinocicd/v2 \
+            --file /sql/ci-cd/health.sql \
+            --output-format=VERTICAL | tail -n+2)
+
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "health<<$EOF" >> $GITHUB_OUTPUT
+          echo '```'"$output"'```' >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+
+          output=$(docker exec trino \
+            java -Dorg.jline.terminal.dumb=true -jar /usr/bin/trino \
+            trino://localhost:8080/trinocicd/v2 \
+            --file /sql/ci-cd/failing-jobs.sql \
+            --output-format=CSV_UNQUOTED)
+
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "failing-jobs<<$EOF" >> $GITHUB_OUTPUT
+          echo "$output" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+      - name: Post to a Slack channel
+        id: slack
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          channel-id: 'tmp-reports'
+          payload: |
+            {
+              "text": "CI health reports",
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "CI health"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ${{ toJSON(steps.message.outputs.health) }}
+                  }
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "Failing jobs"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ${{ toJSON(steps.message.outputs.failing-jobs) }}
+                  }
+                },
+                {
+                  "type": "context",
+                  "elements": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "See the complete <https://trinodb.github.io/reports/reports/flaky/|flaky jobs report>"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
