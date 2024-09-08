@@ -17,7 +17,6 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
-      TRINO_VERSION: 445
       TRINO_REST_VERSION: "0.144"
       GITHUB_OWNER: trinodb
       GITHUB_REPO: trino
@@ -28,45 +27,11 @@ jobs:
       SYNC_TABLES: runs,jobs,steps,check_suites,check_runs,check_run_annotations,pulls,pull_commits,pull_stats,review_comments,reviews,issues,issue_comments,commits,teams,members
     steps:
       - uses: actions/checkout@v4
-      - name: Download trino-rest
-        run: |
-          curl -fLOsS https://github.com/nineinchnick/trino-rest/releases/download/v$TRINO_REST_VERSION/trino-rest-github-$TRINO_REST_VERSION.zip
-          unzip trino-rest-github-$TRINO_REST_VERSION.zip
       - name: Start Trino
         run: |
-          cat <<EOF >config.properties
-          coordinator=true
-          node-scheduler.include-coordinator=true
-          http-server.http.port=8080
-          discovery.uri=http://localhost:8080
-          query.max-memory-per-node=4086929818B
-          EOF
-          CONTAINER_ID=$(docker run \
-            -v $(pwd)/config.properties:/etc/trino/config.properties \
-            -v $(pwd)/trino-rest-github-$TRINO_REST_VERSION:/usr/lib/trino/plugin/github \
-            -v $(pwd)/catalog/github.properties:/etc/trino/catalog/github.properties \
-            -v $(pwd)/catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
-            -v $(pwd)/hive-cache:/opt/hive-cache \
-            -v $(pwd)/sql:/sql \
-            -e AWS_ACCESS_KEY_ID \
-            -e AWS_SECRET_ACCESS_KEY \
-            -e AWS_REGION \
-            -e GITHUB_TOKEN \
-            -p 8080:8080 \
-            --name trino \
-            -d \
-            trinodb/trino:$TRINO_VERSION)
+          ./bin/run-trino.sh
           SERVER_IP=$(docker inspect --format '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$CONTAINER_ID")
-          echo "CONTAINER_ID=$CONTAINER_ID" >> $GITHUB_ENV
           echo "SERVER_IP=$SERVER_IP" >> $GITHUB_ENV
-          i=0
-          until docker inspect "${CONTAINER_ID}" --format "{{json .State.Health.Status }}" | grep -q '"healthy"'; do
-              if [[ $((i++)) -ge 10 ]]; then
-                  echo "🚨 Too many retries waiting for Trino to start"
-                  exit 1
-              fi
-              sleep 10
-          done
       - name: Run Sync
         run: |
           docker run \

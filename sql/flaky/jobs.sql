@@ -32,6 +32,7 @@ WITH report_configuration AS (
     AND jobs.conclusion IS NOT NULL -- ignore partially ingested information
     AND jobs.conclusion != 'skipped'
     AND jobs.conclusion != 'cancelled'
+    AND jobs.name NOT LIKE 'check-commit%' -- these include a commit SHA and are always unique
 )
 , analyzed_job_runs AS (
     -- When using "Re-run failed jobs", previously successful jobs appear as successful, which could lead to

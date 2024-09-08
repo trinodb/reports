@@ -31,5 +31,5 @@ SELECT
   , round(count(DISTINCT id) FILTER (WHERE conclusion = 'success') / CAST(count(DISTINCT id) AS double), 2) AS rate_all_success
 FROM runs
 GROUP BY 1
-ORDER BY 1
+ORDER BY 1 DESC
 ;
