@@ -56,6 +56,7 @@ docker run \
     -v "$SCRIPT_DIR"/../sql:/sql \
     -e AWS_ACCESS_KEY_ID \
     -e AWS_SECRET_ACCESS_KEY \
+    -e AWS_SESSION_TOKEN \
     -e AWS_REGION \
     -e GITHUB_TOKEN \
     -p 8080:8080 \
