@@ -1,12 +1,10 @@
 SET SESSION trinocicd.non_transactional_optimize_enabled=true;
 ALTER TABLE runs EXECUTE optimize(file_size_threshold => '30MB');
-ALTER TABLE runs_artifacts EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE jobs EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE steps EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE check_suites EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE check_runs EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE check_run_annotations EXECUTE optimize(file_size_threshold => '30MB');
-ALTER TABLE artifacts EXECUTE optimize(file_size_threshold => '300MB');
 ALTER TABLE issues EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE issue_comments EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE pulls EXECUTE optimize(file_size_threshold => '30MB');
