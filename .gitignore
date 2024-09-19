@@ -107,8 +107,6 @@ dist
 .idea
 
 # custom Trino connectors
-/trino-rest-github-*
-/trino-git-*
 /bin/trino-rest-github-*
 /bin/trino-git-*
 /bin/config.properties
