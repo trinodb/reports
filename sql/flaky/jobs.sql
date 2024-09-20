@@ -1,10 +1,10 @@
--- Flaky jobs in last 3 months
+-- Flaky jobs in last 2 weeks
 -- Counting runs of the `ci` workflow, executed on master and retried jobs from other branches.
 -- Histogram is failure percentage for every day, descending (starts from current day).
 -- Weekends are greyed out.
 WITH report_configuration AS (
     SELECT
-          date_trunc('day', CURRENT_TIMESTAMP - INTERVAL '3' MONTH) AS time_horizon
+          date_trunc('day', CURRENT_TIMESTAMP - INTERVAL '14' DAY) AS time_horizon
         , 60 AS display_job_name_length
 )
 , job_runs AS (
