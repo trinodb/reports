@@ -7,6 +7,6 @@ title: Index
 
 # [Pull request reports](https://trinodb.github.io/reports/reports/pr/)
 
-# [Flaky test reports](https://trinodb.github.io/reports/reports/flaky/)
+# [Tests reports](https://trinodb.github.io/reports/reports/tests/)
 
 # [Git Achievements](https://MiguelWeezardo.github.io/trino-git-achievements/reports/git/)
