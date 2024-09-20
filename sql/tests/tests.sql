@@ -24,8 +24,6 @@ SELECT
 FROM check_run_annotations a
 JOIN runs r ON r.id = a.check_run_id
 WHERE a.annotation_level = 'failure'
-  -- for tests failures uploded as GitHub annotations, the "title" is "TestClass > testMethodName (additional info)?"
-  AND a.title LIKE 'Test%'
 GROUP BY a.title
 ORDER BY count DESC
 ;
