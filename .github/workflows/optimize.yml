@@ -21,8 +21,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Start Trino
         run: |
+          mkdir -p $(pwd)/hive-cache && chmod go+w $(pwd)/hive-cache
           CONTAINER_ID=$(docker run \
             -v $(pwd)/catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
+            -v $(pwd)/hive-cache:/opt/hive-cache \
             -v $(pwd)/sql:/sql \
             -e AWS_ACCESS_KEY_ID \
             -e AWS_SECRET_ACCESS_KEY \

@@ -41,6 +41,7 @@ jobs:
           discovery.uri=http://localhost:8080
           query.max-memory-per-node=4086929818B
           EOF
+          mkdir -p $(pwd)/hive-cache && chmod go+w $(pwd)/hive-cache
           CONTAINER_ID=$(docker run \
             -v $(pwd)/config.properties:/etc/trino/config.properties \
             -v $(pwd)/trino-rest-github-$TRINO_REST_VERSION:/usr/lib/trino/plugin/github \
