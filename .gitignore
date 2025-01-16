@@ -110,6 +110,7 @@ dist
 /trino-rest-github-*
 /trino-git-*
 /bin/trino-rest-github-*
+/bin/trino-rest-slack-*
 /bin/trino-git-*
 /bin/config.properties
 /bin/hive-cache

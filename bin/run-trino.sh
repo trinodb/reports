@@ -12,8 +12,8 @@ for cmd in curl unzip docker; do
     fi
 done
 
-if [ -z "$AWS_REGION" ] || [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ] || [ -z "$GITHUB_TOKEN" ]; then
-    echo >&2 "Following environmental variables need to be set: AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, GITHUB_TOKEN"
+if [ -z "$AWS_REGION" ] || [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ] || [ -z "$GITHUB_TOKEN" ] || [ -z "$SLACK_API_TOKEN" ]; then
+    echo >&2 "Following environmental variables need to be set: AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, GITHUB_TOKEN, SLACK_API_TOKEN"
     exit 1
 fi
 
@@ -35,6 +35,11 @@ if [ ! -d trino-rest-github-$TRINO_REST_VERSION ]; then
     unzip trino-rest-github-$TRINO_REST_VERSION.zip
 fi
 
+if [ ! -d trino-rest-slack-$TRINO_REST_VERSION ]; then
+    curl -fLOsS https://github.com/nineinchnick/trino-rest/releases/download/v$TRINO_REST_VERSION/trino-rest-slack-$TRINO_REST_VERSION.zip
+    unzip trino-rest-slack-$TRINO_REST_VERSION.zip
+fi
+
 cat <<EOF >config.properties
 coordinator=true
 node-scheduler.include-coordinator=true
@@ -49,8 +54,10 @@ docker run \
     -v "$SCRIPT_DIR"/config.properties:/etc/trino/config.properties \
     -v "$SCRIPT_DIR"/trino-git-$TRINO_GIT_VERSION:/usr/lib/trino/plugin/git \
     -v "$SCRIPT_DIR"/trino-rest-github-$TRINO_REST_VERSION:/usr/lib/trino/plugin/github \
+    -v "$SCRIPT_DIR"/trino-rest-slack-$TRINO_REST_VERSION:/usr/lib/trino/plugin/slack \
     -v "$SCRIPT_DIR"/../catalog/git.properties:/etc/trino/catalog/git.properties \
     -v "$SCRIPT_DIR"/../catalog/github.properties:/etc/trino/catalog/github.properties \
+    -v "$SCRIPT_DIR"/../catalog/slack.properties:/etc/trino/catalog/slack.properties \
     -v "$SCRIPT_DIR"/../catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
     -v "$SCRIPT_DIR"/hive-cache:/opt/hive-cache \
     -v "$SCRIPT_DIR"/../sql:/sql \
@@ -59,6 +66,7 @@ docker run \
     -e AWS_SESSION_TOKEN \
     -e AWS_REGION \
     -e GITHUB_TOKEN \
+    -e SLACK_API_TOKEN \
     -p 8080:8080 \
     --name $CONTAINER_NAME \
     -d \
