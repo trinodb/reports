@@ -28,31 +28,14 @@ To run the queries locally:
 * start Trino in a container
 
 ```bash
-trino_ver=384
-trino_git_ver=0.22
-trino_rest_ver=0.82
-curl -fLsS https://github.com/nineinchnick/trino-git/releases/download/v$trino_git_ver/trino-git-$trino_git_ver.zip | jar xv
-curl -fLsS https://github.com/nineinchnick/trino-rest/releases/download/v$trino_rest_ver/trino-rest-github-$trino_rest_ver.zip | jar xv
-# if neede, run `aws configure`
-docker run \
-  -v $(pwd)/trino-rest-github-$trino_rest_ver:/usr/lib/trino/plugin/github \
-  -v $(pwd)/trino-git-$trino_git_ver:/usr/lib/trino/plugin/git \
-  -v $(pwd)/catalog:/etc/trino/catalog \
-  -v $(pwd)/hive-cache:/opt/hive-cache \
-  -v $(pwd)/http-cache:/opt/trino-rest-cache \
-  -v $HOME/.aws:/home/trino/.aws \
-  -e AWS_PROFILE=trino-reports \
-  -e GITHUB_TOKEN \
-  -p 8080:8080 \
-  --name trino-reports \
-  -d \
-  -m8G \
-  trinodb/trino:$trino_ver
+# ensure all these environment variables are set to correct values
+export AWS_REGION AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY GITHUB_TOKEN
+./bin/run-trino.sh
 ```
 
 Now you can run any query from the `sql` directory using [the Trino CLI](https://trino.io/docs/current/installation/cli.html#installation):
 ```bash
-trino --server localhost:8080 --catalog trinocicd --schema v2 --output-format=ALIGNED < sql/pr/burndown.sql
+trino trino://localhost:8080/trinocicd/v2 --output-format=ALIGNED < sql/pr/burndown.sql
 ```
 
 ## Sync
