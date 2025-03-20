@@ -17,8 +17,8 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
       SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
-      TRINO_VERSION: 471
-      TRINO_REST_VERSION: "0.165"
+      TRINO_VERSION: 473
+      TRINO_REST_VERSION: "0.168"
       TRINO_DEST_SCHEMA: trinoslack.slack
       TRINO_SRC_SCHEMA: slack.default
       SYNC_CHANNELS: announcements,python,kubernetes,iceberg,delta-lake,trino-gateway,trino-gateway-dev,core-dev,dev,troubleshooting,beginner
