@@ -81,19 +81,6 @@ jobs:
             --rm \
             nineinchnick/trino-rest:$TRINO_REST_VERSION \
             java -cp "/usr/lib/trino/plugin/github/*" pl.net.was.rest.github.Sync
-      - name: Run Sync for Starburst Teams
-        run: |
-          docker run \
-            -e GITHUB_OWNER=starburstdata \
-            -e GITHUB_REPO \
-            -e TRINO_DEST_SCHEMA \
-            -e TRINO_SRC_SCHEMA \
-            -e EMPTY_INSERT_LIMIT \
-            -e SYNC_TABLES=teams,members \
-            -e TRINO_URL=jdbc:trino://$SERVER_IP:8080/github/default \
-            --rm \
-            nineinchnick/trino-rest:$TRINO_REST_VERSION \
-            java -cp "/usr/lib/trino/plugin/github/*" pl.net.was.rest.github.Sync
       - name: Dump Trino logs
         if: always()
         run: |
