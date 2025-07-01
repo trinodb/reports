@@ -25,7 +25,7 @@ jobs:
       TRINO_SRC_SCHEMA: github.default
       EMPTY_INSERT_LIMIT: 5
       # TODO temporarily removed artifacts since they're causing OOMs, figure out a different way to fetch them
-      SYNC_TABLES: runs,jobs,steps,check_suites,check_runs,check_run_annotations,pulls,pull_commits,pull_stats,review_comments,reviews,issues,issue_comments,commits,teams,members
+      SYNC_TABLES: runs,jobs,steps,check_suites,check_runs,check_run_annotations,pulls,pull_commits,pull_stats,review_comments,reviews,issues,issue_comments,commits
     steps:
       - uses: actions/checkout@v4
       - name: Download trino-rest
