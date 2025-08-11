@@ -18,7 +18,7 @@ jobs:
       AWS_REGION: ${{ secrets.AWS_REGION }}
       TRINO_VERSION: 476
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Start Trino
         run: |
           mkdir -p $(pwd)/hive-cache && chmod go+w $(pwd)/hive-cache

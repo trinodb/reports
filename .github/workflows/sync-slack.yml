@@ -24,7 +24,7 @@ jobs:
       SYNC_CHANNELS: announcements,python,kubernetes,iceberg,delta-lake,trino-gateway,trino-gateway-dev,core-dev,dev,troubleshooting,beginner
       SYNC_TABLES: users,channels,channel_members,messages,replies
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Download trino-rest
         run: |
           curl -fLOsS https://github.com/nineinchnick/trino-rest/releases/download/v$TRINO_REST_VERSION/trino-rest-slack-$TRINO_REST_VERSION.zip
