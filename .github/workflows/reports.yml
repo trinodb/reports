@@ -22,7 +22,7 @@ jobs:
       TRINO_VERSION: 476
       TRINO_GIT_VERSION: "0.98"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install dependencies
         run: |
           sudo apt update
