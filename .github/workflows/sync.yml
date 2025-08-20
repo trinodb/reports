@@ -80,7 +80,7 @@ jobs:
             -e TRINO_URL=jdbc:trino://$SERVER_IP:8080/github/default \
             --rm \
             nineinchnick/trino-rest:$TRINO_REST_VERSION \
-            java -cp "/usr/lib/trino/plugin/github/*" pl.net.was.rest.github.Sync
+            java -cp "/usr/lib/trino/plugin/github/*" pl.net.was.rest.github.Sync || echo "ERROR: Sync failed"
       - name: Dump Trino logs
         if: always()
         run: |
