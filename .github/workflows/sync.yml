@@ -27,7 +27,7 @@ jobs:
       # TODO temporarily removed artifacts since they're causing OOMs, figure out a different way to fetch them
       SYNC_TABLES: runs,jobs,steps,check_suites,check_runs,check_run_annotations,pulls,pull_commits,pull_stats,review_comments,reviews,issues,issue_comments,commits
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Download trino-rest
         run: |
           curl -fLOsS https://github.com/nineinchnick/trino-rest/releases/download/v$TRINO_REST_VERSION/trino-rest-github-$TRINO_REST_VERSION.zip
