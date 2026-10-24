@@ -17,8 +17,8 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
-      TRINO_VERSION: 476
-      TRINO_REST_VERSION: "0.172"
+      TRINO_VERSION: 484
+      TRINO_REST_VERSION: "0.178"
       GITHUB_OWNER: trinodb
       GITHUB_REPO: trino
       TRINO_DEST_SCHEMA: trinocicd.v2
@@ -40,10 +40,12 @@ jobs:
           http-server.http.port=8080
           discovery.uri=http://localhost:8080
           query.max-memory-per-node=4086929818B
+          cache-manager.config-files=etc/cache-manager-memory.properties,etc/cache-manager-alluxio.properties
           EOF
           mkdir -p $(pwd)/hive-cache && chmod go+w $(pwd)/hive-cache
           CONTAINER_ID=$(docker run \
             -v $(pwd)/config.properties:/etc/trino/config.properties \
+            -v $(pwd)/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
             -v $(pwd)/trino-rest-github-$TRINO_REST_VERSION:/usr/lib/trino/plugin/github \
             -v $(pwd)/catalog/github.properties:/etc/trino/catalog/github.properties \
             -v $(pwd)/catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
