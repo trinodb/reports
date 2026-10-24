@@ -4,11 +4,11 @@ changes AS (
     SELECT
       date_trunc('month', date(c.commit_time AT TIME ZONE 'UTC')) AS month
     , count(distinct c.object_id) AS num_commits
-    , count(*) FILTER (WHERE s.change_type = 'Add') AS added_files
-    , count(*) FILTER (WHERE s.change_type = 'Copy') AS copied_files
-    , count(*) FILTER (WHERE s.change_type = 'Delete') AS deleted_files
-    , count(*) FILTER (WHERE s.change_type = 'Modify') AS modified_files
-    , count(*) FILTER (WHERE s.change_type = 'Rename') AS renamed_files
+    , count(*) FILTER (WHERE s.change_type = 'added') AS added_files
+    , count(*) FILTER (WHERE s.change_type = 'copied') AS copied_files
+    , count(*) FILTER (WHERE s.change_type = 'deleted') AS deleted_files
+    , count(*) FILTER (WHERE s.change_type = 'modified') AS modified_files
+    , count(*) FILTER (WHERE s.change_type = 'renamed') AS renamed_files
     , sum(s.added_lines) AS added_lines
     , sum(s.deleted_lines) AS deleted_lines
     FROM git.default.commits c
