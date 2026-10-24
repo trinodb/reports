@@ -18,9 +18,9 @@ if [ -z "$AWS_REGION" ] || [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCE
 fi
 
 CONTAINER_NAME=trino
-TRINO_VERSION=476
-TRINO_GIT_VERSION=0.98
-TRINO_REST_VERSION=0.172
+TRINO_VERSION=484
+TRINO_GIT_VERSION=1.0
+TRINO_REST_VERSION=0.178
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 cd "$SCRIPT_DIR" || exit 1
@@ -46,12 +46,14 @@ node-scheduler.include-coordinator=true
 http-server.http.port=8080
 discovery.uri=http://localhost:8080
 query.max-memory-per-node=4086929818B
+cache-manager.config-files=etc/cache-manager-memory.properties,etc/cache-manager-alluxio.properties
 EOF
 
 mkdir -p "$SCRIPT_DIR"/hive-cache
 chmod 777 "$SCRIPT_DIR"/hive-cache
 docker run \
     -v "$SCRIPT_DIR"/config.properties:/etc/trino/config.properties \
+    -v "$SCRIPT_DIR"/../etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
     -v "$SCRIPT_DIR"/trino-git-$TRINO_GIT_VERSION:/usr/lib/trino/plugin/git \
     -v "$SCRIPT_DIR"/trino-rest-github-$TRINO_REST_VERSION:/usr/lib/trino/plugin/github \
     -v "$SCRIPT_DIR"/trino-rest-slack-$TRINO_REST_VERSION:/usr/lib/trino/plugin/slack \
