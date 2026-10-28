@@ -27,19 +27,8 @@ pulls AS (
     FROM pulls
     GROUP BY 1
 )
-, members AS (
-    SELECT
-        org
-      , login
-      , team_slug
-      -- joined_at is the time when membership was checked, so to avoid gaps stretch it to the previous row
-      , lag(removed_at, 1, timestamp '0001-01-01') OVER (PARTITION BY org, login, team_slug ORDER BY joined_at) + interval '1' second AS joined_at
-      , removed_at
-    FROM timestamped_members
-    WHERE team_slug != ''
-)
 , reviews AS (
-  SELECT
+  SELECT DISTINCT
       r.owner
     , r.repo
     , r.pull_number AS number
@@ -47,63 +36,48 @@ pulls AS (
     , r.state
     , r.submitted_at AS event_at
     , r.user_login = p.user_login AS is_author
-    , filter(array_agg(m.team_slug), x -> x is not null) AS teams
   FROM pulls p
   JOIN reviews r ON (p.owner, p.repo, p.number) = (r.owner, r.repo, r.pull_number)
-  LEFT JOIN members m ON (m.org, m.login) = (r.owner, r.user_login)
-    AND r.submitted_at BETWEEN m.joined_at AND coalesce(m.removed_at, now())
-    AND m.team_slug != ''
-  GROUP BY 1, 2, 3, 4, 5, 6, 7
 )
 , review_comments AS (
     SELECT
       r.event_at
     , r.is_author
-    , contains(r.teams, 'maintainers') AS is_maintainer
     , r.state = 'APPROVED' AS is_approved
     , bool_and(c.in_reply_to_id != 0) AS is_response
     , count(c.id) AS num_comments
     FROM reviews r
     JOIN review_comments c ON c.pull_request_review_id = r.id
-    GROUP BY 1, 2, 3, 4
+    GROUP BY 1, 2, 3
 )
 , review_count AS (
     SELECT
          date_trunc('month', event_at) AS time_label
        , count(event_at) AS num_reviews
        , count(event_at) FILTER (WHERE is_author) AS num_author_reviews
-       , count(event_at) FILTER (WHERE is_maintainer AND NOT is_author) AS num_maint_reviews
        , count(event_at) FILTER (WHERE is_response) AS num_responses
        , count(event_at) FILTER (WHERE is_response AND is_author) AS num_author_responses
-       , count(event_at) FILTER (WHERE is_response AND is_maintainer AND NOT is_author) AS num_maint_responses
        , count(event_at) FILTER (WHERE is_approved) AS num_approvals
-       , count(event_at) FILTER (WHERE is_approved AND is_maintainer) AS num_maint_approvals
        , sum(num_comments) AS num_comments
     FROM review_comments
     GROUP BY 1
 )
 , comments AS (
-  SELECT
+  SELECT DISTINCT
       p.owner
     , p.repo
     , p.number
     , pc.created_at AS event_at
     , pc.user_login = p.user_login AS is_author
-    , filter(array_agg(m.team_slug), x -> x is not null) AS teams
   FROM pulls p
   JOIN unique_issue_comments pc ON pc.issue_url = p.issue_url
-  LEFT JOIN members m ON (m.org, m.login) = (pc.owner, pc.user_login)
-    AND pc.created_at BETWEEN m.joined_at AND coalesce(m.removed_at, now())
-    AND m.team_slug != ''
   WHERE pc.user_login != 'cla-bot[bot]'
-  GROUP BY 1, 2, 3, 4, 5
 )
 , comment_count AS (
     SELECT
         date_trunc('month', event_at) AS time_label
       , count(event_at) AS num_total
       , count(event_at) FILTER (WHERE is_author) AS num_author
-      , count(event_at) FILTER (WHERE contains(teams, 'maintainers')) AS num_maint
     FROM comments
     GROUP BY 1
 )
@@ -161,16 +135,12 @@ SELECT
 , pm.num_merged AS "Merged PRS"
 , r.num_reviews AS "All reviews"
 , r.num_author_reviews AS "Author reviews"
-, r.num_maint_reviews AS "Maintainer reviews"
 , r.num_responses AS "Review responses"
 , r.num_author_responses AS "Author responses"
-, r.num_maint_responses AS "Maintainer responses"
 , r.num_approvals AS "Approvals"
-, r.num_maint_approvals AS "Maintainer approvals"
 , r.num_comments AS "Review comments"
 , cments.num_total AS "Regular comments"
 , cments.num_author AS "Author comments"
-, cments.num_maint AS "Maintainer comments"
 , cmits.num_total AS "Commits"
 , rr.num_total AS "Review rounds"
 FROM

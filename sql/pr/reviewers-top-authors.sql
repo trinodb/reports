@@ -1,33 +1,13 @@
 -- Reviewers top 10 authors in last 12 months
 WITH
-members AS (
-    SELECT
-        login
-      , joined_at
-      , removed_at
-      , org AS team
-    FROM all_members
-    WHERE team_slug = '' AND org != 'trinodb'
-    UNION ALL
-    SELECT
-        login
-      , joined_at
-      , removed_at
-      , team_slug AS team
-    FROM all_members
-    WHERE team_slug NOT IN ('', 'infrastructure', 'contributors') AND org = 'trinodb'
-)
-, pulls AS (
+pulls AS (
     SELECT
         p.owner
       , p.repo
       , p.number
       , p.user_login
-      , array_agg(DISTINCT coalesce(m.team, 'external') ORDER BY coalesce(m.team, 'external')) AS author_teams
     FROM unique_pulls p
-    LEFT JOIN members m ON m.login = p.user_login AND p.created_at BETWEEN m.joined_at AND m.removed_at
     WHERE p.owner = 'trinodb' AND p.repo = 'trino'
-    GROUP BY 1, 2, 3, 4
 )
 , pairs AS (
     SELECT

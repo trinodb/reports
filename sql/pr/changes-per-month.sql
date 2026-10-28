@@ -14,7 +14,6 @@ changes AS (
     FROM git.default.commits c
     JOIN git.default.diff_stats s ON s.commit_id = c.object_id
     JOIN memory.default.gh_idents ai ON ai.name = c.author_name OR CONTAINS(ai.extra_names, c.author_name)
-    LEFT JOIN members m ON CONTAINS(ai.logins, m.login)
     WHERE c.commit_time > timestamp '2019-01-01 00:00:00'
     GROUP BY 1
 )

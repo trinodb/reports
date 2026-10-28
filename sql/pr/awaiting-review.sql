@@ -15,12 +15,10 @@ pulls_without_review AS (
     SELECT
       date_trunc('month', date(c.commit_time AT TIME ZONE 'UTC')) AS month
     , ai.logins
-    , COALESCE(m.org, '<untracked>') AS org
     , count(*) AS num_commits
     FROM git.default.commits c
     JOIN memory.default.gh_idents ai ON ai.name = c.author_name OR CONTAINS(ai.extra_names, c.author_name)
-    LEFT JOIN members m ON CONTAINS(ai.logins, m.login)
-    GROUP BY 1, 2, 3
+    GROUP BY 1, 2
 )
 , rolling AS (
     SELECT
@@ -33,7 +31,6 @@ SELECT
 , format('"%s"@https://github.com/trinodb/trino/pull/%s ', p.title, p.number) AS title
 , day(CAST(current_timestamp AT TIME ZONE 'UTC' AS TIMESTAMP) - p.created_at) AS days_without_review
 , COALESCE(a.commits_last_year, 0) AS author_commits_last_year
-, COALESCE(a.org, '<unknown>') AS author_org
 FROM pulls_without_review p
 LEFT JOIN rolling a ON CONTAINS(a.logins, p.user_login) AND date_trunc('month', p.created_at) = a.month
 ORDER BY days_without_review DESC
