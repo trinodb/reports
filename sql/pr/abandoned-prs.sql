@@ -31,12 +31,10 @@ last_review_comments AS (
     SELECT
       date_trunc('month', date(c.commit_time AT TIME ZONE 'UTC')) AS month
     , ai.logins
-    , COALESCE(m.org, '<untracked>') AS org
     , count(*) AS num_commits
     FROM git.default.commits c
     JOIN memory.default.gh_idents ai ON ai.name = c.author_name OR CONTAINS(ai.extra_names, c.author_name)
-    LEFT JOIN members m ON CONTAINS(ai.logins, m.login)
-    GROUP BY 1, 2, 3
+    GROUP BY 1, 2
 )
 , rolling AS (
     SELECT
@@ -51,7 +49,6 @@ SELECT
 , day(CAST(current_timestamp AT TIME ZONE 'UTC' AS TIMESTAMP) - coalesce(rc.review_submitted_at, pc.comment_created_at)) AS days_since_review
 , day(CAST(current_timestamp AT TIME ZONE 'UTC' AS TIMESTAMP) - least(coalesce(rc.comment_created_at, now()), coalesce(pc.comment_created_at, now()))) AS days_since_comment
 , COALESCE(a.commits_last_year, 0) AS author_commits_last_year
-, COALESCE(a.org, '<unknown>') AS author_org
 FROM unique_pulls p
 LEFT JOIN last_commits commits ON p.number = commits.pull_number
 LEFT JOIN last_review_comments rc ON p.number = rc.pull_number

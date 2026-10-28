@@ -13,5 +13,3 @@ ALTER TABLE commits EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE pull_stats EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE reviews EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE review_comments EXECUTE optimize(file_size_threshold => '30MB');
-ALTER TABLE timestamped_members EXECUTE optimize(file_size_threshold => '30MB');
-ALTER TABLE timestamped_teams EXECUTE optimize(file_size_threshold => '30MB');
