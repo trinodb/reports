@@ -1,0 +1,95 @@
+name: Backfill the Iceberg tables from the Hive tables
+
+on:
+  workflow_dispatch:
+    inputs:
+      cutoff:
+        description: "Copy only rows from before this time, like 2026-10-29 00:00:00; all rows when empty"
+        required: false
+        default: ""
+
+concurrency:
+  group: iceberg-writers
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      TRINO_VERSION: 484
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 25
+      - name: Download the Trino JDBC driver
+        run: |
+          curl -fLsS -o trino-jdbc.jar https://repo1.maven.org/maven2/io/trino/trino-jdbc/$TRINO_VERSION/trino-jdbc-$TRINO_VERSION.jar
+      - name: Start Trino
+        run: |
+          cat <<EOF >config.properties
+          coordinator=true
+          node-scheduler.include-coordinator=true
+          http-server.http.port=8080
+          discovery.uri=http://localhost:8080
+          query.max-memory-per-node=4086929818B
+          cache-manager.config-files=etc/cache-manager-memory.properties,etc/cache-manager-alluxio.properties
+          EOF
+          mkdir -p $(pwd)/hive-cache && chmod go+w $(pwd)/hive-cache
+          CONTAINER_ID=$(docker run \
+            -v $(pwd)/config.properties:/etc/trino/config.properties \
+            -v $(pwd)/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
+            -v $(pwd)/catalog/trinocicd-iceberg.properties:/etc/trino/catalog/trinocicd.properties \
+            -v $(pwd)/catalog/trinocicd.properties:/etc/trino/catalog/legacy.properties \
+            -v $(pwd)/hive-cache:/opt/hive-cache \
+            -e AWS_ACCESS_KEY_ID \
+            -e AWS_SECRET_ACCESS_KEY \
+            -e AWS_REGION \
+            -p 8080:8080 \
+            --name trino \
+            -d \
+            trinodb/trino:$TRINO_VERSION)
+          i=0
+          until docker inspect "${CONTAINER_ID}" --format "{{json .State.Health.Status }}" | grep -q '"healthy"'; do
+              if [[ $((i++)) -ge 10 ]]; then
+                  echo "🚨 Too many retries waiting for Trino to start"
+                  exit 1
+              fi
+              sleep 10
+          done
+      - name: Create the schema
+        run: |
+          docker exec trino trino --execute "CREATE SCHEMA IF NOT EXISTS trinocicd.github WITH (location = 's3://trino-ci/github')"
+      - name: Create tables
+        env:
+          SYNC_TRINO_URL: jdbc:trino://localhost:8080
+          SYNC_STEPS_DIR: sync/github
+          SYNC_STEPS: tables
+        run: |
+          java -cp trino-jdbc.jar sync/Sync.java
+      - name: Backfill
+        env:
+          SYNC_TRINO_URL: jdbc:trino://localhost:8080
+          SYNC_STEPS_DIR: sync/backfill
+          CUTOFF: ${{ inputs.cutoff }}
+        run: |
+          if [ -n "$CUTOFF" ]; then
+              export SYNC_CUTOFF="$CUTOFF"
+          fi
+          java -cp trino-jdbc.jar sync/Sync.java
+      - name: Compare row counts
+        run: |
+          docker exec trino trino --output-format=ALIGNED --execute "
+            SELECT 'runs' AS \"table\", (SELECT count(*) FROM legacy.v2.runs WHERE owner = 'trinodb' AND repo = 'trino') AS old_rows, (SELECT count(*) FROM trinocicd.github.runs) AS new_rows
+            UNION ALL SELECT 'jobs', (SELECT count(DISTINCT id) FROM legacy.v2.jobs WHERE owner = 'trinodb' AND repo = 'trino'), (SELECT count(*) FROM trinocicd.github.jobs)
+            UNION ALL SELECT 'pulls', (SELECT count(DISTINCT id) FROM legacy.v2.pulls WHERE owner = 'trinodb' AND repo = 'trino'), (SELECT count(*) FROM trinocicd.github.pulls)
+            UNION ALL SELECT 'issues', (SELECT count(DISTINCT id) FROM legacy.v2.issues WHERE owner = 'trinodb' AND repo = 'trino'), (SELECT count(*) FROM trinocicd.github.issues)
+            UNION ALL SELECT 'check_runs', (SELECT count(DISTINCT id) FROM legacy.v2.check_runs WHERE owner = 'trinodb' AND repo = 'trino'), (SELECT count(*) FROM trinocicd.github.check_runs)"
+      - name: Dump Trino logs
+        if: always()
+        run: |
+          docker logs trino
