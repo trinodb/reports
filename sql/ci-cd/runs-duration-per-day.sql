@@ -6,6 +6,8 @@ WITH longest_jobs AS (
     , max(completed_at) AS completed_at
     , max(completed_at) - min(started_at) AS duration
   FROM jobs
+  -- later attempts include the successful jobs of previous attempts, with their original times
+  WHERE COALESCE(run_attempt, 1) = 1
   GROUP BY 1
 ),
 main AS (
@@ -19,6 +21,7 @@ main AS (
   FROM runs r
   JOIN longest_jobs j ON j.run_id = r.id
   WHERE r.owner = 'trinodb' AND r.repo = 'trino' AND r.name = 'ci' AND r.conclusion = 'success' AND r.created_at > CURRENT_DATE - INTERVAL '14' DAY
+    AND COALESCE(r.run_attempt, 1) = 1
   GROUP BY 1
 )
 SELECT
