@@ -1,0 +1,104 @@
+name: Incremental GitHub sync with trino-openapi
+
+on:
+  workflow_dispatch: {}
+
+concurrency:
+  # also used by other workflows writing to the Iceberg tables, so their commits don't conflict
+  group: iceberg-writers
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      TRINO_VERSION: 484
+      TRINO_OPENAPI_VERSION: "2.2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 25
+      - name: Show the rate limit
+        run: |
+          curl -fsS -o /dev/null -D - -H "Authorization: Bearer $GITHUB_TOKEN" https://api.github.com/rate_limit | grep -i '^x-ratelimit-'
+      - name: Download trino-openapi
+        run: |
+          curl -fLOsS https://github.com/nineinchnick/trino-openapi/releases/download/v$TRINO_OPENAPI_VERSION/trino-openapi-$TRINO_OPENAPI_VERSION.zip
+          unzip -q trino-openapi-$TRINO_OPENAPI_VERSION.zip
+          curl -fLsS -o trino-jdbc.jar https://repo1.maven.org/maven2/io/trino/trino-jdbc/$TRINO_VERSION/trino-jdbc-$TRINO_VERSION.jar
+      - name: Restore the HTTP cache
+        uses: actions/cache/restore@v4
+        with:
+          path: http-cache
+          key: http-cache-${{ github.run_id }}
+          restore-keys: http-cache-
+      - name: Start Trino
+        run: |
+          cat <<EOF >config.properties
+          coordinator=true
+          node-scheduler.include-coordinator=true
+          http-server.http.port=8080
+          discovery.uri=http://localhost:8080
+          query.max-memory-per-node=4086929818B
+          cache-manager.config-files=etc/cache-manager-memory.properties,etc/cache-manager-alluxio.properties
+          EOF
+          mkdir -p $(pwd)/hive-cache $(pwd)/http-cache && chmod go+w $(pwd)/hive-cache
+          # the connector reads only files owned by the user running Trino, which has the ID 1000 in the image
+          sudo chown -R 1000:1000 $(pwd)/http-cache
+          CONTAINER_ID=$(docker run \
+            -v $(pwd)/config.properties:/etc/trino/config.properties \
+            -v $(pwd)/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
+            -v $(pwd)/trino-openapi-$TRINO_OPENAPI_VERSION:/usr/lib/trino/plugin/openapi \
+            -v $(pwd)/sync/specs/github.json:/etc/trino/specs/github.json \
+            -v $(pwd)/catalog/github-openapi.properties:/etc/trino/catalog/github.properties \
+            -v $(pwd)/catalog/trinocicd-iceberg.properties:/etc/trino/catalog/trinocicd.properties \
+            -v $(pwd)/hive-cache:/opt/hive-cache \
+            -v $(pwd)/http-cache:/opt/http-cache \
+            -e AWS_ACCESS_KEY_ID \
+            -e AWS_SECRET_ACCESS_KEY \
+            -e AWS_REGION \
+            -e GITHUB_TOKEN \
+            -p 8080:8080 \
+            --name trino \
+            -d \
+            trinodb/trino:$TRINO_VERSION)
+          i=0
+          until docker inspect "${CONTAINER_ID}" --format "{{json .State.Health.Status }}" | grep -q '"healthy"'; do
+              if [[ $((i++)) -ge 10 ]]; then
+                  echo "🚨 Too many retries waiting for Trino to start"
+                  exit 1
+              fi
+              sleep 10
+          done
+      - name: Run Sync
+        env:
+          SYNC_TRINO_URL: jdbc:trino://localhost:8080
+          SYNC_STEPS_DIR: sync/github
+          # revalidate cached responses, so children aren't read from a response cached before their parent changed
+          SYNC_SESSION_PROPERTIES: github.http_cache_enabled:false
+        run: |
+          java -cp trino-jdbc.jar sync/Sync.java
+      - name: Show the rate limit
+        if: always()
+        run: |
+          curl -fsS -o /dev/null -D - -H "Authorization: Bearer $GITHUB_TOKEN" https://api.github.com/rate_limit | grep -i '^x-ratelimit-'
+      - name: Save the HTTP cache
+        if: always()
+        run: |
+          # the connector creates files only the user running Trino can read
+          sudo chown -R "$(id -u):$(id -g)" http-cache
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: http-cache
+          key: http-cache-${{ github.run_id }}
+      - name: Dump Trino logs
+        if: always()
+        run: |
+          docker logs trino
