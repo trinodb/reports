@@ -27,25 +27,37 @@ ttm_per_size AS (
     GROUP BY bucket
     ORDER BY bucket
 )
+, chart AS (
+    SELECT
+        bucket
+      , range
+      , num_prs
+      , value
+      , bar(num_prs / CAST(max(num_prs) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS num_prs_chart
+      , bar(to_milliseconds(value) / CAST(to_milliseconds(max(value) OVER ()) AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS value_chart
+      , transform(perc, d -> format('%.2f', d)) AS perc
+    FROM grouped
+    UNION ALL
+    SELECT
+        NULL
+      , 'Total'
+      , count(*)
+      , avg(value)
+      , ''
+      , ''
+      , transform(
+          approx_percentile(to_milliseconds(value) / (1000.0 * 3600.0 * 24.0), ARRAY[0.5, 0.95, 0.99]),
+          d -> format('%.2f', d)
+        )
+    FROM histogram
+)
 SELECT
     range AS "PR size (added + deleted lines)"
   , num_prs AS "Number of PRs"
   , value AS "Avg time to merge"
-  , bar(num_prs / CAST(max(num_prs) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Number of PRs chart"
-  , bar(to_milliseconds(value) / CAST(to_milliseconds(max(value) OVER ()) AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Avg TTM chart"
-  , transform(perc, d -> format('%.2f', d)) AS "Days to merge percentiles 50, 95, 99"
-FROM grouped
-UNION ALL
-SELECT
-  'Total'
-  , count(*)
-  , avg(value)
-  , ''
-  , ''
-  , transform(
-      approx_percentile(to_milliseconds(value) / (1000.0 * 3600.0 * 24.0), ARRAY[0.5, 0.95, 0.99]),
-      d -> format('%.2f', d)
-    )
-FROM histogram
-ORDER BY if("PR size (added + deleted lines)" = 'Total', 1, 0)
+  , num_prs_chart AS "Number of PRs chart"
+  , value_chart AS "Avg TTM chart"
+  , perc AS "Days to merge percentiles 50, 95, 99"
+FROM chart
+ORDER BY bucket
 ;

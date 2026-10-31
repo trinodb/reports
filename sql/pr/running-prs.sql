@@ -23,6 +23,6 @@ FROM unique_pulls pulls
 JOIN last_reviews reviews ON pulls.number = reviews.number
 JOIN last_commits commits ON pulls.number = commits.number
 WHERE pulls.owner = 'trinodb' AND pulls.repo = 'trino' AND pulls.state = 'open' AND NOT pulls.draft
-ORDER BY running_days DESC
+ORDER BY running_days DESC, pulls.number
 LIMIT 20
 ;
