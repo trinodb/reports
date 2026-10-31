@@ -57,7 +57,7 @@ function run_query() {
     time docker exec \
         $container_name \
         java -Dorg.jline.terminal.dumb=true -jar /usr/bin/trino \
-        --catalog trinocicd --schema v2 \
+        --catalog trinocicd --schema github \
         --debug \
         -f "/tmp/$(basename "$file")" \
         --output-format="$format"

@@ -14,8 +14,8 @@ last_review_comments AS (
   SELECT
       p.number AS pull_number
     , max(pc.created_at) AS comment_created_at
-  FROM unique_pulls p
-  JOIN issue_comments pc ON pc.issue_url = p.issue_url
+  FROM pulls p
+  JOIN issue_comments pc ON (pc.owner, pc.repo, pc.issue_number) = (p.owner, p.repo, p.number)
   WHERE p.owner = 'trinodb' AND p.repo = 'trino'
   GROUP BY 1
 )
@@ -49,7 +49,7 @@ SELECT
 , day(CAST(current_timestamp AT TIME ZONE 'UTC' AS TIMESTAMP) - coalesce(rc.review_submitted_at, pc.comment_created_at)) AS days_since_review
 , day(CAST(current_timestamp AT TIME ZONE 'UTC' AS TIMESTAMP) - least(coalesce(rc.comment_created_at, now()), coalesce(pc.comment_created_at, now()))) AS days_since_comment
 , COALESCE(a.commits_last_year, 0) AS author_commits_last_year
-FROM unique_pulls p
+FROM pulls p
 LEFT JOIN last_commits commits ON p.number = commits.pull_number
 LEFT JOIN last_review_comments rc ON p.number = rc.pull_number
 LEFT JOIN last_pull_comments pc ON p.number = pc.pull_number

@@ -21,6 +21,7 @@ CONTAINER_NAME=trino
 TRINO_VERSION=484
 TRINO_GIT_VERSION=1.0
 TRINO_REST_VERSION=0.178
+TRINO_OPENAPI_VERSION=2.2
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 cd "$SCRIPT_DIR" || exit 1
@@ -30,9 +31,9 @@ if [ ! -d trino-git-$TRINO_GIT_VERSION ]; then
     unzip trino-git-$TRINO_GIT_VERSION.zip
 fi
 
-if [ ! -d trino-rest-github-$TRINO_REST_VERSION ]; then
-    curl -fLOsS https://github.com/nineinchnick/trino-rest/releases/download/v$TRINO_REST_VERSION/trino-rest-github-$TRINO_REST_VERSION.zip
-    unzip trino-rest-github-$TRINO_REST_VERSION.zip
+if [ ! -d trino-openapi-$TRINO_OPENAPI_VERSION ]; then
+    curl -fLOsS https://github.com/nineinchnick/trino-openapi/releases/download/v$TRINO_OPENAPI_VERSION/trino-openapi-$TRINO_OPENAPI_VERSION.zip
+    unzip trino-openapi-$TRINO_OPENAPI_VERSION.zip
 fi
 
 if [ ! -d trino-rest-slack-$TRINO_REST_VERSION ]; then
@@ -49,19 +50,22 @@ query.max-memory-per-node=4086929818B
 cache-manager.config-files=etc/cache-manager-memory.properties,etc/cache-manager-alluxio.properties
 EOF
 
-mkdir -p "$SCRIPT_DIR"/hive-cache
-chmod 777 "$SCRIPT_DIR"/hive-cache
+mkdir -p "$SCRIPT_DIR"/hive-cache "$SCRIPT_DIR"/http-cache
+chmod 777 "$SCRIPT_DIR"/hive-cache "$SCRIPT_DIR"/http-cache
 docker run \
     -v "$SCRIPT_DIR"/config.properties:/etc/trino/config.properties \
     -v "$SCRIPT_DIR"/../etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
     -v "$SCRIPT_DIR"/trino-git-$TRINO_GIT_VERSION:/usr/lib/trino/plugin/git \
-    -v "$SCRIPT_DIR"/trino-rest-github-$TRINO_REST_VERSION:/usr/lib/trino/plugin/github \
+    -v "$SCRIPT_DIR"/trino-openapi-$TRINO_OPENAPI_VERSION:/usr/lib/trino/plugin/openapi \
+    -v "$SCRIPT_DIR"/../sync/specs/github.json:/etc/trino/specs/github.json \
     -v "$SCRIPT_DIR"/trino-rest-slack-$TRINO_REST_VERSION:/usr/lib/trino/plugin/slack \
     -v "$SCRIPT_DIR"/../catalog/git.properties:/etc/trino/catalog/git.properties \
-    -v "$SCRIPT_DIR"/../catalog/github.properties:/etc/trino/catalog/github.properties \
+    -v "$SCRIPT_DIR"/../catalog/github-openapi.properties:/etc/trino/catalog/github.properties \
     -v "$SCRIPT_DIR"/../catalog/slack.properties:/etc/trino/catalog/slack.properties \
-    -v "$SCRIPT_DIR"/../catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
+    -v "$SCRIPT_DIR"/../catalog/trinocicd-iceberg.properties:/etc/trino/catalog/trinocicd.properties \
+    -v "$SCRIPT_DIR"/../catalog/trinocicd.properties:/etc/trino/catalog/legacy.properties \
     -v "$SCRIPT_DIR"/hive-cache:/opt/hive-cache \
+    -v "$SCRIPT_DIR"/http-cache:/opt/http-cache \
     -v "$SCRIPT_DIR"/../sql:/sql \
     -e AWS_ACCESS_KEY_ID \
     -e AWS_SECRET_ACCESS_KEY \
@@ -84,4 +88,4 @@ until status=$(docker inspect $CONTAINER_NAME --format "{{json .State.Health.Sta
     sleep 10
 done
 
-echo >&2 "Status is: $status, connect to trino://localhost:8080/trinocicd/v2"
+echo >&2 "Status is: $status, connect to trino://localhost:8080/trinocicd/github"

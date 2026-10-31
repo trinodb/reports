@@ -3,7 +3,7 @@ WITH
 reviews_per_pr AS (
     SELECT r.pull_number, count(distinct r.user_login) AS num
     FROM reviews r
-    JOIN unique_pulls p ON p.number = r.pull_number
+    JOIN pulls p ON p.number = r.pull_number
     WHERE p.owner = 'trinodb' AND p.repo = 'trino'
     AND r.user_login != p.user_login
     GROUP BY 1
@@ -30,4 +30,5 @@ SELECT
   , value AS "Number of reviews"
   , bar(value / CAST(max(value) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Chart"
 FROM grouped
+ORDER BY bucket
 ;

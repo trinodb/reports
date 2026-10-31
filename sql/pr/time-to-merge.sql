@@ -1,17 +1,21 @@
 -- Time to merge in last 12 months
 WITH
-pulls AS (
+latest_pull_stats AS (
+  -- the table has a row for every version of the statistics of a pull request
+  SELECT *, row_number() OVER (PARTITION BY owner, repo, pull_number ORDER BY updated_at DESC) AS rownum
+  FROM pull_stats
+)
+, pulls AS (
   SELECT
       p.owner
     , p.repo
     , p.number
-    , p.issue_url
     , p.user_login
     , p.created_at
     , p.merged_at - p.created_at AS time_to_merge
     , s.additions + s.deletions AS size
-  FROM unique_pulls p
-  JOIN unique_pull_stats s ON (s.owner, s.repo, s.pull_number) = (p.owner, p.repo, p.number)
+  FROM pulls p
+  JOIN latest_pull_stats s ON (s.owner, s.repo, s.pull_number) = (p.owner, p.repo, p.number) AND s.rownum = 1
   WHERE p.owner = 'trinodb' AND p.repo = 'trino' AND p.merged_at > CURRENT_DATE - interval '12' month
 )
 , reviews AS (
@@ -28,16 +32,21 @@ pulls AS (
     , pc.created_at AS event_at
     , pc.user_login = p.user_login AS is_author
   FROM pulls p
-  JOIN unique_issue_comments pc ON pc.issue_url = p.issue_url
+  JOIN issue_comments pc ON (pc.owner, pc.repo, pc.issue_number) = (p.owner, p.repo, p.number)
   WHERE pc.user_login != 'cla-bot[bot]'
+)
+, latest_pull_commits AS (
+  -- like the unique_pull_commits view of trino-rest, keep the newest commit for every set of parent commits
+  SELECT *, row_number() OVER (PARTITION BY owner, repo, pull_number, parent_shas ORDER BY committer_date DESC) AS rownum
+  FROM pull_commits
 )
 , commits AS (
   SELECT
       c.pull_number AS number
     , c.committer_date AS event_at
-    , c.author_login = p.user_login AS is_author
+    , c.author_login IS NOT DISTINCT FROM p.user_login AS is_author
   FROM pulls p
-  JOIN unique_pull_commits c ON (p.owner, p.repo, p.number) = (c.owner, c.repo, c.pull_number)
+  JOIN latest_pull_commits c ON (p.owner, p.repo, p.number) = (c.owner, c.repo, c.pull_number) AND c.rownum = 1
 )
 , events AS (
   SELECT number, created_at AS event_at, true AS is_author, 'created' AS event
@@ -52,7 +61,7 @@ pulls AS (
 , review_rounds AS (
   SELECT number, count(flipped) AS rounds
   FROM (
-    SELECT number, CASE WHEN is_author != lag(is_author) OVER (PARTITION BY number ORDER BY event_at) THEN 1 END AS flipped
+    SELECT number, CASE WHEN is_author != lag(is_author) OVER (PARTITION BY number ORDER BY event_at, is_author, event) THEN 1 END AS flipped
     FROM events
   ) a
   GROUP BY 1

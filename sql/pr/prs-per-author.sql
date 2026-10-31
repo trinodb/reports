@@ -2,7 +2,7 @@
 WITH
 prs_per_author AS (
     SELECT p.user_login, count(*) AS num_prs
-    FROM unique_pulls p
+    FROM pulls p
     WHERE owner = 'trinodb' AND repo = 'trino'
     GROUP BY 1
 )
@@ -23,16 +23,25 @@ prs_per_author AS (
     GROUP BY bucket
     ORDER BY bucket
 )
+, chart AS (
+    SELECT
+        bucket
+      , range
+      , value
+      , bar(value / CAST(max(value) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS value_chart
+    FROM grouped
+    UNION ALL
+    SELECT
+        NULL
+      , 'Total'
+      , sum(value)
+      , ''
+    FROM histogram
+)
 SELECT
   range AS "Number of PRs per author"
   , value AS "Number of authors"
-  , bar(value / CAST(max(value) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Chart"
-FROM grouped
-UNION ALL
-SELECT
-    'Total'
-  , sum(value)
-  , ''
-FROM histogram
-ORDER BY if("Number of PRs per author" = 'Total', 1, 0)
+  , value_chart AS "Chart"
+FROM chart
+ORDER BY bucket
 ;

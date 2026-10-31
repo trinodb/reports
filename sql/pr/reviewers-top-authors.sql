@@ -6,7 +6,7 @@ pulls AS (
       , p.repo
       , p.number
       , p.user_login
-    FROM unique_pulls p
+    FROM pulls p
     WHERE p.owner = 'trinodb' AND p.repo = 'trino'
 )
 , pairs AS (
@@ -21,7 +21,7 @@ pulls AS (
     JOIN memory.default.gh_idents ri ON CONTAINS(ri.logins, r.user_login)
     JOIN memory.default.gh_idents ai ON CONTAINS(ai.logins, p.user_login)
     -- ignore responses
-    JOIN review_comments rc ON (r.owner, r.repo, r.id) = (rc.owner, rc.repo, rc.pull_request_review_id) AND rc.in_reply_to_id = 0
+    JOIN review_comments rc ON (r.owner, r.repo, r.id) = (rc.owner, rc.repo, rc.pull_request_review_id) AND rc.in_reply_to_id IS NULL
     WHERE r.owner = 'trinodb' AND r.repo = 'trino'
     AND r.user_login != p.user_login AND r.submitted_at > CURRENT_DATE - interval '1' year
     GROUP BY 1, 2, 3, 4
@@ -33,7 +33,7 @@ pulls AS (
       , sum(comments) AS comments
       , count(distinct pull_number) AS pull_requests
       , count(*) AS reviews
-      , row_number() OVER (PARTITION BY ri_name ORDER BY sum(comments) DESC) AS author_rank
+      , row_number() OVER (PARTITION BY ri_name ORDER BY sum(comments) DESC, ai_name) AS author_rank
     FROM pairs
     GROUP BY 1, 2
 )

@@ -6,9 +6,9 @@ pulls_without_review AS (
     , p.title
     , p.user_login
     , p.created_at
-    FROM unique_pulls p
+    FROM pulls p
     LEFT JOIN reviews r ON p.number = r.pull_number
-    LEFT JOIN unique_issue_comments c ON c.issue_url = p.issue_url AND c.user_login != 'cla-bot[bot]'
+    LEFT JOIN issue_comments c ON (c.owner, c.repo, c.issue_number) = (p.owner, p.repo, p.number) AND c.user_login != 'cla-bot[bot]'
     WHERE p.owner = 'trinodb' AND p.repo = 'trino' AND p.state = 'open' AND NOT p.draft AND r.id IS NULL AND c.id IS NULL
 )
 , authors AS (

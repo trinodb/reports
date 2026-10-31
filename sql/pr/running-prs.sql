@@ -19,10 +19,10 @@ SELECT
   pulls.number
 , format('"%s"@https://github.com/trinodb/trino/pull/%s ', pulls.title, pulls.number) AS title
 , day(reviews.submitted_at - commits.committer_date) AS running_days
-FROM unique_pulls pulls
+FROM pulls pulls
 JOIN last_reviews reviews ON pulls.number = reviews.number
 JOIN last_commits commits ON pulls.number = commits.number
 WHERE pulls.owner = 'trinodb' AND pulls.repo = 'trino' AND pulls.state = 'open' AND NOT pulls.draft
-ORDER BY running_days DESC
+ORDER BY running_days DESC, pulls.number
 LIMIT 20
 ;

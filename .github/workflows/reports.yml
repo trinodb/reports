@@ -37,7 +37,7 @@ jobs:
             -v $(pwd)/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
             -v $(pwd)/trino-git-$TRINO_GIT_VERSION:/usr/lib/trino/plugin/git \
             -v $(pwd)/catalog/git.properties:/etc/trino/catalog/git.properties \
-            -v $(pwd)/catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
+            -v $(pwd)/catalog/trinocicd-iceberg.properties:/etc/trino/catalog/trinocicd.properties \
             -v $(pwd)/hive-cache:/opt/hive-cache \
             -e AWS_ACCESS_KEY_ID \
             -e AWS_SECRET_ACCESS_KEY \

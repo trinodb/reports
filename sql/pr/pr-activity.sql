@@ -5,12 +5,11 @@ pulls AS (
       p.owner
     , p.repo
     , p.number
-    , p.issue_url
     , p.user_login
     , p.created_at
     , p.updated_at
     , p.merged_at
-  FROM unique_pulls p
+  FROM pulls p
   WHERE p.owner = 'trinodb' AND p.repo = 'trino'
 )
 , pull_update_count AS (
@@ -44,7 +43,7 @@ pulls AS (
       r.event_at
     , r.is_author
     , r.state = 'APPROVED' AS is_approved
-    , bool_and(c.in_reply_to_id != 0) AS is_response
+    , bool_and(c.in_reply_to_id IS NOT NULL) AS is_response
     , count(c.id) AS num_comments
     FROM reviews r
     JOIN review_comments c ON c.pull_request_review_id = r.id
@@ -70,7 +69,7 @@ pulls AS (
     , pc.created_at AS event_at
     , pc.user_login = p.user_login AS is_author
   FROM pulls p
-  JOIN unique_issue_comments pc ON pc.issue_url = p.issue_url
+  JOIN issue_comments pc ON (pc.owner, pc.repo, pc.issue_number) = (p.owner, p.repo, p.number)
   WHERE pc.user_login != 'cla-bot[bot]'
 )
 , comment_count AS (
@@ -81,15 +80,20 @@ pulls AS (
     FROM comments
     GROUP BY 1
 )
+, latest_pull_commits AS (
+  -- like the unique_pull_commits view of trino-rest, keep the newest commit for every set of parent commits
+  SELECT *, row_number() OVER (PARTITION BY owner, repo, pull_number, parent_shas ORDER BY committer_date DESC) AS rownum
+  FROM pull_commits
+)
 , commits AS (
   SELECT
       c.owner
     , c.repo
     , c.pull_number AS number
     , c.committer_date AS event_at
-    , c.author_login = p.user_login AS is_author
+    , c.author_login IS NOT DISTINCT FROM p.user_login AS is_author
   FROM pulls p
-  JOIN unique_pull_commits c ON (p.owner, p.repo, p.number) = (c.owner, c.repo, c.pull_number)
+  JOIN latest_pull_commits c ON (p.owner, p.repo, p.number) = (c.owner, c.repo, c.pull_number) AND c.rownum = 1
 )
 , commit_count AS (
     SELECT
@@ -113,7 +117,7 @@ pulls AS (
       date_trunc('month', event_at) AS time_label
     , count(*) AS num_total
   FROM (
-    SELECT event_at, CASE WHEN is_author != lag(is_author) OVER (PARTITION BY number ORDER BY event_at) THEN 1 END AS flipped
+    SELECT event_at, CASE WHEN is_author != lag(is_author) OVER (PARTITION BY number ORDER BY event_at, is_author, event) THEN 1 END AS flipped
     FROM events
   ) a
   WHERE a.flipped = 1

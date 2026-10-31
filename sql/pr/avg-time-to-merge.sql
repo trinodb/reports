@@ -5,7 +5,7 @@ prs_in_month AS (
         months.month
       , least(months.month + interval '1' month - interval '1' day, p.merged_at) - p.created_at AS ttm
     FROM unnest(sequence(date '2019-01-01', current_date, interval '1' month)) AS months(month)
-    JOIN unique_pulls p ON months.month BETWEEN date_trunc('month', date(p.created_at)) AND date_trunc('month', date(p.merged_at))
+    JOIN pulls p ON months.month BETWEEN date_trunc('month', date(p.created_at)) AND date_trunc('month', date(p.merged_at))
     WHERE owner = 'trinodb' AND repo = 'trino' AND merged_at IS NOT NULL
 )
 , grouped AS (
@@ -23,7 +23,7 @@ prs_in_month AS (
         months.month
       , least(months.month + interval '1' month - interval '1' day, p.merged_at) - p.created_at AS ttm
     FROM unnest(sequence(date '2019-01-01', current_date, interval '1' month)) AS months(month)
-    JOIN unique_pulls p ON months.month BETWEEN date_trunc('month', date(p.created_at)) AND date_trunc('month', date(p.merged_at)) + interval '2' month
+    JOIN pulls p ON months.month BETWEEN date_trunc('month', date(p.created_at)) AND date_trunc('month', date(p.merged_at)) + interval '2' month
     WHERE owner = 'trinodb' AND repo = 'trino' AND merged_at IS NOT NULL
 )
 , grouped_3months AS (
