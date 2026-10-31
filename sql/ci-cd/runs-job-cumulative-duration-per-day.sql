@@ -4,18 +4,39 @@
 -- correlate with the queue duration.
 -- Showing all runs from master branch in last 14 days, even failed ones,
 -- since there's a very low chance of all jobs finishing successfully.
-WITH runs AS (
+WITH latest_attempts AS (
+  -- runs have a row for every attempt, and the last one has the conclusion of the run
+  SELECT
+      id
+    , max_by(conclusion, (COALESCE(run_attempt, 1), updated_at)) AS conclusion
+    , cast(min(created_at) AS date) AS day
+  FROM runs
+  WHERE owner = 'trinodb' AND repo = 'trino' AND name = 'ci'
+  AND created_at > CURRENT_DATE - INTERVAL '14' DAY
+  AND head_branch = 'master'
+  GROUP BY 1
+),
+copied_jobs AS (
+  -- later attempts include copies of the successful jobs of previous attempts, with their original times
+  SELECT DISTINCT later.id
+  FROM jobs later
+  JOIN jobs earlier ON earlier.run_id = later.run_id AND earlier.name = later.name
+    AND earlier.started_at = later.started_at AND earlier.completed_at = later.completed_at
+  WHERE COALESCE(earlier.run_attempt, 1) < COALESCE(later.run_attempt, 1)
+  AND later.started_at > CURRENT_DATE - INTERVAL '14' DAY
+  AND earlier.started_at > CURRENT_DATE - INTERVAL '14' DAY
+),
+runs AS (
   SELECT
       r.id AS run_id
     , r.conclusion
-    , cast(r.created_at AS date) AS day
+    , r.day
     , count(j.id) AS jobs_count
     , sum(j.completed_at - j.started_at) AS duration
-  FROM runs r
+  FROM latest_attempts r
   JOIN jobs j ON r.id = j.run_id
-  WHERE r.owner = 'trinodb' AND r.repo = 'trino' AND r.name = 'ci'
-  AND r.created_at > CURRENT_DATE - INTERVAL '14' DAY
-  AND r.head_branch = 'master'
+  LEFT JOIN copied_jobs c ON c.id = j.id
+  WHERE c.id IS NULL
   GROUP BY 1, 2, 3
 ),
 main AS (
