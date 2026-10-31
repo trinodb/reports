@@ -4,7 +4,7 @@ open_prs AS (
   -- TODO this is a bit misleading, as the delta can't be added to it; this is the number of long-lived open PRs,
   -- NOT the max num of PRs open at any given point in time; but also not the sum of PRs opened until this point minus sum of closed PRs
   SELECT d.month, count(*) AS count
-  FROM unique_pulls
+  FROM pulls
   CROSS JOIN unnest(sequence(
         date_trunc('month', date(created_at)),
         date_trunc('month', date(coalesce(closed_at, current_date))),
@@ -15,19 +15,19 @@ open_prs AS (
 )
 , new_prs AS (
   SELECT date_trunc('month', date(created_at)) AS month, count(*) AS count
-  FROM unique_pulls
+  FROM pulls
   WHERE owner = 'trinodb' AND repo = 'trino'
   GROUP BY 1
 )
 , closed_prs AS (
   SELECT date_trunc('month', date(closed_at)) AS month, count(*) AS count
-  FROM unique_pulls
+  FROM pulls
   WHERE owner = 'trinodb' AND repo = 'trino'
   GROUP BY 1
 )
 , open_issues AS (
   SELECT d.month, count(*) AS count
-  FROM unique_issues
+  FROM issues
   CROSS JOIN unnest(sequence(
         date_trunc('month', date(created_at)),
         date_trunc('month', date(coalesce(closed_at, current_date))),
@@ -38,13 +38,13 @@ open_prs AS (
 )
 , new_issues AS (
   SELECT date_trunc('month', date(created_at)) AS month, count(*) AS count
-  FROM unique_issues
+  FROM issues
   WHERE owner = 'trinodb' AND repo = 'trino'
   GROUP BY 1
 )
 , closed_issues AS (
   SELECT date_trunc('month', date(closed_at)) AS month, count(*) AS count
-  FROM unique_issues
+  FROM issues
   WHERE owner = 'trinodb' AND repo = 'trino'
   GROUP BY 1
 )

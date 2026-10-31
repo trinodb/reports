@@ -2,12 +2,12 @@
 WITH
 pulls AS (
   SELECT *
-  FROM unique_pulls
+  FROM pulls
   WHERE owner = 'trinodb' AND repo = 'trino'
 )
 , issues AS (
   SELECT *
-  FROM unique_issues
+  FROM issues
   WHERE owner = 'trinodb' AND repo = 'trino'
 )
 , time AS (

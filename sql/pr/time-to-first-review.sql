@@ -1,8 +1,13 @@
 -- Time to first review in last 12 months
 WITH
-pulls AS (
+latest_pull_stats AS (
+    -- the table has a row for every version of the statistics of a pull request
+    SELECT *, row_number() OVER (PARTITION BY owner, repo, pull_number ORDER BY updated_at DESC) AS rownum
+    FROM pull_stats
+)
+, pulls AS (
     SELECT *
-    FROM unique_pulls p
+    FROM pulls p
     WHERE p.owner = 'trinodb' AND p.repo = 'trino'
 )
 , first_reviews AS (
@@ -24,7 +29,7 @@ pulls AS (
       , p.number
       , min(c.created_at) - p.created_at AS ttfc
     FROM pulls p
-    JOIN unique_issue_comments c ON (p.owner, p.repo, p.issue_url) = (c.owner, c.repo, c.issue_url)
+    JOIN issue_comments c ON (p.owner, p.repo, p.number) = (c.owner, c.repo, c.issue_number)
       AND c.user_login != p.user_login
       AND c.user_login != 'cla-bot[bot]'
     GROUP BY p.owner, p.repo, p.number, p.created_at
@@ -37,7 +42,7 @@ pulls AS (
      , s.additions + s.deletions AS size
   FROM first_reviews r
   FULL OUTER JOIN first_comments c ON c.number = r.number
-  LEFT JOIN unique_pull_stats s ON (s.owner, s.repo, s.pull_number) = (coalesce(r.owner, c.owner), coalesce(r.repo, c.repo), coalesce(r.number, c.number))
+  LEFT JOIN latest_pull_stats s ON (s.owner, s.repo, s.pull_number) = (coalesce(r.owner, c.owner), coalesce(r.repo, c.repo), coalesce(r.number, c.number)) AND s.rownum = 1
 )
 , histogram AS (
     SELECT

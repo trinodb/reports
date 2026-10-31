@@ -1,11 +1,16 @@
 -- Time to merge per PR size
 WITH
-ttm_per_size AS (
+latest_pull_stats AS (
+    -- the table has a row for every version of the statistics of a pull request
+    SELECT *, row_number() OVER (PARTITION BY owner, repo, pull_number ORDER BY updated_at DESC) AS rownum
+    FROM pull_stats
+)
+, ttm_per_size AS (
     SELECT
         p.merged_at - p.created_at AS time_to_merge
       , s.additions + s.deletions AS size
-    FROM unique_pulls p
-    JOIN unique_pull_stats s ON (s.owner, s.repo, s.pull_number) = (p.owner, p.repo, p.number)
+    FROM pulls p
+    JOIN latest_pull_stats s ON (s.owner, s.repo, s.pull_number) = (p.owner, p.repo, p.number) AND s.rownum = 1
     WHERE p.owner = 'trinodb' AND p.repo = 'trino'
 )
 , histogram AS (

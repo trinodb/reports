@@ -12,8 +12,8 @@ for cmd in curl unzip docker; do
     fi
 done
 
-if [ -z "$AWS_REGION" ] || [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ] || [ -z "$GITHUB_TOKEN" ] || [ -z "$SLACK_API_TOKEN" ]; then
-    echo >&2 "Following environmental variables need to be set: AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, GITHUB_TOKEN, SLACK_API_TOKEN"
+if [ -z "$AWS_REGION" ] || [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ] || [ -z "$LEGACY_AWS_ACCESS_KEY_ID" ] || [ -z "$LEGACY_AWS_SECRET_ACCESS_KEY" ] || [ -z "$GITHUB_TOKEN" ] || [ -z "$SLACK_API_TOKEN" ]; then
+    echo >&2 "Following environmental variables need to be set: AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, LEGACY_AWS_ACCESS_KEY_ID, LEGACY_AWS_SECRET_ACCESS_KEY, GITHUB_TOKEN, SLACK_API_TOKEN"
     exit 1
 fi
 
@@ -60,13 +60,16 @@ docker run \
     -v "$SCRIPT_DIR"/../catalog/git.properties:/etc/trino/catalog/git.properties \
     -v "$SCRIPT_DIR"/../catalog/github.properties:/etc/trino/catalog/github.properties \
     -v "$SCRIPT_DIR"/../catalog/slack.properties:/etc/trino/catalog/slack.properties \
-    -v "$SCRIPT_DIR"/../catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
+    -v "$SCRIPT_DIR"/../catalog/trinocicd-iceberg.properties:/etc/trino/catalog/trinocicd.properties \
+    -v "$SCRIPT_DIR"/../catalog/legacy.properties:/etc/trino/catalog/legacy.properties \
     -v "$SCRIPT_DIR"/hive-cache:/opt/hive-cache \
     -v "$SCRIPT_DIR"/../sql:/sql \
     -e AWS_ACCESS_KEY_ID \
     -e AWS_SECRET_ACCESS_KEY \
     -e AWS_SESSION_TOKEN \
     -e AWS_REGION \
+    -e LEGACY_AWS_ACCESS_KEY_ID \
+    -e LEGACY_AWS_SECRET_ACCESS_KEY \
     -e GITHUB_TOKEN \
     -e SLACK_API_TOKEN \
     -p 8080:8080 \
@@ -84,4 +87,4 @@ until status=$(docker inspect $CONTAINER_NAME --format "{{json .State.Health.Sta
     sleep 10
 done
 
-echo >&2 "Status is: $status, connect to trino://localhost:8080/trinocicd/v2"
+echo >&2 "Status is: $status, connect to trino://localhost:8080/trinocicd/github"
