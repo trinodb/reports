@@ -6,7 +6,7 @@ on:
     - cron: '30 1 * * *'
 
 concurrency:
-  group: ${{ github.workflow }}
+  group: iceberg-writers
   cancel-in-progress: false
 
 jobs:
@@ -25,7 +25,7 @@ jobs:
           CONTAINER_ID=$(docker run \
             -v $(pwd)/etc/config.properties:/etc/trino/config.properties \
             -v $(pwd)/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
-            -v $(pwd)/catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
+            -v $(pwd)/catalog/trinocicd-iceberg.properties:/etc/trino/catalog/trinocicd.properties \
             -v $(pwd)/hive-cache:/opt/hive-cache \
             -v $(pwd)/sql:/sql \
             -e AWS_ACCESS_KEY_ID \
@@ -50,7 +50,7 @@ jobs:
         run: |
           docker exec \
             trino \
-            trino --catalog trinocicd --schema v2 \
+            trino --catalog trinocicd --schema github \
             -f /sql/optimize.sql
       - name: Dump Trino logs
         if: always()

@@ -5,7 +5,7 @@ Analysis of the [Trino](https://github.com/trinodb/trino) project CI workflows.
 This repo is an example of using Trino to perform ETL (extract, transform, and load)
 and generate basic reports. The complete workflow is:
 
-1. Use [a custom connector](https://github.com/nineinchnick/trino-rest) to read Github's API data and save it into an S3 bucket.
+1. Use [a custom connector](https://github.com/nineinchnick/trino-openapi) to read Github's API data and save it into Iceberg tables in an S3 bucket.
 1. Run some [queries](https://github.com/trinodb/reports/blob/master/sql) to analyze the data stored in the S3 bucket, save results to a file and publish it to [Github Pages](https://trinodb.github.io/reports/reports/).
 
 All the of the above is repeatable and executed on a schedule using Github Actions.
@@ -41,15 +41,16 @@ trino trino://localhost:8080/trinocicd/github --output-format=ALIGNED < sql/pr/b
 ## Sync
 
 [The sync workflow](https://github.com/trinodb/reports/blob/master/.github/workflows/sync.yml):
-1. Downloads and extracts a zip with the custom `trino-rest` connector.
-1. Starts Trino in a container with both this additional connector (plugin)
-   and its [configuration](https://github.com/trinodb/reports/blob/master/catalog/github.properties) mounted as volumes.
-   It also includes [configuration](https://github.com/trinodb/reports/blob/master/catalog/hive.properties) for a built-in connector
-   that can read and write to an S3 bucket. The required credentials are passed
+1. Downloads and extracts a zip with the custom `trino-openapi` connector.
+1. Starts Trino in a container with both this additional connector (plugin),
+   its [configuration](https://github.com/trinodb/reports/blob/master/catalog/github-openapi.properties),
+   and [the GitHub spec](https://github.com/trinodb/reports/blob/master/sync/specs) it reads, mounted as volumes.
+   It also includes [configuration](https://github.com/trinodb/reports/blob/master/catalog/trinocicd-iceberg.properties) for a built-in connector
+   that can read and write Iceberg tables in an S3 bucket. The required credentials are passed
    as environmental variables, populated from Github Secrets.
-1. It runs a series of queries similar to `INSERT INTO hive.<table> SELECT * FROM github.<table>`
-   to save the data. See the [Sync](https://github.com/nineinchnick/trino-rest/blob/master/trino-rest-github/src/main/java/pl/net/was/rest/github/Sync.java)
-   class from `trino-rest` for more details.
+1. It runs the [sync program](https://github.com/trinodb/reports/blob/master/sync/Sync.java), which runs the SQL statements from
+   [sync/github](https://github.com/trinodb/reports/blob/master/sync/github), like `MERGE INTO trinocicd.github.<table> USING (SELECT ... FROM github.default.<table>)`,
+   reading only data that changed since the previous run. See [the migration plan](https://github.com/trinodb/reports/blob/master/sync/MIGRATION.md) for more details.
 
 ## Reports
 
