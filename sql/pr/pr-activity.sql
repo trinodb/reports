@@ -113,7 +113,7 @@ pulls AS (
       date_trunc('month', event_at) AS time_label
     , count(*) AS num_total
   FROM (
-    SELECT event_at, CASE WHEN is_author != lag(is_author) OVER (PARTITION BY number ORDER BY event_at) THEN 1 END AS flipped
+    SELECT event_at, CASE WHEN is_author != lag(is_author) OVER (PARTITION BY number ORDER BY event_at, is_author, event) THEN 1 END AS flipped
     FROM events
   ) a
   WHERE a.flipped = 1

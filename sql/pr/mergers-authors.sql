@@ -17,7 +17,7 @@ WITH pairs AS (
       , ai_name
       , sum(commits_in_pr) AS commits
       , count(*) AS pull_requests
-      , row_number() OVER (PARTITION BY ci_name ORDER BY sum(commits_in_pr) DESC) AS author_rank
+      , row_number() OVER (PARTITION BY ci_name ORDER BY sum(commits_in_pr) DESC, ai_name) AS author_rank
     FROM pairs
     GROUP BY 1, 2
 )

@@ -52,7 +52,7 @@ pulls AS (
 , review_rounds AS (
   SELECT number, count(flipped) AS rounds
   FROM (
-    SELECT number, CASE WHEN is_author != lag(is_author) OVER (PARTITION BY number ORDER BY event_at) THEN 1 END AS flipped
+    SELECT number, CASE WHEN is_author != lag(is_author) OVER (PARTITION BY number ORDER BY event_at, is_author, event) THEN 1 END AS flipped
     FROM events
   ) a
   GROUP BY 1
