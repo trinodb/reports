@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS trinocicd.github.commits (
+    owner varchar,
+    repo varchar,
+    sha varchar,
+    commit_message varchar,
+    commit_tree_sha varchar,
+    commit_comment_count bigint,
+    commit_verified boolean,
+    commit_verification_reason varchar,
+    author_name varchar,
+    author_email varchar,
+    author_date timestamp(6),
+    author_id bigint,
+    author_login varchar,
+    committer_name varchar,
+    committer_email varchar,
+    committer_date timestamp(6),
+    committer_id bigint,
+    committer_login varchar,
+    parent_shas array(varchar)
+);

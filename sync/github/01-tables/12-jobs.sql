@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS trinocicd.github.jobs (
+    owner varchar,
+    repo varchar,
+    id bigint,
+    run_id bigint,
+    run_attempt bigint,
+    node_id varchar,
+    head_sha varchar,
+    head_branch varchar,
+    workflow_name varchar,
+    status varchar,
+    conclusion varchar,
+    created_at timestamp(6),
+    started_at timestamp(6),
+    completed_at timestamp(6),
+    name varchar,
+    steps array(row(status varchar, conclusion varchar, name varchar, number bigint, started_at timestamp(6), completed_at timestamp(6))),
+    labels array(varchar),
+    runner_id bigint,
+    runner_name varchar,
+    runner_group_name varchar
+);

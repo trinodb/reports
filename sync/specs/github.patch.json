@@ -1,0 +1,207 @@
+{
+  "x-trino": {
+    "rateLimitResetHeader": "x-ratelimit-reset",
+    "rateLimitResetFormat": "epochSeconds",
+    "rateLimitRemainingHeader": "x-ratelimit-remaining",
+    "errorPath": "$response.body#/message"
+  },
+  "paths": {
+    "/repos/{owner}/{repo}/actions/runs": {
+      "get": {
+        "x-trino": {
+          "pageParam": "page",
+          "limitParam": "per_page",
+          "resultsPath": "workflow_runs",
+          "totalResultsPath": "total_count",
+          "parameterDefaults": {
+            "per_page": 100
+          }
+        }
+      }
+    },
+    "/repos/{owner}/{repo}/actions/runs/{run_id}/jobs": {
+      "get": {
+        "x-trino": {
+          "pageParam": "page",
+          "limitParam": "per_page",
+          "resultsPath": "jobs",
+          "totalResultsPath": "total_count",
+          "parameterDefaults": {
+            "per_page": 100,
+            "filter": "all"
+          }
+        }
+      }
+    },
+    "/repos/{owner}/{repo}/actions/workflows": {
+      "get": {
+        "x-trino": {
+          "pageParam": "page",
+          "limitParam": "per_page",
+          "resultsPath": "workflows",
+          "totalResultsPath": "total_count",
+          "parameterDefaults": {
+            "per_page": 100
+          }
+        }
+      }
+    },
+    "/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations": {
+      "get": {
+        "x-trino": {
+          "pageParam": "page",
+          "limitParam": "per_page",
+          "parameterDefaults": {
+            "per_page": 100
+          }
+        }
+      }
+    },
+    "/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs": {
+      "get": {
+        "x-trino": {
+          "pageParam": "page",
+          "limitParam": "per_page",
+          "resultsPath": "check_runs",
+          "totalResultsPath": "total_count",
+          "parameterDefaults": {
+            "per_page": 100,
+            "filter": "all"
+          }
+        }
+      }
+    },
+    "/repos/{owner}/{repo}/commits": {
+      "get": {
+        "x-trino": {
+          "pageParam": "page",
+          "limitParam": "per_page",
+          "parameterDefaults": {
+            "per_page": 100
+          }
+        }
+      }
+    },
+    "/repos/{owner}/{repo}/issues": {
+      "get": {
+        "x-trino": {
+          "pageParam": "page",
+          "limitParam": "per_page",
+          "sortParam": "sort",
+          "sortValues": {
+            "created_at": "created",
+            "updated_at": "updated"
+          },
+          "directionParam": "direction",
+          "ascendingValue": "asc",
+          "descendingValue": "desc",
+          "rangeFilters": {
+            "updated_at": {
+              "lowerParam": "since",
+              "lowerInclusive": true,
+              "exact": false
+            }
+          },
+          "parameterDefaults": {
+            "per_page": 100,
+            "state": "all"
+          }
+        }
+      }
+    },
+    "/repos/{owner}/{repo}/issues/comments": {
+      "get": {
+        "x-trino": {
+          "pageParam": "page",
+          "limitParam": "per_page",
+          "sortParam": "sort",
+          "sortValues": {
+            "created_at": "created",
+            "updated_at": "updated"
+          },
+          "directionParam": "direction",
+          "ascendingValue": "asc",
+          "descendingValue": "desc",
+          "rangeFilters": {
+            "updated_at": {
+              "lowerParam": "since",
+              "lowerInclusive": true,
+              "exact": false
+            }
+          },
+          "parameterDefaults": {
+            "per_page": 100
+          }
+        }
+      }
+    },
+    "/repos/{owner}/{repo}/pulls": {
+      "get": {
+        "x-trino": {
+          "pageParam": "page",
+          "limitParam": "per_page",
+          "sortParam": "sort",
+          "sortValues": {
+            "created_at": "created",
+            "updated_at": "updated"
+          },
+          "directionParam": "direction",
+          "ascendingValue": "asc",
+          "descendingValue": "desc",
+          "parameterDefaults": {
+            "per_page": 100,
+            "state": "all"
+          }
+        }
+      }
+    },
+    "/repos/{owner}/{repo}/pulls/comments": {
+      "get": {
+        "x-trino": {
+          "pageParam": "page",
+          "limitParam": "per_page",
+          "sortParam": "sort",
+          "sortValues": {
+            "created_at": "created",
+            "updated_at": "updated"
+          },
+          "directionParam": "direction",
+          "ascendingValue": "asc",
+          "descendingValue": "desc",
+          "rangeFilters": {
+            "updated_at": {
+              "lowerParam": "since",
+              "lowerInclusive": true,
+              "exact": false
+            }
+          },
+          "parameterDefaults": {
+            "per_page": 100
+          }
+        }
+      }
+    },
+    "/repos/{owner}/{repo}/pulls/{pull_number}/commits": {
+      "get": {
+        "x-trino": {
+          "pageParam": "page",
+          "limitParam": "per_page",
+          "parameterDefaults": {
+            "per_page": 100
+          }
+        }
+      }
+    },
+    "/repos/{owner}/{repo}/pulls/{pull_number}/reviews": {
+      "get": {
+        "x-trino": {
+          "pageParam": "page",
+          "limitParam": "per_page",
+          "parameterDefaults": {
+            "per_page": 100
+          }
+        }
+      }
+    }
+  }
+}
