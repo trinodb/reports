@@ -3,7 +3,7 @@ WITH
 pulls AS (
   SELECT
     cast(now() AT TIME ZONE 'UTC' AS TIMESTAMP) - p.created_at AS age
-  FROM unique_pulls p
+  FROM pulls p
   WHERE p.owner = 'trinodb' AND p.repo = 'trino' AND p.closed_at IS NULL
 )
 , histogram AS (

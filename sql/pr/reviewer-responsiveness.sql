@@ -2,7 +2,7 @@
 WITH
 pulls AS (
   SELECT *
-  FROM unique_pulls
+  FROM pulls
   WHERE owner = 'trinodb' AND repo = 'trino'
 )
 , reviews AS (
@@ -19,16 +19,21 @@ pulls AS (
     , pc.created_at AS event_at
     , pc.user_login = p.user_login AS is_author
   FROM pulls p
-  JOIN unique_issue_comments pc ON pc.issue_url = p.issue_url
+  JOIN issue_comments pc ON (pc.owner, pc.repo, pc.issue_number) = (p.owner, p.repo, p.number)
   WHERE pc.user_login != 'cla-bot[bot]'
+)
+, latest_pull_commits AS (
+  -- like the unique_pull_commits view of trino-rest, keep the newest commit for every set of parent commits
+  SELECT *, row_number() OVER (PARTITION BY owner, repo, pull_number, parent_shas ORDER BY committer_date DESC) AS rownum
+  FROM pull_commits
 )
 , commits AS (
   SELECT
       c.pull_number AS number
     , c.committer_date AS event_at
-    , c.author_login = p.user_login AS is_author
+    , c.author_login IS NOT DISTINCT FROM p.user_login AS is_author
   FROM pulls p
-  JOIN unique_pull_commits c ON (p.owner, p.repo, p.number) = (c.owner, c.repo, c.pull_number)
+  JOIN latest_pull_commits c ON (p.owner, p.repo, p.number) = (c.owner, c.repo, c.pull_number) AND c.rownum = 1
 )
 , events AS (
   SELECT number, created_at AS event_at, true AS is_author, 'created' AS event

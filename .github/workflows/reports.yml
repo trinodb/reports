@@ -12,17 +12,24 @@ concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: true
 
+permissions:
+  contents: write
+  id-token: write
+
 jobs:
   run:
     runs-on: ubuntu-latest
     env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
       TRINO_VERSION: 484
       TRINO_GIT_VERSION: "1.0"
     steps:
       - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        with:
+          role-to-assume: arn:aws:iam::428825817873:role/trino-reports-github
+          aws-region: eu-central-1
+          # Trino reads the credentials only when it starts, so they have to last as long as the job
+          role-duration-seconds: 21600
       - name: Install dependencies
         run: |
           sudo apt update
@@ -37,10 +44,11 @@ jobs:
             -v $(pwd)/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
             -v $(pwd)/trino-git-$TRINO_GIT_VERSION:/usr/lib/trino/plugin/git \
             -v $(pwd)/catalog/git.properties:/etc/trino/catalog/git.properties \
-            -v $(pwd)/catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
+            -v $(pwd)/catalog/trinocicd-iceberg.properties:/etc/trino/catalog/trinocicd.properties \
             -v $(pwd)/hive-cache:/opt/hive-cache \
             -e AWS_ACCESS_KEY_ID \
             -e AWS_SECRET_ACCESS_KEY \
+            -e AWS_SESSION_TOKEN \
             -e AWS_REGION \
             -p 8080:8080 \
             --name trino \

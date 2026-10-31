@@ -9,7 +9,7 @@ months AS (
         p.number
       , p.created_at
       , min(r.submitted_at) AS reviewed_at
-    FROM unique_pulls p
+    FROM pulls p
     JOIN reviews r ON (p.owner, p.repo, p.number) = (r.owner, r.repo, r.pull_number)
       AND p.user_login != r.user_login
     WHERE p.owner = 'trinodb' AND p.repo = 'trino'
@@ -36,8 +36,8 @@ months AS (
         p.number
       , p.created_at
       , min(c.created_at) AS commented_at
-    FROM unique_pulls p
-    JOIN unique_issue_comments c ON (p.owner, p.repo, p.issue_url) = (c.owner, c.repo, c.issue_url)
+    FROM pulls p
+    JOIN issue_comments c ON (p.owner, p.repo, p.number) = (c.owner, c.repo, c.issue_number)
       AND c.user_login != p.user_login
       AND c.user_login != 'cla-bot[bot]'
     WHERE p.owner = 'trinodb' AND p.repo = 'trino'

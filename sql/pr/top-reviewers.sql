@@ -29,7 +29,7 @@ reviews_not_replies AS (
       , count(*) AS reviews_count
       , 0 AS approved_count
       , count(*) AS commented_count
-    FROM unique_issue_comments c
+    FROM issue_comments c
     JOIN memory.default.gh_idents ai ON CONTAINS(ai.logins, c.user_login)
     WHERE c.owner = 'trinodb' AND c.repo = 'trino'
     AND c.html_url like 'https://github.com/trinodb/trino/pull/%'
