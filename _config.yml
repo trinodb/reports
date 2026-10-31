@@ -9,6 +9,7 @@ exclude:
   - bin/
   - catalog/
   - sql/
+  - sync/
   - vendor/
   - _site/
   - _sass/
