@@ -60,7 +60,8 @@ docker run \
     -v "$SCRIPT_DIR"/../catalog/git.properties:/etc/trino/catalog/git.properties \
     -v "$SCRIPT_DIR"/../catalog/github.properties:/etc/trino/catalog/github.properties \
     -v "$SCRIPT_DIR"/../catalog/slack.properties:/etc/trino/catalog/slack.properties \
-    -v "$SCRIPT_DIR"/../catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
+    -v "$SCRIPT_DIR"/../catalog/trinocicd-iceberg.properties:/etc/trino/catalog/trinocicd.properties \
+    -v "$SCRIPT_DIR"/../catalog/trinocicd.properties:/etc/trino/catalog/legacy.properties \
     -v "$SCRIPT_DIR"/hive-cache:/opt/hive-cache \
     -v "$SCRIPT_DIR"/../sql:/sql \
     -e AWS_ACCESS_KEY_ID \
@@ -84,4 +85,4 @@ until status=$(docker inspect $CONTAINER_NAME --format "{{json .State.Health.Sta
     sleep 10
 done
 
-echo >&2 "Status is: $status, connect to trino://localhost:8080/trinocicd/v2"
+echo >&2 "Status is: $status, connect to trino://localhost:8080/trinocicd/github"

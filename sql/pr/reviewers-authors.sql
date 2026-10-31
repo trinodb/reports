@@ -7,8 +7,7 @@ pulls AS (
       , p.number
       , p.user_login
       , p.created_at
-      , p.issue_url
-    FROM unique_pulls p
+    FROM pulls p
     WHERE p.owner = 'trinodb' AND p.repo = 'trino' AND p.created_at > CURRENT_DATE - interval '1' year
 )
 , reviews AS (
@@ -32,7 +31,7 @@ pulls AS (
       , p.user_login AS author
       , r.user_login AS reviewer
       , count(*) AS comments
-      , count(*) FILTER (WHERE rc.in_reply_to_id != 0) AS replies
+      , count(*) FILTER (WHERE rc.in_reply_to_id IS NOT NULL) AS replies
     FROM reviews r
     JOIN pulls p ON (p.owner, p.repo, p.number) = (r.owner, r.repo, r.pull_number)
     LEFT JOIN review_comments rc ON (r.owner, r.repo, r.id) = (rc.owner, rc.repo, rc.pull_request_review_id)
@@ -72,8 +71,13 @@ pulls AS (
       , count(DISTINCT pc.id) FILTER (WHERE p.user_login = pc.user_login) AS num_pr_author_comments
       , count(DISTINCT pc.id) FILTER (WHERE p.user_login != pc.user_login) AS num_pr_reviewer_comments
     FROM pulls p
-    JOIN unique_issue_comments pc ON pc.issue_url = p.issue_url
+    JOIN issue_comments pc ON (pc.owner, pc.repo, pc.issue_number) = (p.owner, p.repo, p.number)
     GROUP BY 1, 2
+)
+, latest_pull_commits AS (
+    -- like the unique_pull_commits view of trino-rest, keep the newest commit for every set of parent commits
+    SELECT *, row_number() OVER (PARTITION BY owner, repo, pull_number, parent_shas ORDER BY committer_date DESC) AS rownum
+    FROM pull_commits
 )
 , commits AS (
     SELECT
@@ -81,8 +85,8 @@ pulls AS (
       , p.user_login AS author
       , count(DISTINCT c.sha) AS num_merged_commits
     FROM pulls p
-    JOIN unique_pull_commits c ON (p.owner, p.repo, p.number) = (c.owner, c.repo, c.pull_number)
-    WHERE c.committer_login != '' AND c.committer_date > CURRENT_DATE - interval '1' year
+    JOIN latest_pull_commits c ON (p.owner, p.repo, p.number) = (c.owner, c.repo, c.pull_number) AND c.rownum = 1
+    WHERE c.committer_login IS NOT NULL AND c.committer_date > CURRENT_DATE - interval '1' year
     -- exclude reviewers merging on own PRs
     AND c.committer_login != p.user_login
     GROUP BY 1, 2

@@ -5,9 +5,8 @@ WITH
             owner,
             repo,
             number AS pull_number,
-            created_at,
-            issue_url
-        FROM unique_pulls
+            created_at
+        FROM pulls
         WHERE owner = 'trinodb' AND repo = 'trino'
         AND state = 'open'
     ),
@@ -24,7 +23,7 @@ WITH
             p.pull_number AS pull_number,
             CAST (CURRENT_TIMESTAMP AT TIME ZONE 'UTC' AS TIMESTAMP) - max(ic.created_at) AS time_since_comment
         FROM pulls p
-        JOIN issue_comments ic ON ic.issue_url = p.issue_url
+        JOIN issue_comments ic ON (ic.owner, ic.repo, ic.issue_number) = (p.owner, p.repo, p.pull_number)
         GROUP BY 1
     ),
     last_commits AS (

@@ -35,7 +35,7 @@ export AWS_REGION AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY GITHUB_TOKEN
 
 Now you can run any query from the `sql` directory using [the Trino CLI](https://trino.io/docs/current/installation/cli.html#installation):
 ```bash
-trino trino://localhost:8080/trinocicd/v2 --output-format=ALIGNED < sql/pr/burndown.sql
+trino trino://localhost:8080/trinocicd/github --output-format=ALIGNED < sql/pr/burndown.sql
 ```
 
 ## Sync

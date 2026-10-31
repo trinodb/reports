@@ -2,7 +2,7 @@
 WITH
 prs_per_author AS (
     SELECT p.user_login, count(*) AS num_prs
-    FROM unique_pulls p
+    FROM pulls p
     WHERE owner = 'trinodb' AND repo = 'trino'
     GROUP BY 1
 )
