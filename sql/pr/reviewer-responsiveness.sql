@@ -44,7 +44,7 @@ pulls AS (
   SELECT number, response_time
   FROM events MATCH_RECOGNIZE (
     PARTITION BY number
-    ORDER BY event_at
+    ORDER BY event_at, is_author, event
     MEASURES
         min(B.event_at) - min(A.event_at) AS response_time
     ONE ROW PER MATCH

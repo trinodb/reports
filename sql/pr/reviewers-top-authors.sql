@@ -33,7 +33,7 @@ pulls AS (
       , sum(comments) AS comments
       , count(distinct pull_number) AS pull_requests
       , count(*) AS reviews
-      , row_number() OVER (PARTITION BY ri_name ORDER BY sum(comments) DESC) AS author_rank
+      , row_number() OVER (PARTITION BY ri_name ORDER BY sum(comments) DESC, ai_name) AS author_rank
     FROM pairs
     GROUP BY 1, 2
 )

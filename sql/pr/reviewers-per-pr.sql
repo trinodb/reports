@@ -30,4 +30,5 @@ SELECT
   , value AS "Number of reviews"
   , bar(value / CAST(max(value) OVER () AS double), 20, rgb(0, 155, 0), rgb(255, 0, 0)) AS "Chart"
 FROM grouped
+ORDER BY bucket
 ;
