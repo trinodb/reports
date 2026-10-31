@@ -122,3 +122,7 @@ _site
 .jekyll-metadata
 vendor
 .bundle
+
+# Plugins and data of the local migration verification
+sync/verify/.plugins/
+sync/verify/.data/
