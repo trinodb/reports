@@ -6,29 +6,38 @@ on:
     - cron: '0 6 * * 1'
 
 concurrency:
-  group: ${{ github.workflow }}
+  # also used by other workflows writing to the Iceberg tables, so their commits don't conflict
+  group: iceberg-writers
   cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
       SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
       TRINO_VERSION: 484
-      TRINO_REST_VERSION: "0.178"
-      TRINO_DEST_SCHEMA: trinoslack.slack
-      TRINO_SRC_SCHEMA: slack.default
-      SYNC_CHANNELS: announcements,python,kubernetes,iceberg,delta-lake,trino-gateway,trino-gateway-dev,core-dev,dev,troubleshooting,beginner
-      SYNC_TABLES: users,channels,channel_members,messages,replies
+      TRINO_OPENAPI_VERSION: "2.2"
     steps:
       - uses: actions/checkout@v7
-      - name: Download trino-rest
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        with:
+          role-to-assume: arn:aws:iam::428825817873:role/trino-reports-github
+          aws-region: eu-central-1
+          # Trino reads the credentials only when it starts, so they have to last as long as the job
+          role-duration-seconds: 21600
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 25
+      - name: Download trino-openapi
         run: |
-          curl -fLOsS https://github.com/nineinchnick/trino-rest/releases/download/v$TRINO_REST_VERSION/trino-rest-slack-$TRINO_REST_VERSION.zip
-          unzip trino-rest-slack-$TRINO_REST_VERSION.zip
+          curl -fLOsS https://github.com/nineinchnick/trino-openapi/releases/download/v$TRINO_OPENAPI_VERSION/trino-openapi-$TRINO_OPENAPI_VERSION.zip
+          unzip -q trino-openapi-$TRINO_OPENAPI_VERSION.zip
+          curl -fLsS -o trino-jdbc.jar https://repo1.maven.org/maven2/io/trino/trino-jdbc/$TRINO_VERSION/trino-jdbc-$TRINO_VERSION.jar
       - name: Start Trino
         run: |
           cat <<EOF >config.properties
@@ -43,22 +52,20 @@ jobs:
           CONTAINER_ID=$(docker run \
             -v $(pwd)/config.properties:/etc/trino/config.properties \
             -v $(pwd)/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
-            -v $(pwd)/trino-rest-slack-$TRINO_REST_VERSION:/usr/lib/trino/plugin/slack \
-            -v $(pwd)/catalog/slack.properties:/etc/trino/catalog/slack.properties \
-            -v $(pwd)/catalog/trinoslack.properties:/etc/trino/catalog/trinoslack.properties \
+            -v $(pwd)/trino-openapi-$TRINO_OPENAPI_VERSION:/usr/lib/trino/plugin/openapi \
+            -v $(pwd)/sync/specs/slack.json:/etc/trino/specs/slack.json \
+            -v $(pwd)/catalog/slack-openapi.properties:/etc/trino/catalog/slack.properties \
+            -v $(pwd)/catalog/trinocicd-iceberg.properties:/etc/trino/catalog/trinocicd.properties \
             -v $(pwd)/hive-cache:/opt/hive-cache \
-            -v $(pwd)/sql:/sql \
             -e AWS_ACCESS_KEY_ID \
             -e AWS_SECRET_ACCESS_KEY \
+            -e AWS_SESSION_TOKEN \
             -e AWS_REGION \
             -e SLACK_API_TOKEN \
             -p 8080:8080 \
             --name trino \
             -d \
             trinodb/trino:$TRINO_VERSION)
-          SERVER_IP=$(docker inspect --format '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$CONTAINER_ID")
-          echo "CONTAINER_ID=$CONTAINER_ID" >> $GITHUB_ENV
-          echo "SERVER_IP=$SERVER_IP" >> $GITHUB_ENV
           i=0
           until docker inspect "${CONTAINER_ID}" --format "{{json .State.Health.Status }}" | grep -q '"healthy"'; do
               if [[ $((i++)) -ge 10 ]]; then
@@ -68,16 +75,11 @@ jobs:
               sleep 10
           done
       - name: Run Sync
+        env:
+          SYNC_TRINO_URL: jdbc:trino://localhost:8080
+          SYNC_STEPS_DIR: sync/slack
         run: |
-          docker run \
-            -e TRINO_DEST_SCHEMA \
-            -e TRINO_SRC_SCHEMA \
-            -e SYNC_CHANNELS \
-            -e SYNC_TABLES \
-            -e TRINO_URL=jdbc:trino://$SERVER_IP:8080/github/default \
-            --rm \
-            nineinchnick/trino-rest:$TRINO_REST_VERSION \
-            java -cp "/usr/lib/trino/plugin/slack/*" pl.net.was.rest.slack.Sync
+          java -cp trino-jdbc.jar sync/Sync.java
       - name: Dump Trino logs
         if: always()
         run: |

@@ -49,3 +49,27 @@ Then update the commit in this file, and check that the tables used by
 Other tables of the `github` catalog return only the first page of results.
 Before a step reads another paginated operation, add it to the patch, for
 example by copying its entry from the patch in trino-openapi.
+
+## Slack
+
+`slack.json` is written for the
+[Web API methods](https://docs.slack.dev/reference/methods) that `sync/slack`
+reads: `users.list`, `conversations.list`, `conversations.members`,
+`conversations.history`, and `conversations.replies`. Slack publishes only an
+OpenAPI 2 spec, in the archived `slackapi/slack-api-specs` repository, and the
+connector reads only OpenAPI 3. The spec declares only the fields saved by the
+sync, and the `x-trino` extension of every method sets:
+
+* `tableName`, like `messages`, instead of `conversations_history`;
+* cursor pagination, with `cursorParam` and `nextCursorPath`, and the results
+  at `resultsPath`;
+* `errorPath`, because Slack responds to errors with status `200`, `"ok": false`,
+  and the error code in `error`, like `channel_not_found`;
+* `parameterDefaults`, with the page size in `limit`, and `public_channel` in
+  `types` of `conversations.list`.
+
+Timestamps of messages, like `ts` and `thread_ts`, are strings with
+microseconds, like `"1700000000.123456"`. They're declared as numbers, so
+they're read exactly as `DECIMAL(38, 10)`, and the `ts` parameter of
+`conversations.replies`, which is a string, gets a separate column, `ts_req`,
+instead of sharing the column of the `ts` field.
