@@ -10,14 +10,14 @@ The age columns count from when the pull request got into its state. Newcomers h
 | State                                   | Next step by | Pull requests | From newcomers | Under 1 week | 1 to 4 weeks | 1 to 3 months | 3 to 12 months | Over 1 year | Median wait | Marked stale | Labeled stale-ignore |
 | --------------------------------------- | ------------ | -------------:| --------------:| ------------:| ------------:| -------------:| --------------:| -----------:| ----------- | ------------:| --------------------:|
 | Approved, not merged                    | Maintainers  |            34 |              7 |            9 |           10 |             5 |              6 |           4 | 22d 7h      |            3 |                    7 |
-| No response yet                         | Reviewers    |            52 |             14 |            8 |           20 |            15 |              9 |           0 | 22d 12h     |           10 |                    7 |
-| Author replied, waiting on reviewers    | Reviewers    |            75 |             23 |           12 |           15 |            28 |             11 |           9 | 42d 17h     |           14 |                   24 |
-| Reviewer replied, waiting on the author | Author       |            58 |              9 |            9 |           11 |            12 |              9 |          17 | 63d 11h     |           10 |                   33 |
-| CLA not signed                          | Author       |            48 |             48 |           12 |           27 |             8 |              0 |           1 | 14d 18h     |            5 |                    1 |
-| Draft                                   | Author       |            32 |              4 |            7 |           13 |             7 |              4 |           1 | 19d 6h      |            7 |                   11 |
-| All open pull requests                  |              |           299 |            105 |           57 |           96 |            75 |             39 |          32 | 25d 16h     |           49 |                   83 |
+| No response yet                         | Reviewers    |            52 |             14 |            8 |           20 |            15 |              9 |           0 | 22d 13h     |           10 |                    7 |
+| Author replied, waiting on reviewers    | Reviewers    |            76 |             23 |           13 |           15 |            28 |             11 |           9 | 41d 8h      |           14 |                   24 |
+| Reviewer replied, waiting on the author | Author       |            57 |              9 |            8 |           11 |            12 |              9 |          17 | 63d 11h     |           10 |                   33 |
+| CLA not signed                          | Author       |            48 |             48 |           11 |           28 |             8 |              0 |           1 | 14d 18h     |            5 |                    1 |
+| Draft                                   | Author       |            32 |              4 |            7 |           13 |             7 |              4 |           1 | 19d 7h      |            7 |                   11 |
+| All open pull requests                  |              |           299 |            105 |           56 |           97 |            75 |             39 |          32 | 25d 17h     |           49 |                   83 |
 
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/maintaining/01-triage.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/maintaining/01-triage.sql)
 
 ## First pull requests without any response
 
@@ -41,7 +41,7 @@ Marked stale: the stale bot closes it 21 days after marking it, unless someone a
 | <a href="https://github.com/trinodb/trino/pull/31909">\#31909</a>  | Fix query failure on unsigned Parquet integers                        | <a href="https://github.com/wombatu-kun">wombatu-kun</a>          |           12 | M    |       |                     |              |
 | <a href="https://github.com/trinodb/trino/pull/31949">\#31949</a>  | Fix pruning of decimal over Parquet integer column                    | <a href="https://github.com/wombatu-kun">wombatu-kun</a>          |           10 | M    | hive  |                     |              |
 
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/maintaining/02-newcomers-without-response.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/maintaining/02-newcomers-without-response.sql)
 
 ## Approved, not merged
 
@@ -62,7 +62,7 @@ Check that the author answered all comments and that CI passed. Bots' pull reque
 | <a href="https://github.com/trinodb/trino/pull/31509">\#31509</a>  | Treat now\(\) as a current time function in materialized views           | <a href="https://github.com/okayhooni">okayhooni</a>                  |                  18 | hashhar                 | findinpath             | author     | M    | iceberg                     |              |
 | <a href="https://github.com/trinodb/trino/pull/31786">\#31786</a>  | Add backoff between JUnit flaky test retries                             | <a href="https://github.com/bvolpato">bvolpato</a>                    |                  16 | findepi                 |                        | author     | M    |                             |              |
 | <a href="https://github.com/trinodb/trino/pull/30891">\#30891</a>  | Support REST catalog server-side scan planning in loadTable              | <a href="https://github.com/JohnEarle">JohnEarle</a>                  |                  13 | chenjian2664            | JohnFitzpatrick44      | author     | M    | iceberg                     |              |
-| <a href="https://github.com/trinodb/trino/pull/31546">\#31546</a>  | Retain NDV statistics across snapshot expiration in Iceberg              | <a href="https://github.com/FrancescoCastaldi">FrancescoCastaldi</a>  |                   9 | ebyhr, raunaqmorarka    |                        | author     | M    | docs, iceberg               |              |
+| <a href="https://github.com/trinodb/trino/pull/31546">\#31546</a>  | Retain NDV statistics across snapshot expiration in Iceberg              | <a href="https://github.com/FrancescoCastaldi">FrancescoCastaldi</a>  |                   9 | raunaqmorarka, ebyhr    |                        | author     | M    | docs, iceberg               |              |
 | <a href="https://github.com/trinodb/trino/pull/31957">\#31957</a>  | Write column orders in the Parquet footer                                | <a href="https://github.com/nanjeshramesh">nanjeshramesh</a>          |                   8 | raunaqmorarka           |                        | reviewer   | M    | delta-lake                  |              |
 | <a href="https://github.com/trinodb/trino/pull/31537">\#31537</a>  | Fix language function leak on workers                                    | <a href="https://github.com/hqbhoho">hqbhoho</a>                      |                   8 | electrum                |                        | author     | M    |                             |              |
 | <a href="https://github.com/trinodb/trino/pull/30977">\#30977</a>  | Use table schema when reading Iceberg branches                           | <a href="https://github.com/stefan-toubia">stefan-toubia</a>          |                   4 | raunaqmorarka           |                        | reviewer   | M    | docs, iceberg               |              |
@@ -85,7 +85,7 @@ Check that the author answered all comments and that CI passed. Bots' pull reque
 | <a href="https://github.com/trinodb/trino/pull/31774">\#31774</a>  | Migrate Faker and BlackHole views to SaveMode                            | <a href="https://github.com/nanjeshramesh">nanjeshramesh</a>          |                  12 | none                    | nineinchnick           | author     | M    | blackhole, faker            |              |
 | <a href="https://github.com/trinodb/trino/pull/31999">\#31999</a>  | Expose bounded fault-tolerant scheduling wait diagnostics                | <a href="https://github.com/zhangxinyao88">zhangxinyao88</a>          |                   5 | none                    | p3tr0sz                | author     | M    |                             |              |
 
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/maintaining/03-approved-not-merged.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/maintaining/03-approved-not-merged.sql)
 
 ## Waiting on reviewers: pick from the top
 
@@ -96,7 +96,7 @@ First come authors with fewer than 10 merged pull requests whose pull request th
 | ------------------------------------------------------ | ---------------------------------------------------------------------- | --------------------------------------------------------- | ----------------- | ------------:| --------------- | ---- | ------------------------------------------------------------------ | ------------------------ | ------------ |
 | <a href="https://github.com/trinodb/trino/pull/30602">\#30602</a>  | Always write compression codec to Iceberg table metadata               | <a href="https://github.com/bbreak">bbreak</a>                        | 1-9 merged PRs    |           98 | no response yet | M    | pettyjamesm, SongChujun, ebyhr                                     | iceberg, lakehouse       | marked stale |
 | <a href="https://github.com/trinodb/trino/pull/30421">\#30421</a>  | Add Array type support to ClickHouse connector                         | <a href="https://github.com/wonju-dev">wonju-dev</a>                  | no merged PRs yet |           75 | author replied  | L    | krvikash                                                           | docs, clickhouse         | marked stale |
-| <a href="https://github.com/trinodb/trino/pull/31112">\#31112</a>  | Fix width\_bucket arithmetic overflow                                  | <a href="https://github.com/laserninja">laserninja</a>                | 1-9 merged PRs    |           59 | no response yet | S    | findepi                                                            |                          | marked stale |
+| <a href="https://github.com/trinodb/trino/pull/31112">\#31112</a>  | Fix width\_bucket arithmetic overflow                                  | <a href="https://github.com/laserninja">laserninja</a>                | 1-9 merged PRs    |           60 | no response yet | S    | findepi                                                            |                          | marked stale |
 | <a href="https://github.com/trinodb/trino/pull/31042">\#31042</a>  | Prevent CREATE TABLE over an existing view                             | <a href="https://github.com/Yash-Ambekar">Yash-Ambekar</a>            | no merged PRs yet |           47 | author replied  | M    |                                                                    | iceberg, faker           | marked stale |
 | <a href="https://github.com/trinodb/trino/pull/31350">\#31350</a>  | Fix reading decimals stored at a higher scale                          | <a href="https://github.com/wgzhao">wgzhao</a>                        | 1-9 merged PRs    |           44 | no response yet | M    | losipiuk, dain                                                     | hive                     | marked stale |
 | <a href="https://github.com/trinodb/trino/pull/31348">\#31348</a>  | Drop ClickHouse partitions with a table procedure                      | <a href="https://github.com/wgzhao">wgzhao</a>                        | 1-9 merged PRs    |           36 | author replied  | M    |                                                                    | docs, clickhouse         | marked stale |
@@ -125,7 +125,7 @@ First come authors with fewer than 10 merged pull requests whose pull request th
 | <a href="https://github.com/trinodb/trino/pull/30691">\#30691</a>  | Make paths relative in the Trino Web UI to support path-based reverse  | <a href="https://github.com/jhatcher1">jhatcher1</a>                  | 1-9 merged PRs    |           13 | author replied  | M    |                                                                    | ui                       |              |
 | <a href="https://github.com/trinodb/trino/pull/31896">\#31896</a>  | Fail on exceptions in Pinot gRPC metadata block                        | <a href="https://github.com/nanjeshramesh">nanjeshramesh</a>          | 1-9 merged PRs    |           12 | no response yet | M    |                                                                    | pinot                    |              |
 
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/maintaining/04-waiting-on-reviewers.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/maintaining/04-waiting-on-reviewers.sql)
 
 ## Waiting on the author for over 4 weeks
 
@@ -136,7 +136,7 @@ The stale bot closes inactive pull requests by itself, but never those labeled s
 | ------------------------------------------------------ | ---------------------------------------------------------------------- | ------------------------------------------------------- | ---------------- | ------------:| ------------------------------------------------- | ---- | ------------ |
 | <a href="https://github.com/trinodb/trino/pull/19161">\#19161</a>  | Reintroduce HiveTableRedirectionsProvider interface                    | <a href="https://github.com/architgyl">architgyl</a>                | reviewer replied |         1118 | <a href="https://github.com/mosabua">mosabua</a>              | M    | stale-ignore |
 | <a href="https://github.com/trinodb/trino/pull/20203">\#20203</a>  | Add timestamp with tz to JSON cast                                     | <a href="https://github.com/CapCaWork">CapCaWork</a>                | reviewer replied |         1035 | <a href="https://github.com/findepi">findepi</a>              | M    | stale-ignore |
-| <a href="https://github.com/trinodb/trino/pull/15288">\#15288</a>  | Add a new optimization rule: query fusion                              | <a href="https://github.com/weiatwork">weiatwork</a>                | reviewer replied |         1034 | <a href="https://github.com/SongChujun">SongChujun</a>        | XL   | stale-ignore |
+| <a href="https://github.com/trinodb/trino/pull/15288">\#15288</a>  | Add a new optimization rule: query fusion                              | <a href="https://github.com/weiatwork">weiatwork</a>                | reviewer replied |         1035 | <a href="https://github.com/SongChujun">SongChujun</a>        | XL   | stale-ignore |
 | <a href="https://github.com/trinodb/trino/pull/16558">\#16558</a>  | add header authentication support for the web-ui                       | <a href="https://github.com/kenandominic">kenandominic</a>          | reviewer replied |          994 | <a href="https://github.com/Chaho12">Chaho12</a>              | S    | stale-ignore |
 | <a href="https://github.com/trinodb/trino/pull/21243">\#21243</a>  | include null audience only if no additional audiences configured       | <a href="https://github.com/PratikDeshpande">PratikDeshpande</a>    | CLA not signed   |          961 |                                                   | XS   | stale-ignore |
 | <a href="https://github.com/trinodb/trino/pull/17288">\#17288</a>  | Fill TupleDomain and expression in Constraint passed to ConnectorSplit | <a href="https://github.com/findepi">findepi</a>                    | reviewer replied |          950 | <a href="https://github.com/mosabua">mosabua</a>              | S    | stale-ignore |
@@ -145,7 +145,7 @@ The stale bot closes inactive pull requests by itself, but never those labeled s
 | <a href="https://github.com/trinodb/trino/pull/21558">\#21558</a>  | Fix table function execution without partitioning \(v2\)               | <a href="https://github.com/findepi">findepi</a>                    | reviewer replied |          895 | <a href="https://github.com/tbaeg">tbaeg</a>                  | M    | stale-ignore |
 | <a href="https://github.com/trinodb/trino/pull/21892">\#21892</a>  | Allow complex expression rewrites with approximate numeric constant    | <a href="https://github.com/Praveen2112">Praveen2112</a>            | reviewer replied |          860 | <a href="https://github.com/mosabua">mosabua</a>              | M    | stale-ignore |
 | <a href="https://github.com/trinodb/trino/pull/23206">\#23206</a>  | Adaptive broadcast to partitioned                                      | <a href="https://github.com/gaurav8297">gaurav8297</a>              | reviewer replied |          772 | <a href="https://github.com/mosabua">mosabua</a>              | L    | marked stale |
-| <a href="https://github.com/trinodb/trino/pull/12369">\#12369</a>  | Write statistics to ORC file for TINYINT                               | <a href="https://github.com/oneonestar">oneonestar</a>              | reviewer replied |          763 | <a href="https://github.com/mosabua">mosabua</a>              | S    | stale-ignore |
+| <a href="https://github.com/trinodb/trino/pull/12369">\#12369</a>  | Write statistics to ORC file for TINYINT                               | <a href="https://github.com/oneonestar">oneonestar</a>              | reviewer replied |          764 | <a href="https://github.com/mosabua">mosabua</a>              | S    | stale-ignore |
 | <a href="https://github.com/trinodb/trino/pull/23619">\#23619</a>  | Support setting content md5 to validate upload content                 | <a href="https://github.com/zhaner08">zhaner08</a>                  | reviewer replied |          743 | <a href="https://github.com/mosabua">mosabua</a>              | S    | stale-ignore |
 | <a href="https://github.com/trinodb/trino/pull/24616">\#24616</a>  | Add like\_regex predicate to JSON path                                 | <a href="https://github.com/piotrrzysko">piotrrzysko</a>            | reviewer replied |          652 | <a href="https://github.com/wendigo">wendigo</a>              | XL   | stale-ignore |
 | <a href="https://github.com/trinodb/trino/pull/21550">\#21550</a>  | Add declared decomposition to aggregate functions                      | <a href="https://github.com/dain">dain</a>                          | reviewer replied |          631 | <a href="https://github.com/mosabua">mosabua</a>              | XL   | stale-ignore |
@@ -162,10 +162,10 @@ The stale bot closes inactive pull requests by itself, but never those labeled s
 | <a href="https://github.com/trinodb/trino/pull/29758">\#29758</a>  | Allow OAuth2 authenticated user tokens to be used with Iceberg REST ca | <a href="https://github.com/louis-pie">louis-pie</a>                | draft            |          141 |                                                   | XL   | stale-ignore |
 | <a href="https://github.com/trinodb/trino/pull/30182">\#30182</a>  | Support NFS-backed table storage for local/file:// filesystem          | <a href="https://github.com/wendigo">wendigo</a>                    | reviewer replied |          132 | <a href="https://github.com/findepi">findepi</a>              | L    | stale-ignore |
 | <a href="https://github.com/trinodb/trino/pull/30113">\#30113</a>  | Convert SQL examples to interactive trysql.io ones                     | <a href="https://github.com/wendigo">wendigo</a>                    | reviewer replied |          131 | <a href="https://github.com/mosabua">mosabua</a>              | XL   | stale-ignore |
-| <a href="https://github.com/trinodb/trino/pull/30289">\#30289</a>  | Dissolve boolean CASE/COALESCE                                         | <a href="https://github.com/wendigo">wendigo</a>                    | reviewer replied |          120 | <a href="https://github.com/findepi">findepi</a>              | L    | stale-ignore |
+| <a href="https://github.com/trinodb/trino/pull/30289">\#30289</a>  | Dissolve boolean CASE/COALESCE                                         | <a href="https://github.com/wendigo">wendigo</a>                    | reviewer replied |          121 | <a href="https://github.com/findepi">findepi</a>              | L    | stale-ignore |
 | <a href="https://github.com/trinodb/trino/pull/30292">\#30292</a>  | Search flat hash control bytes with the Vector API                     | <a href="https://github.com/wendigo">wendigo</a>                    | draft            |          111 |                                                   | L    | stale-ignore |
 
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/maintaining/05-waiting-on-author.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/maintaining/05-waiting-on-author.sql)
 
 ## Review requests and review load per person
 
@@ -174,8 +174,8 @@ GitHub drops a request once the person reviews, so old requests mean nobody answ
 
 | Reviewer                                                  | Role                | Waiting on you | All open requests | Longest wait in days | Reviewed PRs, last 90 days | Change   | Reviewed PRs         |
 | --------------------------------------------------------- | ------------------- | --------------:| -----------------:| --------------------:| --------------------------:| -------- | -------------------- |
-| <a href="https://github.com/dain">dain</a>                            | maintainer          |             27 |                32 |                  938 |                          9 | ▼ -44%   | █                    |
-| <a href="https://github.com/ebyhr">ebyhr</a>                          | maintainer          |             23 |                32 |                  377 |                         80 | ▲ \+29%  | ██████████           |
+| <a href="https://github.com/dain">dain</a>                            | maintainer          |             28 |                32 |                  938 |                          9 | ▼ -44%   | █                    |
+| <a href="https://github.com/ebyhr">ebyhr</a>                          | maintainer          |             23 |                32 |                  377 |                         80 | ▲ \+27%  | ██████████           |
 | <a href="https://github.com/electrum">electrum</a>                    | maintainer          |             23 |                32 |                  938 |                          8 | ▼ -71%   | █                    |
 | <a href="https://github.com/martint">martint</a>                      | maintainer          |             22 |                42 |                  910 |                         24 | ▼ -8%    | ███                  |
 | <a href="https://github.com/wendigo">wendigo</a>                      | maintainer          |             21 |                29 |                  938 |                         49 | ▼ -33%   | ██████               |
@@ -205,7 +205,7 @@ GitHub drops a request once the person reviews, so old requests mean nobody answ
 | <a href="https://github.com/Dith3r">Dith3r</a>                        | regular contributor |              1 |                 1 |                  910 |                          0 |          |                      |
 | <a href="https://github.com/Parth-Brahmbhatt">Parth-Brahmbhatt</a>    | contributor         |              1 |                 1 |                   62 |                          0 |          |                      |
 
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/maintaining/06-review-queue.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/maintaining/06-review-queue.sql)
 
 ## Is the backlog growing?
 
@@ -241,7 +241,7 @@ Closed by the stale bot is part of closed. Bots' pull requests are not counted. 
  2024-12 |    195 |    141 |     44 |           15 | ▲ +10      |         254 | ████████████████████████████████         
 (24 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/maintaining/07-backlog-trend.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/maintaining/07-backlog-trend.sql)
 
 ## How fast do reviewers respond?
 
@@ -263,7 +263,7 @@ Authors who wait days for each round lose context and interest; if the share ans
  over 3 months       |        47 | 1%    | 100%       | █                                        
 (10 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/maintaining/08-reviewer-response-time.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/maintaining/08-reviewer-response-time.sql)
 
 ## Reviews per merged pull request
 
@@ -274,20 +274,20 @@ A rising share merged without a review means changes go in unchecked; a single r
   Month  | Merged | No review | 1 reviewer |  2  | 3 or more |     None ·, 1 ▒, 2 ▓, 3+ █     | Median response | P90 response 
 ---------+--------+-----------+------------+-----+-----------+--------------------------------+-----------------+--------------
  2026-11 |     81 | 48%       | 27%        | 22% | 2%        | ··············▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓█ | 8h 36m          | 7d 18h       
- 2026-10 |    265 | 50%       | 28%        | 17% | 5%        | ···············▒▒▒▒▒▒▒▒▓▓▓▓▓██ | 7h 46m          | 7d 21h       
+ 2026-10 |    265 | 50%       | 28%        | 17% | 5%        | ···············▒▒▒▒▒▒▒▒▓▓▓▓▓██ | 7h 42m          | 7d 21h       
  2026-09 |    218 | 53%       | 26%        | 17% | 5%        | ················▒▒▒▒▒▒▒▒▓▓▓▓▓█ | 9h 55m          | 6d 21h       
- 2026-08 |    144 | 49%       | 29%        | 17% | 5%        | ···············▒▒▒▒▒▒▒▒▒▓▓▓▓▓█ | 8h 23m          | 11d 18h      
+ 2026-08 |    144 | 49%       | 29%        | 17% | 5%        | ···············▒▒▒▒▒▒▒▒▒▓▓▓▓▓█ | 8h 24m          | 11d 18h      
  2026-07 |    167 | 51%       | 21%        | 19% | 8%        | ···············▒▒▒▒▒▒▒▓▓▓▓▓███ | 5h 00m          | 14d 6h       
- 2026-06 |    193 | 52%       | 27%        | 13% | 8%        | ················▒▒▒▒▒▒▒▒▓▓▓▓██ | 7h 41m          | 9d 8h        
+ 2026-06 |    193 | 52%       | 27%        | 13% | 8%        | ················▒▒▒▒▒▒▒▒▓▓▓▓██ | 7h 18m          | 9d 1h        
  2026-05 |    145 | 56%       | 27%        | 10% | 8%        | ·················▒▒▒▒▒▒▒▒▓▓▓██ | 7h 09m          | 5d 2h        
- 2026-04 |    116 | 53%       | 11%        | 22% | 15%       | ················▒▒▒▓▓▓▓▓▓▓████ | 5h 18m          | 6d 7h        
- 2026-03 |    170 | 53%       | 18%        | 14% | 15%       | ················▒▒▒▒▒▓▓▓▓▓████ | 3h 48m          | 4d 23h       
- 2026-02 |    133 | 57%       | 14%        | 18% | 11%       | ·················▒▒▒▒▓▓▓▓▓▓███ | 3h 52m          | 9d 10h       
- 2026-01 |    104 | 43%       | 14%        | 25% | 17%       | ·············▒▒▒▒▓▓▓▓▓▓▓▓█████ | 9h 20m          | 7d 18h       
- 2025-12 |    120 | 48%       | 21%        | 20% | 11%       | ···············▒▒▒▒▒▒▓▓▓▓▓▓███ | 6h 38m          | 10d 16h      
+ 2026-04 |    116 | 53%       | 11%        | 22% | 15%       | ················▒▒▒▓▓▓▓▓▓▓████ | 5h 20m          | 6d 7h        
+ 2026-03 |    170 | 53%       | 18%        | 14% | 15%       | ················▒▒▒▒▒▓▓▓▓▓████ | 3h 47m          | 5d 0h        
+ 2026-02 |    133 | 57%       | 14%        | 18% | 11%       | ·················▒▒▒▒▓▓▓▓▓▓███ | 3h 58m          | 9d 12h       
+ 2026-01 |    104 | 43%       | 14%        | 25% | 17%       | ·············▒▒▒▒▓▓▓▓▓▓▓▓█████ | 9h 27m          | 7d 16h       
+ 2025-12 |    120 | 48%       | 21%        | 20% | 11%       | ···············▒▒▒▒▒▒▓▓▓▓▓▓███ | 6h 27m          | 10d 17h      
 (12 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/maintaining/09-review-coverage.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/maintaining/09-review-coverage.sql)
 
 ## How concentrated is reviewing?
 
@@ -307,7 +307,7 @@ When a few people do most reviews, the project stalls when they are away, and th
  2025 Q1 |        51 |     501 | 53%   | 72%    |            5 | █████████████████████▓▓▓▓▓▓▓▓░░░░░░░░░░░ 
 (8 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/maintaining/10-review-concentration.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/maintaining/10-review-concentration.sql)
 
 ## Who reviews
 
@@ -343,7 +343,7 @@ A growing share of regular contributors and contributors takes load off maintain
  2024-12 |     189 | 70%         | 29%     | 1%           | 1%        | 0%   | ████████████████████████████▓▓▓▓▓▓▓▓▓▓▓▒ 
 (24 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/maintaining/11-reviews-by-role.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/maintaining/11-reviews-by-role.sql)
 
 ## What bots do
 
@@ -363,6 +363,6 @@ Activity is the number of pull requests, reviews, and comments per month, one ch
  sourcery-ai[bot]                   |          0 |      0 |      0 |    0 |               |       1 |        0 | █...........        
 (8 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/maintaining/12-automation.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/maintaining/12-automation.sql)
 
-Generated on Wed Nov 11 22:56:50 UTC 2026
+Generated on Wed Nov 11 23:26:05 UTC 2026

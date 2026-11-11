@@ -21,7 +21,7 @@ People whose first pull request was merged in the last 30 days, newest first. If
 | 2026-10-13 | <a href="https://github.com/s-a-elahi">s-a-elahi</a>          | <a href="https://github.com/trinodb/trino/pull/31120">\#31120</a>  | Quote identifiers in Ranger column masks                    | 29d 14h       | <a href="https://github.com/ebyhr">ebyhr</a>                  |
 | 2026-10-13 | <a href="https://github.com/saryn17">saryn17</a>              | <a href="https://github.com/trinodb/trino/pull/31361">\#31361</a>  | Fix checkpoint write for struct statistics in Delta Lake    | 14d 4h        | <a href="https://github.com/ebyhr">ebyhr</a>                  |
 
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/hall-of-fame/01-welcome.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/hall-of-fame/01-welcome.sql)
 
 ## Milestones
 
@@ -37,7 +37,7 @@ People whose 10th, 25th, 50th, 100th, 250th, 500th, or 1000th pull request was m
 | 2026-10-02 |                   10 | <a href="https://github.com/p3tr0sz">p3tr0sz</a>                      | <a href="https://github.com/trinodb/trino/pull/31403">\#31403</a>  | 2026-02-03      |
 | 2026-09-21 |                   10 | <a href="https://github.com/bvolpato">bvolpato</a>                    | <a href="https://github.com/trinodb/trino/pull/30987">\#30987</a>  | 2024-09-19      |
 
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/hall-of-fame/02-milestones.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/hall-of-fame/02-milestones.sql)
 
 ## Top authors of the last 12 months
 
@@ -68,7 +68,7 @@ People with the most merged pull requests in the last 12 months. The change is t
    20 | ▲ 9    |                   16 | ██                             | <a href="https://github.com/krvikash">krvikash</a>                    
 (20 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/hall-of-fame/03-top-authors.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/hall-of-fame/03-top-authors.sql)
 
 ## Top reviewers of the last 12 months
 
@@ -99,7 +99,7 @@ People who reviewed the most pull requests of other people in the last 12 months
    20 | new    |                     13 | █                              | <a href="https://github.com/JohnFitzpatrick44">JohnFitzpatrick44</a>  
 (20 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/hall-of-fame/04-top-reviewers.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/hall-of-fame/04-top-reviewers.sql)
 
 ## Top mergers of the last 12 months
 
@@ -124,7 +124,7 @@ Maintainers who merged the most pull requests of other people in the last 12 mon
    14 | ▼ 6    |                    1 | ▏                              | <a href="https://github.com/hashhar">hashhar</a>              
 (14 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/hall-of-fame/05-top-mergers.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/hall-of-fame/05-top-mergers.sql)
 
 ## Who reviews whom
 
@@ -151,7 +151,7 @@ Use it to find who reviews the work in an author's area, so who to ask for a rev
  JohnFitzpatrick44 |                18 | ░ ░ ▒ ░ ▒ ▒         ░   |                                                     
 (15 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/hall-of-fame/06-who-reviews-whom.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/hall-of-fame/06-who-reviews-whom.sql)
 
 ## Who merges whose work
 
@@ -181,7 +181,7 @@ A long-standing pair often means a mentor, or the go-to maintainer for an area. 
 | <a href="https://github.com/vlad-lyutenko">vlad-lyutenko</a>          | <a href="https://github.com/ebyhr">ebyhr</a>                  |                            7 | 64%                          |       14 | 2022       |
 | <a href="https://github.com/findinpath">findinpath</a>                | <a href="https://github.com/chenjian2664">chenjian2664</a>    |                            6 | 8%                           |        6 | 2026       |
 
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/hall-of-fame/07-author-merger-pairs.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/hall-of-fame/07-author-merger-pairs.sql)
 
 ## Steady contributors
 
@@ -213,7 +213,7 @@ Steady, long-term work keeps the project going, even when it never tops a rankin
             17 |                 52 | ▁▃▁....▁▁█▃▂▄▁▂..▁▂▃▃▂▂. | <a href="https://github.com/koszti">koszti</a>                
 (20 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/hall-of-fame/08-steady-contributors.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/hall-of-fame/08-steady-contributors.sql)
 
 ## All-time top 10
 
@@ -232,6 +232,6 @@ The people who authored, reviewed, and merged the most pull requests since the p
 |    9 | <a href="https://github.com/mosabua">mosabua</a>              |                  462 | <a href="https://github.com/raunaqmorarka">raunaqmorarka</a>  |                    983 | <a href="https://github.com/hashhar">hashhar</a>              |               379 |
 |   10 | <a href="https://github.com/dain">dain</a>                    |                  438 | <a href="https://github.com/wendigo">wendigo</a>              |                    980 | <a href="https://github.com/raunaqmorarka">raunaqmorarka</a>  |               361 |
 
-[query](https://github.com/trinodb/reports/blob/a459fa8518163ea5d81aa005b6848e40ddc90b9c/sql/hall-of-fame/09-all-time.sql)
+[query](https://github.com/trinodb/reports/blob/b6e552c63e62df4353d3d2cfcc2e5a3f98c6fc4f/sql/hall-of-fame/09-all-time.sql)
 
-Generated on Wed Nov 11 22:59:34 UTC 2026
+Generated on Wed Nov 11 23:27:58 UTC 2026
