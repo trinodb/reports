@@ -25,7 +25,7 @@ Weekends are greyed out.
  test (plugin/trino-oracle)                                          |    0.2 |     1 |  419 |    ░░     ░░    | <a href="https://github.com/trinodb/trino/actions/runs/42726296593/job/129533377136">job</a>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 (13 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/1598443c576676ecb4a8ad05e8cd7ba3f230bd2d/sql/tests/jobs.sql)
+[query](https://github.com/trinodb/reports/blob/44ddf48907afad6816ebfb9c0c4c412703d63e6b/sql/tests/jobs.sql)
 
 ## Failure causes
 
@@ -38,6 +38,6 @@ Based on GitHub Action annotations, includes regular and product tests.
 |           | Dependabot encountered an error performing the update\&lt;br/\&gt; |             6 |            6 |       0.6 | 2026-11-04 05:48:56.000 | 2026-11-11 05:48:31.000 | <a href="https://github.com/trinodb/trino/actions/runs/41780809809/job/126411680104">job</a> <a href="https://github.com/trinodb/trino/actions/runs/41975618503/job/127073654898">job</a> <a href="https://github.com/trinodb/trino/actions/runs/42169924502/job/127735098306">job</a> <a href="https://github.com/trinodb/trino/actions/runs/42570026538/job/129005022824">job</a> <a href="https://github.com/trinodb/trino/actions/runs/42763720319/job/129655193154">job</a>  |
 |           | Unhandled error: HttpError: Unknown error                    |             3 |            3 |       0.3 | 2026-11-04 08:43:21.000 | 2026-11-05 16:26:37.000 | <a href="https://github.com/trinodb/trino/actions/runs/41801653614/job/126478628518">job</a> <a href="https://github.com/trinodb/trino/actions/runs/41851113637/job/126647361148">job</a> <a href="https://github.com/trinodb/trino/actions/runs/42064461660/job/127374638373">job</a>                                                                                                                                                                    |
 
-[query](https://github.com/trinodb/reports/blob/1598443c576676ecb4a8ad05e8cd7ba3f230bd2d/sql/tests/annotations.sql)
+[query](https://github.com/trinodb/reports/blob/44ddf48907afad6816ebfb9c0c4c412703d63e6b/sql/tests/annotations.sql)
 
-Generated on Wed Nov 11 12:51:27 UTC 2026
+Generated on Wed Nov 11 13:05:29 UTC 2026
