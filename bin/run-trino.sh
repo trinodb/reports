@@ -54,9 +54,9 @@ docker run \
     -v "$SCRIPT_DIR"/../sync/specs/github.json:/etc/trino/specs/github.json \
     -v "$SCRIPT_DIR"/../sync/specs/slack.json:/etc/trino/specs/slack.json \
     -v "$SCRIPT_DIR"/../catalog/git.properties:/etc/trino/catalog/git.properties \
-    -v "$SCRIPT_DIR"/../catalog/github-openapi.properties:/etc/trino/catalog/github.properties \
-    -v "$SCRIPT_DIR"/../catalog/slack-openapi.properties:/etc/trino/catalog/slack.properties \
-    -v "$SCRIPT_DIR"/../catalog/trinocicd-iceberg.properties:/etc/trino/catalog/trinocicd.properties \
+    -v "$SCRIPT_DIR"/../catalog/github.properties:/etc/trino/catalog/github.properties \
+    -v "$SCRIPT_DIR"/../catalog/slack.properties:/etc/trino/catalog/slack.properties \
+    -v "$SCRIPT_DIR"/../catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
     -v "$SCRIPT_DIR"/hive-cache:/opt/hive-cache \
     -v "$SCRIPT_DIR"/http-cache:/opt/http-cache \
     -v "$SCRIPT_DIR"/../sql:/sql \

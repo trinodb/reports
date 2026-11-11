@@ -54,8 +54,8 @@ jobs:
             -v $(pwd)/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
             -v $(pwd)/trino-openapi-$TRINO_OPENAPI_VERSION:/usr/lib/trino/plugin/openapi \
             -v $(pwd)/sync/specs/slack.json:/etc/trino/specs/slack.json \
-            -v $(pwd)/catalog/slack-openapi.properties:/etc/trino/catalog/slack.properties \
-            -v $(pwd)/catalog/trinocicd-iceberg.properties:/etc/trino/catalog/trinocicd.properties \
+            -v $(pwd)/catalog/slack.properties:/etc/trino/catalog/slack.properties \
+            -v $(pwd)/catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
             -v $(pwd)/hive-cache:/opt/hive-cache \
             -e AWS_ACCESS_KEY_ID \
             -e AWS_SECRET_ACCESS_KEY \

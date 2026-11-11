@@ -43,9 +43,9 @@ trino trino://localhost:8080/trinocicd/github --output-format=ALIGNED < sql/pr/b
 [The sync workflow](https://github.com/trinodb/reports/blob/master/.github/workflows/sync.yml):
 1. Downloads and extracts a zip with the custom `trino-openapi` connector.
 1. Starts Trino in a container with both this additional connector (plugin),
-   its [configuration](https://github.com/trinodb/reports/blob/master/catalog/github-openapi.properties),
+   its [configuration](https://github.com/trinodb/reports/blob/master/catalog/github.properties),
    and [the GitHub spec](https://github.com/trinodb/reports/blob/master/sync/specs) it reads, mounted as volumes.
-   It also includes [configuration](https://github.com/trinodb/reports/blob/master/catalog/trinocicd-iceberg.properties) for a built-in connector
+   It also includes [configuration](https://github.com/trinodb/reports/blob/master/catalog/trinocicd.properties) for a built-in connector
    that can read and write Iceberg tables in an S3 bucket. The AWS credentials come from assuming
    a role with GitHub OIDC, and are passed as environmental variables, together with the `GITHUB_TOKEN`.
 1. It runs the [sync program](https://github.com/trinodb/reports/blob/master/sync/Sync.java), which runs the SQL statements from
