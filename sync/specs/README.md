@@ -13,7 +13,8 @@ licensed, from commit `bb754941722779d8a5b3a2f25a5fbb7ce794e1ea`, with the
 changes from `github.patch.json`. The patch and `merge-patch.jq` come from
 `dev/specs` in [trino-openapi](https://github.com/nineinchnick/trino-openapi)
 v2.2, with the patch reduced to the operations of the tables that `sync/github`
-and `sync/verify` read.
+reads, and a few more that the verification of the migration from trino-rest
+read.
 
 The patch is a [JSON Merge Patch](https://www.rfc-editor.org/rfc/rfc7386). It
 merges objects recursively, removes members set to `null`, and replaces any
@@ -43,8 +44,8 @@ jq --indent 2 --slurpfile patch sync/specs/github.patch.json -f sync/specs/merge
 ```
 
 Then update the commit in this file, and check that the tables used by
-`sync/github` still have the same columns, for example by running
-`./sync/verify/verify.sh reset` and the sync.
+`sync/github` still have the same columns, for example by comparing the output
+of `DESCRIBE` for them, with the old and the new spec.
 
 Other tables of the `github` catalog return only the first page of results.
 Before a step reads another paginated operation, add it to the patch, for

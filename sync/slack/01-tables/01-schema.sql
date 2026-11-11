@@ -1,3 +1,2 @@
--- Creates the schema and tables of all steps, so the tables exist before any step reads them,
--- and the backfill can create them before copying the old data.
+-- Creates the schema and tables of all steps, so the tables exist before any step reads them.
 CREATE SCHEMA IF NOT EXISTS trinocicd.slack;
