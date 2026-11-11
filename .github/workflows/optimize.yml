@@ -19,7 +19,7 @@ jobs:
     env:
       TRINO_VERSION: 484
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
         with:
           role-to-assume: arn:aws:iam::428825817873:role/trino-reports-github
