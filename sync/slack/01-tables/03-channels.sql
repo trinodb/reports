@@ -1,0 +1,32 @@
+-- A row for every version of a channel, so it keeps old names, topics and purposes.
+-- The topic_creatro and purpose_creatro columns keep the names of the tables written by trino-rest.
+CREATE TABLE IF NOT EXISTS trinocicd.slack.channels (
+    type varchar,
+    id varchar,
+    name varchar,
+    is_channel boolean,
+    is_group boolean,
+    is_im boolean,
+    created timestamp(6) with time zone,
+    creator varchar,
+    is_archived boolean,
+    is_general boolean,
+    unlinked integer,
+    name_normalized varchar,
+    is_shared boolean,
+    is_ext_shared boolean,
+    is_org_shared boolean,
+    pending_shared array(varchar),
+    is_pending_ext_shared boolean,
+    is_member boolean,
+    is_private boolean,
+    is_mpim boolean,
+    topic_value varchar,
+    topic_creatro varchar,
+    topic_last_set timestamp(6) with time zone,
+    purpose_value varchar,
+    purpose_creatro varchar,
+    purpose_last_set timestamp(6) with time zone,
+    previous_names array(varchar),
+    num_members integer
+);

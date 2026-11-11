@@ -54,12 +54,18 @@ jobs:
               fi
               sleep 10
           done
-      - name: Optimize tables
+      - name: Optimize GitHub tables
         run: |
           docker exec \
             trino \
             trino --catalog trinocicd --schema github \
             -f /sql/optimize.sql
+      - name: Optimize Slack tables
+        run: |
+          docker exec \
+            trino \
+            trino --catalog trinocicd --schema slack \
+            -f /sql/optimize-slack.sql
       - name: Dump Trino logs
         if: always()
         run: |

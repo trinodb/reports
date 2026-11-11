@@ -1,0 +1,889 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Slack Web API, the methods read by the Slack sync",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://slack.com/api"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "paths": {
+    "/users.list": {
+      "get": {
+        "operationId": "users",
+        "summary": "Lists all users",
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 1000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Slack responds with 200 also to errors, with ok set to false and the error code in error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "members": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "team_id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "deleted": {
+                            "type": "boolean"
+                          },
+                          "color": {
+                            "type": "string"
+                          },
+                          "real_name": {
+                            "type": "string"
+                          },
+                          "tz": {
+                            "type": "string"
+                          },
+                          "tz_label": {
+                            "type": "string"
+                          },
+                          "tz_offset": {
+                            "type": "integer",
+                            "format": "int32"
+                          },
+                          "profile": {
+                            "type": "object",
+                            "properties": {
+                              "avatar_hash": {
+                                "type": "string"
+                              },
+                              "status_text": {
+                                "type": "string"
+                              },
+                              "status_emoji": {
+                                "type": "string"
+                              },
+                              "real_name": {
+                                "type": "string"
+                              },
+                              "display_name": {
+                                "type": "string"
+                              },
+                              "real_name_normalized": {
+                                "type": "string"
+                              },
+                              "display_name_normalized": {
+                                "type": "string"
+                              },
+                              "email": {
+                                "type": "string"
+                              },
+                              "image_24": {
+                                "type": "string"
+                              },
+                              "image_32": {
+                                "type": "string"
+                              },
+                              "image_48": {
+                                "type": "string"
+                              },
+                              "image_72": {
+                                "type": "string"
+                              },
+                              "image_192": {
+                                "type": "string"
+                              },
+                              "image_512": {
+                                "type": "string"
+                              },
+                              "team": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "is_admin": {
+                            "type": "boolean"
+                          },
+                          "is_owner": {
+                            "type": "boolean"
+                          },
+                          "is_primary_owner": {
+                            "type": "boolean"
+                          },
+                          "is_restricted": {
+                            "type": "boolean"
+                          },
+                          "is_ultra_restricted": {
+                            "type": "boolean"
+                          },
+                          "is_bot": {
+                            "type": "boolean"
+                          },
+                          "is_app_user": {
+                            "type": "boolean"
+                          },
+                          "updated": {
+                            "type": "integer"
+                          },
+                          "has_2fa": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "response_metadata": {
+                      "type": "object",
+                      "properties": {
+                        "next_cursor": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-trino": {
+          "tableName": "users",
+          "cursorParam": "cursor",
+          "nextCursorPath": "$response.body#/response_metadata/next_cursor",
+          "resultsPath": "$response.body#/members",
+          "errorPath": "$response.body#/error",
+          "limitParam": "limit",
+          "parameterDefaults": {
+            "limit": 200
+          }
+        }
+      }
+    },
+    "/conversations.list": {
+      "get": {
+        "operationId": "channels",
+        "summary": "Lists channels",
+        "parameters": [
+          {
+            "name": "types",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "exclude_archived",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 1000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Slack responds with 200 also to errors, with ok set to false and the error code in error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "channels": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "is_channel": {
+                            "type": "boolean"
+                          },
+                          "is_group": {
+                            "type": "boolean"
+                          },
+                          "is_im": {
+                            "type": "boolean"
+                          },
+                          "is_mpim": {
+                            "type": "boolean"
+                          },
+                          "is_private": {
+                            "type": "boolean"
+                          },
+                          "created": {
+                            "type": "integer"
+                          },
+                          "creator": {
+                            "type": "string"
+                          },
+                          "is_archived": {
+                            "type": "boolean"
+                          },
+                          "is_general": {
+                            "type": "boolean"
+                          },
+                          "unlinked": {
+                            "type": "integer",
+                            "format": "int32"
+                          },
+                          "name_normalized": {
+                            "type": "string"
+                          },
+                          "is_shared": {
+                            "type": "boolean"
+                          },
+                          "is_ext_shared": {
+                            "type": "boolean"
+                          },
+                          "is_org_shared": {
+                            "type": "boolean"
+                          },
+                          "pending_shared": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "is_pending_ext_shared": {
+                            "type": "boolean"
+                          },
+                          "is_member": {
+                            "type": "boolean"
+                          },
+                          "topic": {
+                            "type": "object",
+                            "properties": {
+                              "value": {
+                                "type": "string"
+                              },
+                              "creator": {
+                                "type": "string"
+                              },
+                              "last_set": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "purpose": {
+                            "type": "object",
+                            "properties": {
+                              "value": {
+                                "type": "string"
+                              },
+                              "creator": {
+                                "type": "string"
+                              },
+                              "last_set": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "previous_names": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "num_members": {
+                            "type": "integer",
+                            "format": "int32"
+                          }
+                        }
+                      }
+                    },
+                    "response_metadata": {
+                      "type": "object",
+                      "properties": {
+                        "next_cursor": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-trino": {
+          "tableName": "channels",
+          "cursorParam": "cursor",
+          "nextCursorPath": "$response.body#/response_metadata/next_cursor",
+          "resultsPath": "$response.body#/channels",
+          "errorPath": "$response.body#/error",
+          "limitParam": "limit",
+          "parameterDefaults": {
+            "limit": 200,
+            "types": "public_channel"
+          }
+        }
+      }
+    },
+    "/conversations.members": {
+      "get": {
+        "operationId": "channel-members",
+        "summary": "Lists members of a channel",
+        "parameters": [
+          {
+            "name": "channel",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 1000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Slack responds with 200 also to errors, with ok set to false and the error code in error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "members": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "response_metadata": {
+                      "type": "object",
+                      "properties": {
+                        "next_cursor": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-trino": {
+          "tableName": "channel_members",
+          "cursorParam": "cursor",
+          "nextCursorPath": "$response.body#/response_metadata/next_cursor",
+          "resultsPath": "$response.body#/members",
+          "errorPath": "$response.body#/error",
+          "limitParam": "limit",
+          "parameterDefaults": {
+            "limit": 1000
+          }
+        }
+      }
+    },
+    "/conversations.history": {
+      "get": {
+        "operationId": "messages",
+        "summary": "Lists messages of a channel, without replies in threads",
+        "parameters": [
+          {
+            "name": "channel",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "oldest",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "latest",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "inclusive",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "include_all_metadata",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 999
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Slack responds with 200 also to errors, with ok set to false and the error code in error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "messages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string"
+                          },
+                          "subtype": {
+                            "type": "string"
+                          },
+                          "hidden": {
+                            "type": "boolean"
+                          },
+                          "user": {
+                            "type": "string"
+                          },
+                          "bot_id": {
+                            "type": "string"
+                          },
+                          "text": {
+                            "type": "string"
+                          },
+                          "ts": {
+                            "type": "number"
+                          },
+                          "thread_ts": {
+                            "type": "number"
+                          },
+                          "reply_count": {
+                            "type": "integer",
+                            "format": "int32"
+                          },
+                          "latest_reply": {
+                            "type": "number"
+                          },
+                          "subscribed": {
+                            "type": "boolean"
+                          },
+                          "last_read": {
+                            "type": "number"
+                          },
+                          "unread_count": {
+                            "type": "integer",
+                            "format": "int32"
+                          },
+                          "parent_user_id": {
+                            "type": "string"
+                          },
+                          "edited": {
+                            "type": "object",
+                            "properties": {
+                              "user": {
+                                "type": "string"
+                              },
+                              "ts": {
+                                "type": "number"
+                              }
+                            }
+                          },
+                          "deleted_ts": {
+                            "type": "number"
+                          },
+                          "event_ts": {
+                            "type": "number"
+                          },
+                          "is_starred": {
+                            "type": "boolean"
+                          },
+                          "pinned_to": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "reactions": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "count": {
+                                  "type": "integer",
+                                  "format": "int32"
+                                },
+                                "users": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "response_metadata": {
+                      "type": "object",
+                      "properties": {
+                        "next_cursor": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-trino": {
+          "tableName": "messages",
+          "cursorParam": "cursor",
+          "nextCursorPath": "$response.body#/response_metadata/next_cursor",
+          "resultsPath": "$response.body#/messages",
+          "errorPath": "$response.body#/error",
+          "limitParam": "limit",
+          "parameterDefaults": {
+            "limit": 200
+          }
+        }
+      }
+    },
+    "/conversations.replies": {
+      "get": {
+        "operationId": "replies",
+        "summary": "Lists the parent message of a thread and its replies",
+        "parameters": [
+          {
+            "name": "channel",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ts",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "oldest",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "latest",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "inclusive",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "include_all_metadata",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "maximum": 1000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Slack responds with 200 also to errors, with ok set to false and the error code in error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "messages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string"
+                          },
+                          "subtype": {
+                            "type": "string"
+                          },
+                          "hidden": {
+                            "type": "boolean"
+                          },
+                          "user": {
+                            "type": "string"
+                          },
+                          "bot_id": {
+                            "type": "string"
+                          },
+                          "text": {
+                            "type": "string"
+                          },
+                          "ts": {
+                            "type": "number"
+                          },
+                          "thread_ts": {
+                            "type": "number"
+                          },
+                          "reply_count": {
+                            "type": "integer",
+                            "format": "int32"
+                          },
+                          "latest_reply": {
+                            "type": "number"
+                          },
+                          "subscribed": {
+                            "type": "boolean"
+                          },
+                          "last_read": {
+                            "type": "number"
+                          },
+                          "unread_count": {
+                            "type": "integer",
+                            "format": "int32"
+                          },
+                          "parent_user_id": {
+                            "type": "string"
+                          },
+                          "edited": {
+                            "type": "object",
+                            "properties": {
+                              "user": {
+                                "type": "string"
+                              },
+                              "ts": {
+                                "type": "number"
+                              }
+                            }
+                          },
+                          "deleted_ts": {
+                            "type": "number"
+                          },
+                          "event_ts": {
+                            "type": "number"
+                          },
+                          "is_starred": {
+                            "type": "boolean"
+                          },
+                          "pinned_to": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "reactions": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "count": {
+                                  "type": "integer",
+                                  "format": "int32"
+                                },
+                                "users": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "response_metadata": {
+                      "type": "object",
+                      "properties": {
+                        "next_cursor": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-trino": {
+          "tableName": "replies",
+          "cursorParam": "cursor",
+          "nextCursorPath": "$response.body#/response_metadata/next_cursor",
+          "resultsPath": "$response.body#/messages",
+          "errorPath": "$response.body#/error",
+          "limitParam": "limit",
+          "parameterDefaults": {
+            "limit": 200
+          }
+        }
+      }
+    }
+  }
+}

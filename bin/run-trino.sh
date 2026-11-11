@@ -20,7 +20,6 @@ fi
 CONTAINER_NAME=trino
 TRINO_VERSION=484
 TRINO_GIT_VERSION=1.0
-TRINO_REST_VERSION=0.178
 TRINO_OPENAPI_VERSION=2.2
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
@@ -34,11 +33,6 @@ fi
 if [ ! -d trino-openapi-$TRINO_OPENAPI_VERSION ]; then
     curl -fLOsS https://github.com/nineinchnick/trino-openapi/releases/download/v$TRINO_OPENAPI_VERSION/trino-openapi-$TRINO_OPENAPI_VERSION.zip
     unzip trino-openapi-$TRINO_OPENAPI_VERSION.zip
-fi
-
-if [ ! -d trino-rest-slack-$TRINO_REST_VERSION ]; then
-    curl -fLOsS https://github.com/nineinchnick/trino-rest/releases/download/v$TRINO_REST_VERSION/trino-rest-slack-$TRINO_REST_VERSION.zip
-    unzip trino-rest-slack-$TRINO_REST_VERSION.zip
 fi
 
 cat <<EOF >config.properties
@@ -58,10 +52,10 @@ docker run \
     -v "$SCRIPT_DIR"/trino-git-$TRINO_GIT_VERSION:/usr/lib/trino/plugin/git \
     -v "$SCRIPT_DIR"/trino-openapi-$TRINO_OPENAPI_VERSION:/usr/lib/trino/plugin/openapi \
     -v "$SCRIPT_DIR"/../sync/specs/github.json:/etc/trino/specs/github.json \
-    -v "$SCRIPT_DIR"/trino-rest-slack-$TRINO_REST_VERSION:/usr/lib/trino/plugin/slack \
+    -v "$SCRIPT_DIR"/../sync/specs/slack.json:/etc/trino/specs/slack.json \
     -v "$SCRIPT_DIR"/../catalog/git.properties:/etc/trino/catalog/git.properties \
     -v "$SCRIPT_DIR"/../catalog/github-openapi.properties:/etc/trino/catalog/github.properties \
-    -v "$SCRIPT_DIR"/../catalog/slack.properties:/etc/trino/catalog/slack.properties \
+    -v "$SCRIPT_DIR"/../catalog/slack-openapi.properties:/etc/trino/catalog/slack.properties \
     -v "$SCRIPT_DIR"/../catalog/trinocicd-iceberg.properties:/etc/trino/catalog/trinocicd.properties \
     -v "$SCRIPT_DIR"/hive-cache:/opt/hive-cache \
     -v "$SCRIPT_DIR"/http-cache:/opt/http-cache \

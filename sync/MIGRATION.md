@@ -334,10 +334,11 @@ didn't grant it. The new tables are in another account, `428825817873`.
 The workflows using the new tables assume the
 `arn:aws:iam::428825817873:role/trino-reports-github` role with GitHub OIDC,
 instead of using long-lived keys. The role trusts only workflows running on
-`main` of `trinodb/reports`, can change only tables in the `github` database
-and objects in the `trino-reports-jwas` bucket, and can't create databases.
-The backfill reads the old tables with the keys of the old account, set only in
-the `legacy` catalog, so the other catalogs use the role.
+`main` of `trinodb/reports`, can change only tables in the `github` and
+`slack` databases and objects in the `trino-reports-jwas` bucket, and can't
+create databases. The backfill reads the old tables with the keys of the old
+account, set only in the `legacy` and `legacyslack` catalogs, so the other
+catalogs use the role.
 
 Glue databases, all in `eu-central-1`:
 
@@ -346,16 +347,19 @@ Glue databases, all in `eu-central-1`:
 | `888469412714` | `v2`     | `s3://trino-ci/v2`               | the old Hive tables, written by trino-rest      |
 | `888469412714` | `slack`  |                                  | the Iceberg tables of the Slack sync            |
 | `428825817873` | `github` | `s3://trino-reports-jwas/github` | new: the Iceberg tables written by the new sync |
+| `428825817873` | `slack`  | `s3://trino-reports-jwas/slack`  | new: the Iceberg tables of the Slack sync       |
 
 Catalogs, mounted under these names in the containers:
 
-| Catalog     | File                                   | Connector                         |
-| ----------- | -------------------------------------- | --------------------------------- |
-| `trinocicd` | `catalog/trinocicd.properties`         | Hive, until the reports switch    |
-| `trinocicd` | `catalog/trinocicd-iceberg.properties` | Iceberg, after the reports switch |
-| `legacy`    | `catalog/legacy.properties`            | Hive, read-only, for the backfill |
-| `github`    | `catalog/github.properties`            | trino-rest, for the old sync      |
-| `github`    | `catalog/github-openapi.properties`    | trino-openapi, for the new sync   |
+| Catalog       | File                                   | Connector                                  |
+| ------------- | -------------------------------------- | ------------------------------------------ |
+| `trinocicd`   | `catalog/trinocicd.properties`         | Hive, until the reports switch             |
+| `trinocicd`   | `catalog/trinocicd-iceberg.properties` | Iceberg, after the reports switch          |
+| `legacy`      | `catalog/legacy.properties`            | Hive, read-only, for the backfill          |
+| `github`      | `catalog/github.properties`            | trino-rest, for the old sync               |
+| `github`      | `catalog/github-openapi.properties`    | trino-openapi, for the new sync            |
+| `slack`       | `catalog/slack-openapi.properties`     | trino-openapi, for the Slack sync          |
+| `legacyslack` | `catalog/legacyslack.properties`       | Iceberg, read-only, for the Slack backfill |
 
 ### How the sync works
 
@@ -423,19 +427,52 @@ within its limits: children of the last 2 months, and at most 1,000 runs.
 
 ## Phase 2: switch the Slack sync to trino-openapi
 
-In its own pull request, after phase 1:
+The Slack workspace is on the free plan, which shows only messages from the
+last 90 days, so the Slack tables are the only copy of older messages, since
+2015. The tables move to the `slack` database in `428825817873`, next to the
+GitHub ones, so the Slack sync uses the role instead of the old account's keys,
+and `optimize.yml` covers them, which it never did for the old tables. They
+had 86,402 messages, 137,758 replies, 24,109 user versions, 97 channel
+versions and 96,530 channel member rows, in about 36 GB of small files and
+metadata in S3.
 
-* Write an OpenAPI 3 spec in `sync/specs/slack.json` for `users.list`,
-  `conversations.list`, `conversations.members`, `conversations.history` and
-  `conversations.replies`, which the Slack sync reads into the `users`,
-  `channels`, `channel_members`, `messages` and `replies` tables. Describe
-  cursor pagination with `cursorParam: cursor` and
-  `nextCursorPath: /response_metadata/next_cursor`.
-* Set `errorPath` to `$response.body#/error`. Slack returns errors with status
-  `200` and `"ok": false`, and the connector fails a query when a response has
-  no results but has a value at `errorPath`.
-* Write `sync/slack/` steps, and switch `sync-slack.yml` to them, keeping the
-  tables in `trinoslack.slack`.
+* `sync/specs/slack.json` is a spec written for the methods the sync reads,
+  with cursor pagination, and `errorPath` set to `$response.body#/error`,
+  because Slack responds to errors with status `200` and `"ok": false`.
+  Timestamps of messages, like `ts`, are strings with microseconds, like
+  `"1700000000.123456"`, declared as numbers, so they're read exactly as
+  `DECIMAL`, and the `ts` parameter of `conversations.replies`, a string, is a
+  separate column, `ts_req`.
+* `sync/slack/` keeps the columns of the old tables, and adds `latest_reply` to
+  `messages` and `replies`:
+  * `users` and `channels` get a row for every new version, like before.
+    Channels changing only their number of members don't get a new version.
+  * `channel_members` gets a row when a member joins a synced channel, and
+    another one with `removed_at` when they leave, like before. The members are
+    read once, while the old sync read the members of every channel twice.
+  * `messages` are read for the last 90 days every time, and `MERGE` updates
+    edits, reactions and the replies count of threads. trino-rest only added
+    messages newer than the newest one saved.
+  * `replies` of a thread are read again when its number of replies or its
+    latest reply changes, tracked in `sync_state` like the GitHub children.
+    trino-rest read a thread only once, when it was older than 14 days, so it
+    missed later replies, and threads whose first reply came after their parent
+    was saved.
+  * Missing values are `NULL`, instead of empty strings and timestamps at the
+    Unix epoch.
+* `sync/backfill-slack/` copies the old tables, without exact duplicates, with
+  missing values replaced with `NULL`, using the `legacyslack` catalog, with
+  the old account's keys. Run it with `backfill.yml` and `data` set to `slack`.
+  The sync then reads the replies of all threads from the last 90 days once.
+* Rate limits: `users.list` and `conversations.list` allow about 20 requests
+  per minute, so the catalog keeps the old `max-requests-per-second=0.3`, and
+  `retry-max-delay=2m`, because Slack asks to wait with `Retry-After`.
+
+To switch, after merging: run `backfill.yml` with `data` set to `slack`, and
+then `sync-slack.yml`. Messages from the last 90 days are still in Slack, so
+the sync catches up after any gap shorter than that. To roll back, revert the
+pull request: the old tables are unchanged, and the old sync catches up the
+same way.
 
 ## Phase 3: cleanup
 

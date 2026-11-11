@@ -1,10 +1,17 @@
-name: Backfill the Iceberg tables from the Hive tables
+name: Backfill the new tables from the old ones
 
 on:
   workflow_dispatch:
     inputs:
+      data:
+        description: "Which tables to copy"
+        type: choice
+        options:
+          - github
+          - slack
+        default: github
       cutoff:
-        description: "Copy only rows from before this time, like 2026-10-29 00:00:00; all rows when empty"
+        description: "Copy only GitHub rows from before this time, like 2026-10-29 00:00:00; all rows when empty"
         required: false
         default: ""
 
@@ -20,7 +27,7 @@ jobs:
   backfill:
     runs-on: ubuntu-latest
     env:
-      # the old Hive tables are in another AWS account, read with its keys by the legacy catalog
+      # the old tables are in another AWS account, read with its keys by the legacy and legacyslack catalogs
       LEGACY_AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       LEGACY_AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       TRINO_VERSION: 484
@@ -55,6 +62,7 @@ jobs:
             -v $(pwd)/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
             -v $(pwd)/catalog/trinocicd-iceberg.properties:/etc/trino/catalog/trinocicd.properties \
             -v $(pwd)/catalog/legacy.properties:/etc/trino/catalog/legacy.properties \
+            -v $(pwd)/catalog/legacyslack.properties:/etc/trino/catalog/legacyslack.properties \
             -v $(pwd)/hive-cache:/opt/hive-cache \
             -e AWS_ACCESS_KEY_ID \
             -e AWS_SECRET_ACCESS_KEY \
@@ -75,16 +83,18 @@ jobs:
               sleep 10
           done
       - name: Create the schema
+        if: inputs.data == 'github'
         run: |
           docker exec trino trino --execute "CREATE SCHEMA IF NOT EXISTS trinocicd.github WITH (location = 's3://trino-reports-jwas/github')"
       - name: Create tables
         env:
           SYNC_TRINO_URL: jdbc:trino://localhost:8080
-          SYNC_STEPS_DIR: sync/github
+          SYNC_STEPS_DIR: sync/${{ inputs.data }}
           SYNC_STEPS: tables
         run: |
           java -cp trino-jdbc.jar sync/Sync.java
-      - name: Backfill
+      - name: Backfill GitHub
+        if: inputs.data == 'github'
         env:
           SYNC_TRINO_URL: jdbc:trino://localhost:8080
           SYNC_STEPS_DIR: sync/backfill
@@ -94,7 +104,15 @@ jobs:
               export SYNC_CUTOFF="$CUTOFF"
           fi
           java -cp trino-jdbc.jar sync/Sync.java
-      - name: Compare row counts
+      - name: Backfill Slack
+        if: inputs.data == 'slack'
+        env:
+          SYNC_TRINO_URL: jdbc:trino://localhost:8080
+          SYNC_STEPS_DIR: sync/backfill-slack
+        run: |
+          java -cp trino-jdbc.jar sync/Sync.java
+      - name: Compare row counts of GitHub tables
+        if: inputs.data == 'github'
         run: |
           docker exec trino trino --output-format=ALIGNED --execute "
             SELECT 'runs' AS \"table\", (SELECT count(*) FROM legacy.v2.runs WHERE owner = 'trinodb' AND repo = 'trino') AS old_rows, (SELECT count(*) FROM trinocicd.github.runs) AS new_rows
@@ -102,6 +120,15 @@ jobs:
             UNION ALL SELECT 'pulls', (SELECT count(DISTINCT id) FROM legacy.v2.pulls WHERE owner = 'trinodb' AND repo = 'trino'), (SELECT count(*) FROM trinocicd.github.pulls)
             UNION ALL SELECT 'issues', (SELECT count(DISTINCT id) FROM legacy.v2.issues WHERE owner = 'trinodb' AND repo = 'trino'), (SELECT count(*) FROM trinocicd.github.issues)
             UNION ALL SELECT 'check_runs', (SELECT count(DISTINCT id) FROM legacy.v2.check_runs WHERE owner = 'trinodb' AND repo = 'trino'), (SELECT count(*) FROM trinocicd.github.check_runs)"
+      - name: Compare row counts of Slack tables
+        if: inputs.data == 'slack'
+        run: |
+          docker exec trino trino --output-format=ALIGNED --execute "
+            SELECT 'messages' AS \"table\", (SELECT count(DISTINCT (channel, ts)) FROM legacyslack.slack.messages) AS old_rows, (SELECT count(*) FROM trinocicd.slack.messages) AS new_rows
+            UNION ALL SELECT 'replies', (SELECT count(DISTINCT (channel, ts)) FROM legacyslack.slack.replies), (SELECT count(*) FROM trinocicd.slack.replies)
+            UNION ALL SELECT 'users', (SELECT count(DISTINCT id) FROM legacyslack.slack.users), (SELECT count(DISTINCT id) FROM trinocicd.slack.users)
+            UNION ALL SELECT 'channels', (SELECT count(DISTINCT id) FROM legacyslack.slack.channels), (SELECT count(DISTINCT id) FROM trinocicd.slack.channels)
+            UNION ALL SELECT 'channel_members', (SELECT count(DISTINCT (channel, member)) FROM legacyslack.slack.channel_members), (SELECT count(DISTINCT (channel, member)) FROM trinocicd.slack.channel_members)"
       - name: Dump Trino logs
         if: always()
         run: |
