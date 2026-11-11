@@ -50,7 +50,7 @@ trino trino://localhost:8080/trinocicd/github --output-format=ALIGNED < sql/pr/b
    a role with GitHub OIDC, and are passed as environmental variables, together with the `GITHUB_TOKEN`.
 1. It runs the [sync program](https://github.com/trinodb/reports/blob/master/sync/Sync.java), which runs the SQL statements from
    [sync/github](https://github.com/trinodb/reports/blob/master/sync/github), like `MERGE INTO trinocicd.github.<table> USING (SELECT ... FROM github.default.<table>)`,
-   reading only data that changed since the previous run. See [the migration plan](https://github.com/trinodb/reports/blob/master/sync/MIGRATION.md) for more details.
+   reading only data that changed since the previous run. See [how the sync works](https://github.com/trinodb/reports/blob/master/sync/README.md) for more details.
 
 ## Reports
 
