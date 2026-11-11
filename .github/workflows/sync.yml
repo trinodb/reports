@@ -42,7 +42,7 @@ jobs:
           unzip -q trino-openapi-$TRINO_OPENAPI_VERSION.zip
           curl -fLsS -o trino-jdbc.jar https://repo1.maven.org/maven2/io/trino/trino-jdbc/$TRINO_VERSION/trino-jdbc-$TRINO_VERSION.jar
       - name: Restore the HTTP cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         with:
           path: http-cache
           key: http-cache-${{ github.run_id }}
@@ -103,7 +103,7 @@ jobs:
         run: |
           # the connector creates files only the user running Trino can read
           sudo chown -R "$(id -u):$(id -g)" http-cache
-      - uses: actions/cache/save@v4
+      - uses: actions/cache/save@v6
         if: always()
         with:
           path: http-cache
