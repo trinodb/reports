@@ -3,7 +3,7 @@
 # Generate reports by executing SQL queries.
 #
 # Executes SQL queries from multiple files using the Trino CLI available in a
-# locally running container called `trino`.
+# locally running container called `trino`, or the one named in `TRINO_CONTAINER`.
 #
 # SQL query files should use the following convention:
 # * The first line should be a comment (start with `--`) used as the report
@@ -26,7 +26,7 @@ for cmd in ansi2html docker; do
     fi
 done
 
-container_name=trino
+container_name=${TRINO_CONTAINER:-trino}
 if ! status=$(docker inspect $container_name --format "{{json .State.Status}}") || [ "$status" != '"running"' ]; then
     echo >&2 "Container '$container_name' does not exist or is not running (status is $status)"
     exit 1
@@ -53,14 +53,13 @@ function run_query() {
     local file=$1
     local format=${2:-ALIGNED}
     echo >&2 "Executing query from $file"
-    docker cp "$file" $container_name:/tmp/
-    time docker exec \
+    time docker exec -i \
         $container_name \
         java -Dorg.jline.terminal.dumb=true -jar /usr/bin/trino \
         --catalog trinocicd --schema github \
         --debug \
-        -f "/tmp/$(basename "$file")" \
-        --output-format="$format"
+        -f /dev/stdin \
+        --output-format="$format" <"$file"
 }
 
 function run_query_md() {
@@ -102,6 +101,7 @@ for file in "${queries[@]}"; do
         echo ""
         echo "$desc"
         if grep -qi chart "$file"; then
+            echo ""
             echo '<pre><code>'
             run_query_mono "$file"
             echo '</code></pre>'
