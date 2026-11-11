@@ -23,14 +23,13 @@ Materialized views are not used, because incremental updates are tricky and diff
 
 To run the queries locally:
 * download all the custom Trino connectors
-* get AWS credentials that can access the Iceberg tables in the `trino-reports-jwas` bucket, and keys of the AWS account
-  with the old Hive tables, read by the `legacy` catalog in `catalog/legacy.properties`
+* get AWS credentials that can access the Iceberg tables in the `trino-reports-jwas` bucket
 * make sure to have the `GITHUB_TOKEN` environment variable set
 * start Trino in a container
 
 ```bash
 # ensure all these environment variables are set to correct values
-export AWS_REGION AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN LEGACY_AWS_ACCESS_KEY_ID LEGACY_AWS_SECRET_ACCESS_KEY GITHUB_TOKEN
+export AWS_REGION AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN GITHUB_TOKEN
 ./bin/run-trino.sh
 ```
 
