@@ -65,8 +65,8 @@ jobs:
             -v $(pwd)/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
             -v $(pwd)/trino-openapi-$TRINO_OPENAPI_VERSION:/usr/lib/trino/plugin/openapi \
             -v $(pwd)/sync/specs/github.json:/etc/trino/specs/github.json \
-            -v $(pwd)/catalog/github-openapi.properties:/etc/trino/catalog/github.properties \
-            -v $(pwd)/catalog/trinocicd-iceberg.properties:/etc/trino/catalog/trinocicd.properties \
+            -v $(pwd)/catalog/github.properties:/etc/trino/catalog/github.properties \
+            -v $(pwd)/catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
             -v $(pwd)/hive-cache:/opt/hive-cache \
             -v $(pwd)/http-cache:/opt/http-cache \
             -e AWS_ACCESS_KEY_ID \
