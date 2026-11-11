@@ -4,6 +4,15 @@ plugins:
 
 minima:
   skin: auto
+  # without this, the menu lists every page with a title, like the index and the old pull request page
+  nav_pages:
+    - reports/overview/index.md
+    - reports/contributing/index.md
+    - reports/maintaining/index.md
+    - reports/ci-cd/index.md
+    - reports/tests/index.md
+    - reports/community/index.md
+    - reports/hall-of-fame/index.md
 
 exclude:
   - bin/
