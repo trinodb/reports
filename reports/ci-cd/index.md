@@ -11,7 +11,7 @@ title: Trino CI/CD Reports
 | \[other\] |         208 |           0.5 |        338 |          0.5 |        572 |         0.53 |        2251 |          0.55 |
 | master    |           2 |           0.0 |          4 |          0.5 |          8 |          0.5 |          45 |          0.44 |
 
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/ci-cd/health.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/ci-cd/health.sql)
 
 ## CI workflow failures per day
 
@@ -51,7 +51,7 @@ title: Trino CI/CD Reports
 | 2026-11-10 |        1 |           0 |          0.0 | \[\{1, build-success\}, \{1, check-commit\}, \{1, check-commit-messages\}, \{1, check-commits-dispatcher\}, \{1, test \(plugin/trino-hive\)\}\]                                                                                                                       |          153 |              69 |             0.45 |
 | 2026-11-11 |        1 |           0 |          0.0 | \[\{1, build-success\}, \{1, check-commit\}, \{1, check-commit-messages\}, \{1, check-commits-dispatcher\}, \{1, test \(plugin/trino-hive\)\}\]                                                                                                                       |           53 |              34 |             0.64 |
 
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/ci-cd/success-ratio-per-day.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/ci-cd/success-ratio-per-day.sql)
 
 ## Runs queue time per day
 
@@ -76,7 +76,7 @@ title: Trino CI/CD Reports
  2026-10-28 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5faf00">█</span><span style="color: #5faf00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffd700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span>             |        109 | [0 00:00:03.000000, 0 00:02:13.000000, 0 00:03:12.000000, 0 00:03:46.000000] | 0 00:00:00.000000  | 0 00:00:31.805556  | 0 00:04:17.000000 
 (15 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/ci-cd/runs-queue-time-per-day.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/ci-cd/runs-queue-time-per-day.sql)
 
 ## Runs duration per day
 
@@ -101,7 +101,7 @@ title: Trino CI/CD Reports
  2026-10-28 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5faf00">█</span><span style="color: #5faf00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffd700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff0000">█</span>    |         56 | [0 00:41:49.000000, 0 00:56:36.000000, 0 01:07:40.000000, 0 01:11:29.000000] | 0 00:15:43.000000 | 0 00:38:24.071429 | 0 01:11:29.000000 
 (15 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/ci-cd/runs-duration-per-day.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/ci-cd/runs-duration-per-day.sql)
 
 ## Runs cumulative job duration on master per day
 
@@ -130,7 +130,7 @@ since there's a very low chance of all jobs finishing successfully.
  2026-10-28 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5faf00">█</span><span style="color: #5faf00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #87d700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #afd700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #d7d700">█</span><span style="color: #ffd700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff8700">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff0000">█</span>    |          1 |               1 |            115 | [0 20:16:00.000000, 0 20:16:00.000000, 0 20:16:00.000000, 0 20:16:00.000000] | 0 20:16:00.000000 | 0 20:16:00.000000 | 0 20:16:00.000000 
 (15 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/ci-cd/runs-job-cumulative-duration-per-day.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/ci-cd/runs-job-cumulative-duration-per-day.sql)
 
 ## Job duration in last 30 days
 
@@ -270,6 +270,6 @@ In the Daily avg duration chart column, days are shown from latest to oldest and
  milestone                          | set-milestone                                                 |                      | ▆▄▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆██▆▆▆▆▄▆▆▆▅▆▆ | <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff5f00">█</span><span style="color: #ff5f00">█</span><span style="color: #ff8700">█</span><span style="color: #ffaf00">█</span><span style="color: #ffaf00">█</span><span style="color: #ffd700">█</span><span style="color: #ffff00">█</span><span style="color: #ffff00">█</span><span style="color: #ffff00">█</span><span style="color: #ffff00">█</span><span style="color: #d7ff00">█</span><span style="color: #afff00">█</span><span style="color: #afff00">█</span><span style="color: #87ff00">█</span><span style="color: #5fff00">█</span><span style="color: #5fff00">█</span><span style="color: #00ff00">█</span><span style="color: #00ff00">█</span> |         275 |           1.0 |           0.01 | [1, 1, 1, 2]               |           0 |         1.0 |           2 
 (129 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/ci-cd/jobs-duration.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/ci-cd/jobs-duration.sql)
 
-Generated on Wed Nov 11 15:31:35 UTC 2026
+Generated on Wed Nov 11 16:23:18 UTC 2026

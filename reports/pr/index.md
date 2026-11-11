@@ -105,7 +105,7 @@ title: Trino PR Reports
  2019-01-01 |                      |           <span style="color: #ff0000">█</span>          |                      |           <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span>       |       30 |      80 |         50 |          66 |        121 |            55 
 (95 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/burndown.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/burndown.sql)
 
 ## Authors per month
 
@@ -139,7 +139,7 @@ title: Trino PR Reports
  2024-12-01 | <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span>           | <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span>         | <span style="color: #00af00">█</span>                       | <span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span><span style="color: #ff0000">█</span>          |           272 |            36 |                 3 |               894 | [7hong, Shoham Yamin, loustler]                                                                                                                                                                                                                                                                                                    
 (24 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/authors-per-month.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/authors-per-month.sql)
 
 ## Changes per month
 
@@ -173,7 +173,7 @@ title: Trino PR Reports
  2024-12-01 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span>              | <span style="color: #00af00">█</span>                    |                      |           272 |       25573 |         10405 |          85 |            0 |            11 |           1584 |            31 
 (24 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/changes-per-month.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/changes-per-month.sql)
 
 ## PRs per author
 
@@ -192,7 +192,7 @@ title: Trino PR Reports
  Total                    |              1345 |                      
 (9 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/prs-per-author.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/prs-per-author.sql)
 
 ## Reviewers per PR
 
@@ -208,7 +208,7 @@ title: Trino PR Reports
  10 to 20         |                 8 |                      
 (6 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/reviewers-per-pr.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/reviewers-per-pr.sql)
 
 ## Reviews per author association, per month
 
@@ -316,7 +316,7 @@ title: Trino PR Reports
  2019-01-01 | <span style="color: #afafaf">█</span><span style="color: #afafaf">█</span>                                                  |       147 |         11 |           1 |         0 |       159 
 (95 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/reviews-per-author-assoc.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/reviews-per-author-assoc.sql)
 
 ## Top 10 reviewers per year
 
@@ -405,7 +405,7 @@ title: Trino PR Reports
 | 2019 | kasiafi                    |            86 |              0 |              86 |
 | 2019 | Xingyuan Lin               |            62 |              5 |              57 |
 
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/top-reviewers.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/top-reviewers.sql)
 
 ## Top 10 authors per year
 
@@ -558,7 +558,7 @@ title: Trino PR Reports
 | 2012 | David Phillips             |           115 |
 | 2012 | Eric Hwang                 |            92 |
 
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/top-authors.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/top-authors.sql)
 
 ## Top 10 mergers per year
 
@@ -692,7 +692,7 @@ title: Trino PR Reports
 | 2012 | Martin Traverso            |            46 |
 | 2012 | Dain Sundstrom             |             9 |
 
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/top-mergers.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/top-mergers.sql)
 
 ## Always two, there are. No more. No less. A master and an apprentice
 
@@ -751,7 +751,7 @@ title: Trino PR Reports
 | Peter Kosztolanyi          | Mateusz "Serafin" Gajewski |      30 |            30 |
 | praveenkrishna             | Martin Traverso            |      42 |            30 |
 
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/sith-lords.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/sith-lords.sql)
 
 ## Mergers top 10 authors in last 12 months
 
@@ -885,7 +885,7 @@ title: Trino PR Reports
  Łukasz Osipiuk             | trina242                   |           8 |                      |                 1 |                       1 
 (124 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/mergers-authors.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/mergers-authors.sql)
 
 ## Reviewers top 10 authors in last 12 months
 
@@ -1152,7 +1152,7 @@ title: Trino PR Reports
  Łukasz Walkiewicz          | lpoulain                   |           3 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span>                  |                  3 |                       1 |                 2 
 (257 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/reviewers-top-authors.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/reviewers-top-authors.sql)
 
 ## Time to merge in last 12 months
 
@@ -1177,7 +1177,7 @@ title: Trino PR Reports
  Total            |          2769 |             302 |                     2 |                      
 (15 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/time-to-merge.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/time-to-merge.sql)
 
 ## Time to merge per PR size
 
@@ -1200,7 +1200,7 @@ title: Trino PR Reports
  Total                           |         22983 | 10 23:40:40.111631 |                      |                      | [1.10, 47.91, 179.67]                
 (13 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/time-to-merge-per-size.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/time-to-merge-per-size.sql)
 
 ## Average time to merge a PR with open PRs
 
@@ -1305,7 +1305,7 @@ title: Trino PR Reports
  2019-01-01 |            67 |                      | 1 17:35:24.223881  |                          67 | <span style="color: #00af00">█</span>                           | 1 17:35:24.223881     | [0.87, 5.66, 7.72]                   
 (95 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/avg-time-to-merge.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/avg-time-to-merge.sql)
 
 ## Time to first review in last 12 months
 
@@ -1330,7 +1330,7 @@ title: Trino PR Reports
  Total                |          2342 |             740 |                      
 (15 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/time-to-first-review.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/time-to-first-review.sql)
 
 ## Average time to first review
 
@@ -1435,7 +1435,7 @@ title: Trino PR Reports
  2019-01-01 |            67 |                      | 1 00:29:35.388060   |                          67 |                              | 1 00:29:35.388060      | [0.30, 1.05, 4.97, 7.95]                  
 (95 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/avg-time-to-first-review.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/avg-time-to-first-review.sql)
 
 ## Responsiveness of reviewers
 
@@ -1459,7 +1459,7 @@ title: Trino PR Reports
  over 90 days           |               753 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span>                   
 (14 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/reviewer-responsiveness.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/reviewer-responsiveness.sql)
 
 ## Responsiveness of authors
 
@@ -1483,7 +1483,7 @@ title: Trino PR Reports
  over 90 days         |              385 | <span style="color: #00af00">█</span>                    
 (14 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/author-responsiveness.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/author-responsiveness.sql)
 
 ## Open PRs age
 
@@ -1503,7 +1503,7 @@ title: Trino PR Reports
  over 2 year    |            27 | <span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #00af00">█</span><span style="color: #5fd700">█</span><span style="color: #5fd700">█</span><span style="color: #87d700">█</span>               
 (10 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/open-pr-age.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/open-pr-age.sql)
 
 ## Longest time without any review or comment
 
@@ -1513,18 +1513,18 @@ title: Trino PR Reports
 | ------:| --------------------------------------------------------------------------------------------------------- | -------------------:| ------------------------:|
 |  32036 | <a href="https://github.com/trinodb/trino/pull/32036">Share learned batch size across PageProcessors</a>              |                   2 |                      957 |
 |  32040 | <a href="https://github.com/trinodb/trino/pull/32040">Improve CLI completion and show catalog in prompt</a>           |                   2 |                        0 |
-|  32071 | <a href="https://github.com/trinodb/trino/pull/32071">Allow excluding single tests from product test suites</a>       |                   1 |                       44 |
 |  32070 | <a href="https://github.com/trinodb/trino/pull/32070">Migrate AST visitors to switch over sealed Node</a>             |                   1 |                      957 |
+|  32071 | <a href="https://github.com/trinodb/trino/pull/32071">Allow excluding single tests from product test suites</a>       |                   1 |                       44 |
 |  32081 | <a href="https://github.com/trinodb/trino/pull/32081">Read Parquet Bloom filter with a single request</a>             |                   0 |                      957 |
 |  32076 | <a href="https://github.com/trinodb/trino/pull/32076">Speed up offsets of fixed size Parquet lists</a>                |                   0 |                      957 |
-|  32082 | <a href="https://github.com/trinodb/trino/pull/32082">Skip Parquet page index for fully matching row groups</a>       |                   0 |                      957 |
-|  32075 | <a href="https://github.com/trinodb/trino/pull/32075">Skip scans of fully defined nested Parquet levels</a>           |                   0 |                      957 |
-|  32080 | <a href="https://github.com/trinodb/trino/pull/32080">Avoid beginning table writes in EXPLAIN</a>                     |                   0 |                        2 |
 |  32091 | <a href="https://github.com/trinodb/trino/pull/32091">Add HTTP proxy support to Iceberg REST catalog</a>              |                   0 |                      119 |
 |  32078 | <a href="https://github.com/trinodb/trino/pull/32078">Write Parquet offset index and skip pages in nested reader</a>  |                   0 |                      957 |
 |  32093 | <a href="https://github.com/trinodb/trino/pull/32093">Fix short decimal cast overflow when increasing scale</a>       |                   0 |                      736 |
+|  32080 | <a href="https://github.com/trinodb/trino/pull/32080">Avoid beginning table writes in EXPLAIN</a>                     |                   0 |                        2 |
+|  32082 | <a href="https://github.com/trinodb/trino/pull/32082">Skip Parquet page index for fully matching row groups</a>       |                   0 |                      957 |
+|  32075 | <a href="https://github.com/trinodb/trino/pull/32075">Skip scans of fully defined nested Parquet levels</a>           |                   0 |                      957 |
 
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/awaiting-review.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/awaiting-review.sql)
 
 ## Time since last activity on a PR
 
@@ -1532,16 +1532,16 @@ title: Trino PR Reports
 
 | last activity      | count | pull request IDs                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ------------------ | -----:| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| up to 24 hours ago |    34 | \[28876, 29758, 30290, 30688, 31272, 31313, 31542, 31544, 31687, 31762, 31786, 31806, 31807, 31852, 31979, 31994, 31999, 32004, 32007, 32023, 32054, 32070, 32074, 32075, 32076, 32077, 32078, 32079, 32080, 32081, 32082, 32083, 32091, 32093\]                                                                                                                                                                                                                                                      |
-| 1 to 3 days ago    |    46 | \[28962, 30545, 30602, 30707, 30838, 31015, 31027, 31208, 31315, 31389, 31426, 31508, 31549, 31645, 31677, 31718, 31750, 31804, 31824, 31825, 31830, 31883, 31895, 31945, 31964, 32000, 32005, 32027, 32028, 32031, 32032, 32036, 32040, 32043, 32048, 32049, 32050, 32051, 32053, 32057, 32059, 32063, 32064, 32066, 32071, 32072\]                                                                                                                                                                  |
-| 3 to 7 days ago    |    32 | \[23971, 27026, 28568, 28958, 30330, 30402, 30421, 30477, 30681, 30682, 30815, 30930, 30977, 31016, 31023, 31036, 31090, 31135, 31221, 31275, 31546, 31583, 31588, 31614, 31684, 31721, 31788, 31889, 31893, 31973, 31997, 32009\]                                                                                                                                                                                                                                                                    |
+| up to 24 hours ago |    31 | \[28876, 29758, 30290, 30688, 31272, 31313, 31544, 31687, 31762, 31786, 31806, 31807, 31852, 31979, 31994, 31999, 32023, 32054, 32070, 32074, 32075, 32076, 32077, 32078, 32079, 32080, 32081, 32082, 32083, 32091, 32093\]                                                                                                                                                                                                                                                                           |
+| 1 to 3 days ago    |    48 | \[28962, 30545, 30602, 30707, 30838, 31015, 31027, 31208, 31315, 31389, 31426, 31508, 31542, 31549, 31645, 31677, 31718, 31750, 31804, 31824, 31825, 31883, 31895, 31945, 31964, 32000, 32004, 32005, 32007, 32027, 32028, 32031, 32032, 32036, 32040, 32043, 32048, 32049, 32050, 32051, 32053, 32057, 32059, 32063, 32064, 32066, 32071, 32072\]                                                                                                                                                    |
+| 3 to 7 days ago    |    33 | \[23971, 27026, 28568, 28958, 30330, 30402, 30421, 30477, 30681, 30682, 30815, 30930, 30977, 31016, 31023, 31036, 31090, 31135, 31221, 31275, 31546, 31583, 31588, 31614, 31684, 31721, 31788, 31830, 31889, 31893, 31973, 31997, 32009\]                                                                                                                                                                                                                                                             |
 | 7 to 14 days ago   |    69 | \[26519, 28793, 29166, 29189, 29207, 29702, 29862, 30324, 30436, 30495, 30553, 30596, 30691, 30781, 30797, 30824, 30864, 30891, 30960, 30973, 31038, 31112, 31235, 31316, 31340, 31348, 31350, 31352, 31412, 31448, 31462, 31463, 31509, 31537, 31547, 31593, 31643, 31696, 31727, 31774, 31775, 31789, 31798, 31837, 31849, 31858, 31865, 31870, 31880, 31881, 31882, 31887, 31891, 31892, 31896, 31906, 31907, 31909, 31918, 31919, 31920, 31943, 31949, 31957, 31962, 31974, 31978, 31980, 31981\] |
 | 14 to 21 days ago  |    39 | \[29954, 30491, 30511, 30580, 30677, 30875, 30911, 31042, 31094, 31104, 31373, 31378, 31391, 31398, 31428, 31534, 31556, 31579, 31613, 31673, 31688, 31691, 31692, 31693, 31731, 31733, 31741, 31765, 31781, 31785, 31790, 31819, 31822, 31826, 31829, 31843, 31845, 31846, 31866\]                                                                                                                                                                                                                   |
 | 21 to 30 days ago  |    12 | \[29586, 30351, 30942, 31173, 31183, 31260, 31280, 31287, 31644, 31668, 31695, 31702\]                                                                                                                                                                                                                                                                                                                                                                                                                |
 | 30 to 90 days ago  |    20 | \[15832, 22944, 25259, 25276, 27922, 27944, 29291, 29690, 30024, 30039, 30063, 30113, 30183, 30244, 30300, 30309, 30443, 30473, 30775, 31093\]                                                                                                                                                                                                                                                                                                                                                        |
 | over 90 days ago   |    47 | \[12369, 15288, 15993, 16558, 17288, 18384, 18457, 19107, 19161, 19365, 19744, 20203, 21027, 21060, 21196, 21243, 21550, 21558, 21892, 22254, 22519, 22827, 23206, 23619, 24220, 24479, 24616, 25009, 25735, 25961, 25968, 26000, 26702, 26987, 27666, 27830, 28782, 28791, 28811, 28917, 29597, 30066, 30182, 30210, 30219, 30289, 30292\]                                                                                                                                                           |
 
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/inactivity-on-prs.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/inactivity-on-prs.sql)
 
 ## Abandoned PRs
 
@@ -1549,9 +1549,9 @@ title: Trino PR Reports
 
 | number | title                                                                                                                       | days_since_push | days_since_review | days_since_comment | author_commits_last_year |
 | ------:| --------------------------------------------------------------------------------------------------------------------------- | ---------------:| -----------------:| ------------------:| ------------------------:|
-|  15993 | <a href="https://github.com/trinodb/trino/pull/15993">Support replace src string in char type</a>                                       |            1373 |              1337 |               1337 |                        0 |
+|  15993 | <a href="https://github.com/trinodb/trino/pull/15993">Support replace src string in char type</a>                                       |            1373 |              1338 |               1338 |                        0 |
+|  15288 | <a href="https://github.com/trinodb/trino/pull/15288">Add a new optimization rule: query fusion</a>                                     |            1286 |              1300 |               1300 |                        0 |
 |  17288 | <a href="https://github.com/trinodb/trino/pull/17288">Fill TupleDomain and expression in Constraint passed to ConnectorSplitSource</a>  |            1286 |              1282 |               1282 |                      795 |
-|  15288 | <a href="https://github.com/trinodb/trino/pull/15288">Add a new optimization rule: query fusion</a>                                     |            1285 |              1300 |               1300 |                        0 |
 |  19161 | <a href="https://github.com/trinodb/trino/pull/19161">Reintroduce HiveTableRedirectionsProvider interface</a>                           |            1134 |              1134 |               1134 |                        0 |
 |  20203 | <a href="https://github.com/trinodb/trino/pull/20203">Add timestamp with tz to JSON cast</a>                                            |            1058 |               287 |                287 |                        0 |
 |  18384 | <a href="https://github.com/trinodb/trino/pull/18384">Rewrite partial top-n node to LimitNode or LastNNode</a>                          |            1016 |               964 |                964 |                        0 |
@@ -1570,7 +1570,7 @@ title: Trino PR Reports
 |  12369 | <a href="https://github.com/trinodb/trino/pull/12369">Write statistics to ORC file for TINYINT</a>                                      |             778 |              1639 |               1639 |                        0 |
 |  23619 | <a href="https://github.com/trinodb/trino/pull/23619">Support setting content md5 to validate upload content</a>                        |             771 |               771 |                771 |                        0 |
 
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/abandoned-prs.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/abandoned-prs.sql)
 
 ## Longest running PRs
 
@@ -1599,7 +1599,7 @@ title: Trino PR Reports
 |  31556 | <a href="https://github.com/trinodb/trino/pull/31556">Clean up orphaned exchange directories in fault-tolerant execution</a>  |           15 |
 |  30289 | <a href="https://github.com/trinodb/trino/pull/30289">Dissolve boolean CASE/COALESCE</a>                                      |           14 |
 
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/running-prs.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/running-prs.sql)
 
 ## Stale PRs
 
@@ -1628,6 +1628,6 @@ title: Trino PR Reports
 |  21892 | <a href="https://github.com/trinodb/trino/pull/21892">Allow complex expression rewrites with approximate numeric constant</a>           |                183 |
 |  22519 | <a href="https://github.com/trinodb/trino/pull/22519">Enable JDBC statistics cache by default</a>                                       |                183 |
 
-[query](https://github.com/trinodb/reports/blob/86ea17974d5992724e3c7120212585ce270c77a7/sql/pr/stale-prs.sql)
+[query](https://github.com/trinodb/reports/blob/745f738e25020b07b4ea314b5cde529b85897eb4/sql/pr/stale-prs.sql)
 
-Generated on Wed Nov 11 15:36:09 UTC 2026
+Generated on Wed Nov 11 16:26:33 UTC 2026
