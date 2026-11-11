@@ -90,7 +90,7 @@ Other facts that shape the plan:
 | Specs              | Patched copies in `sync/specs/`, not downloaded when the sync runs                                        |
 | Slack              | Moved to trino-openapi too, with a spec written for the endpoints the sync reads                          |
 | Table format       | Iceberg, Parquet                                                                                          |
-| Metastore          | Glue, in the current AWS account, like the Slack sync                                                     |
+| Metastore          | Glue, in another AWS account than the old tables, with credentials from GitHub OIDC                       |
 | Migration strategy | Run the new pipeline next to the old one, then switch the reports                                         |
 | Reports            | Moved to the new tables in `trinocicd.github` when switching, without views with the old names            |
 | Membership data    | Removed from the reports and dropped: no members or teams sync, no backfill of `members`, `timestamped_*` |
@@ -327,16 +327,26 @@ from the request log:
 
 ## Phase 1: switch the GitHub sync to trino-openapi
 
-The new pipeline only needs an Iceberg catalog on Glue, and the AWS account
-already has one, used by the Slack sync.
+The new pipeline only needs an Iceberg catalog on Glue. It was meant to be in
+the AWS account of the old tables, but the IAM user the workflows use there
+can't create tables in a new Glue database, and the owners of that account
+didn't grant it. The new tables are in another account, `428825817873`.
 
-Glue databases:
+The workflows using the new tables assume the
+`arn:aws:iam::428825817873:role/trino-reports-github` role with GitHub OIDC,
+instead of using long-lived keys. The role trusts only workflows running on
+`main` of `trinodb/reports`, can change only tables in the `github` database
+and objects in the `trino-reports-jwas` bucket, and can't create databases.
+The backfill reads the old tables with the keys of the old account, set only in
+the `legacy` catalog, so the other catalogs use the role.
 
-| Database | Location               | Contents                                        |
-| -------- | ---------------------- | ----------------------------------------------- |
-| `v2`     | `s3://trino-ci/v2`     | the old Hive tables, written by trino-rest      |
-| `slack`  |                        | the Iceberg tables of the Slack sync            |
-| `github` | `s3://trino-ci/github` | new: the Iceberg tables written by the new sync |
+Glue databases, all in `eu-central-1`:
+
+| Account        | Database | Location                         | Contents                                        |
+| -------------- | -------- | -------------------------------- | ----------------------------------------------- |
+| `888469412714` | `v2`     | `s3://trino-ci/v2`               | the old Hive tables, written by trino-rest      |
+| `888469412714` | `slack`  |                                  | the Iceberg tables of the Slack sync            |
+| `428825817873` | `github` | `s3://trino-reports-jwas/github` | new: the Iceberg tables written by the new sync |
 
 Catalogs, mounted under these names in the containers:
 
@@ -344,7 +354,7 @@ Catalogs, mounted under these names in the containers:
 | ----------- | -------------------------------------- | --------------------------------- |
 | `trinocicd` | `catalog/trinocicd.properties`         | Hive, until the reports switch    |
 | `trinocicd` | `catalog/trinocicd-iceberg.properties` | Iceberg, after the reports switch |
-| `legacy`    | `catalog/trinocicd.properties`         | Hive, for the backfill            |
+| `legacy`    | `catalog/legacy.properties`            | Hive, read-only, for the backfill |
 | `github`    | `catalog/github.properties`            | trino-rest, for the old sync      |
 | `github`    | `catalog/github-openapi.properties`    | trino-openapi, for the new sync   |
 
@@ -376,8 +386,8 @@ Catalogs, mounted under these names in the containers:
 Nothing changes for the old sync and the reports:
 
 * `catalog/trinocicd-iceberg.properties` and `catalog/github-openapi.properties`;
-* `.github/workflows/backfill.yml`, run manually: creates the `github`
-  database and the tables, and copies the old data;
+* `.github/workflows/backfill.yml`, run manually: creates the tables in the
+  `github` database, and copies the old data;
 * `.github/workflows/sync-openapi.yml`, run manually at first: runs the new
   sync, keeps the HTTP cache between runs with `actions/cache`, and prints the
   rate limit of `GITHUB_TOKEN`.

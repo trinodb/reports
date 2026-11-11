@@ -12,16 +12,26 @@ concurrency:
   group: iceberg-writers
   cancel-in-progress: false
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   backfill:
     runs-on: ubuntu-latest
     env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
+      # the old Hive tables are in another AWS account, read with its keys by the legacy catalog
+      LEGACY_AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      LEGACY_AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       TRINO_VERSION: 484
     steps:
       - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        with:
+          role-to-assume: arn:aws:iam::428825817873:role/trino-reports-github
+          aws-region: eu-central-1
+          # Trino reads the credentials only when it starts, so they have to last as long as the job
+          role-duration-seconds: 21600
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -44,11 +54,14 @@ jobs:
             -v $(pwd)/config.properties:/etc/trino/config.properties \
             -v $(pwd)/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
             -v $(pwd)/catalog/trinocicd-iceberg.properties:/etc/trino/catalog/trinocicd.properties \
-            -v $(pwd)/catalog/trinocicd.properties:/etc/trino/catalog/legacy.properties \
+            -v $(pwd)/catalog/legacy.properties:/etc/trino/catalog/legacy.properties \
             -v $(pwd)/hive-cache:/opt/hive-cache \
             -e AWS_ACCESS_KEY_ID \
             -e AWS_SECRET_ACCESS_KEY \
+            -e AWS_SESSION_TOKEN \
             -e AWS_REGION \
+            -e LEGACY_AWS_ACCESS_KEY_ID \
+            -e LEGACY_AWS_SECRET_ACCESS_KEY \
             -p 8080:8080 \
             --name trino \
             -d \
@@ -63,7 +76,7 @@ jobs:
           done
       - name: Create the schema
         run: |
-          docker exec trino trino --execute "CREATE SCHEMA IF NOT EXISTS trinocicd.github WITH (location = 's3://trino-ci/github')"
+          docker exec trino trino --execute "CREATE SCHEMA IF NOT EXISTS trinocicd.github WITH (location = 's3://trino-reports-jwas/github')"
       - name: Create tables
         env:
           SYNC_TRINO_URL: jdbc:trino://localhost:8080
