@@ -23,7 +23,8 @@ USING (
             body,
             user.id AS user_id,
             user.login AS user_login,
-            labels,
+            -- the spec allows labels to be names or objects, so the connector returns them as JSON text, like "bug" or {"name": "bug", ...}
+            transform(labels, label -> coalesce(json_extract_scalar(label, '$.name'), json_extract_scalar(label, '$'))) AS labels,
             assignee.id AS assignee_id,
             assignee.login AS assignee_login,
             transform(assignees, assignee -> assignee.login) AS assignee_logins,

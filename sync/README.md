@@ -77,6 +77,19 @@ and the second statement of the step saves them with their version in the
 * Runs are read by `conclusion IS NOT NULL`, instead of the `status` parameter,
   because with it GitHub returns at most 1,000 runs, and a sync falling behind
   by about a day would miss runs.
+* Issues copied from trino-rest have no labels, types, reasons of their state,
+  and links to their pull requests, and statistics of pull requests copied from
+  it have no `merged_by`, so two steps read them once. `issue_labels` reads
+  issues from the least recently updated, 1,000 at a time, sorted by the time
+  of the update, and saves the cursor in `sync_state`, because GitHub rejects
+  requests for later pages of all issues. Issues GitHub doesn't return, like
+  deleted ones, keep `NULL` labels. `pull_merged_by` reads merged pull requests
+  newest first, at most 1,200 an hour. When done, they make no requests.
+* trino-rest missed the reviews of about half of the pull requests since 2022,
+  and the copy marked all pull requests as read. The last step, `reviews_again`,
+  marks 1,200 of them in every sync, newest first, with a version they never
+  have, so the `reviews` step of the next sync reads them again. Until then,
+  reports counting reviews show too few of them for older pull requests.
 
 `GITHUB_TOKEN` allows 15,000 requests per hour, shared with other workflows of
 this repository. The catalog allows 2 requests per second, so a sync uses at
@@ -85,7 +98,11 @@ one makes a few hundred requests in under 10 minutes, mostly for annotations,
 one for every check run. Reading jobs is limited by GitHub, not by the request
 rate: a page of 50 jobs takes about 2.6 seconds. The HTTP cache is kept between
 syncs with `actions/cache`, so unchanged responses are revalidated, which
-doesn't count against the rate limit.
+doesn't count against the rate limit. The first sync with `issue_labels` makes
+about 330 more requests for it. Until `pull_merged_by` reads all of about
+17,000 pull requests, which takes about 15 syncs, and `reviews` reads all of
+about 23,000 again, which takes about 20 syncs, every sync makes 2,400 more
+requests, and takes about 40 minutes longer.
 
 ## Slack
 
