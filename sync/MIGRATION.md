@@ -303,12 +303,11 @@ from the request log:
 * A sync 2 hours after the previous one is faster than the old one: a median
   of 17 minutes, p90 of 36 minutes, and at most 57 minutes, over 60 runs in CI.
 * Its 428 requests were for about 135 check runs per hour. In busy hours there
-  are 600 to 860, so a sync could need about 1,700 requests, more than the
-  1,000 per hour per repository that `GITHUB_TOKEN` is believed to allow. The
-  old sync reads the same annotations, and has all of them, so either the
-  limit is higher, or it catches up in the next runs. Check the
-  `x-ratelimit-limit` header in a CI job before choosing
-  `max-requests-per-second`.
+  are 600 to 860, so a sync could need about 1,700 requests. `GITHUB_TOKEN`
+  allows 15,000 requests per hour per repository, as `x-ratelimit-limit`
+  showed in a CI job, so the sync uses `max-requests-per-second=2`. That's at
+  most 7,200 requests per hour, less than half of the limit, which other
+  workflows of the repository also use. `retry-max-delay` stays at its default.
 * Reading jobs is limited by GitHub, not by the request rate: a page of 50
   jobs takes about 2.6 seconds.
 
@@ -445,8 +444,3 @@ In its own pull request, after phase 1:
 * Drop the old Hive tables in `v2`, after deciding whether to keep them as an
   archive. The bucket also holds the 323 GB of artifacts.
 * Remove `sql/tests-schema.sql`.
-
-## Open questions
-
-* What `max-requests-per-second` and `retry-max-delay` to use in CI, after
-  checking the rate limit of `GITHUB_TOKEN` in a CI job.
