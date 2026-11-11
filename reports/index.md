@@ -2,11 +2,34 @@
 title: Index
 ---
 
+Reports about the [Trino](https://github.com/trinodb/trino) project, generated every day from its GitHub and Slack data.
 
-# [CI/CD pipeline reports](https://trinodb.github.io/reports/reports/ci-cd/)
+# [Overview](https://trinodb.github.io/reports/reports/overview/)
 
-# [Pull request reports](https://trinodb.github.io/reports/reports/pr/)
+The project in numbers: the last 30 days against the 30 days before.
 
-# [Tests reports](https://trinodb.github.io/reports/reports/tests/)
+# [Contributing](https://trinodb.github.io/reports/reports/contributing/)
+
+For contributors: what to expect after opening a pull request, what gets merged, and where help is needed.
+
+# [Maintaining](https://trinodb.github.io/reports/reports/maintaining/)
+
+For maintainers: pull requests waiting for a decision, the backlog, and how the review work is shared.
+
+# [CI/CD](https://trinodb.github.io/reports/reports/ci-cd/)
+
+How often the merge queue and the nightly runs pass, how long runs take, and what uses the runners.
+
+# [Tests](https://trinodb.github.io/reports/reports/tests/)
+
+Broken and flaky tests, new failures, and why jobs fail.
+
+# [Community](https://trinodb.github.io/reports/reports/community/)
+
+Growth of the community, releases, issues, and Slack.
+
+# [Hall of fame](https://trinodb.github.io/reports/reports/hall-of-fame/)
+
+New contributors, milestones, and the people who author, review, and merge the most.
 
 # [Git Achievements](https://MiguelWeezardo.github.io/trino-git-achievements/reports/git/)

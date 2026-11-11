@@ -1,6 +1,6 @@
 # Trino reports
 
-Analysis of the [Trino](https://github.com/trinodb/trino) project CI workflows.
+Reports about the [Trino](https://github.com/trinodb/trino) project: pull requests, reviews, CI workflows, tests, issues, and Slack.
 
 This repo is an example of using Trino to perform ETL (extract, transform, and load)
 and generate basic reports. The complete workflow is:
@@ -33,9 +33,20 @@ export AWS_REGION AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN GITH
 ./bin/run-trino.sh
 ```
 
+The reports read tables and functions built by the queries in `sql/setup`, in the memory catalog, so run these first,
+and again after restarting Trino:
+```bash
+./bin/reports.sh /tmp/setup.md Setup sql/setup/*.sql
+```
+
 Now you can run any query from the `sql` directory using [the Trino CLI](https://trino.io/docs/current/installation/cli.html#installation):
 ```bash
-trino trino://localhost:8080/trinocicd/github --output-format=ALIGNED < sql/pr/burndown.sql
+trino trino://localhost:8080/trinocicd/github --output-format=ALIGNED < sql/contributing/04-how-long-it-takes.sql
+```
+
+Or generate a whole page:
+```bash
+./bin/reports.sh /tmp/contributing.md "Contributing to Trino" sql/contributing/*.sql
 ```
 
 ## Sync
@@ -56,5 +67,28 @@ trino trino://localhost:8080/trinocicd/github --output-format=ALIGNED < sql/pr/b
 
 [The reports workflow](https://github.com/trinodb/reports/blob/master/.github/workflows/reports.yml):
 1. Starts Trino in a container with only the connector required to read data from the S3 bucket.
-1. Executes multiple [queries](/sql), saving results as a simple text table in a file.
+1. Executes the [queries](/sql) of every page, in the order of their names, saving results as a simple text table in a file.
 1. Commits the updated results file to this repository, which triggers publishing it to [Github Pages](https://trinodb.github.io/reports/reports/).
+
+Every directory in `sql` is a page, and every file in it is a report:
+
+| Directory          | Page                                                                                 |
+| ------------------ | ------------------------------------------------------------------------------------ |
+| `sql/setup`        | not a page: tables and functions shared by all reports, built first                  |
+| `sql/overview`     | the project in numbers                                                               |
+| `sql/contributing` | for contributors: what to expect after opening a pull request, where help is needed  |
+| `sql/maintaining`  | for maintainers: pull requests waiting for a decision, the backlog, the review work  |
+| `sql/ci-cd`        | merge queue and nightly runs, durations, runner time                                 |
+| `sql/tests`        | broken and flaky tests, new failures, causes of failed jobs                          |
+| `sql/community`    | growth, releases, issues, Slack                                                      |
+| `sql/hall-of-fame` | new contributors, milestones, top authors, reviewers, and mergers                    |
+
+To add a report, add a file to one of these directories:
+* The first line is a comment with the title, and the next comment lines are the description: what the report shows,
+  how to read it, and what to do about it.
+* The result is a Markdown table. If the file has the word `chart` anywhere, like in a column title, the result is
+  printed in a monospace font instead, so characters line up between rows. Draw with the functions from
+  [`sql/setup/01-functions.sql`](/sql/setup/01-functions.sql), like `hbar`, `sparkline`, `stacked`, and `shade`.
+* A value like `"label"@https://example.com ` becomes a link; `pr_link` and `user_link` make these.
+* Count people with `is_bot`, and read pull requests, their events, CI runs, and contributors from the tables built in
+  `sql/setup`, so all pages count the same things.
