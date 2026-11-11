@@ -1,5 +1,6 @@
 -- Every attempt of workflow runs, updated before the cutoff.
 -- Safe to repeat, rows that already exist are skipped.
+-- Runs without an attempt are saved as first attempts, like the reports count them, so they match on repeats.
 -- parameters: cutoff
 MERGE INTO trinocicd.github.runs t
 USING (
@@ -16,7 +17,7 @@ USING (
             head_sha,
             CAST(NULL AS varchar) AS path,
             run_number,
-            CAST(run_attempt AS bigint) AS run_attempt,
+            CAST(coalesce(run_attempt, 1) AS bigint) AS run_attempt,
             event,
             status,
             conclusion,
@@ -29,7 +30,7 @@ USING (
             CAST(created_at AS timestamp(6)) AS created_at,
             CAST(updated_at AS timestamp(6)) AS updated_at,
             CAST(run_started_at AS timestamp(6)) AS run_started_at,
-            row_number() OVER (PARTITION BY id, run_attempt ORDER BY updated_at DESC) AS row_num
+            row_number() OVER (PARTITION BY id, coalesce(run_attempt, 1) ORDER BY updated_at DESC) AS row_num
         FROM legacy.v2.runs o
         WHERE owner = 'trinodb' AND repo = 'trino'
             AND updated_at < coalesce(CAST(? AS timestamp(6)), TIMESTAMP '9999-12-31 00:00:00')
