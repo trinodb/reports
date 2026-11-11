@@ -107,10 +107,7 @@ dist
 .idea
 
 # custom Trino connectors
-/trino-rest-github-*
 /trino-git-*
-/bin/trino-rest-github-*
-/bin/trino-rest-slack-*
 /bin/trino-openapi-*
 /bin/http-cache
 /bin/trino-git-*
@@ -124,7 +121,3 @@ _site
 .jekyll-metadata
 vendor
 .bundle
-
-# Plugins and data of the local migration verification
-sync/verify/.plugins/
-sync/verify/.data/
