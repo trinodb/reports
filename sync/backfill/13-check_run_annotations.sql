@@ -1,11 +1,22 @@
--- Annotations of backfilled check runs.
--- Safe to repeat, rows that already exist are skipped.
+-- Annotations of backfilled check runs, in batches of check runs,
+-- since removing duplicates of all of them at once needs more memory than a GitHub runner has.
+-- Safe to repeat, check runs that already have annotations are skipped.
+-- loop: batches
 MERGE INTO trinocicd.github.check_run_annotations t
 USING (
     WITH copied_check_runs AS (
         SELECT id
         FROM trinocicd.github.check_runs
         WHERE owner = 'trinodb' AND repo = 'trino'
+    ),
+    batch AS (
+        SELECT DISTINCT check_run_id
+        FROM legacy.v2.check_run_annotations o
+        WHERE owner = 'trinodb' AND repo = 'trino'
+            AND check_run_id IN (SELECT id FROM copied_check_runs)
+            AND NOT EXISTS (SELECT 1 FROM trinocicd.github.check_run_annotations a WHERE a.check_run_id = o.check_run_id)
+        ORDER BY check_run_id
+        LIMIT 100000
     ),
     versions AS (
         SELECT
@@ -25,7 +36,7 @@ USING (
             row_number() OVER (PARTITION BY check_run_id, path, start_line, end_line, start_column, end_column, title, message ORDER BY check_run_id) AS row_num
         FROM legacy.v2.check_run_annotations o
         WHERE owner = 'trinodb' AND repo = 'trino'
-            AND check_run_id IN (SELECT id FROM copied_check_runs)
+            AND check_run_id IN (SELECT check_run_id FROM batch)
     )
     SELECT owner, repo, check_run_id, path, start_line, end_line, start_column, end_column, annotation_level, title, message, raw_details, blob_href
     FROM versions
