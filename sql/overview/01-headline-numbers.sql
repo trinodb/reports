@@ -1,18 +1,20 @@
 -- The project in numbers
--- Each number is for the last 30 days, with the change against the 30 days before, and a trend of the last 12 periods of 30 days, oldest on the left. The arrows show only the direction; the "Good news?" column says if the change is better or worse for the project. A change under 5% (2 points for a share) is steady.
--- Response numbers are for pull requests opened 7 to 37 days ago, so that each one had a week to get an answer; a response is the first review or comment from another person, or the merge. Bots are not counted. Open now counts what is open at the end of each period. A blank mark means there is no data yet.
+-- Each number is for the last 30 days and for the last 12 months, with the change against the same time before, and a trend of the last 12 periods of 30 days, oldest on the left. The arrows show only the direction, and the word after them says if the change is better or worse for the project. A change under 5% (2 points for a share) is steady. Small numbers swing a lot in 30 days, so a change that the last 12 months don't show is likely noise; follow the link to see what is behind a number.
+-- Response numbers are for pull requests opened at least 7 days before the end of the period, so that each one had a week to get an answer; a response is the first review or comment from another person, or the merge. Bots are not counted. Open now counts what is open at the end of each period. CI runs are kept for a year, and the merge queue started in May 2026, so CI numbers have no change over 12 months. A blank mark means there is no data yet.
 WITH
 now_utc AS (
     SELECT CAST(now() AT TIME ZONE 'UTC' AS timestamp(6)) AS ts
 )
 , periods AS (
-    -- period 0 is the last 30 days, period 1 the 30 days before, and so on
+    -- period 0 is the last 30 days or 12 months, period 1 the ones before, and so on
     SELECT
-        k AS period
-      , ts - k * interval '30' day AS period_end
-      , ts - (k + 1) * interval '30' day AS period_start
+        s.span
+      , k AS period
+      , ts - k * s.length AS period_end
+      , ts - (k + 1) * s.length AS period_start
     FROM now_utc
-    CROSS JOIN unnest(sequence(0, 11)) AS t(k)
+    CROSS JOIN (VALUES ('month', interval '30' day, 11), ('year', interval '365' day, 1)) AS s(span, length, last_period)
+    CROSS JOIN unnest(sequence(0, s.last_period)) AS t(k)
 )
 , people_prs AS (
     SELECT *
@@ -33,7 +35,8 @@ now_utc AS (
 )
 , pr_numbers AS (
     SELECT
-        p.period
+        p.span
+      , p.period
       , count(*) FILTER (WHERE pr.created_at >= p.period_start AND pr.created_at < p.period_end) AS opened
       , count(*) FILTER (WHERE pr.merged_at >= p.period_start AND pr.merged_at < p.period_end) AS merged
       , count(*) FILTER (WHERE pr.created_at < p.period_end AND (pr.closed_at IS NULL OR pr.closed_at >= p.period_end)) AS open_at_end
@@ -46,87 +49,100 @@ now_utc AS (
             FILTER (WHERE NOT pr.draft AND pr.created_at >= p.period_start - interval '7' day AND pr.created_at < p.period_end - interval '7' day) AS no_response_share
     FROM periods p
     CROSS JOIN people_prs pr
-    GROUP BY p.period
+    GROUP BY p.span, p.period
 )
 , reviewer_numbers AS (
-    SELECT p.period, count(DISTINCT e.actor) AS reviewers
+    SELECT p.span, p.period, count(DISTINCT e.actor) AS reviewers
     FROM periods p
     JOIN memory.default.pull_request_events e ON e.event_at >= p.period_start AND e.event_at < p.period_end
     WHERE e.kind = 'review' AND NOT e.by_author AND NOT e.by_bot
-    GROUP BY p.period
+    GROUP BY p.span, p.period
 )
 , newcomer_numbers AS (
-    SELECT p.period, count(c.login) AS newcomers
+    SELECT p.span, p.period, count(c.login) AS newcomers
     FROM periods p
     LEFT JOIN memory.default.contributors c ON c.first_merged_at >= p.period_start AND c.first_merged_at < p.period_end AND NOT c.is_bot
-    GROUP BY p.period
+    GROUP BY p.span, p.period
 )
 , issue_numbers AS (
     SELECT
-        p.period
+        p.span
+      , p.period
       , count(*) FILTER (WHERE i.created_at >= p.period_start AND i.created_at < p.period_end) AS opened
       , count(*) FILTER (WHERE i.created_at < p.period_end AND (i.state = 'open' OR i.closed_at >= p.period_end)) AS open_at_end
     FROM periods p
     CROSS JOIN real_issues i
-    GROUP BY p.period
+    GROUP BY p.span, p.period
 )
 , ci_numbers AS (
     SELECT
-        p.period
+        p.span
+      , p.period
       -- cancelled runs are neither passed nor failed
       , CAST(count(*) FILTER (WHERE r.trigger = 'merge queue' AND r.outcome = 'passed') AS double)
             / nullif(count(*) FILTER (WHERE r.trigger = 'merge queue' AND r.outcome IN ('passed', 'failed')), 0) AS merge_queue_success_rate
       , approx_percentile(to_unixtime(r.updated_at) - to_unixtime(r.run_started_at), 0.5) FILTER (WHERE r.trigger = 'pull request' AND r.outcome = 'passed') AS median_pr_run_duration
     FROM periods p
     JOIN ci r ON r.created_at >= p.period_start AND r.created_at < p.period_end
-    GROUP BY p.period
+    -- the year before has only the few runs from its last day
+    WHERE p.span = 'month' OR p.period = 0
+    GROUP BY p.span, p.period
 )
 , measures AS (
-    SELECT period, area_rank, area, measure_rank, measure, value, unit, better
+    SELECT span, period, area_rank, area, measure_rank, measure, value, unit, better, details
     FROM pr_numbers
     CROSS JOIN unnest(
         ARRAY[1, 2, 3, 4, 5, 6],
         ARRAY['Opened by people', 'Merged', 'Median time to merge', 'Median time to first response', 'No response within 7 days', 'Open now'],
         ARRAY[CAST(opened AS double), merged, median_time_to_merge, median_time_to_response, no_response_share, open_at_end],
         ARRAY['count', 'count', 'duration', 'duration', 'share', 'count'],
-        ARRAY['higher', 'higher', 'lower', 'lower', 'lower', 'lower']
-    ) AS t(measure_rank, measure, value, unit, better)
+        ARRAY['higher', 'higher', 'lower', 'lower', 'lower', 'lower'],
+        ARRAY[
+            memory.default.section_link('contributing', 'Pull requests per quarter'),
+            memory.default.section_link('contributing', 'Pull requests per quarter'),
+            memory.default.section_link('contributing', 'Time to merge per quarter'),
+            memory.default.section_link('maintaining', 'How fast do reviewers respond?'),
+            memory.default.section_link('maintaining', 'Waiting on reviewers: pick from the top'),
+            memory.default.section_link('maintaining', 'Is the backlog growing?')]
+    ) AS t(measure_rank, measure, value, unit, better, details)
     CROSS JOIN (VALUES (1, 'Pull requests')) AS a(area_rank, area)
     UNION ALL
-    SELECT period, 2, 'People', 1, 'Opened a pull request', authors, 'count', 'higher'
+    SELECT span, period, 2, 'People', 1, 'Opened a pull request', authors, 'count', 'higher', memory.default.section_link('community', 'Is the community growing?')
     FROM pr_numbers
     UNION ALL
-    SELECT period, 2, 'People', 2, 'Reviewed a pull request', reviewers, 'count', 'higher'
+    SELECT span, period, 2, 'People', 2, 'Reviewed a pull request', reviewers, 'count', 'higher', memory.default.section_link('maintaining', 'How concentrated is reviewing?')
     FROM reviewer_numbers
     UNION ALL
-    SELECT period, 2, 'People', 3, 'Had their first pull request merged', newcomers, 'count', 'higher'
+    SELECT span, period, 2, 'People', 3, 'Had their first pull request merged', newcomers, 'count', 'higher', memory.default.section_link('contributing', 'Is it getting better for newcomers?')
     FROM newcomer_numbers
     UNION ALL
-    SELECT period, 3, 'Issues', 1, 'Opened', opened, 'count', NULL
+    SELECT span, period, 3, 'Issues', 1, 'Opened', opened, 'count', NULL, memory.default.section_link('community', 'Are issues handled as fast as they come in?')
     FROM issue_numbers
     UNION ALL
-    SELECT period, 3, 'Issues', 2, 'Open now', open_at_end, 'count', 'lower'
+    SELECT span, period, 3, 'Issues', 2, 'Open now', open_at_end, 'count', 'lower', memory.default.section_link('community', 'Which areas get the most issues?')
     FROM issue_numbers
     UNION ALL
-    SELECT period, 4, 'CI', 1, 'Merge queue success rate', merge_queue_success_rate, 'share', 'higher'
+    SELECT span, period, 4, 'CI', 1, 'Merge queue success rate', merge_queue_success_rate, 'share', 'higher', memory.default.section_link('ci-cd', 'Which jobs fail in the merge queue and nightly runs')
     FROM ci_numbers
     UNION ALL
-    SELECT period, 4, 'CI', 2, 'Median duration of a passing PR run', median_pr_run_duration, 'duration', 'lower'
+    SELECT span, period, 4, 'CI', 2, 'Median duration of a passing PR run', median_pr_run_duration, 'duration', 'lower', memory.default.section_link('ci-cd', 'How long a CI run takes')
     FROM ci_numbers
 )
 , summary AS (
     SELECT
-        area_rank
+        span
+      , area_rank
       , area
       , measure_rank
       , measure
       , unit
       , better
+      , details
       , max(value) FILTER (WHERE period = 0) AS current_value
       , max(value) FILTER (WHERE period = 1) AS previous_value
       , array_agg(value ORDER BY period DESC) AS trend
     FROM measures
-    GROUP BY area_rank, area, measure_rank, measure, unit, better
+    GROUP BY span, area_rank, area, measure_rank, measure, unit, better, details
 )
 , changes AS (
     SELECT
@@ -141,28 +157,46 @@ now_utc AS (
         END AS direction
     FROM summary
 )
+, formatted AS (
+    SELECT
+        span
+      , area_rank
+      , area
+      , measure_rank
+      , measure
+      , details
+      , trend
+      , CASE unit
+            WHEN 'count' THEN format('%d', CAST(round(current_value) AS bigint))
+            WHEN 'share' THEN format('%d%%', CAST(round(current_value * 100) AS bigint))
+            ELSE memory.default.human_duration(current_value)
+        END AS value
+      , CASE
+            WHEN direction = 'unknown' THEN ''
+            WHEN unit != 'share' THEN memory.default.delta(current_value, previous_value)
+            WHEN round((current_value - previous_value) * 100) > 0 THEN format('▲ +%d pts', CAST(round((current_value - previous_value) * 100) AS bigint))
+            WHEN round((current_value - previous_value) * 100) < 0 THEN format('▼ %d pts', CAST(round((current_value - previous_value) * 100) AS bigint))
+            ELSE '= 0 pts'
+        END
+        || CASE
+            WHEN direction = 'unknown' OR better IS NULL THEN ''
+            WHEN direction = 'steady' THEN ' steady'
+            WHEN (direction = 'up') = (better = 'higher') THEN ' better'
+            ELSE ' worse'
+        END AS change
+    FROM changes
+)
 SELECT
     if(measure_rank = 1, area, '') AS "Area"
   , measure AS "Measure"
-  , CASE unit
-        WHEN 'count' THEN format('%d', CAST(round(current_value) AS bigint))
-        WHEN 'share' THEN format('%d%%', CAST(round(current_value * 100) AS bigint))
-        ELSE memory.default.human_duration(current_value)
-    END AS "Last 30 days"
-  , CASE
-        WHEN unit != 'share' THEN memory.default.delta(current_value, previous_value)
-        WHEN round((current_value - previous_value) * 100) > 0 THEN format('▲ +%d pts', CAST(round((current_value - previous_value) * 100) AS bigint))
-        WHEN round((current_value - previous_value) * 100) < 0 THEN format('▼ %d pts', CAST(round((current_value - previous_value) * 100) AS bigint))
-        ELSE '= 0 pts'
-    END AS "Change"
-  , CASE
-        WHEN direction = 'unknown' THEN ''
-        WHEN direction = 'steady' THEN 'steady'
-        WHEN better IS NULL THEN ''
-        WHEN (direction = 'up') = (better = 'higher') THEN 'better'
-        ELSE 'worse'
-    END AS "Good news?"
+  , max(value) FILTER (WHERE span = 'month') AS "Last 30 days"
+  , max(change) FILTER (WHERE span = 'month') AS "Change"
   -- drawn as a chart: one mark per 30 days, so the rows line up
-  , memory.default.sparkline(trend) AS "Last 12 x 30 days"
-FROM changes
+  , memory.default.sparkline(max(trend) FILTER (WHERE span = 'month')) AS "Last 12 x 30 days"
+  , max(value) FILTER (WHERE span = 'year') AS "Last 12 months"
+  , max(change) FILTER (WHERE span = 'year') AS "Change"
+  -- last, because a link is shorter than its text, which would move the columns after it
+  , details AS "Details"
+FROM formatted
+GROUP BY area_rank, area, measure_rank, measure, details
 ORDER BY area_rank, measure_rank;

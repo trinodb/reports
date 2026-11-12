@@ -103,3 +103,9 @@ RETURN format('"#%d"@https://github.com/trinodb/trino/pull/%d ', number, number)
 CREATE OR REPLACE FUNCTION memory.default.user_link(login varchar)
 RETURNS varchar
 RETURN format('"%s"@https://github.com/%s ', login, login);
+
+-- a section of another report page, by its title, with the id that kramdown gives the heading
+CREATE OR REPLACE FUNCTION memory.default.section_link(page varchar, title varchar)
+RETURNS varchar
+RETURN format('"%s"@https://trinodb.github.io/reports/reports/%s/#%s ', title, page,
+    replace(regexp_replace(lower(regexp_replace(title, '^[^a-zA-Z]+', '')), '[^a-z0-9 -]', ''), ' ', '-'));
