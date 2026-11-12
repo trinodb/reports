@@ -28,6 +28,10 @@ Broken and flaky tests, new failures, and why jobs fail.
 
 Growth of the community, where contributors live and which companies they work for, releases, issues, and Slack.
 
+# [Clients and tools](https://trinodb.github.io/reports/reports/repositories/)
+
+Pull requests and issues of the clients and tools of Trino, like the Go and Python clients, the gateway, and the Helm charts: what waits for their maintainers, and who reviews.
+
 # [Hall of fame](https://trinodb.github.io/reports/reports/hall-of-fame/)
 
 New contributors, milestones, and the people who author, review, and merge the most.

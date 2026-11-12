@@ -12,6 +12,7 @@ minima:
     - reports/ci-cd/index.md
     - reports/tests/index.md
     - reports/community/index.md
+    - reports/repositories/index.md
     - reports/hall-of-fame/index.md
 
 exclude:

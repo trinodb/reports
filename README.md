@@ -81,6 +81,7 @@ Every directory in `sql` is a page, and every file in it is a report:
 | `sql/ci-cd`        | merge queue and nightly runs, durations, runner time                                 |
 | `sql/tests`        | broken and flaky tests, new failures, causes of failed jobs                          |
 | `sql/community`    | growth, regions, companies, releases, issues, Slack                                  |
+| `sql/repositories` | clients and tools: open pull requests and issues, first-time contributors, reviewers  |
 | `sql/hall-of-fame` | new contributors, milestones, top authors, reviewers, and mergers                    |
 
 To add a report, add a file to one of these directories:
