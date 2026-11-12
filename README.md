@@ -90,6 +90,7 @@ To add a report, add a file to one of these directories:
 * The result is a Markdown table. If the file has the word `chart` anywhere, like in a column title, the result is
   printed in a monospace font instead, so characters line up between rows. Draw with the functions from
   [`sql/setup/01-functions.sql`](/sql/setup/01-functions.sql), like `hbar`, `sparkline`, `stacked`, and `shade`.
-* A value like `"label"@https://example.com ` becomes a link; `pr_link` and `user_link` make these.
+* A value like `"label"@https://example.com ` becomes a link; `pr_link` and `user_link` make these, and `section_link`
+  links to a report on another page by its title.
 * Count people with `is_bot`, and read pull requests, their events, CI runs, and contributors from the tables built in
   `sql/setup`, so all pages count the same things.
