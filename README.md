@@ -34,9 +34,9 @@ Iceberg tables + trinodb/trino Git repository   -> sql/Reports.java runs sql/<pa
   connector, which turns OpenAPI specs into tables. Every step is a `MERGE` from an API table into an Iceberg table.
   `Sync.java` needs only the Trino JDBC driver. See [how the sync works](sync/README.md).
 * **The reports** are queries over those tables, and over the Git history read by the
-  [trino-git](https://github.com/nineinchnick/trino-git) connector. `Reports.java` prints their results with the table
-  printers of the Trino CLI, as Markdown or monospace tables, and the [workflow](.github/workflows/reports.yml) commits
-  the pages, which GitHub Pages publishes with Jekyll.
+  [trino-git](https://github.com/nineinchnick/trino-git) connector. `Reports.java` runs them with the client of the Trino
+  CLI, renders their results as tables, and the [workflow](.github/workflows/reports.yml) commits the pages, which
+  GitHub Pages publishes with Jekyll.
 * **There's no database server.** The tables are files in S3, and the workflows compact them.
 
 ## Find your way around
@@ -62,11 +62,12 @@ Add a `.sql` file to the directory of a page, or change one:
 
 * The first line is a comment with the title. The next comment lines are the description: what the report shows, how
   to read it, and what to do about it.
-* The result is a Markdown table. If the file has the word `chart` anywhere, like in a column title, it's printed in a
+* The result is a table. If the file has the word `chart` anywhere, like in a column title, it's printed in a
   monospace font instead, so characters line up between rows. Draw with the functions from
   [`sql/setup/01-functions.sql`](sql/setup/01-functions.sql), like `hbar`, `sparkline`, `stacked`, and `shade`.
-* A value like `"label"@https://example.com ` becomes a link. `pr_link` and `user_link` make them, and `section_link`
-  links to a report on another page by its title.
+* Links are values of `link(label, url)`, or of `pr_link`, `user_link`, and `section_link`, which links to a report on
+  another page by its title. Mix them with text using `||` and `plain(text)`, and join a list of them with
+  `join_links`.
 * Leave out bots with `is_bot`, and read pull requests, their events, CI runs, and contributors from the tables built
   in `sql/setup`, so all pages count the same things.
 

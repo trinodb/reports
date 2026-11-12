@@ -54,7 +54,7 @@ SELECT
   , commits AS "Commits"
   , authors AS "Authors"
   , first_time_authors AS "First-time"
-  , format('"release notes"@https://trino.io/docs/current/release/release-%d.html ', release) AS "Notes"
+  , memory.default.link('release notes', format('https://trino.io/docs/current/release/release-%d.html', release)) AS "Notes"
 FROM per_release
 ORDER BY release DESC
 ;

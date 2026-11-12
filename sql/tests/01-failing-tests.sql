@@ -86,7 +86,7 @@ SELECT
   , memory.default.sparkline(array_agg(d.failed_runs * 1e0 ORDER BY d.day), 4e0) AS "Failures per day chart"
   , format_datetime(t.first_failed_at, 'MMM dd') AS "First"
   , coalesce(p.branches, 0) AS "In PRs"
-  , format('"%s"@%s ', format_datetime(t.last_failed_at, 'MMM dd'), t.latest_url) AS "Last"
+  , memory.default.link(format_datetime(t.last_failed_at, 'MMM dd'), t.latest_url) AS "Last"
 FROM tests t
 JOIN job_runs jr ON jr.job_name = t.job_name
 JOIN daily d ON d.test = t.test
