@@ -11,7 +11,7 @@ SELECT
         WHEN 'draft' THEN 'draft'
     END AS "State"
   , date_diff('day', waiting_since, current_timestamp) AS "Days waiting"
-  , if(triage_state = 'author', memory.default.user_link(last_reviewer), '') AS "Last reviewer"
+  , if(triage_state = 'author', memory.default.user_link(last_reviewer)) AS "Last reviewer"
   , size AS "Size"
   , CASE WHEN marked_stale THEN 'marked stale' WHEN stale_ignored THEN 'stale-ignore' ELSE '' END AS "Stale bot"
 FROM memory.default.open_pull_request_states

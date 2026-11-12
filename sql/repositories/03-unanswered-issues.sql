@@ -10,7 +10,7 @@ ranked AS (
 )
 SELECT
     repo AS "Repository"
-  , format('"#%d"@https://github.com/trinodb/%s/issues/%d ', number, repo, number) AS "Issue"
+  , memory.default.link(format('#%d', number), format('https://github.com/trinodb/%s/issues/%d', repo, number)) AS "Issue"
   , if(length(title) > 80, substr(title, 1, 77) || '...', title) AS "Title"
   , memory.default.user_link(author) AS "Author"
   , memory.default.human_duration(current_timestamp - created_at) AS "Open for"

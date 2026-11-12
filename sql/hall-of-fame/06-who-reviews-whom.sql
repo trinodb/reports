@@ -46,7 +46,7 @@ SELECT
   , a.reviewed_prs AS "PRs with a review"
   -- a heatmap chart: one cell per reviewer, so the columns line up with the letters in the title
   , array_join(transform(sequence(1, 12), i -> memory.default.shade(coalesce(element_at(c.shares, i), 0e0), 1e0)), ' ') AS "A B C D E F G H I J K L"
-  , coalesce(substr('ABCDEFGHIJKL', t.reviewer_rank, 1) || ' ' || memory.default.user_link(t.reviewer), '') AS "Reviewer key"
+  , memory.default.plain(substr('ABCDEFGHIJKL', t.reviewer_rank, 1) || ' ') || memory.default.user_link(t.reviewer) AS "Reviewer key"
 FROM top_authors a
 LEFT JOIN cells c ON c.author_rank = a.author_rank
 LEFT JOIN top_reviewers t ON t.reviewer_rank = a.author_rank

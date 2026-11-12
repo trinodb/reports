@@ -20,7 +20,7 @@ issues_only AS (
     GROUP BY issue_number
 )
 SELECT
-    format('"#%d"@https://github.com/trinodb/trino/issues/%d ', i.number, i.number) AS "Issue"
+    memory.default.link(format('#%d', i.number), format('https://github.com/trinodb/trino/issues/%d', i.number)) AS "Issue"
   , replace(replace(i.title, chr(13), ' '), chr(10), ' ') AS "Title"
   , coalesce(i.reactions_total_count, 0) AS "Reactions"
   , coalesce(i.comments, 0) AS "Comments"

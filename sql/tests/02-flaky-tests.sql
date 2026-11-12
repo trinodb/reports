@@ -64,9 +64,8 @@ SELECT
   , pull_request_branches AS "In PRs"
   , master_runs AS "In master"
   , regexp_replace(job_name, '^test \((.*)\)$', '$1') AS "Job"
-  -- ansi2html escapes < and > after the Markdown escaping, so they would show as entities
-  , translate(substr(trim(regexp_replace(message, '\s+', ' ')), 1, 120), '<>', '‹›') AS "Latest error"
-  , format('"%s"@%s ', format_datetime(last_failed_at, 'MMM dd'), latest_url) AS "Last failed"
+  , substr(trim(regexp_replace(message, '\s+', ' ')), 1, 120) AS "Latest error"
+  , memory.default.link(format_datetime(last_failed_at, 'MMM dd'), latest_url) AS "Last failed"
 FROM tests
 -- tests that fail only in the merge queue and nightly runs are in the first report
 WHERE retried > 0 OR (pull_request_branches > 0 AND pull_request_branches + master_runs >= 3)

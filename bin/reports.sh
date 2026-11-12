@@ -3,8 +3,8 @@
 # Generate the pages of reports in reports/, from the queries in sql/, with sql/Reports.java.
 # Generates all pages listed in sql/pages.properties, or only the ones given as arguments, like: bin/reports.sh overview
 #
-# Needs Trino started by bin/run-trino.sh git, or at TRINO_URL. Reports.java renders the results with the Trino CLI,
-# which it copies from the Trino image first, so it's the same version as the server.
+# Needs Trino started by bin/run-trino.sh git, or at TRINO_URL. Reports.java runs the queries with the client in the
+# Trino CLI, which it copies from the Trino image first, so it's the same version as the server.
 
 set -euo pipefail
 

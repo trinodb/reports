@@ -1,24 +1,22 @@
-import io.trino.cli.AlignedTablePrinter;
-import io.trino.cli.MarkdownTablePrinter;
-import io.trino.cli.OutputPrinter;
-import io.trino.cli.Theme;
 import io.trino.cli.lexer.StatementSplitter;
 import io.trino.client.ClientSession;
 import io.trino.client.Column;
+import io.trino.client.QueryStatusInfo;
+import io.trino.client.Row;
 import io.trino.client.StatementClient;
 import okhttp3.OkHttpClient;
+import org.jline.utils.WCWidth;
 
 import static io.trino.client.StatementClientFactory.newStatementClient;
 
 // Generates the pages in reports/ from the queries in sql/, listed in sql/pages.properties, with the Trino CLI in the
-// class path, which splits the files into statements and prints the results: bin/reports.sh [page ...]
+// class path, for its client and statement splitter: bin/reports.sh [page ...]
 // Every file is a section of its page: the first comment line is the title, and the next ones are the description.
-// The result is a Markdown table, or, if the file has the word "chart" anywhere, a table in a monospace font.
+// The result is an HTML table, or, if the file has the word "chart" anywhere, a table in a monospace font, aligned like
+// the CLI does. Values made by memory.default.link and the other functions in sql/setup/01-functions.sql are links.
 
-// A value like "label"@https://example.com becomes a link. The printers align columns by the length of values without
-// escape sequences, so they get only the label, between two of them, and the Markdown printer escapes their bracket.
-final Pattern LINK = Pattern.compile("\"([^\"]*)\"@(https://[^ ]*) ");
-final Pattern PRINTED_LINK = Pattern.compile("\u001b\\\\?\\[(\\d+);98m(.*?)\u001b\\\\?\\[99m");
+final Path PAGES_FILE = Path.of("sql/pages.properties");
+final Set<String> NUMERIC_TYPES = Set.of("tinyint", "smallint", "integer", "bigint", "real", "double", "decimal");
 
 final OkHttpClient httpClient = new OkHttpClient();
 // in UTC, like the server, so functions like current_date don't depend on where this runs
@@ -36,34 +34,54 @@ void main(String[] args)
         throws Exception
 {
     Properties pages = new Properties();
-    pages.load(Files.newBufferedReader(Path.of("sql/pages.properties")));
-    String menu = Files.readString(Path.of("_config.yml"));
-    String index = Files.readString(Path.of("reports/index.md"));
+    pages.load(Files.newBufferedReader(PAGES_FILE));
     List<String> names = List.of(args.length > 0 ? args : pages.getProperty("pages").split(","));
-    for (String name : names) {
-        if (!pages.containsKey(name + ".title") || !menu.contains("reports/%s/index.md".formatted(name)) || !index.contains("/reports/%s/".formatted(name))) {
-            throw new IllegalArgumentException("Add the page %s to sql/pages.properties, nav_pages in _config.yml, and reports/index.md".formatted(name));
-        }
-    }
+    checkListedEverywhere(names, pages);
 
-    // tables and functions in the memory catalog, which all reports use, so a failure stops all of them
-    for (Path file : sqlFiles("setup")) {
-        run(Files.readString(file));
-    }
+    runSetup();
     for (String name : names) {
-        StringBuilder page = new StringBuilder("---\ntitle: %s\n---\n\n".formatted(pages.getProperty(name + ".title")));
-        for (Path file : sqlFiles(name)) {
-            page.append(section(file));
-        }
-        page.append("Generated on ").append(new Date()).append('\n');
-        Files.createDirectories(Path.of("reports", name));
-        Files.writeString(Path.of("reports", name, "index.md"), page);
+        writePage(name, pages.getProperty(name + ".title"));
     }
     if (failedReports > 0) {
         System.err.printf("%d reports failed%n", failedReports);
     }
     // the HTTP client keeps threads that would keep the JVM running for a while
     System.exit(failedReports > 0 ? 1 : 0);
+}
+
+// the menu and the index are edited by hand, so a new page would be missing from them
+void checkListedEverywhere(List<String> names, Properties pages)
+        throws IOException
+{
+    String menu = Files.readString(Path.of("_config.yml"));
+    String index = Files.readString(Path.of("reports/index.md"));
+    for (String name : names) {
+        if (!pages.containsKey(name + ".title") || !menu.contains("reports/%s/index.md".formatted(name)) || !index.contains("/reports/%s/".formatted(name))) {
+            throw new IllegalArgumentException("Add the page %s to %s, nav_pages in _config.yml, and reports/index.md".formatted(name, PAGES_FILE));
+        }
+    }
+}
+
+// tables and functions in the memory catalog, which all reports use, so a failure stops all of them
+void runSetup()
+        throws IOException, QueryFailedException
+{
+    for (Path file : sqlFiles("setup")) {
+        System.err.println("Executing setup queries from " + file);
+        run(Files.readString(file));
+    }
+}
+
+void writePage(String name, String title)
+        throws IOException
+{
+    StringBuilder page = new StringBuilder("---\ntitle: %s\n---\n\n".formatted(title));
+    for (Path file : sqlFiles(name)) {
+        page.append(section(file));
+    }
+    page.append("Generated on ").append(new Date()).append('\n');
+    Files.createDirectories(Path.of("reports", name));
+    Files.writeString(Path.of("reports", name, "index.md"), page);
 }
 
 String section(Path file)
@@ -75,78 +93,162 @@ String section(Path file)
             .takeWhile(line -> line.startsWith("--"))
             .map(line -> line.replaceFirst("^-- ?", ""))
             .toList();
-    boolean monospace = sql.toLowerCase(Locale.ENGLISH).contains("chart");
-    String result;
+    String title = comments.getFirst();
+    String description = String.join("\n", comments.subList(1, comments.size()));
+    boolean chart = sql.toLowerCase(Locale.ENGLISH).contains("chart");
+    return "## %s\n\n%s\n\n%s%s\n".formatted(title, description, results(file, sql, chart), queryLink(file));
+}
+
+String results(Path file, String sql, boolean chart)
+{
     try {
         StringBuilder tables = new StringBuilder();
-        for (Result query : run(sql)) {
-            tables.append(print(query, monospace));
+        for (Result result : run(sql)) {
+            tables.append(chart ? alignedTable(result) : htmlTable(result));
         }
-        result = monospace ? "<pre><code>\n" + tables + "</code></pre>\n" : tables + "\n";
+        return chart ? "<pre><code>\n" + tables + "</code></pre>\n" : tables + "\n";
     }
     catch (QueryFailedException e) {
         failedReports++;
         System.err.printf("Query in %s failed: %s%n", file, e.getMessage());
-        result = "This report failed: " + escapeHtml(e.getMessage()) + "\n\n";
+        return "This report failed: " + escapeHtml(e.getMessage()) + "\n\n";
     }
-    String query = Optional.ofNullable(System.getenv("GITHUB_REPOSITORY"))
-            .map(repository -> "[query](%s/%s/blob/%s/%s)\n".formatted(
-                    System.getenv().getOrDefault("GITHUB_SERVER_URL", "https://github.com"),
-                    repository,
-                    System.getenv().getOrDefault("GITHUB_SHA", "main"),
-                    file))
-            .orElse("");
-    return "## %s\n\n%s\n\n%s%s\n".formatted(comments.getFirst(), String.join("\n", comments.subList(1, comments.size())), result, query);
+}
+
+// a link to the query on GitHub, when generated by a workflow
+static String queryLink(Path file)
+{
+    String repository = System.getenv("GITHUB_REPOSITORY");
+    if (repository == null) {
+        return "";
+    }
+    String server = System.getenv().getOrDefault("GITHUB_SERVER_URL", "https://github.com");
+    String commit = System.getenv().getOrDefault("GITHUB_SHA", "main");
+    return "[query](%s/%s/blob/%s/%s)\n".formatted(server, repository, commit, file);
 }
 
 List<Result> run(String sql)
         throws QueryFailedException
 {
-    StatementSplitter splitter = new StatementSplitter(sql);
-    List<String> statements = new ArrayList<>(splitter.getCompleteStatements().stream().map(StatementSplitter.Statement::statement).toList());
-    if (!StatementSplitter.isEmptyStatement(splitter.getPartialStatement())) {
-        statements.add(splitter.getPartialStatement());
-    }
     List<Result> results = new ArrayList<>();
-    for (String statement : statements) {
-        try (StatementClient client = newStatementClient(httpClient, session, statement, Optional.empty())) {
-            List<List<Object>> rows = new ArrayList<>();
-            while (client.isRunning()) {
-                client.currentRows().forEach(rows::add);
-                client.advance();
-            }
-            var status = client.finalStatusInfo();
-            if (status.getError() != null) {
-                throw new QueryFailedException(status.getError().getMessage());
-            }
-            if (status.getColumns() != null) {
-                results.add(new Result(status.getColumns(), rows));
-            }
-        }
+    for (String statement : statements(sql)) {
+        execute(statement).ifPresent(results::add);
     }
     return results;
 }
 
-String print(Result result, boolean monospace)
-        throws IOException
+static List<String> statements(String sql)
 {
-    List<String> urls = new ArrayList<>();
-    List<List<?>> rows = result.rows().stream()
-            .<List<?>>map(row -> row.stream()
-                    .map(value -> value instanceof String text ? LINK.matcher(text).replaceAll(link -> {
-                        urls.add(link.group(2));
-                        return Matcher.quoteReplacement("\u001b[%d;98m%s\u001b[99m ".formatted(urls.size() - 1, link.group(1)));
-                    }) : value)
-                    .toList())
-            .toList();
-    StringWriter output = new StringWriter();
-    OutputPrinter printer = monospace ? new AlignedTablePrinter(result.columns(), output, Theme.NONE) : new MarkdownTablePrinter(result.columns(), output);
-    printer.printRows(rows, true);
-    printer.finish();
-    // the page is HTML, so the printed values can't add tags, except for links
-    return PRINTED_LINK.matcher(escapeHtml(output.toString())).replaceAll(link -> Matcher.quoteReplacement("<a href=\"%s\">%s</a>".formatted(
-            escapeHtml(urls.get(Integer.parseInt(link.group(1)))),
-            link.group(2))));
+    StatementSplitter splitter = new StatementSplitter(sql);
+    List<String> statements = new ArrayList<>();
+    splitter.getCompleteStatements().forEach(statement -> statements.add(statement.statement()));
+    if (!StatementSplitter.isEmptyStatement(splitter.getPartialStatement())) {
+        statements.add(splitter.getPartialStatement());
+    }
+    return statements;
+}
+
+// the result of a query, or nothing for statements that don't return rows, like CREATE TABLE
+Optional<Result> execute(String statement)
+        throws QueryFailedException
+{
+    try (StatementClient client = newStatementClient(httpClient, session, statement, Optional.empty())) {
+        List<List<Object>> rows = new ArrayList<>();
+        while (client.isRunning()) {
+            client.currentRows().forEach(rows::add);
+            client.advance();
+        }
+        QueryStatusInfo status = client.finalStatusInfo();
+        if (status.getError() != null) {
+            throw new QueryFailedException(status.getError().getMessage());
+        }
+        return Optional.ofNullable(status.getColumns()).map(columns -> result(columns, rows));
+    }
+}
+
+Result result(List<Column> columns, List<List<Object>> rows)
+{
+    return new Result(
+            columns.stream().map(Column::getName).toList(),
+            columns.stream().map(column -> NUMERIC_TYPES.contains(column.getType().replaceFirst("\\(.*", ""))).toList(),
+            rows.stream().map(row -> row.stream().map(Cell::of).toList()).toList());
+}
+
+static String htmlTable(Result result)
+{
+    StringBuilder table = new StringBuilder("<table>\n<thead>\n<tr>");
+    for (int i = 0; i < result.names().size(); i++) {
+        table.append(htmlCell("th", escapeHtml(result.names().get(i)), result.numeric().get(i)));
+    }
+    table.append("</tr>\n</thead>\n<tbody>\n");
+    for (List<Cell> row : result.rows()) {
+        table.append("<tr>");
+        for (int i = 0; i < row.size(); i++) {
+            table.append(htmlCell("td", row.get(i).html().replace("\n", "<br>"), result.numeric().get(i)));
+        }
+        table.append("</tr>\n");
+    }
+    return table.append("</tbody>\n</table>\n").toString();
+}
+
+static String htmlCell(String tag, String content, boolean numeric)
+{
+    return "<%s%s>%s</%s>".formatted(tag, numeric ? " style=\"text-align: right\"" : "", content, tag);
+}
+
+// aligned like the Trino CLI does, so characters of charts line up between rows
+static String alignedTable(Result result)
+{
+    int[] widths = columnWidths(result);
+    List<String> header = new ArrayList<>();
+    List<String> separator = new ArrayList<>();
+    for (int i = 0; i < widths.length; i++) {
+        header.add(center(escapeHtml(result.names().get(i)), displayWidth(result.names().get(i)), widths[i]));
+        separator.add("-".repeat(widths[i] + 2));
+    }
+    StringBuilder table = new StringBuilder();
+    table.append(String.join("|", header)).append('\n');
+    table.append(String.join("+", separator)).append('\n');
+    for (List<Cell> row : result.rows()) {
+        List<String> cells = new ArrayList<>();
+        for (int i = 0; i < widths.length; i++) {
+            cells.add(align(row.get(i).html(), row.get(i).width(), widths[i], result.numeric().get(i)));
+        }
+        table.append(String.join("|", cells)).append('\n');
+    }
+    int rows = result.rows().size();
+    return table.append("(%d row%s)\n".formatted(rows, rows == 1 ? "" : "s")).toString();
+}
+
+static int[] columnWidths(Result result)
+{
+    int[] widths = new int[result.names().size()];
+    for (int i = 0; i < widths.length; i++) {
+        widths[i] = displayWidth(result.names().get(i));
+        for (List<Cell> row : result.rows()) {
+            widths[i] = Math.max(widths[i], row.get(i).width());
+        }
+    }
+    return widths;
+}
+
+// the content is HTML, so its width is given
+static String center(String content, int width, int columnWidth)
+{
+    int left = (columnWidth - width) / 2;
+    return " ".repeat(left + 1) + content + " ".repeat(columnWidth - width - left + 1);
+}
+
+static String align(String content, int width, int columnWidth, boolean right)
+{
+    String padding = " ".repeat(columnWidth - width + 1);
+    return right ? padding + content + " " : " " + content + padding;
+}
+
+// the number of columns that the text takes in a terminal, where some characters, like CJK ideographs, take two
+static int displayWidth(String text)
+{
+    return text.codePoints().map(codePoint -> Math.max(WCWidth.wcwidth(codePoint), 0)).sum();
 }
 
 static String escapeHtml(String text)
@@ -162,7 +264,54 @@ static List<Path> sqlFiles(String dir)
     }
 }
 
-record Result(List<Column> columns, List<List<Object>> rows) {}
+record Result(List<String> names, List<Boolean> numeric, List<List<Cell>> rows) {}
+
+// text with links, which memory.default.link and the other functions in sql/setup/01-functions.sql return
+// as an array of rows with the text and url fields
+record Cell(List<Part> parts)
+{
+    static Cell of(Object value)
+    {
+        if (value == null) {
+            return new Cell(List.of());
+        }
+        if (value instanceof List<?> list && isTextWithLinks(list)) {
+            return new Cell(list.stream()
+                    .map(item -> ((Row) item).getFields())
+                    .map(fields -> new Part(String.valueOf(fields.getFirst().getValue()), (String) fields.getLast().getValue()))
+                    .toList());
+        }
+        return new Cell(List.of(new Part(value.toString(), null)));
+    }
+
+    static boolean isTextWithLinks(List<?> list)
+    {
+        return !list.isEmpty() && list.stream().allMatch(item -> item instanceof Row row
+                && row.getFields().size() == 2
+                && row.getFields().getLast().getName().equals(Optional.of("url")));
+    }
+
+    int width()
+    {
+        return parts.stream().mapToInt(part -> displayWidth(part.text())).sum();
+    }
+
+    String html()
+    {
+        return parts.stream().map(Part::html).collect(Collectors.joining());
+    }
+}
+
+record Part(String text, String url)
+{
+    String html()
+    {
+        if (url == null) {
+            return escapeHtml(text);
+        }
+        return "<a href=\"%s\">%s</a>".formatted(escapeHtml(url), escapeHtml(text));
+    }
+}
 
 static class QueryFailedException
         extends Exception

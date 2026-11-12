@@ -95,17 +95,31 @@ RETURN CASE
     ELSE '= 0%'
 END;
 
--- links, in the format that bin/reports.sh turns into anchors
+-- Text with links, as a list of parts, where the ones with a url are links, which sql/Reports.java renders as anchors.
+-- Parts concatenate with ||, like link('#1', 'https://example.com') || plain(' (merged)'), and join with join_links.
+CREATE OR REPLACE FUNCTION memory.default.link(label varchar, url varchar)
+RETURNS array(row(text varchar, url varchar))
+RETURN IF(label IS NULL, NULL, ARRAY[CAST(ROW(label, url) AS row(text varchar, url varchar))]);
+
+CREATE OR REPLACE FUNCTION memory.default.plain(value varchar)
+RETURNS array(row(text varchar, url varchar))
+RETURN memory.default.link(value, NULL);
+
+-- like array_join, for text with links
+CREATE OR REPLACE FUNCTION memory.default.join_links(parts array(array(row(text varchar, url varchar))), separator varchar)
+RETURNS array(row(text varchar, url varchar))
+RETURN slice(flatten(transform(parts, part -> ARRAY[CAST(ROW(separator, NULL) AS row(text varchar, url varchar))] || part)), 2, 1000000);
+
 CREATE OR REPLACE FUNCTION memory.default.pr_link(number bigint)
-RETURNS varchar
-RETURN format('"#%d"@https://github.com/trinodb/trino/pull/%d ', number, number);
+RETURNS array(row(text varchar, url varchar))
+RETURN memory.default.link(format('#%d', number), format('https://github.com/trinodb/trino/pull/%d', number));
 
 CREATE OR REPLACE FUNCTION memory.default.user_link(login varchar)
-RETURNS varchar
-RETURN format('"%s"@https://github.com/%s ', login, login);
+RETURNS array(row(text varchar, url varchar))
+RETURN memory.default.link(login, 'https://github.com/' || login);
 
 -- a section of another report page, by its title, with the id that kramdown gives the heading
 CREATE OR REPLACE FUNCTION memory.default.section_link(page varchar, title varchar)
-RETURNS varchar
-RETURN format('"%s"@https://trinodb.github.io/reports/reports/%s/#%s ', title, page,
-    replace(regexp_replace(lower(regexp_replace(title, '^[^a-zA-Z]+', '')), '[^a-z0-9 -]', ''), ' ', '-'));
+RETURNS array(row(text varchar, url varchar))
+RETURN memory.default.link(title, format('https://trinodb.github.io/reports/reports/%s/#%s', page,
+    replace(regexp_replace(lower(regexp_replace(title, '^[^a-zA-Z]+', '')), '[^a-z0-9 -]', ''), ' ', '-')));

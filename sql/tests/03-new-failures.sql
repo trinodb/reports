@@ -77,9 +77,8 @@ SELECT
   , master_runs AS "In master"
   , pull_request_branches AS "In PRs"
   , retried AS "Retried"
-  -- ansi2html escapes < and > after the Markdown escaping, so they would show as entities
-  , translate(substr(trim(regexp_replace(message, '\s+', ' ')), 1, 120), '<>', '‹›') AS "Latest error"
-  , format('"%s"@%s ', format_datetime(last_failed_at, 'MMM dd'), latest_url) AS "Last failed"
+  , substr(trim(regexp_replace(message, '\s+', ' ')), 1, 120) AS "Latest error"
+  , memory.default.link(format_datetime(last_failed_at, 'MMM dd'), latest_url) AS "Last failed"
 FROM classes
 WHERE master_runs + pull_request_branches >= 2
 ORDER BY master_runs + pull_request_branches DESC, first_failed_at, test_class

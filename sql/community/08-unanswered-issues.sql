@@ -16,7 +16,7 @@ issues_only AS (
       AND i.created_at >= current_date - INTERVAL '90' DAY
 )
 SELECT
-    format('"#%d"@https://github.com/trinodb/trino/issues/%d ', i.number, i.number) AS "Issue"
+    memory.default.link(format('#%d', i.number), format('https://github.com/trinodb/trino/issues/%d', i.number)) AS "Issue"
   , replace(replace(i.title, chr(13), ' '), chr(10), ' ') AS "Title"
   , memory.default.user_link(i.user_login) AS "Reporter"
   , memory.default.human_duration(to_milliseconds(current_timestamp - with_timezone(i.created_at, 'UTC')) / 1000e0) AS "Waiting for"

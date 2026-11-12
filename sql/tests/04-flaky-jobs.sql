@@ -74,7 +74,7 @@ ci_runs AS (
         SELECT
             job_name
           , max(started_at) AS started_at
-          , format('"%s"@https://github.com/trinodb/trino/actions/runs/%d/job/%d ', format_datetime(max(started_at), 'MMM dd HH:mm'), run_id, max_by(job_id, started_at)) AS link
+          , memory.default.link(format_datetime(max(started_at), 'MMM dd HH:mm'), format('https://github.com/trinodb/trino/actions/runs/%d/job/%d', run_id, max_by(job_id, started_at))) AS link
         FROM classified_executions
         WHERE flaky
         GROUP BY job_name, run_id
@@ -95,7 +95,7 @@ SELECT
   , format('%.1f%%', 100e0 * f.flaky_failures / f.executions) AS "Rate"
   , memory.default.human_duration(f.seconds_lost) AS "Time lost"
   , memory.default.sparkline(array_agg(d.flaky_failures * 1e0 ORDER BY d.day), 3e0) AS "Per day chart"
-  , array_join(l.links, '') AS "Latest flaky failures"
+  , memory.default.join_links(l.links, ' ') AS "Latest flaky failures"
 FROM flaky_jobs f
 JOIN latest_failures l ON l.job_name = f.job_name
 JOIN daily d ON d.job_name = f.job_name

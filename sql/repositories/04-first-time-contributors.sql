@@ -12,7 +12,7 @@ firsts AS (
 SELECT
     repo AS "Repository"
   , memory.default.user_link(author) AS "Author"
-  , format('"#%d"@https://github.com/trinodb/%s/pull/%d ', number, repo, number) AS "First PR"
+  , memory.default.link(format('#%d', number), format('https://github.com/trinodb/%s/pull/%d', repo, number)) AS "First PR"
   , format('%d-%02d-%02d', year(created_at), month(created_at), day(created_at)) AS "Opened"
   , if(draft AND state = 'open', 'draft', state) AS "State"
   , coalesce(memory.default.human_duration(first_response_at - created_at), if(state = 'open', 'none yet', 'none')) AS "First response"

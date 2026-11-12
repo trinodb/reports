@@ -37,10 +37,7 @@ SELECT
   , memory.default.pr_link(w.number) AS "Pull request"
   , replace(w.title, chr(10), ' ') AS "Title"
   , memory.default.human_duration(to_unixtime(w.merged_at) - to_unixtime(w.created_at)) AS "Time to merge"
-  , CASE
-        WHEN coalesce(w.merged_by, m.committer) IS NULL THEN ''
-        ELSE memory.default.user_link(coalesce(w.merged_by, m.committer))
-    END AS "Merged by"
+  , memory.default.user_link(coalesce(w.merged_by, m.committer)) AS "Merged by"
 FROM welcomed w
 LEFT JOIN mergers m ON m.number = w.number
 ORDER BY w.merged_at DESC, w.number DESC;
