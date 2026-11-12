@@ -26,7 +26,7 @@ Broken and flaky tests, new failures, and why jobs fail.
 
 # [Community](https://trinodb.github.io/reports/reports/community/)
 
-Growth of the community, releases, issues, and Slack.
+Growth of the community, where contributors live and which companies they work for, releases, issues, and Slack.
 
 # [Hall of fame](https://trinodb.github.io/reports/reports/hall-of-fame/)
 
