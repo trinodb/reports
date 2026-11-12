@@ -1,10 +1,11 @@
 -- Comments of all issues and pull requests, except review comments.
+-- parameters: owner, repo, owner, repo
 MERGE INTO trinocicd.github.issue_comments t
 USING (
     WITH cursor AS (
         SELECT CAST(coalesce(max(updated_at), TIMESTAMP '2000-01-01') AS timestamp(3)) AS updated_at
         FROM trinocicd.github.issue_comments
-        WHERE owner = 'trinodb' AND repo = 'trino'
+        WHERE owner = ? AND repo = ?
     ),
     fetched AS (
         SELECT
@@ -27,7 +28,7 @@ USING (
             performed_via_github_app.slug AS app_slug,
             row_number() OVER (PARTITION BY id ORDER BY updated_at DESC) AS row_num
         FROM github.default.repos_owner_repo_issues_comments_comment_id
-        WHERE owner = 'trinodb' AND repo = 'trino' AND per_page = 100
+        WHERE owner = ? AND repo = ? AND per_page = 100
             AND updated_at >= (SELECT updated_at FROM cursor)
     )
     SELECT *

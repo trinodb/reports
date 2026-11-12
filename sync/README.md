@@ -37,7 +37,8 @@ databases and objects in the bucket, and can't create databases.
 Trino JDBC driver in the class path:
 
 ```shell
-SYNC_TRINO_URL=jdbc:trino://localhost:8080 SYNC_STEPS_DIR=sync/github java -cp trino-jdbc.jar sync/Sync.java
+SYNC_TRINO_URL=jdbc:trino://localhost:8080 SYNC_STEPS_DIR=sync/github SYNC_OWNER=trinodb SYNC_REPO=trino \
+    java -cp trino-jdbc.jar sync/Sync.java
 ```
 
 * It runs the steps in `SYNC_STEPS_DIR` in the order of their names, like
@@ -47,7 +48,8 @@ SYNC_TRINO_URL=jdbc:trino://localhost:8080 SYNC_STEPS_DIR=sync/github java -cp t
 * Comments before a statement repeat it in a loop, with
   `-- loop: pages|batches`, until the last statement of the step changes no
   rows, or `-- stop-after: N` iterations in a row change none. They also bind
-  values to its `?` parameters, with `-- parameters: page`.
+  values to its `?` parameters, with `-- parameters: page`, or other
+  settings, like `owner` and `repo`, set by `SYNC_OWNER` and `SYNC_REPO`.
 * It retries statements failing with errors that might be transient, runs all
   steps even if some fail, and exits with a non-zero code if any did.
 * The `tables` step creates all tables first, so every step can read them.
@@ -90,6 +92,11 @@ and the second statement of the step saves them with their version in the
   marks 1,200 of them in every sync, newest first, with a version they never
   have, so the `reviews` step of the next sync reads them again. Until then,
   reports counting reviews show too few of them for older pull requests.
+* Issues, their comments, pull requests, and their reviews are also read for
+  other repositories, listed in `sync.yml`, by running these steps again with
+  `SYNC_REPO`. The first sync reads all of their history, about 3,700
+  requests, mostly reviews of 3,500 pull requests, which takes about an hour.
+  Later syncs read only what changed.
 * `users` reads profiles of people who opened or reviewed pull requests in the
   last 2 years, for their company and location, which reports group people
   by. People change them, so they're read again every quarter. GitHub doesn't

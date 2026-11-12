@@ -75,6 +75,7 @@ jobs:
           ./bin/reports.sh reports/ci-cd/index.md "Trino CI/CD Reports" sql/ci-cd/*.sql
           ./bin/reports.sh reports/tests/index.md "Trino Tests Reports" sql/tests/*.sql
           ./bin/reports.sh reports/community/index.md "Trino Community Reports" sql/community/*.sql
+          ./bin/reports.sh reports/repositories/index.md "Trino Clients and Tools" sql/repositories/*.sql
           ./bin/reports.sh reports/hall-of-fame/index.md "Trino Hall of Fame" sql/hall-of-fame/*.sql
       - name: Commit report
         run: |

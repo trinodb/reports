@@ -1,16 +1,17 @@
 -- Reviews of pull requests, read for batches of pull requests that weren't checked yet, or were updated after that.
 -- loop: batches
+-- parameters: owner, repo, owner, repo, owner, repo
 MERGE INTO trinocicd.github.reviews t
 USING (
     WITH parents AS (
         SELECT number AS parent_id, CAST(updated_at AS varchar) AS version
         FROM trinocicd.github.pulls
-        WHERE owner = 'trinodb' AND repo = 'trino'
+        WHERE owner = ? AND repo = ?
     ),
     checked AS (
         SELECT parent_id, max_by(version, checked_at) AS version
         FROM trinocicd.github.sync_state
-        WHERE step = 'reviews' AND owner = 'trinodb' AND repo = 'trino'
+        WHERE step = 'reviews' AND owner = ? AND repo = ?
         GROUP BY parent_id
     ),
     batch AS (
@@ -38,7 +39,7 @@ USING (
             author_association,
             row_number() OVER (PARTITION BY id) AS row_num
         FROM github.default.repos_pulls_reviews
-        WHERE owner = 'trinodb' AND repo = 'trino' AND per_page = 100
+        WHERE owner = ? AND repo = ? AND per_page = 100
             AND pull_number IN (SELECT parent_id FROM batch)
     )
     SELECT *
