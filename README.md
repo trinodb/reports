@@ -75,7 +75,7 @@ Every directory in `sql` is a page, and every file in it is a report:
 | Directory          | Page                                                                                 |
 | ------------------ | ------------------------------------------------------------------------------------ |
 | `sql/setup`        | not a page: tables and functions shared by all reports, built first                  |
-| `sql/overview`     | the project in numbers                                                               |
+| `sql/overview`     | what needs attention, the project in numbers, the last 30 days                       |
 | `sql/contributing` | for contributors: what to expect after opening a pull request, where help is needed  |
 | `sql/maintaining`  | for maintainers: pull requests waiting for a decision, the backlog, the review work  |
 | `sql/ci-cd`        | merge queue and nightly runs, durations, runner time                                 |

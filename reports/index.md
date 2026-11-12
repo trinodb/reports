@@ -6,7 +6,7 @@ Reports about the [Trino](https://github.com/trinodb/trino) project, generated e
 
 # [Overview](https://trinodb.github.io/reports/reports/overview/)
 
-The project in numbers: the last 30 days against the 30 days before.
+What needs attention now, the project in numbers over 30 days and 12 months, and what happened in the last 30 days.
 
 # [Contributing](https://trinodb.github.io/reports/reports/contributing/)
 
