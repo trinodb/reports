@@ -1,96 +1,113 @@
 # Trino reports
 
-Reports about the [Trino](https://github.com/trinodb/trino) project: pull requests, reviews, CI workflows, tests, issues, and Slack.
+Reports about the [Trino](https://github.com/trinodb/trino) project, published at
+**[trinodb.github.io/reports](https://trinodb.github.io/reports/)**: what needs attention now, what to expect when you
+contribute, how CI is doing, and who the community is. They're generated every day from GitHub, Git, and Slack data.
 
-This repo is an example of using Trino to perform ETL (extract, transform, and load)
-and generate basic reports. The complete workflow is:
+| Page                                                                         | For                                                                    | Queries                                |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------- | -------------------------------------- |
+| [Overview](https://trinodb.github.io/reports/reports/overview/)              | everyone: what needs attention, the project in numbers, the last month | [`sql/overview`](sql/overview)         |
+| [Contributing](https://trinodb.github.io/reports/reports/contributing/)      | contributors: what to expect after opening a pull request              | [`sql/contributing`](sql/contributing) |
+| [Maintaining](https://trinodb.github.io/reports/reports/maintaining/)        | maintainers: pull requests waiting for a decision, the review work     | [`sql/maintaining`](sql/maintaining)   |
+| [CI/CD](https://trinodb.github.io/reports/reports/ci-cd/)                    | the merge queue and nightly runs, durations, runner time               | [`sql/ci-cd`](sql/ci-cd)               |
+| [Tests](https://trinodb.github.io/reports/reports/tests/)                    | broken and flaky tests, new failures, causes of failed jobs            | [`sql/tests`](sql/tests)               |
+| [Community](https://trinodb.github.io/reports/reports/community/)            | growth, regions, companies, releases, issues, Slack                    | [`sql/community`](sql/community)       |
+| [Clients and tools](https://trinodb.github.io/reports/reports/repositories/) | the other repositories: open pull requests and issues, reviewers       | [`sql/repositories`](sql/repositories) |
+| [Hall of fame](https://trinodb.github.io/reports/reports/hall-of-fame/)      | new contributors, milestones, top authors, reviewers, and mergers      | [`sql/hall-of-fame`](sql/hall-of-fame) |
 
-1. Use [a custom connector](https://github.com/nineinchnick/trino-openapi) to read Github's API data and save it into Iceberg tables in an S3 bucket.
-1. Run some [queries](https://github.com/trinodb/reports/blob/master/sql) to analyze the data stored in the S3 bucket, save results to a file and publish it to [Github Pages](https://trinodb.github.io/reports/reports/).
+Something wrong, or missing? [Open an issue](https://github.com/trinodb/reports/issues), or change a report: every
+section of a page is one SQL file.
 
-All the of the above is repeatable and executed on a schedule using Github Actions.
+## How it works
 
-Queries could be executed against the tables in the Github connector, but it has a few downsides:
-* it would perform many API requests, possibly hitting rate limits
-* range of the data is limited - for example, Github Workflow runs are only available from 2 last months
+Everything is SQL, run by Trino. Two small Java programs only run the SQL files, in order:
 
-Data is saved to an S3 bucket, since it's cheap and easy to set-up. Since there's no database server running,
-there's no maintenance required.
+```
+GitHub and Slack APIs -> trino-openapi connector -> sync/Sync.java runs sync/github/*.sql  -> Iceberg tables in S3
+                                                    every 2 hours, only what changed
 
-Materialized views are not used, because incremental updates are tricky and different for many tables (Github API endpoints).
-
-## Usage
-
-To run the queries locally:
-* download all the custom Trino connectors
-* get AWS credentials that can access the Iceberg tables in the `trino-reports-jwas` bucket
-* make sure to have the `GITHUB_TOKEN` environment variable set
-* start Trino in a container
-
-```bash
-# ensure all these environment variables are set to correct values
-export AWS_REGION AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN GITHUB_TOKEN
-./bin/run-trino.sh
+Iceberg tables + trinodb/trino Git repository   -> sql/Reports.java runs sql/<page>/*.sql -> reports/<page>/index.md
+                         (trino-git connector)      daily, printed with the Trino CLI         -> GitHub Pages
 ```
 
-The reports read tables and functions built by the queries in `sql/setup`, in the memory catalog, so run these first,
-and again after restarting Trino:
-```bash
-./bin/reports.sh /tmp/setup.md Setup sql/setup/*.sql
-```
+* **The sync** copies data from the APIs with the [trino-openapi](https://github.com/nineinchnick/trino-openapi)
+  connector, which turns OpenAPI specs into tables. Every step is a `MERGE` from an API table into an Iceberg table.
+  `Sync.java` needs only the Trino JDBC driver. See [how the sync works](sync/README.md).
+* **The reports** are queries over those tables, and over the Git history read by the
+  [trino-git](https://github.com/nineinchnick/trino-git) connector. `Reports.java` prints their results with the table
+  printers of the Trino CLI, as Markdown or monospace tables, and the [workflow](.github/workflows/reports.yml) commits
+  the pages, which GitHub Pages publishes with Jekyll.
+* **There's no database server.** The tables are files in S3, and the workflows compact them.
 
-Now you can run any query from the `sql` directory using [the Trino CLI](https://trino.io/docs/current/installation/cli.html#installation):
-```bash
-trino trino://localhost:8080/trinocicd/github --output-format=ALIGNED < sql/contributing/04-how-long-it-takes.sql
-```
+## Find your way around
 
-Or generate a whole page:
-```bash
-./bin/reports.sh /tmp/contributing.md "Contributing to Trino" sql/contributing/*.sql
-```
+| Path                                           | What's there                                                                    |
+| ---------------------------------------------- | ------------------------------------------------------------------------------- |
+| [`sql/<page>/`](sql)                           | the queries of one page, one file for every section, in the order of the page   |
+| [`sql/setup/`](sql/setup)                      | tables and functions that all reports use, like `pr_link` and `sparkline`       |
+| [`sql/pages.properties`](sql/pages.properties) | the pages and their titles                                                      |
+| [`sql/Reports.java`](sql/Reports.java)         | generates the pages                                                             |
+| [`sync/`](sync)                                | the sync program, its steps for GitHub and Slack, the API specs, and table care |
+| [`bin/`](bin)                                  | scripts to start Trino, run the sync, and generate the pages                    |
+| [`catalog/`](catalog), [`etc/`](etc)           | the configuration of Trino and of its catalogs                                  |
+| [`.github/workflows/`](.github/workflows)      | the schedules of the sync, the reports, and the table maintenance               |
+| [`reports/`](reports)                          | the generated pages; edit only `index.md`                                       |
 
-## Sync
+The workflows run the same scripts from `bin/` as you do locally, with the versions in
+[`bin/versions.env`](bin/versions.env).
 
-[The sync workflow](https://github.com/trinodb/reports/blob/master/.github/workflows/sync.yml):
-1. Downloads and extracts a zip with the custom `trino-openapi` connector.
-1. Starts Trino in a container with both this additional connector (plugin),
-   its [configuration](https://github.com/trinodb/reports/blob/master/catalog/github.properties),
-   and [the GitHub spec](https://github.com/trinodb/reports/blob/master/sync/specs) it reads, mounted as volumes.
-   It also includes [configuration](https://github.com/trinodb/reports/blob/master/catalog/trinocicd.properties) for a built-in connector
-   that can read and write Iceberg tables in an S3 bucket. The AWS credentials come from assuming
-   a role with GitHub OIDC, and are passed as environmental variables, together with the `GITHUB_TOKEN`.
-1. It runs the [sync program](https://github.com/trinodb/reports/blob/master/sync/Sync.java), which runs the SQL statements from
-   [sync/github](https://github.com/trinodb/reports/blob/master/sync/github), like `MERGE INTO trinocicd.github.<table> USING (SELECT ... FROM github.default.<table>)`,
-   reading only data that changed since the previous run. See [how the sync works](https://github.com/trinodb/reports/blob/master/sync/README.md) for more details.
+## Change or add a report
 
-## Reports
+Add a `.sql` file to the directory of a page, or change one:
 
-[The reports workflow](https://github.com/trinodb/reports/blob/master/.github/workflows/reports.yml):
-1. Starts Trino in a container with only the connector required to read data from the S3 bucket.
-1. Executes the [queries](/sql) of every page, in the order of their names, saving results as a simple text table in a file.
-1. Commits the updated results file to this repository, which triggers publishing it to [Github Pages](https://trinodb.github.io/reports/reports/).
-
-Every directory in `sql` is a page, and every file in it is a report:
-
-| Directory          | Page                                                                                 |
-| ------------------ | ------------------------------------------------------------------------------------ |
-| `sql/setup`        | not a page: tables and functions shared by all reports, built first                  |
-| `sql/overview`     | what needs attention, the project in numbers, the last 30 days                       |
-| `sql/contributing` | for contributors: what to expect after opening a pull request, where help is needed  |
-| `sql/maintaining`  | for maintainers: pull requests waiting for a decision, the backlog, the review work  |
-| `sql/ci-cd`        | merge queue and nightly runs, durations, runner time                                 |
-| `sql/tests`        | broken and flaky tests, new failures, causes of failed jobs                          |
-| `sql/community`    | growth, regions, companies, releases, issues, Slack                                  |
-| `sql/repositories` | clients and tools: open pull requests and issues, first-time contributors, reviewers  |
-| `sql/hall-of-fame` | new contributors, milestones, top authors, reviewers, and mergers                    |
-
-To add a report, add a file to one of these directories:
-* The first line is a comment with the title, and the next comment lines are the description: what the report shows,
-  how to read it, and what to do about it.
-* The result is a Markdown table. If the file has the word `chart` anywhere, like in a column title, the result is
-  printed in a monospace font instead, so characters line up between rows. Draw with the functions from
-  [`sql/setup/01-functions.sql`](/sql/setup/01-functions.sql), like `hbar`, `sparkline`, `stacked`, and `shade`.
-* A value like `"label"@https://example.com ` becomes a link; `pr_link` and `user_link` make these, and `section_link`
+* The first line is a comment with the title. The next comment lines are the description: what the report shows, how
+  to read it, and what to do about it.
+* The result is a Markdown table. If the file has the word `chart` anywhere, like in a column title, it's printed in a
+  monospace font instead, so characters line up between rows. Draw with the functions from
+  [`sql/setup/01-functions.sql`](sql/setup/01-functions.sql), like `hbar`, `sparkline`, `stacked`, and `shade`.
+* A value like `"label"@https://example.com ` becomes a link. `pr_link` and `user_link` make them, and `section_link`
   links to a report on another page by its title.
-* Count people with `is_bot`, and read pull requests, their events, CI runs, and contributors from the tables built in
-  `sql/setup`, so all pages count the same things.
+* Leave out bots with `is_bot`, and read pull requests, their events, CI runs, and contributors from the tables built
+  in `sql/setup`, so all pages count the same things.
+
+Try it locally, as described below, and open a pull request. The pages are generated again when it's merged.
+
+To add a page, add its directory to [`sql/pages.properties`](sql/pages.properties), to `nav_pages` in
+[`_config.yml`](_config.yml), and to [`reports/index.md`](reports/index.md).
+
+## Run it locally
+
+You need Docker and Java 25. The tables are in a private S3 bucket, so build a copy of recent history on your disk,
+with any GitHub token, and generate a page from it:
+
+```shell
+export GITHUB_TOKEN=$(gh auth token)
+./bin/run-trino.sh --local git github
+export SYNC_TRINO_URL=jdbc:trino://localhost:8080
+# a few weeks of trinodb/trino, without CI; 2 days take about 4 minutes, see sync/README.md
+SYNC_STEPS_DIR=sync/github SYNC_OWNER=trinodb SYNC_REPO=trino SYNC_SINCE=2026-10-15 \
+    SYNC_STEPS=tables,commits,issues,issue_comments,pulls,pull_commits,pull_stats,review_comments,reviews,users \
+    ./bin/sync.sh
+# empty Slack tables, which some reports read
+SYNC_STEPS_DIR=sync/slack SYNC_STEPS=tables ./bin/sync.sh
+./bin/reports.sh overview
+```
+
+The page is in `reports/overview/index.md`, and reports about longer periods show only what the copy has. Run a query
+with `docker exec -it trino trino --catalog trinocicd --schema github`, and stop Trino with `docker rm -f trino`.
+
+With access to the AWS account, start Trino on the real tables instead, with the AWS credentials and region in the
+environment, and generate all pages:
+
+```shell
+export AWS_REGION=eu-central-1 AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
+./bin/run-trino.sh git
+./bin/reports.sh
+```
+
+## Design notes
+
+* The reports read copies of the data, not the APIs, because the APIs limit requests, and keep only recent data:
+  GitHub returns jobs only for runs from the last 2 months, and the free Slack plan shows only the last 90 days.
+* The copies are Iceberg tables in S3, because they're cheap and need no server.
+* The sync doesn't use materialized views, because every API needs its own way of reading only what changed.
