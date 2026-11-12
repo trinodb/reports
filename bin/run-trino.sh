@@ -2,12 +2,15 @@
 #
 # Start Trino in a container called trino, listening on port 8080, and wait for it to be ready.
 #
-# It always has the trinocicd catalog, with the tables that the sync writes, and the catalogs given as arguments:
+# It always has the trinocicd catalog, with the tables that the sync writes, in the S3 bucket, or with --local,
+# in data/ on the local disk, and the catalogs given as arguments:
 # * git - the trinodb/trino repository, which reports read for commits and their authors
 # * github - the GitHub API, which the GitHub sync reads, with GITHUB_TOKEN
 # * slack - the Slack API, which the Slack sync reads, with SLACK_API_TOKEN
 #
 # The workflows use it too, so they all run the same Trino, with the plugin versions from versions.env.
+#
+# usage: bin/run-trino.sh [--local] [git] [github] [slack]
 
 set -euo pipefail
 
@@ -47,8 +50,20 @@ function require_env() {
     done
 }
 
+tables=s3
+if [ "${1:-}" = --local ]; then
+    tables=local
+    shift
+fi
+
 mkdir -p hive-cache http-cache
-for dir in hive-cache http-cache; do
+if [ "$tables" = local ]; then
+    mkdir -p data
+fi
+for dir in hive-cache http-cache data; do
+    if [ ! -d "$dir" ]; then
+        continue
+    fi
     # the sync workflow gives the HTTP cache it restores to the user running Trino, so it can't be changed here
     if [ -O "$dir" ]; then
         chmod go+w "$dir"
@@ -58,9 +73,16 @@ args=(
     -v "$PWD/etc/config.properties:/etc/trino/config.properties"
     -v "$PWD/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties"
     -v "$PWD/hive-cache:/opt/hive-cache"
-    -v "$PWD/catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties"
 )
-require_env AWS_REGION
+if [ "$tables" = local ]; then
+    args+=(
+        -v "$PWD/catalog/trinocicd-local.properties:/etc/trino/catalog/trinocicd.properties"
+        -v "$PWD/data:/data"
+    )
+else
+    require_env AWS_REGION
+    args+=(-v "$PWD/catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties")
+fi
 
 for catalog in "$@"; do
     case "$catalog" in
