@@ -1,9 +1,10 @@
 -- Completed workflow runs, so they don't have to be updated later. Every attempt is saved separately.
 -- The endpoint has no parameter to read only recent runs, and returns the newest first,
--- so read pages until two pages in a row have no new runs, because runs don't complete in the order they started.
+-- so read pages until two pages in a row have no new runs, because runs don't complete in the order they started,
+-- or only runs created before since.
 -- loop: pages
 -- stop-after: 2
--- parameters: page
+-- parameters: page, since
 MERGE INTO trinocicd.github.runs t
 USING (
     WITH fetched AS (
@@ -40,7 +41,7 @@ USING (
     )
     SELECT *
     FROM fetched
-    WHERE row_num = 1
+    WHERE row_num = 1 AND created_at >= coalesce(CAST(? AS timestamp(3)), TIMESTAMP '2000-01-01')
 ) s
 ON t.id = s.id AND t.run_attempt = s.run_attempt
 WHEN NOT MATCHED THEN INSERT (

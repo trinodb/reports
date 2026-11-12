@@ -1,9 +1,10 @@
 -- Commits of the default branch. The cursor is sent as the since parameter, which GitHub compares
 -- with the commit date, so the newest commit is read again, and the MERGE skips it.
+-- parameters: since
 MERGE INTO trinocicd.github.commits t
 USING (
     WITH cursor AS (
-        SELECT CAST(coalesce(max(committer_date), TIMESTAMP '2000-01-01') AS timestamp(3)) AS since
+        SELECT CAST(coalesce(max(committer_date), CAST(? AS timestamp(3)), TIMESTAMP '2000-01-01') AS timestamp(3)) AS since
         FROM trinocicd.github.commits
         WHERE owner = 'trinodb' AND repo = 'trino'
     ),

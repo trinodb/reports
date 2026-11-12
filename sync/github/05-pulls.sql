@@ -1,7 +1,7 @@
 -- Pull requests. The endpoint has no parameter to read only recently updated ones, but it can sort them,
--- so read pages of the most recently updated ones, until a page has no changes.
+-- so read pages of the most recently updated ones, until a page has no changes, or only ones updated before since.
 -- loop: pages
--- parameters: owner, repo, page
+-- parameters: owner, repo, page, since
 MERGE INTO trinocicd.github.pulls t
 USING (
     WITH fetched AS (
@@ -46,7 +46,7 @@ USING (
     )
     SELECT *
     FROM fetched
-    WHERE row_num = 1
+    WHERE row_num = 1 AND updated_at >= coalesce(CAST(? AS timestamp(3)), TIMESTAMP '2000-01-01')
 ) s
 ON t.id = s.id
 WHEN MATCHED AND s.updated_at > t.updated_at THEN UPDATE SET
