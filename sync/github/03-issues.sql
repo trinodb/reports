@@ -1,11 +1,11 @@
 -- Issues and pull requests, read using the issues endpoint, which can return only the ones updated since the cursor.
 -- The cursor is a scalar subquery, which Trino passes to the connector as a dynamic filter,
 -- so it's sent as the since parameter. It must have the same type as the column, so it's cast to timestamp(3).
--- parameters: owner, repo, owner, repo
+-- parameters: since, owner, repo, owner, repo
 MERGE INTO trinocicd.github.issues t
 USING (
     WITH cursor AS (
-        SELECT CAST(coalesce(max(updated_at), TIMESTAMP '2000-01-01') AS timestamp(3)) AS updated_at
+        SELECT CAST(coalesce(max(updated_at), CAST(? AS timestamp(3)), TIMESTAMP '2000-01-01') AS timestamp(3)) AS updated_at
         FROM trinocicd.github.issues
         WHERE owner = ? AND repo = ?
     ),

@@ -1,8 +1,9 @@
 -- Review comments of all pull requests.
+-- parameters: since
 MERGE INTO trinocicd.github.review_comments t
 USING (
     WITH cursor AS (
-        SELECT CAST(coalesce(max(updated_at), TIMESTAMP '2000-01-01') AS timestamp(3)) AS updated_at
+        SELECT CAST(coalesce(max(updated_at), CAST(? AS timestamp(3)), TIMESTAMP '2000-01-01') AS timestamp(3)) AS updated_at
         FROM trinocicd.github.review_comments
         WHERE owner = 'trinodb' AND repo = 'trino'
     ),

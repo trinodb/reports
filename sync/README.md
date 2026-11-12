@@ -51,6 +51,10 @@ SYNC_TRINO_URL=jdbc:trino://localhost:8080 SYNC_STEPS_DIR=sync/github SYNC_OWNER
   rows, or `-- stop-after: N` iterations in a row change none. They also bind
   values to its `?` parameters, with `-- parameters: page`, or other
   settings, like `owner` and `repo`, set by `SYNC_OWNER` and `SYNC_REPO`.
+* `SYNC_SINCE`, like `2026-10-01`, makes a sync into empty tables read only
+  commits, issues, comments, pull requests, and runs since then, and their
+  children, instead of all of history. Later syncs read what changed after
+  the newest saved rows, as usual. Without it, nothing is skipped.
 * It retries statements failing with errors that might be transient, runs all
   steps even if some fail, and exits with a non-zero code if any did.
 * The `tables` step creates all tables first, so every step can read them.
