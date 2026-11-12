@@ -18,7 +18,7 @@ When authors grow faster than reviewers, pull requests wait longer, so reviewing
  Was active for the first time         | ▆▅██▇▇▇▆▇▇▆█▅▄▅▅▇▆▅▆▅▆▇█   |          173 | ▲ +32%         |            555 | ▼ -13%         
 (6 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/01-active-people.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/01-active-people.sql)
 
 ## Do people come back?
 
@@ -38,7 +38,7 @@ If newcomers rarely come back, review their first pull requests sooner.
  2024-Q4 |     109 | █████████████▒▒▒▒▒▒░░░░░░░░░░░  | 45%       | 17%       | 38% | 27%                     | 41%                     
 (8 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/02-returning-authors.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/02-returning-authors.sql)
 
 ## Where do contributors live?
 
@@ -48,7 +48,7 @@ More regions mean that someone is awake to review and answer at any time of the 
 <pre><code>
     Year     | People | Americas | Europe, Africa, Middle East | South Asia | East Asia, Oceania |              Regions chart               
 -------------+--------+----------+-----------------------------+------------+--------------------+------------------------------------------
- 2026 so far |    198 | 37%      | 38%                         | 8%         | 18%                | ░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓███████ 
+ 2026 so far |    199 | 37%      | 38%                         | 8%         | 18%                | ░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓███████ 
  2025        |    154 | 38%      | 40%                         | 7%         | 14%                | ░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓██████ 
  2024        |    203 | 36%      | 38%                         | 6%         | 19%                | ░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓████████ 
  2023        |    172 | 44%      | 31%                         | 8%         | 17%                | ░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓███████ 
@@ -58,34 +58,39 @@ More regions mean that someone is awake to review and answer at any time of the 
  2019        |    141 | 48%      | 25%                         | 11%        | 16%                | ░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▓▓▓▓███████ 
 (8 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/03-regions.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/03-regions.sql)
 
 ## Which companies contribute?
 
 People who merged a pull request or reviewed one in the last 12 months, by the company in their GitHub profile, which they write themselves, so it can be missing or out of date. Reviews don't count reviews of a person's own pull requests.
 A project where one company writes or reviews most of the changes depends on its plans. More companies sharing reviews means pull requests from everyone move faster.
 
-| Company                               | People | Merged PRs | Share of merged PRs | Reviews | Share of reviews |
-| ------------------------------------- | ------:| ----------:| ------------------- | -------:| ---------------- |
-| Starburst                             |     34 |        999 | 51%                 |    5097 | 59%              |
-| IceGuard                              |      2 |         79 | 4%                  |     167 | 2%               |
-| Amazon                                |      5 |         28 | 1%                  |      67 | 1%               |
-| simpligility technologies             |      1 |         11 | 1%                  |      66 | 1%               |
-| Apple                                 |      1 |          6 | 0%                  |      16 | 0%               |
-| insideview                            |      1 |          6 | 0%                  |      16 | 0%               |
-| cargurus                              |      1 |         13 | 1%                  |       8 | 0%               |
-| DataDog                               |      3 |         19 | 1%                  |       0 | 0%               |
-| LinkedIn                              |      3 |          6 | 0%                  |       3 | 0%               |
-| Rashworld                             |      1 |          0 | 0%                  |       9 | 0%               |
-| University of Maryland, College Park. |      1 |          3 | 0%                  |       5 | 0%               |
-| Expedientetalle                       |      1 |          0 | 0%                  |       7 | 0%               |
-| LY Corporation                        |      2 |          4 | 0%                  |       2 | 0%               |
-| Naver                                 |      1 |          4 | 0%                  |       2 | 0%               |
-| OpenAI                                |      2 |          6 | 0%                  |       0 | 0%               |
-| Other 50 companies                    |     53 |         67 | 3%                  |      36 | 0%               |
-| No company in the profile or commits  |    129 |        718 | 36%                 |    3116 | 36%              |
+<table>
+<thead>
+<tr><th>Company</th><th style="text-align: right">People</th><th style="text-align: right">Merged PRs</th><th>Share of merged PRs</th><th style="text-align: right">Reviews</th><th>Share of reviews</th></tr>
+</thead>
+<tbody>
+<tr><td>Starburst</td><td style="text-align: right">34</td><td style="text-align: right">1000</td><td>51%</td><td style="text-align: right">5102</td><td>59%</td></tr>
+<tr><td>IceGuard</td><td style="text-align: right">2</td><td style="text-align: right">79</td><td>4%</td><td style="text-align: right">167</td><td>2%</td></tr>
+<tr><td>Amazon</td><td style="text-align: right">5</td><td style="text-align: right">28</td><td>1%</td><td style="text-align: right">71</td><td>1%</td></tr>
+<tr><td>simpligility technologies</td><td style="text-align: right">1</td><td style="text-align: right">11</td><td>1%</td><td style="text-align: right">66</td><td>1%</td></tr>
+<tr><td>Apple</td><td style="text-align: right">1</td><td style="text-align: right">6</td><td>0%</td><td style="text-align: right">16</td><td>0%</td></tr>
+<tr><td>insideview</td><td style="text-align: right">1</td><td style="text-align: right">6</td><td>0%</td><td style="text-align: right">16</td><td>0%</td></tr>
+<tr><td>cargurus</td><td style="text-align: right">1</td><td style="text-align: right">13</td><td>1%</td><td style="text-align: right">8</td><td>0%</td></tr>
+<tr><td>DataDog</td><td style="text-align: right">3</td><td style="text-align: right">19</td><td>1%</td><td style="text-align: right">0</td><td>0%</td></tr>
+<tr><td>LinkedIn</td><td style="text-align: right">3</td><td style="text-align: right">6</td><td>0%</td><td style="text-align: right">3</td><td>0%</td></tr>
+<tr><td>Rashworld</td><td style="text-align: right">1</td><td style="text-align: right">0</td><td>0%</td><td style="text-align: right">9</td><td>0%</td></tr>
+<tr><td>University of Maryland, College Park.</td><td style="text-align: right">1</td><td style="text-align: right">3</td><td>0%</td><td style="text-align: right">5</td><td>0%</td></tr>
+<tr><td>Expedientetalle</td><td style="text-align: right">1</td><td style="text-align: right">0</td><td>0%</td><td style="text-align: right">7</td><td>0%</td></tr>
+<tr><td>LY Corporation</td><td style="text-align: right">2</td><td style="text-align: right">4</td><td>0%</td><td style="text-align: right">2</td><td>0%</td></tr>
+<tr><td>Naver</td><td style="text-align: right">1</td><td style="text-align: right">4</td><td>0%</td><td style="text-align: right">2</td><td>0%</td></tr>
+<tr><td>OpenAI</td><td style="text-align: right">2</td><td style="text-align: right">6</td><td>0%</td><td style="text-align: right">0</td><td>0%</td></tr>
+<tr><td>Other 50 companies</td><td style="text-align: right">53</td><td style="text-align: right">67</td><td>3%</td><td style="text-align: right">36</td><td>0%</td></tr>
+<tr><td>No company in the profile or commits</td><td style="text-align: right">130</td><td style="text-align: right">720</td><td>37%</td><td style="text-align: right">3117</td><td>36%</td></tr>
+</tbody>
+</table>
 
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/04-companies.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/04-companies.sql)
 
 ## How often does Trino release?
 
@@ -93,31 +98,31 @@ The last 20 releases, the days since the release before, and the commits to mast
 Long gaps mean that fixes wait longer to reach users.
 
 <pre><code>
- Release |    Date    | Days | Days since the previous release chart | Commits | Authors | First-time |                                  Notes                                  
----------+------------+------+---------------------------------------+---------+---------+------------+-------------------------------------------------------------------------
-     484 | 2026-10-15 |   89 | ████████████████████████              |    1427 |     110 |         50 | <a href="https://trino.io/docs/current/release/release-484.html">release notes</a>  
-     483 | 2026-07-18 |   22 | ██████                                |     318 |      44 |         14 | <a href="https://trino.io/docs/current/release/release-483.html">release notes</a>  
-     482 | 2026-06-25 |   44 | ████████████                          |     745 |      48 |         13 | <a href="https://trino.io/docs/current/release/release-482.html">release notes</a>  
-     481 | 2026-05-11 |   48 | █████████████                         |     546 |      44 |          8 | <a href="https://trino.io/docs/current/release/release-481.html">release notes</a>  
-     480 | 2026-03-24 |   99 | ███████████████████████████           |     986 |      62 |         19 | <a href="https://trino.io/docs/current/release/release-480.html">release notes</a>  
-     479 | 2025-12-15 |   46 | █████████████                         |     457 |      38 |         10 | <a href="https://trino.io/docs/current/release/release-479.html">release notes</a>  
-     478 | 2025-10-29 |   34 | █████████                             |     399 |      36 |          8 | <a href="https://trino.io/docs/current/release/release-478.html">release notes</a>  
-     477 | 2025-09-24 |  110 | ██████████████████████████████        |     804 |      72 |         21 | <a href="https://trino.io/docs/current/release/release-477.html">release notes</a>  
-     476 | 2025-06-06 |   43 | ████████████                          |     297 |      44 |         10 | <a href="https://trino.io/docs/current/release/release-476.html">release notes</a>  
-     475 | 2025-04-23 |   32 | █████████                             |     246 |      38 |          9 | <a href="https://trino.io/docs/current/release/release-475.html">release notes</a>  
-     474 | 2025-03-22 |    2 | █                                     |      19 |      11 |          2 | <a href="https://trino.io/docs/current/release/release-474.html">release notes</a>  
-     473 | 2025-03-19 |   13 | ████                                  |     143 |      21 |          1 | <a href="https://trino.io/docs/current/release/release-473.html">release notes</a>  
-     472 | 2025-03-06 |   13 | ████                                  |     154 |      25 |          1 | <a href="https://trino.io/docs/current/release/release-472.html">release notes</a>  
-     471 | 2025-02-20 |   13 | ████                                  |     187 |      23 |          1 | <a href="https://trino.io/docs/current/release/release-471.html">release notes</a>  
-     470 | 2025-02-06 |    9 | ██                                    |     158 |      26 |          3 | <a href="https://trino.io/docs/current/release/release-470.html">release notes</a>  
-     469 | 2025-01-27 |   41 | ███████████                           |     318 |      43 |         12 | <a href="https://trino.io/docs/current/release/release-469.html">release notes</a>  
-     468 | 2024-12-17 |   10 | ███                                   |      97 |      20 |          1 | <a href="https://trino.io/docs/current/release/release-468.html">release notes</a>  
-     467 | 2024-12-06 |    8 | ██                                    |     104 |      20 |          1 | <a href="https://trino.io/docs/current/release/release-467.html">release notes</a>  
-     466 | 2024-11-28 |    7 | ██                                    |      84 |      19 |          2 | <a href="https://trino.io/docs/current/release/release-466.html">release notes</a>  
-     465 | 2024-11-21 |   21 | ██████                                |     259 |      38 |          6 | <a href="https://trino.io/docs/current/release/release-465.html">release notes</a>  
+ Release |    Date    | Days | Days since the previous release chart | Commits | Authors | First-time |     Notes     
+---------+------------+------+---------------------------------------+---------+---------+------------+---------------
+     484 | 2026-10-15 |   89 | ████████████████████████              |    1427 |     110 |         50 | <a href="https://trino.io/docs/current/release/release-484.html">release notes</a> 
+     483 | 2026-07-18 |   22 | ██████                                |     318 |      44 |         14 | <a href="https://trino.io/docs/current/release/release-483.html">release notes</a> 
+     482 | 2026-06-25 |   44 | ████████████                          |     745 |      48 |         13 | <a href="https://trino.io/docs/current/release/release-482.html">release notes</a> 
+     481 | 2026-05-11 |   48 | █████████████                         |     546 |      44 |          8 | <a href="https://trino.io/docs/current/release/release-481.html">release notes</a> 
+     480 | 2026-03-24 |   99 | ███████████████████████████           |     986 |      62 |         19 | <a href="https://trino.io/docs/current/release/release-480.html">release notes</a> 
+     479 | 2025-12-15 |   46 | █████████████                         |     457 |      38 |         10 | <a href="https://trino.io/docs/current/release/release-479.html">release notes</a> 
+     478 | 2025-10-29 |   34 | █████████                             |     399 |      36 |          8 | <a href="https://trino.io/docs/current/release/release-478.html">release notes</a> 
+     477 | 2025-09-24 |  110 | ██████████████████████████████        |     804 |      72 |         21 | <a href="https://trino.io/docs/current/release/release-477.html">release notes</a> 
+     476 | 2025-06-06 |   43 | ████████████                          |     297 |      44 |         10 | <a href="https://trino.io/docs/current/release/release-476.html">release notes</a> 
+     475 | 2025-04-23 |   32 | █████████                             |     246 |      38 |          9 | <a href="https://trino.io/docs/current/release/release-475.html">release notes</a> 
+     474 | 2025-03-22 |    2 | █                                     |      19 |      11 |          2 | <a href="https://trino.io/docs/current/release/release-474.html">release notes</a> 
+     473 | 2025-03-19 |   13 | ████                                  |     143 |      21 |          1 | <a href="https://trino.io/docs/current/release/release-473.html">release notes</a> 
+     472 | 2025-03-06 |   13 | ████                                  |     154 |      25 |          1 | <a href="https://trino.io/docs/current/release/release-472.html">release notes</a> 
+     471 | 2025-02-20 |   13 | ████                                  |     187 |      23 |          1 | <a href="https://trino.io/docs/current/release/release-471.html">release notes</a> 
+     470 | 2025-02-06 |    9 | ██                                    |     158 |      26 |          3 | <a href="https://trino.io/docs/current/release/release-470.html">release notes</a> 
+     469 | 2025-01-27 |   41 | ███████████                           |     318 |      43 |         12 | <a href="https://trino.io/docs/current/release/release-469.html">release notes</a> 
+     468 | 2024-12-17 |   10 | ███                                   |      97 |      20 |          1 | <a href="https://trino.io/docs/current/release/release-468.html">release notes</a> 
+     467 | 2024-12-06 |    8 | ██                                    |     104 |      20 |          1 | <a href="https://trino.io/docs/current/release/release-467.html">release notes</a> 
+     466 | 2024-11-28 |    7 | ██                                    |      84 |      19 |          2 | <a href="https://trino.io/docs/current/release/release-466.html">release notes</a> 
+     465 | 2024-11-21 |   21 | ██████                                |     259 |      38 |          6 | <a href="https://trino.io/docs/current/release/release-465.html">release notes</a> 
 (20 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/05-releases.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/05-releases.sql)
 
 ## Are issues handled as fast as they come in?
 
@@ -161,7 +166,7 @@ A backlog that keeps growing needs triage: close what is fixed or can't be repro
  2019-Q1        |    135 |     44 | ▲ +91          |              91 |                     ██████████│███                            
 (32 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/06-issues-flow.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/06-issues-flow.sql)
 
 ## How long do users wait for an answer?
 
@@ -205,118 +210,133 @@ Issues closed without a comment were often fixed or closed by their reporter. Th
  2019-Q1        |     53 | 22h 34m | 1807d 18h  |               ─────▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒────────── | 4%                 | 4%               
 (32 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/07-issues-first-response.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/07-issues-first-response.sql)
 
 ## Issues waiting for a first answer
 
 Open issues opened by users, not maintainers or bots, in the last 90 days, without any comment from another person, newest first.
 If you know the area, ask for details, point to the documentation, or confirm the bug: an answer in the first days keeps reporters engaged.
 
-| Issue                                                    | Title                                                                                                                                                            | Reporter                                                                | Waiting for | Reactions |
-| -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------- | ---------:|
-| <a href="https://github.com/trinodb/trino/issues/32097">\#32097</a>  | Iceberg scan silently returns zero rows when manifest\_length is incorrect                                                                                       | <a href="https://github.com/moelhoussein">moelhoussein</a>                          | 10h 04m     |         0 |
-| <a href="https://github.com/trinodb/trino/issues/32089">\#32089</a>  | Cost estimates are unknown for most plans with aggregations, sorting, or window functions                                                                        | <a href="https://github.com/RafPe">RafPe</a>                                        | 1d 8h       |         0 |
-| <a href="https://github.com/trinodb/trino/issues/32045">\#32045</a>  | DuckDB connector no longer creates JDBC statement spans                                                                                                          | <a href="https://github.com/jiwen624">jiwen624</a>                                  | 2d 19h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31976">\#31976</a>  | Azure exchange writes fail with 409 BlobAlreadyExists when the SDK retries                                                                                       | <a href="https://github.com/kevinsheth">kevinsheth</a>                              | 8d 22h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31948">\#31948</a>  | Filter on a decimal column over Parquet integer data drops rows                                                                                                  | <a href="https://github.com/wombatu-kun">wombatu-kun</a>                            | 11d 4h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31925">\#31925</a>  | Iceberg: table-wide NDV makes the optimizer misestimate partition-filtered joins when keys are skewed per partition                                              | <a href="https://github.com/sdaberdaku">sdaberdaku</a>                              | 12d 9h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31917">\#31917</a>  | Proposal: use Iceberg partition statistics files for row count estimates                                                                                         | <a href="https://github.com/sdaberdaku">sdaberdaku</a>                              | 12d 22h     |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31905">\#31905</a>  | Parquet and ORC bloom filters treat -0.0 and 0.0 as different values                                                                                             | <a href="https://github.com/wombatu-kun">wombatu-kun</a>                            | 13d 8h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31871">\#31871</a>  | Report oversized join hashes as insufficient resource instead of internal failures                                                                               | <a href="https://github.com/jalpan-randeri">jalpan-randeri</a>                      | 14d 19h     |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31859">\#31859</a>  | Delta Lake checkpoint writer ignores parquet.writer.delta-length-byte-array-encoding-enabled                                                                     | <a href="https://github.com/nikifor2014">nikifor2014</a>                            | 15d 3h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31854">\#31854</a>  | Ranger: allow tag-based column SELECT to authorize COUNT\(\*\) without tagging the table                                                                         | <a href="https://github.com/sadrabarani">sadrabarani</a>                            | 15d 6h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31812">\#31812</a>  | Docs: cume\_dist is documented as returning bigint but returns double                                                                                            | <a href="https://github.com/MicroMilo">MicroMilo</a>                                | 16d 11h     |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31810">\#31810</a>  | Iceberg connector: Table queries and SHOW TABLES fail with 403 Forbidden under table-only permissions                                                            | <a href="https://github.com/lsherwin10">lsherwin10</a>                              | 16d 15h     |         1 |
-| <a href="https://github.com/trinodb/trino/issues/31780">\#31780</a>  | Add support for creating symlink-backed tables in the Hive connector                                                                                             | <a href="https://github.com/findinpath">findinpath</a>                              | 18d 19h     |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31734">\#31734</a>  | TrinoArray.getResultSet\(\) is not supported                                                                                                                     | <a href="https://github.com/rileythomp">rileythomp</a>                              | 21d 1h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31701">\#31701</a>  | Proposal: Redis SQL source connector via ADBC or Flight SQL                                                                                                      | <a href="https://github.com/alberttwong">alberttwong</a>                            | 22d 19h     |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31672">\#31672</a>  | Support unordered inserts in MongoDB connector                                                                                                                   | <a href="https://github.com/seokyoung-naver">seokyoung-naver</a>                    | 24d 3h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31663">\#31663</a>  | Support bounded vectored reads in the Parquet filesystem path                                                                                                    | <a href="https://github.com/nirupamsingh29">nirupamsingh29</a>                      | 24d 6h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31654">\#31654</a>  | Add query-scoped CPU profiling with Web UI flame graphs                                                                                                          | <a href="https://github.com/Max-Cheng">Max-Cheng</a>                                | 24d 12h     |         1 |
-| <a href="https://github.com/trinodb/trino/issues/31590">\#31590</a>  | date\_trunc\('day', …\) returns 23:00 of the previous day for Canadian zones after 2026-11-01 on master \(Joda-Time 2.15.0 tz 2026e vs Temurin 25.0.4 tz 2026b\) | <a href="https://github.com/CyberNativeAI">CyberNativeAI</a>                        | 29d 8h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31568">\#31568</a>  | Workload isolation within a single cluster                                                                                                                       | <a href="https://github.com/tbaeg">tbaeg</a>                                        | 31d 0h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31545">\#31545</a>  | Flaky test TestDeltaQueryFailureRecoveryTest: "Encountered too many errors talking to a worker node"                                                             | <a href="https://github.com/jiwen624">jiwen624</a>                                  | 32d 10h     |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31460">\#31460</a>  | Allow excluding datasets from OpenLineage events                                                                                                                 | <a href="https://github.com/bimbolimbo">bimbolimbo</a>                              | 37d 3h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31399">\#31399</a>  | Iceberg equality delete file with extra non-key columns ignored in file scan planning                                                                            | <a href="https://github.com/findinpath">findinpath</a>                              | 42d 4h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31351">\#31351</a>  | Time travel configured using session properties                                                                                                                  | <a href="https://github.com/technical-debt-collector">technical-debt-collector</a>  | 45d 6h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31308">\#31308</a>  | Trino shows stale \(pre-truncation\) data when reading a truncated Hive ACID table before compaction runs                                                        | <a href="https://github.com/thierrycz">thierrycz</a>                                | 50d 1h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31302">\#31302</a>  | Trino displays deleted rows from Hive ACID tables before compaction runs                                                                                         | <a href="https://github.com/thierrycz">thierrycz</a>                                | 50d 5h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31273">\#31273</a>  | Allow connectors to emit warnings through the SPI, like they can raise custom errors                                                                             | <a href="https://github.com/okayhooni">okayhooni</a>                                | 51d 9h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31250">\#31250</a>  | Password authenticator rewrites only one user header after user mapping                                                                                          | <a href="https://github.com/Amirmehdig">Amirmehdig</a>                              | 53d 1h      |         0 |
-| <a href="https://github.com/trinodb/trino/issues/31248">\#31248</a>  | Branch name is not recorded for source tables dependencies on Trino Materialized Views                                                                           | <a href="https://github.com/findinpath">findinpath</a>                              | 53d 6h      |         0 |
+<table>
+<thead>
+<tr><th>Issue</th><th>Title</th><th>Reporter</th><th>Waiting for</th><th style="text-align: right">Reactions</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/trinodb/trino/issues/32097">#32097</a></td><td>Iceberg scan silently returns zero rows when manifest_length is incorrect</td><td><a href="https://github.com/moelhoussein">moelhoussein</a></td><td>13h 36m</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/32089">#32089</a></td><td>Cost estimates are unknown for most plans with aggregations, sorting, or window functions</td><td><a href="https://github.com/RafPe">RafPe</a></td><td>1d 12h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/32045">#32045</a></td><td>DuckDB connector no longer creates JDBC statement spans</td><td><a href="https://github.com/jiwen624">jiwen624</a></td><td>2d 22h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31976">#31976</a></td><td>Azure exchange writes fail with 409 BlobAlreadyExists when the SDK retries</td><td><a href="https://github.com/kevinsheth">kevinsheth</a></td><td>9d 2h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31948">#31948</a></td><td>Filter on a decimal column over Parquet integer data drops rows</td><td><a href="https://github.com/wombatu-kun">wombatu-kun</a></td><td>11d 7h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31925">#31925</a></td><td>Iceberg: table-wide NDV makes the optimizer misestimate partition-filtered joins when keys are skewed per partition</td><td><a href="https://github.com/sdaberdaku">sdaberdaku</a></td><td>12d 12h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31917">#31917</a></td><td>Proposal: use Iceberg partition statistics files for row count estimates</td><td><a href="https://github.com/sdaberdaku">sdaberdaku</a></td><td>13d 2h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31905">#31905</a></td><td>Parquet and ORC bloom filters treat -0.0 and 0.0 as different values</td><td><a href="https://github.com/wombatu-kun">wombatu-kun</a></td><td>13d 11h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31871">#31871</a></td><td>Report oversized join hashes as insufficient resource instead of internal failures</td><td><a href="https://github.com/jalpan-randeri">jalpan-randeri</a></td><td>14d 22h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31859">#31859</a></td><td>Delta Lake checkpoint writer ignores parquet.writer.delta-length-byte-array-encoding-enabled</td><td><a href="https://github.com/nikifor2014">nikifor2014</a></td><td>15d 7h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31854">#31854</a></td><td>Ranger: allow tag-based column SELECT to authorize COUNT(*) without tagging the table</td><td><a href="https://github.com/sadrabarani">sadrabarani</a></td><td>15d 10h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31812">#31812</a></td><td>Docs: cume_dist is documented as returning bigint but returns double</td><td><a href="https://github.com/MicroMilo">MicroMilo</a></td><td>16d 15h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31810">#31810</a></td><td>Iceberg connector: Table queries and SHOW TABLES fail with 403 Forbidden under table-only permissions</td><td><a href="https://github.com/lsherwin10">lsherwin10</a></td><td>16d 18h</td><td style="text-align: right">1</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31780">#31780</a></td><td>Add support for creating symlink-backed tables in the Hive connector</td><td><a href="https://github.com/findinpath">findinpath</a></td><td>18d 22h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31734">#31734</a></td><td>TrinoArray.getResultSet() is not supported</td><td><a href="https://github.com/rileythomp">rileythomp</a></td><td>21d 5h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31701">#31701</a></td><td>Proposal: Redis SQL source connector via ADBC or Flight SQL</td><td><a href="https://github.com/alberttwong">alberttwong</a></td><td>22d 22h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31672">#31672</a></td><td>Support unordered inserts in MongoDB connector</td><td><a href="https://github.com/seokyoung-naver">seokyoung-naver</a></td><td>24d 6h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31663">#31663</a></td><td>Support bounded vectored reads in the Parquet filesystem path</td><td><a href="https://github.com/nirupamsingh29">nirupamsingh29</a></td><td>24d 9h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31654">#31654</a></td><td>Add query-scoped CPU profiling with Web UI flame graphs</td><td><a href="https://github.com/Max-Cheng">Max-Cheng</a></td><td>24d 16h</td><td style="text-align: right">1</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31590">#31590</a></td><td>date_trunc('day', …) returns 23:00 of the previous day for Canadian zones after 2026-11-01 on master (Joda-Time 2.15.0 tz 2026e vs Temurin 25.0.4 tz 2026b)</td><td><a href="https://github.com/CyberNativeAI">CyberNativeAI</a></td><td>29d 12h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31568">#31568</a></td><td>Workload isolation within a single cluster</td><td><a href="https://github.com/tbaeg">tbaeg</a></td><td>31d 4h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31545">#31545</a></td><td>Flaky test TestDeltaQueryFailureRecoveryTest: "Encountered too many errors talking to a worker node"</td><td><a href="https://github.com/jiwen624">jiwen624</a></td><td>32d 14h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31460">#31460</a></td><td>Allow excluding datasets from OpenLineage events</td><td><a href="https://github.com/bimbolimbo">bimbolimbo</a></td><td>37d 6h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31399">#31399</a></td><td>Iceberg equality delete file with extra non-key columns ignored in file scan planning</td><td><a href="https://github.com/findinpath">findinpath</a></td><td>42d 8h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31351">#31351</a></td><td>Time travel configured using session properties</td><td><a href="https://github.com/technical-debt-collector">technical-debt-collector</a></td><td>45d 10h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31308">#31308</a></td><td>Trino shows stale (pre-truncation) data when reading a truncated Hive ACID table before compaction runs</td><td><a href="https://github.com/thierrycz">thierrycz</a></td><td>50d 5h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31302">#31302</a></td><td>Trino displays deleted rows from Hive ACID tables before compaction runs</td><td><a href="https://github.com/thierrycz">thierrycz</a></td><td>50d 8h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31273">#31273</a></td><td>Allow connectors to emit warnings through the SPI, like they can raise custom errors</td><td><a href="https://github.com/okayhooni">okayhooni</a></td><td>51d 12h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31250">#31250</a></td><td>Password authenticator rewrites only one user header after user mapping</td><td><a href="https://github.com/Amirmehdig">Amirmehdig</a></td><td>53d 4h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31248">#31248</a></td><td>Branch name is not recorded for source tables dependencies on Trino Materialized Views</td><td><a href="https://github.com/findinpath">findinpath</a></td><td>53d 10h</td><td style="text-align: right">0</td></tr>
+</tbody>
+</table>
 
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/08-unanswered-issues.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/08-unanswered-issues.sql)
 
 ## What do users ask for?
 
 Open issues with the most reactions, which is how users vote for a feature or a fix, then the most comments. Comments in the last 90 days show what is discussed now.
 Maintainers: this is the demand to plan for. Contributors: these are changes that many people will use; comment on the issue before you start, to agree on the approach.
 
-| Issue                                                    | Title                                                                    | Reactions | Comments | Comments in the last 90 days | Opened  |
-| -------------------------------------------------------- | ------------------------------------------------------------------------ | ---------:| --------:| ----------------------------:| ------- |
-| <a href="https://github.com/trinodb/trino/issues/391">\#391</a>      | High Availability                                                        |       112 |       28 |                            1 | 2019-03 |
-| <a href="https://github.com/trinodb/trino/issues/14237">\#14237</a>  | Project Hummingbird                                                      |        82 |        8 |                            0 | 2022-09 |
-| <a href="https://github.com/trinodb/trino/issues/396">\#396</a>      | Build a Kubernetes Operator for Presto                                   |        62 |       20 |                            0 | 2019-03 |
-| <a href="https://github.com/trinodb/trino/issues/18038">\#18038</a>  | support API for Arrow Flight SQL                                         |        62 |       16 |                            1 | 2023-06 |
-| <a href="https://github.com/trinodb/trino/issues/18">\#18</a>        | Allow connectors to participate in query optimization                    |        53 |       35 |                            0 | 2019-01 |
-| <a href="https://github.com/trinodb/trino/issues/5686">\#5686</a>    | add support for temp tables                                              |        29 |       15 |                            0 | 2020-10 |
-| <a href="https://github.com/trinodb/trino/issues/22811">\#22811</a>  | Add Support For Liquid Clustering Delta lake                             |        28 |        5 |                            0 | 2024-07 |
-| <a href="https://github.com/trinodb/trino/issues/12195">\#12195</a>  | Add support to Kafka connector for connecting to secured Schema Registry |        26 |       21 |                            0 | 2022-04 |
-| <a href="https://github.com/trinodb/trino/issues/26523">\#26523</a>  | DuckLake support                                                         |        26 |       15 |                            1 | 2025-09 |
-| <a href="https://github.com/trinodb/trino/issues/17329">\#17329</a>  | Add StarRocks Connector                                                  |        24 |       21 |                            0 | 2023-05 |
-| <a href="https://github.com/trinodb/trino/issues/17272">\#17272</a>  | Support copy-on-write mode for Iceberg write                             |        23 |       10 |                            1 | 2023-04 |
-| <a href="https://github.com/trinodb/trino/issues/20854">\#20854</a>  | Support query result caching                                             |        22 |        9 |                            0 | 2024-02 |
-| <a href="https://github.com/trinodb/trino/issues/8653">\#8653</a>    | Add apache doris connector                                               |        22 |        4 |                            0 | 2021-07 |
-| <a href="https://github.com/trinodb/trino/issues/29564">\#29564</a>  | Iceberg connector cannot read shredded Variant Parquet                   |        19 |        9 |                            3 | 2026-05 |
-| <a href="https://github.com/trinodb/trino/issues/3300">\#3300</a>    | Add spatial functions for H3 hexagons                                    |        19 |        5 |                            0 | 2020-04 |
-| <a href="https://github.com/trinodb/trino/issues/15953">\#15953</a>  | Persisting Trino Query Logs                                              |        17 |        7 |                            0 | 2023-02 |
-| <a href="https://github.com/trinodb/trino/issues/23067">\#23067</a>  | Add support for ODBC driver                                              |        16 |        3 |                            0 | 2024-08 |
-| <a href="https://github.com/trinodb/trino/issues/389">\#389</a>      | Parallel read in jdbc-based connectors                                   |        14 |       21 |                            0 | 2019-03 |
-| <a href="https://github.com/trinodb/trino/issues/21791">\#21791</a>  | Trino2Trino connector                                                    |        13 |        9 |                            0 | 2024-05 |
-| <a href="https://github.com/trinodb/trino/issues/18673">\#18673</a>  | Incremental refresh for Iceberg Materialized Views                       |        13 |        8 |                            1 | 2023-08 |
-| <a href="https://github.com/trinodb/trino/issues/23795">\#23795</a>  | Cast operator \`::\`                                                     |        12 |        5 |                            1 | 2024-10 |
-| <a href="https://github.com/trinodb/trino/issues/15847">\#15847</a>  | FR: Support GeoParquet Format                                            |        12 |        3 |                            0 | 2023-01 |
-| <a href="https://github.com/trinodb/trino/issues/10">\#10</a>        | Named queries \(WITH\) should be evaluated only once                     |        12 |        1 |                            0 | 2019-01 |
-| <a href="https://github.com/trinodb/trino/issues/7103">\#7103</a>    | ClickHouse connector                                                     |        11 |       10 |                            0 | 2021-03 |
-| <a href="https://github.com/trinodb/trino/issues/27371">\#27371</a>  | 🧊 Iceberg  Roadmap                                                      |        11 |        5 |                            0 | 2025-11 |
+<table>
+<thead>
+<tr><th>Issue</th><th>Title</th><th style="text-align: right">Reactions</th><th style="text-align: right">Comments</th><th style="text-align: right">Comments in the last 90 days</th><th>Opened</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/trinodb/trino/issues/391">#391</a></td><td>High Availability</td><td style="text-align: right">112</td><td style="text-align: right">28</td><td style="text-align: right">1</td><td>2019-03</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/14237">#14237</a></td><td>Project Hummingbird</td><td style="text-align: right">82</td><td style="text-align: right">8</td><td style="text-align: right">0</td><td>2022-09</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/396">#396</a></td><td>Build a Kubernetes Operator for Presto</td><td style="text-align: right">62</td><td style="text-align: right">20</td><td style="text-align: right">0</td><td>2019-03</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/18038">#18038</a></td><td>support API for Arrow Flight SQL </td><td style="text-align: right">62</td><td style="text-align: right">16</td><td style="text-align: right">1</td><td>2023-06</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/18">#18</a></td><td>Allow connectors to participate in query optimization</td><td style="text-align: right">53</td><td style="text-align: right">35</td><td style="text-align: right">0</td><td>2019-01</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/5686">#5686</a></td><td>add support for temp tables</td><td style="text-align: right">29</td><td style="text-align: right">15</td><td style="text-align: right">0</td><td>2020-10</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/22811">#22811</a></td><td>Add Support For Liquid Clustering Delta lake</td><td style="text-align: right">28</td><td style="text-align: right">5</td><td style="text-align: right">0</td><td>2024-07</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/12195">#12195</a></td><td>Add support to Kafka connector for connecting to secured Schema Registry</td><td style="text-align: right">26</td><td style="text-align: right">21</td><td style="text-align: right">0</td><td>2022-04</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/26523">#26523</a></td><td>DuckLake support</td><td style="text-align: right">26</td><td style="text-align: right">15</td><td style="text-align: right">1</td><td>2025-09</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/17329">#17329</a></td><td>Add StarRocks Connector</td><td style="text-align: right">24</td><td style="text-align: right">21</td><td style="text-align: right">0</td><td>2023-05</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/17272">#17272</a></td><td>Support copy-on-write mode for Iceberg write</td><td style="text-align: right">23</td><td style="text-align: right">10</td><td style="text-align: right">1</td><td>2023-04</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/20854">#20854</a></td><td>Support query result caching</td><td style="text-align: right">22</td><td style="text-align: right">9</td><td style="text-align: right">0</td><td>2024-02</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/8653">#8653</a></td><td>Add apache doris connector</td><td style="text-align: right">22</td><td style="text-align: right">4</td><td style="text-align: right">0</td><td>2021-07</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/29564">#29564</a></td><td>Iceberg connector cannot read shredded Variant Parquet</td><td style="text-align: right">19</td><td style="text-align: right">9</td><td style="text-align: right">3</td><td>2026-05</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/3300">#3300</a></td><td>Add spatial functions for H3 hexagons</td><td style="text-align: right">19</td><td style="text-align: right">5</td><td style="text-align: right">0</td><td>2020-04</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/15953">#15953</a></td><td>Persisting Trino Query Logs</td><td style="text-align: right">17</td><td style="text-align: right">7</td><td style="text-align: right">0</td><td>2023-02</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/23067">#23067</a></td><td>Add support for ODBC driver</td><td style="text-align: right">16</td><td style="text-align: right">3</td><td style="text-align: right">0</td><td>2024-08</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/389">#389</a></td><td>Parallel read in jdbc-based connectors</td><td style="text-align: right">14</td><td style="text-align: right">21</td><td style="text-align: right">0</td><td>2019-03</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/21791">#21791</a></td><td>Trino2Trino connector</td><td style="text-align: right">13</td><td style="text-align: right">9</td><td style="text-align: right">0</td><td>2024-05</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/18673">#18673</a></td><td>Incremental refresh for Iceberg Materialized Views</td><td style="text-align: right">13</td><td style="text-align: right">8</td><td style="text-align: right">1</td><td>2023-08</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/23795">#23795</a></td><td>Cast operator `::`</td><td style="text-align: right">12</td><td style="text-align: right">5</td><td style="text-align: right">1</td><td>2024-10</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/15847">#15847</a></td><td>FR: Support GeoParquet Format</td><td style="text-align: right">12</td><td style="text-align: right">3</td><td style="text-align: right">0</td><td>2023-01</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/10">#10</a></td><td>Named queries (WITH) should be evaluated only once</td><td style="text-align: right">12</td><td style="text-align: right">1</td><td style="text-align: right">0</td><td>2019-01</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/7103">#7103</a></td><td>ClickHouse connector</td><td style="text-align: right">11</td><td style="text-align: right">10</td><td style="text-align: right">0</td><td>2021-03</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/27371">#27371</a></td><td>🧊 Iceberg  Roadmap</td><td style="text-align: right">11</td><td style="text-align: right">5</td><td style="text-align: right">0</td><td>2025-11</td></tr>
+</tbody>
+</table>
 
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/09-most-wanted-issues.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/09-most-wanted-issues.sql)
 
 ## Which areas get the most issues?
 
 Issues by label: open now, and opened and closed in the last 12 months, with the change of the backlog. An issue with many labels counts for each of them, and the last row shows the issues without a label.
 A label with a growing backlog needs an owner. Labels like good first issue are a place to start for new contributors.
 
-| Label               | Open | Opened in 12 months | Closed in 12 months | Backlog change |
-| ------------------- | ----:| -------------------:| -------------------:| -------------- |
-| enhancement         |  393 |                  22 |                  40 | ▼ -18          |
-| Flaky Tests         |   90 |                  82 |                  74 | ▲ \+8          |
-| test                |   88 |                   6 |                  15 | ▼ -9           |
-| syntax-needs-review |   79 |                   6 |                   6 | = 0            |
-| iceberg             |   74 |                  33 |                  33 | = 0            |
-| docs                |   67 |                   4 |                   4 | = 0            |
-| performance         |   58 |                  15 |                   7 | ▲ \+8          |
-| correctness         |   56 |                  39 |                  42 | ▼ -3           |
-| delta-lake          |   47 |                  14 |                  15 | ▼ -1           |
-| good first issue    |   38 |                  29 |                  39 | ▼ -10          |
-| maintenance         |   36 |                   4 |                   4 | = 0            |
-| jdbc                |   31 |                   3 |                   5 | ▼ -2           |
-| roadmap             |   26 |                   4 |                  14 | ▼ -10          |
-| ui                  |   20 |                   3 |                   0 | ▲ \+3          |
-| hudi                |   14 |                   1 |                   4 | ▼ -3           |
-| hive                |   13 |                   2 |                   3 | ▼ -1           |
-| dx                  |   10 |                   5 |                   1 | ▲ \+4          |
-| bigquery            |   10 |                   2 |                   2 | = 0            |
-| needs-docs          |    6 |                   2 |                   2 | = 0            |
-| corruption          |    3 |                   2 |                   1 | ▲ \+1          |
-| mongodb             |    3 |                   0 |                   1 | ▼ -1           |
-| snowflake           |    3 |                   0 |                   0 | = 0            |
-| sqlserver           |    2 |                   1 |                   0 | ▲ \+1          |
-| user experience     |    2 |                   0 |                   0 | = 0            |
-| RELEASE-BLOCKER     |    1 |                  14 |                  14 | = 0            |
-| No label            | 1529 |                 480 |                 346 | ▲ \+134        |
+<table>
+<thead>
+<tr><th>Label</th><th style="text-align: right">Open</th><th style="text-align: right">Opened in 12 months</th><th style="text-align: right">Closed in 12 months</th><th>Backlog change</th></tr>
+</thead>
+<tbody>
+<tr><td>enhancement</td><td style="text-align: right">393</td><td style="text-align: right">22</td><td style="text-align: right">40</td><td>▼ -18</td></tr>
+<tr><td>Flaky Tests</td><td style="text-align: right">90</td><td style="text-align: right">82</td><td style="text-align: right">74</td><td>▲ +8</td></tr>
+<tr><td>test</td><td style="text-align: right">88</td><td style="text-align: right">6</td><td style="text-align: right">15</td><td>▼ -9</td></tr>
+<tr><td>syntax-needs-review</td><td style="text-align: right">79</td><td style="text-align: right">6</td><td style="text-align: right">6</td><td>= 0</td></tr>
+<tr><td>iceberg</td><td style="text-align: right">74</td><td style="text-align: right">33</td><td style="text-align: right">33</td><td>= 0</td></tr>
+<tr><td>docs</td><td style="text-align: right">67</td><td style="text-align: right">4</td><td style="text-align: right">4</td><td>= 0</td></tr>
+<tr><td>performance</td><td style="text-align: right">58</td><td style="text-align: right">15</td><td style="text-align: right">7</td><td>▲ +8</td></tr>
+<tr><td>correctness</td><td style="text-align: right">56</td><td style="text-align: right">39</td><td style="text-align: right">42</td><td>▼ -3</td></tr>
+<tr><td>delta-lake</td><td style="text-align: right">47</td><td style="text-align: right">14</td><td style="text-align: right">15</td><td>▼ -1</td></tr>
+<tr><td>good first issue</td><td style="text-align: right">38</td><td style="text-align: right">29</td><td style="text-align: right">39</td><td>▼ -10</td></tr>
+<tr><td>maintenance</td><td style="text-align: right">36</td><td style="text-align: right">4</td><td style="text-align: right">4</td><td>= 0</td></tr>
+<tr><td>jdbc</td><td style="text-align: right">31</td><td style="text-align: right">3</td><td style="text-align: right">5</td><td>▼ -2</td></tr>
+<tr><td>roadmap</td><td style="text-align: right">26</td><td style="text-align: right">4</td><td style="text-align: right">14</td><td>▼ -10</td></tr>
+<tr><td>ui</td><td style="text-align: right">20</td><td style="text-align: right">3</td><td style="text-align: right">0</td><td>▲ +3</td></tr>
+<tr><td>hudi</td><td style="text-align: right">14</td><td style="text-align: right">1</td><td style="text-align: right">4</td><td>▼ -3</td></tr>
+<tr><td>hive</td><td style="text-align: right">13</td><td style="text-align: right">2</td><td style="text-align: right">3</td><td>▼ -1</td></tr>
+<tr><td>dx</td><td style="text-align: right">10</td><td style="text-align: right">5</td><td style="text-align: right">1</td><td>▲ +4</td></tr>
+<tr><td>bigquery</td><td style="text-align: right">10</td><td style="text-align: right">2</td><td style="text-align: right">2</td><td>= 0</td></tr>
+<tr><td>needs-docs</td><td style="text-align: right">6</td><td style="text-align: right">2</td><td style="text-align: right">2</td><td>= 0</td></tr>
+<tr><td>corruption</td><td style="text-align: right">3</td><td style="text-align: right">2</td><td style="text-align: right">1</td><td>▲ +1</td></tr>
+<tr><td>mongodb</td><td style="text-align: right">3</td><td style="text-align: right">0</td><td style="text-align: right">1</td><td>▼ -1</td></tr>
+<tr><td>snowflake</td><td style="text-align: right">3</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td>= 0</td></tr>
+<tr><td>sqlserver</td><td style="text-align: right">2</td><td style="text-align: right">1</td><td style="text-align: right">0</td><td>▲ +1</td></tr>
+<tr><td>user experience</td><td style="text-align: right">2</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td>= 0</td></tr>
+<tr><td>RELEASE-BLOCKER</td><td style="text-align: right">1</td><td style="text-align: right">14</td><td style="text-align: right">14</td><td>= 0</td></tr>
+<tr><td>No label</td><td style="text-align: right">1529</td><td style="text-align: right">480</td><td style="text-align: right">346</td><td>▲ +134</td></tr>
+</tbody>
+</table>
 
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/10-issues-by-label.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/10-issues-by-label.sql)
 
 ## How active is Slack?
 
@@ -340,7 +360,7 @@ Joining or leaving a channel isn't counted as a message. A channel that gets qui
  trino-gateway     | ▂......█▂▃..▃.▂........▂.. |        2 | ▼ -85%  | ▄......█▄█..█.▄........▄.. |      1 | ▼ -83%  
 (12 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/11-slack-activity.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/11-slack-activity.sql)
 
 ## Who joins the Slack channels?
 
@@ -363,29 +383,34 @@ The weekly sync sees a member join or leave only on its next run, so the times a
  trino-gateway-dev |         325 |     53 |    2 | ▲ +51  | ▃▅██▂▄▂▃▃▄▂▃           | ......▁.▁...   
 (11 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/12-slack-members.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/12-slack-members.sql)
 
 ## Are questions on Slack answered?
 
 Questions are messages that start a conversation, posted by people, not bots, in the last 12 full months. Answered is the share with a reply in the thread from another person, and the median wait is until the first one; all channels means all archived channels except announcements.
 An older sync saved the replies until August 2026, and missed some of them, so older months can show fewer answers than there were.
 
-| Month   | Questions in troubleshooting | Answered | Median wait | Questions in beginner | Answered | Median wait | Questions in all channels | Answered | Median wait |
-| ------- | ----------------------------:| -------- | ----------- | ---------------------:| -------- | ----------- | -------------------------:| -------- | ----------- |
-| 2026-10 |                            4 | 50%      | 1d 7h       |                     3 | 67%      | 2h 24m      |                        67 | 37%      | 41m 33s     |
-| 2026-09 |                            6 | 67%      | 5h 52m      |                     4 | 50%      | 12h 21m     |                        66 | 53%      | 4h 01m      |
-| 2026-08 |                            7 | 29%      | 29m 47s     |                     4 | 50%      | 5d 11h      |                        83 | 47%      | 2h 30m      |
-| 2026-07 |                           12 | 83%      | 1h 43m      |                     5 | 60%      | 1d 5h       |                        74 | 50%      | 1h 28m      |
-| 2026-06 |                           13 | 38%      | 11h 04m     |                    10 | 20%      | 3h 38m      |                        95 | 36%      | 2h 21m      |
-| 2026-05 |                           13 | 38%      | 5h 08m      |                     6 | 50%      | 1h 17m      |                        74 | 46%      | 2h 19m      |
-| 2026-04 |                           22 | 36%      | 7h 42m      |                    11 | 64%      | 3h 02m      |                       106 | 49%      | 3h 35m      |
-| 2026-03 |                           22 | 45%      | 42m 23s     |                    16 | 56%      | 9h 34m      |                       102 | 48%      | 2h 04m      |
-| 2026-02 |                           23 | 57%      | 8h 56m      |                    10 | 40%      | 51m 42s     |                       123 | 50%      | 1h 43m      |
-| 2026-01 |                           23 | 57%      | 4h 32m      |                     8 | 38%      | 11h 28m     |                       118 | 64%      | 3h 32m      |
-| 2025-12 |                           30 | 50%      | 39m 28s     |                    13 | 77%      | 5h 21m      |                       113 | 51%      | 1h 52m      |
-| 2025-11 |                           40 | 35%      | 17h 16m     |                    36 | 53%      | 1h 24m      |                       157 | 39%      | 1h 50m      |
+<table>
+<thead>
+<tr><th>Month</th><th style="text-align: right">Questions in troubleshooting</th><th>Answered</th><th>Median wait</th><th style="text-align: right">Questions in beginner</th><th>Answered</th><th>Median wait</th><th style="text-align: right">Questions in all channels</th><th>Answered</th><th>Median wait</th></tr>
+</thead>
+<tbody>
+<tr><td>2026-10</td><td style="text-align: right">4</td><td>50%</td><td>1d 7h</td><td style="text-align: right">3</td><td>67%</td><td>2h 24m</td><td style="text-align: right">67</td><td>37%</td><td>41m 33s</td></tr>
+<tr><td>2026-09</td><td style="text-align: right">6</td><td>67%</td><td>5h 52m</td><td style="text-align: right">4</td><td>50%</td><td>12h 21m</td><td style="text-align: right">66</td><td>53%</td><td>4h 01m</td></tr>
+<tr><td>2026-08</td><td style="text-align: right">7</td><td>29%</td><td>29m 47s</td><td style="text-align: right">4</td><td>50%</td><td>5d 11h</td><td style="text-align: right">83</td><td>47%</td><td>2h 30m</td></tr>
+<tr><td>2026-07</td><td style="text-align: right">12</td><td>83%</td><td>1h 43m</td><td style="text-align: right">5</td><td>60%</td><td>1d 5h</td><td style="text-align: right">74</td><td>50%</td><td>1h 28m</td></tr>
+<tr><td>2026-06</td><td style="text-align: right">13</td><td>38%</td><td>11h 04m</td><td style="text-align: right">10</td><td>20%</td><td>3h 38m</td><td style="text-align: right">95</td><td>36%</td><td>2h 21m</td></tr>
+<tr><td>2026-05</td><td style="text-align: right">13</td><td>38%</td><td>5h 08m</td><td style="text-align: right">6</td><td>50%</td><td>1h 17m</td><td style="text-align: right">74</td><td>46%</td><td>2h 19m</td></tr>
+<tr><td>2026-04</td><td style="text-align: right">22</td><td>36%</td><td>7h 42m</td><td style="text-align: right">11</td><td>64%</td><td>3h 02m</td><td style="text-align: right">106</td><td>49%</td><td>3h 35m</td></tr>
+<tr><td>2026-03</td><td style="text-align: right">22</td><td>45%</td><td>42m 23s</td><td style="text-align: right">16</td><td>56%</td><td>9h 34m</td><td style="text-align: right">102</td><td>48%</td><td>2h 04m</td></tr>
+<tr><td>2026-02</td><td style="text-align: right">23</td><td>57%</td><td>8h 56m</td><td style="text-align: right">10</td><td>40%</td><td>51m 42s</td><td style="text-align: right">123</td><td>50%</td><td>1h 43m</td></tr>
+<tr><td>2026-01</td><td style="text-align: right">23</td><td>57%</td><td>4h 32m</td><td style="text-align: right">8</td><td>38%</td><td>11h 28m</td><td style="text-align: right">118</td><td>64%</td><td>3h 32m</td></tr>
+<tr><td>2025-12</td><td style="text-align: right">30</td><td>50%</td><td>39m 28s</td><td style="text-align: right">13</td><td>77%</td><td>5h 21m</td><td style="text-align: right">113</td><td>51%</td><td>1h 52m</td></tr>
+<tr><td>2025-11</td><td style="text-align: right">40</td><td>35%</td><td>17h 16m</td><td style="text-align: right">36</td><td>53%</td><td>1h 24m</td><td style="text-align: right">157</td><td>39%</td><td>1h 50m</td></tr>
+</tbody>
+</table>
 
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/13-slack-questions-answered.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/13-slack-questions-answered.sql)
 
 ## Slack questions without an answer
 
@@ -410,7 +435,7 @@ Look through these channels for questions without a reply in their thread: even 
  2026-08-10 |         0 |        0 |       |                                |                           0 |                    0 
 (13 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/14-slack-unanswered-questions.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/14-slack-unanswered-questions.sql)
 
 ## When is the Slack community awake?
 
@@ -429,7 +454,7 @@ Ask when the cells are dark to get a quick answer; the next report shows where p
  Sunday    | ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ |      194 | 16:00        
 (7 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/15-slack-busy-hours.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/15-slack-busy-hours.sql)
 
 ## Where do people on Slack live?
 
@@ -447,31 +472,36 @@ Read it with the hours above: a question asked in the working hours of a large r
  Not set  |      5 | 1%    | █                              | UTC+0       |                                                        
 (6 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/16-slack-time-zones.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/16-slack-time-zones.sql)
 
 ## Who helps others on Slack?
 
 People who replied in the most threads that someone else started in the archived channels in the last 90 days, and in how many of them they replied first, by the name shown in Slack. Accounts with the same full name are counted as one person. Bots and deactivated accounts aren't listed.
 Thank them, and if you know the answer to a question in troubleshooting or beginner, join them.
 
-| Name             | Threads | Replied first | In troubleshooting or beginner | Channels                              |
-| ---------------- | -------:| -------------:| ------------------------------:| ------------------------------------- |
-| Mateusz Gajewski |      21 |            18 |                              4 | core-dev, dev, troubleshooting        |
-| Manfred Moser    |      15 |             7 |                              2 | core-dev, trino-gateway-dev, beginner |
-| findepi          |      12 |             8 |                              0 | core-dev, iceberg, dev                |
-| Jan Waś          |      11 |            10 |                              1 | core-dev, announcements, dev          |
-| dain             |       8 |             7 |                              0 | core-dev                              |
-| Vishal Jadhav    |       8 |             6 |                              0 | trino-gateway-dev                     |
-| Roey Ogen        |       7 |             7 |                              1 | core-dev, trino-gateway-dev, beginner |
-| raunaqm          |       6 |             5 |                              4 | troubleshooting, delta-lake, iceberg  |
-| Kent Murra       |       4 |             3 |                              2 | dev, beginner, troubleshooting        |
-| david            |       4 |             2 |                              0 | dev, core-dev                         |
-| Praveen          |       3 |             2 |                              0 | core-dev, dev                         |
-| Tony Baeg        |       3 |             2 |                              1 | core-dev, dev, troubleshooting        |
-| martin           |       3 |             2 |                              0 | dev, core-dev                         |
-| ebyhr            |       3 |             1 |                              0 | core-dev, dev, iceberg                |
-| Jaeho            |       2 |             2 |                              0 | trino-gateway-dev                     |
+<table>
+<thead>
+<tr><th>Name</th><th style="text-align: right">Threads</th><th style="text-align: right">Replied first</th><th style="text-align: right">In troubleshooting or beginner</th><th>Channels</th></tr>
+</thead>
+<tbody>
+<tr><td>Mateusz Gajewski</td><td style="text-align: right">21</td><td style="text-align: right">18</td><td style="text-align: right">4</td><td>core-dev, dev, troubleshooting</td></tr>
+<tr><td>Manfred Moser</td><td style="text-align: right">15</td><td style="text-align: right">7</td><td style="text-align: right">2</td><td>core-dev, trino-gateway-dev, beginner</td></tr>
+<tr><td>findepi</td><td style="text-align: right">12</td><td style="text-align: right">8</td><td style="text-align: right">0</td><td>core-dev, iceberg, dev</td></tr>
+<tr><td>Jan Waś</td><td style="text-align: right">11</td><td style="text-align: right">10</td><td style="text-align: right">1</td><td>core-dev, announcements, dev</td></tr>
+<tr><td>dain</td><td style="text-align: right">8</td><td style="text-align: right">7</td><td style="text-align: right">0</td><td>core-dev</td></tr>
+<tr><td>Vishal Jadhav</td><td style="text-align: right">8</td><td style="text-align: right">6</td><td style="text-align: right">0</td><td>trino-gateway-dev</td></tr>
+<tr><td>Roey Ogen</td><td style="text-align: right">7</td><td style="text-align: right">7</td><td style="text-align: right">1</td><td>core-dev, trino-gateway-dev, beginner</td></tr>
+<tr><td>raunaqm</td><td style="text-align: right">6</td><td style="text-align: right">5</td><td style="text-align: right">4</td><td>troubleshooting, delta-lake, iceberg</td></tr>
+<tr><td>Kent Murra</td><td style="text-align: right">4</td><td style="text-align: right">3</td><td style="text-align: right">2</td><td>dev, beginner, troubleshooting</td></tr>
+<tr><td>david</td><td style="text-align: right">4</td><td style="text-align: right">2</td><td style="text-align: right">0</td><td>dev, core-dev</td></tr>
+<tr><td>Praveen</td><td style="text-align: right">3</td><td style="text-align: right">2</td><td style="text-align: right">0</td><td>core-dev, dev</td></tr>
+<tr><td>Tony Baeg</td><td style="text-align: right">3</td><td style="text-align: right">2</td><td style="text-align: right">1</td><td>core-dev, dev, troubleshooting</td></tr>
+<tr><td>martin</td><td style="text-align: right">3</td><td style="text-align: right">2</td><td style="text-align: right">0</td><td>dev, core-dev</td></tr>
+<tr><td>ebyhr</td><td style="text-align: right">3</td><td style="text-align: right">1</td><td style="text-align: right">0</td><td>core-dev, dev, iceberg</td></tr>
+<tr><td>Jaeho</td><td style="text-align: right">2</td><td style="text-align: right">2</td><td style="text-align: right">0</td><td>trino-gateway-dev</td></tr>
+</tbody>
+</table>
 
-[query](https://github.com/trinodb/reports/blob/0f0ae7b85ba78a1489038a7b3ae21a130900e5bf/sql/community/17-slack-top-helpers.sql)
+[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/community/17-slack-top-helpers.sql)
 
-Generated on Thu Nov 12 15:15:41 UTC 2026
+Generated on Thu Nov 12 18:47:02 UTC 2026
