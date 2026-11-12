@@ -59,22 +59,13 @@ public final class Sync
         log = Logger.getLogger(Sync.class.getName());
     }
 
-    private final SyncConfig config;
-    private final StepCatalog catalog;
-
-    public Sync(SyncConfig config)
-    {
-        this.config = requireNonNull(config, "config is null");
-        this.catalog = new StepCatalog(config.stepsDir());
-    }
-
-    public static void main(String[] args)
+    void main(String[] args)
             throws Exception
     {
         Optional<Path> propertiesFile = args.length > 0 ? Optional.of(Path.of(args[0])) : Optional.empty();
         SyncConfig config = SyncConfig.load(propertiesFile, System.getenv());
         config.describe().forEach((name, value) -> log.info("%s=%s".formatted(name, value)));
-        List<String> failedSteps = new Sync(config).run();
+        List<String> failedSteps = run(config);
         if (!failedSteps.isEmpty()) {
             log.severe("Failed steps: " + String.join(", ", failedSteps));
             System.exit(1);
@@ -84,16 +75,17 @@ public final class Sync
     /**
      * Returns the names of steps that failed.
      */
-    public List<String> run()
+    public List<String> run(SyncConfig config)
             throws SQLException, InterruptedException
     {
+        StepCatalog catalog = new StepCatalog(config.stepsDir());
         List<String> stepNames = config.steps().orElseGet(catalog::stepNames);
         // load all steps first, so a typo in a step name or a script fails before changing any data
         List<Step> steps = stepNames.stream()
                 .map(catalog::step)
                 .toList();
         List<String> failedSteps = new ArrayList<>();
-        try (Connection connection = connect()) {
+        try (Connection connection = connect(config)) {
             StepRunner runner = new StepRunner(connection, config);
             for (Step step : steps) {
                 long start = System.nanoTime();
@@ -110,7 +102,7 @@ public final class Sync
         return List.copyOf(failedSteps);
     }
 
-    private Connection connect()
+    private static Connection connect(SyncConfig config)
             throws SQLException
     {
         Properties properties = new Properties();
