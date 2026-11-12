@@ -42,6 +42,25 @@ RETURN CASE
         substr(glyphs, i, 1))), '')
 END;
 
+-- a position of a duration on a log scale from 1 minute to 1 year, from 1 to `width`, so box plots of every row share one axis
+CREATE OR REPLACE FUNCTION memory.default.log_position(seconds double, width integer)
+RETURNS integer
+RETURN CAST(greatest(0, least(width - 1, round((ln(greatest(seconds, 60)) - ln(60)) / (ln(365 * 86400) - ln(60)) * (width - 1)))) AS integer) + 1;
+
+-- a box plot of durations on a log scale from 1 minute to 1 year: whiskers from the 10th to the 90th percentile, a box from
+-- the 25th to the 75th, and the median
+CREATE OR REPLACE FUNCTION memory.default.boxplot(p10 double, p25 double, p50 double, p75 double, p90 double, width integer)
+RETURNS varchar
+RETURN CASE
+    WHEN p50 IS NULL THEN ''
+    ELSE array_join(transform(sequence(1, width), i -> CASE
+        WHEN i = memory.default.log_position(p50, width) THEN '█'
+        WHEN i BETWEEN memory.default.log_position(p25, width) AND memory.default.log_position(p75, width) THEN '▒'
+        WHEN i BETWEEN memory.default.log_position(p10, width) AND memory.default.log_position(p90, width) THEN '─'
+        ELSE ' '
+    END), '')
+END;
+
 -- one heatmap cell: a space for nothing, and darker shades for larger values
 CREATE OR REPLACE FUNCTION memory.default.shade(value double, max_value double)
 RETURNS varchar
