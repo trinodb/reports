@@ -34,7 +34,6 @@ jobs:
             -v $(pwd)/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
             -v $(pwd)/catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
             -v $(pwd)/hive-cache:/opt/hive-cache \
-            -v $(pwd)/sql:/sql \
             -e AWS_ACCESS_KEY_ID \
             -e AWS_SECRET_ACCESS_KEY \
             -e AWS_SESSION_TOKEN \
@@ -56,16 +55,10 @@ jobs:
           done
       - name: Optimize GitHub tables
         run: |
-          docker exec \
-            trino \
-            trino --catalog trinocicd --schema github \
-            -f /sql/optimize.sql
+          docker exec -i trino trino --catalog trinocicd --schema github -f /dev/stdin <sync/maintenance/optimize-github.sql
       - name: Optimize Slack tables
         run: |
-          docker exec \
-            trino \
-            trino --catalog trinocicd --schema slack \
-            -f /sql/optimize-slack.sql
+          docker exec -i trino trino --catalog trinocicd --schema slack -f /dev/stdin <sync/maintenance/optimize-slack.sql
       - name: Dump Trino logs
         if: always()
         run: |
