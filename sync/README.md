@@ -34,11 +34,12 @@ databases and objects in the bucket, and can't create databases.
 ## How the sync works
 
 `Sync.java` runs SQL statements, with the Java source launcher and only the
-Trino JDBC driver in the class path:
+Trino JDBC driver in the class path. `bin/sync.sh` downloads the driver and
+runs it, with Trino started by `bin/run-trino.sh github`:
 
 ```shell
 SYNC_TRINO_URL=jdbc:trino://localhost:8080 SYNC_STEPS_DIR=sync/github SYNC_OWNER=trinodb SYNC_REPO=trino \
-    java -cp trino-jdbc.jar sync/Sync.java
+    ./bin/sync.sh
 ```
 
 * It runs the steps in `SYNC_STEPS_DIR` in the order of their names, like

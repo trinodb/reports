@@ -19,9 +19,6 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
-    env:
-      TRINO_VERSION: 484
-      TRINO_GIT_VERSION: "1.0"
     steps:
       - uses: actions/checkout@v7
       - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
@@ -34,37 +31,8 @@ jobs:
         run: |
           sudo apt update
           sudo pip install ansi2html
-          curl -fLOsS https://github.com/nineinchnick/trino-git/releases/download/v$TRINO_GIT_VERSION/trino-git-$TRINO_GIT_VERSION.zip
-          unzip trino-git-$TRINO_GIT_VERSION.zip
       - name: Start Trino
-        run: |
-          mkdir -p $(pwd)/hive-cache && chmod go+w $(pwd)/hive-cache
-          CONTAINER_ID=$(docker run \
-            -v $(pwd)/etc/config.properties:/etc/trino/config.properties \
-            -v $(pwd)/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
-            -v $(pwd)/trino-git-$TRINO_GIT_VERSION:/usr/lib/trino/plugin/git \
-            -v $(pwd)/catalog/git.properties:/etc/trino/catalog/git.properties \
-            -v $(pwd)/catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
-            -v $(pwd)/hive-cache:/opt/hive-cache \
-            -e AWS_ACCESS_KEY_ID \
-            -e AWS_SECRET_ACCESS_KEY \
-            -e AWS_SESSION_TOKEN \
-            -e AWS_REGION \
-            -p 8080:8080 \
-            --name trino \
-            -d \
-            trinodb/trino:$TRINO_VERSION)
-          SERVER_IP=$(docker inspect --format '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$CONTAINER_ID")
-          echo "CONTAINER_ID=$CONTAINER_ID" >> $GITHUB_ENV
-          echo "SERVER_IP=$SERVER_IP" >> $GITHUB_ENV
-          i=0
-          until docker inspect "${CONTAINER_ID}" --format "{{json .State.Health.Status }}" | grep -q '"healthy"'; do
-              if [[ $((i++)) -ge 10 ]]; then
-                  echo "🚨 Too many retries waiting for Trino to start"
-                  exit 1
-              fi
-              sleep 10
-          done
+        run: ./bin/run-trino.sh git
       - name: Execute queries
         run: |
           # builds the tables and functions that the reports share, in the memory catalog
