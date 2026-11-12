@@ -92,6 +92,11 @@ and the second statement of the step saves them with their version in the
   marks 1,200 of them in every sync, newest first, with a version they never
   have, so the `reviews` step of the next sync reads them again. Until then,
   reports counting reviews show too few of them for older pull requests.
+* Issues, their comments, pull requests, and their reviews are also read for
+  other repositories, listed in `sync.yml`, by running these steps again with
+  `SYNC_REPO`. The first sync reads all of their history, about 3,700
+  requests, mostly reviews of 3,500 pull requests, which takes about an hour.
+  Later syncs read only what changed.
 * `users` reads profiles of people who opened or reviewed pull requests in the
   last 2 years, for their company and location, which reports group people
   by. People change them, so they're read again every quarter. GitHub doesn't
