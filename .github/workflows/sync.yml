@@ -113,6 +113,10 @@ jobs:
               SYNC_REPO=$repo java -cp trino-jdbc.jar sync/Sync.java || failed=1
           done
           exit $failed
+      - name: Compact tables written in batches
+        if: ${{ !cancelled() }}
+        run: |
+          docker exec -i trino trino --catalog trinocicd --schema github -f /dev/stdin <sql/compact.sql
       - name: Show the rate limit
         if: always()
         run: |

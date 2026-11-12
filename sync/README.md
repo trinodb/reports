@@ -10,7 +10,7 @@ Slack API  --> trino-openapi (slack catalog)  --> sync/Sync.java + sync/slack/  
 
 | Workflow         | Schedule                       | Writes                                          | Concurrency group |
 | ---------------- | ------------------------------ | ----------------------------------------------- | ----------------- |
-| `sync.yml`       | every 2 hours                  | `trinocicd.github`                              | `iceberg-writers` |
+| `sync.yml`       | every 2 hours                  | `trinocicd.github`, compacts the busiest tables | `iceberg-writers` |
 | `sync-slack.yml` | weekly, on Mondays             | `trinocicd.slack`                               | `iceberg-writers` |
 | `optimize.yml`   | daily                          | all tables: optimize, expire snapshots, orphans | `iceberg-writers` |
 | `reports.yml`    | daily, and on pushes to `main` | `reports/`                                      | `Reports`         |
