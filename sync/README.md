@@ -90,6 +90,10 @@ and the second statement of the step saves them with their version in the
   marks 1,200 of them in every sync, newest first, with a version they never
   have, so the `reviews` step of the next sync reads them again. Until then,
   reports counting reviews show too few of them for older pull requests.
+* `users` reads profiles of people who opened or reviewed pull requests in the
+  last 2 years, for their company and location, which reports group people
+  by. People change them, so they're read again every quarter. GitHub doesn't
+  return deleted accounts, which keep their last profile.
 
 `GITHUB_TOKEN` allows 15,000 requests per hour, shared with other workflows of
 this repository. The catalog allows 2 requests per second, so a sync uses at
@@ -102,7 +106,8 @@ doesn't count against the rate limit. The first sync with `issue_labels` makes
 about 330 more requests for it. Until `pull_merged_by` reads all of about
 17,000 pull requests, which takes about 15 syncs, and `reviews` reads all of
 about 23,000 again, which takes about 20 syncs, every sync makes 2,400 more
-requests, and takes about 40 minutes longer.
+requests, and takes about 40 minutes longer. The first sync of every quarter
+reads about 600 profiles, which takes about 10 minutes.
 
 ## Slack
 
