@@ -90,6 +90,9 @@ jobs:
         env:
           SYNC_TRINO_URL: jdbc:trino://localhost:8080
           SYNC_STEPS_DIR: sync/github
+          # the steps reading issues, pull requests, and their comments and reviews read the repository given here
+          SYNC_OWNER: trinodb
+          SYNC_REPO: trino
           # revalidate cached responses, so children aren't read from a response cached before their parent changed
           SYNC_SESSION_PROPERTIES: github.http_cache_enabled:false
         run: |

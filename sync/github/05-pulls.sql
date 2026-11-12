@@ -1,7 +1,7 @@
 -- Pull requests. The endpoint has no parameter to read only recently updated ones, but it can sort them,
 -- so read pages of the most recently updated ones, until a page has no changes.
 -- loop: pages
--- parameters: page
+-- parameters: owner, repo, page
 MERGE INTO trinocicd.github.pulls t
 USING (
     WITH fetched AS (
@@ -42,7 +42,7 @@ USING (
             row_number() OVER (PARTITION BY id ORDER BY updated_at DESC) AS row_num
         FROM github.default.repos_pulls
         -- not filtering on state, which is also a field of the results, so the filter would remove all rows; the spec sends state=all by default
-        WHERE owner = 'trinodb' AND repo = 'trino' AND sort = 'updated' AND direction = 'desc' AND per_page = 100 AND page = ?
+        WHERE owner = ? AND repo = ? AND sort = 'updated' AND direction = 'desc' AND per_page = 100 AND page = ?
     )
     SELECT *
     FROM fetched
