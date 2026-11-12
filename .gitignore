@@ -112,6 +112,7 @@ dist
 /bin/trino-openapi-*
 /bin/trino-git-*
 /bin/trino-jdbc-*.jar
+/bin/trino-cli-*.jar
 /hive-cache
 /http-cache
 

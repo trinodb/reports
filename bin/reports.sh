@@ -1,121 +1,28 @@
 #!/usr/bin/env bash
 #
-# Generate reports by executing SQL queries.
+# Generate the pages of reports in reports/, from the queries in sql/, with sql/Reports.java.
+# Generates all pages listed in sql/pages.properties, or only the ones given as arguments, like: bin/reports.sh overview
 #
-# Executes SQL queries from multiple files using the Trino CLI available in a
-# locally running container called `trino`, or the one named in `TRINO_CONTAINER`.
-#
-# SQL query files should use the following convention:
-# * The first line should be a comment (start with `--`) used as the report
-#   title.
-# * Any additional comment lines are used as the description.
-# * If there are no comments, the query is still executed, but results are
-#   discarded.
-# * Query results are saved as a Markdown table. If the query contains the word
-#   "chart" anywhere (like in a column title), results are rendered in a
-#   code block.
-# * HTML links are rendered by replacing `"label"@http://url ` values with the
-#   anchor HTML tag
+# Needs Trino started by bin/run-trino.sh git, or at TRINO_URL. Reports.java renders the results with the Trino CLI,
+# which it copies from the Trino image first, so it's the same version as the server.
 
 set -euo pipefail
 
-for cmd in ansi2html docker; do
+for cmd in docker java; do
     if ! command -v "$cmd" >/dev/null; then
         echo >&2 "Missing the $cmd command"
         exit 1
     fi
 done
 
-container_name=${TRINO_CONTAINER:-trino}
-if ! status=$(docker inspect $container_name --format "{{json .State.Status}}") || [ "$status" != '"running"' ]; then
-    echo >&2 "Container '$container_name' does not exist or is not running (status is $status)"
-    exit 1
+cd "$(dirname -- "${BASH_SOURCE[0]}")/.."
+source bin/versions.env
+
+jar=bin/trino-cli-$TRINO_VERSION.jar
+if [ ! -f "$jar" ]; then
+    container=$(docker create "trinodb/trino:$TRINO_VERSION")
+    docker cp -q "$container:/usr/bin/trino" "$jar"
+    docker rm "$container" >/dev/null
 fi
 
-if [ "$#" -le 2 ]; then
-    echo >&2 "Usage: $0 output-file title input-file [input-file ...]"
-    echo >&2 ""
-    echo >&2 "arguments:"
-    echo >&2 " output-file - file where to write the report, as markdown"
-    echo >&2 " title - report title"
-    echo >&2 " input-file - one or more files with an SQL query"
-    exit 1
-fi
-
-target=$1
-shift
-title=$1
-shift
-
-queries=("$@")
-
-function run_query() {
-    local file=$1
-    local format=${2:-ALIGNED}
-    echo >&2 "Executing query from $file"
-    time docker exec -i \
-        $container_name \
-        java -Dorg.jline.terminal.dumb=true -jar /usr/bin/trino \
-        --catalog trinocicd --schema github \
-        --debug \
-        -f /dev/stdin \
-        --output-format="$format" <"$file"
-}
-
-function run_query_md() {
-    local file=$1
-    # the Markdown output escapes characters like # with a backslash, which must not stay in the link
-    run_query "$file" MARKDOWN | ansi2html --inline | sed -e 's,"\([^"]*\)"@https://\([^ ]*\) ,<a href="https://\2">\1</a> ,g' -e ':a' -e 's,\(href="[^"\\]*\)\\,\1,;ta'
-}
-
-function run_query_mono() {
-    local file=$1
-    run_query "$file" ALIGNED | ansi2html --inline | sed 's,"\([^"]*\)"@https://\([^ ]*\) ,<a href="https://\2">\1</a> ,g'
-}
-
-GITHUB_SERVER_URL=${GITHUB_SERVER_URL:-https://github.com}
-GITHUB_REPOSITORY=${GITHUB_REPOSITORY:-}
-GITHUB_SHA=${GITHUB_SHA:-master}
-
-mkdir -p "$(dirname "$target")"
-{
-    echo "---"
-    echo "title: $title"
-    echo "---"
-    echo ""
-} >"$target"
-
-for file in "${queries[@]}"; do
-    # get all comments from the top of the file
-    comments=$(sed -n '/^-/!q;p' "$file" | sed 's/^-- //g')
-    if [ -z "$comments" ]; then
-        echo >&2 "First line of file $file needs to be an SQL comment with the report title (should start with --), query will run but results will be ignored"
-        run_query "$file"
-        continue
-    fi
-    # get the first line but consume the remainder in case that echo continues to print after head is done
-    title=$(echo "$comments" | (head -1; dd status=none of=/dev/null))
-    desc=$(echo "$comments" | tail -n +2)
-    title=${title#--}
-    {
-        echo "## $title"
-        echo ""
-        echo "$desc"
-        if grep -qi chart "$file"; then
-            echo ""
-            echo '<pre><code>'
-            run_query_mono "$file"
-            echo '</code></pre>'
-        else
-            echo ""
-            run_query_md "$file"
-            echo ""
-        fi
-        if [ -n "$GITHUB_REPOSITORY" ]; then
-            echo "[query]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/$GITHUB_SHA/$file)"
-        fi
-        echo ""
-    } >>"$target"
-done
-
-echo "Generated on $(date)" >>"$target"
+exec java -cp "$jar" sql/Reports.java "$@"
