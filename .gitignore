@@ -106,13 +106,14 @@ dist
 # InteliJ configuration
 .idea
 
-# custom Trino connectors
+# downloaded by the scripts in bin/, and the caches of Trino started by bin/run-trino.sh
 /trino-git-*
-/bin/trino-openapi-*
-/bin/http-cache
-/bin/trino-git-*
 /bin/config.properties
-/bin/hive-cache
+/bin/trino-openapi-*
+/bin/trino-git-*
+/bin/trino-jdbc-*.jar
+/hive-cache
+/http-cache
 
 # Jekyll
 _site

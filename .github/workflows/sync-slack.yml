@@ -19,8 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
-      TRINO_VERSION: 484
-      TRINO_OPENAPI_VERSION: "2.2"
     steps:
       - uses: actions/checkout@v7
       - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
@@ -33,53 +31,14 @@ jobs:
         with:
           distribution: temurin
           java-version: 25
-      - name: Download trino-openapi
-        run: |
-          curl -fLOsS https://github.com/nineinchnick/trino-openapi/releases/download/v$TRINO_OPENAPI_VERSION/trino-openapi-$TRINO_OPENAPI_VERSION.zip
-          unzip -q trino-openapi-$TRINO_OPENAPI_VERSION.zip
-          curl -fLsS -o trino-jdbc.jar https://repo1.maven.org/maven2/io/trino/trino-jdbc/$TRINO_VERSION/trino-jdbc-$TRINO_VERSION.jar
       - name: Start Trino
-        run: |
-          cat <<EOF >config.properties
-          coordinator=true
-          node-scheduler.include-coordinator=true
-          http-server.http.port=8080
-          discovery.uri=http://localhost:8080
-          query.max-memory-per-node=4086929818B
-          cache-manager.config-files=etc/cache-manager-memory.properties,etc/cache-manager-alluxio.properties
-          EOF
-          mkdir -p $(pwd)/hive-cache && chmod go+w $(pwd)/hive-cache
-          CONTAINER_ID=$(docker run \
-            -v $(pwd)/config.properties:/etc/trino/config.properties \
-            -v $(pwd)/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
-            -v $(pwd)/trino-openapi-$TRINO_OPENAPI_VERSION:/usr/lib/trino/plugin/openapi \
-            -v $(pwd)/sync/specs/slack.json:/etc/trino/specs/slack.json \
-            -v $(pwd)/catalog/slack.properties:/etc/trino/catalog/slack.properties \
-            -v $(pwd)/catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
-            -v $(pwd)/hive-cache:/opt/hive-cache \
-            -e AWS_ACCESS_KEY_ID \
-            -e AWS_SECRET_ACCESS_KEY \
-            -e AWS_SESSION_TOKEN \
-            -e AWS_REGION \
-            -e SLACK_API_TOKEN \
-            -p 8080:8080 \
-            --name trino \
-            -d \
-            trinodb/trino:$TRINO_VERSION)
-          i=0
-          until docker inspect "${CONTAINER_ID}" --format "{{json .State.Health.Status }}" | grep -q '"healthy"'; do
-              if [[ $((i++)) -ge 10 ]]; then
-                  echo "🚨 Too many retries waiting for Trino to start"
-                  exit 1
-              fi
-              sleep 10
-          done
+        run: ./bin/run-trino.sh slack
       - name: Run Sync
         env:
           SYNC_TRINO_URL: jdbc:trino://localhost:8080
           SYNC_STEPS_DIR: sync/slack
         run: |
-          java -cp trino-jdbc.jar sync/Sync.java
+          ./bin/sync.sh
       - name: Dump Trino logs
         if: always()
         run: |

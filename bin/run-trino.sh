@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 #
-# Start a Trino container with additional connectors and catalogs
-# configured and wait for it to be ready.
+# Start Trino in a container called trino, listening on port 8080, and wait for it to be ready.
+#
+# It always has the trinocicd catalog, with the tables that the sync writes, and the catalogs given as arguments:
+# * git - the trinodb/trino repository, which reports read for commits and their authors
+# * github - the GitHub API, which the GitHub sync reads, with GITHUB_TOKEN
+# * slack - the Slack API, which the Slack sync reads, with SLACK_API_TOKEN
+#
+# The workflows use it too, so they all run the same Trino, with the plugin versions from versions.env.
 
 set -euo pipefail
 
@@ -12,54 +18,82 @@ for cmd in curl unzip docker; do
     fi
 done
 
-if [ -z "$AWS_REGION" ] || [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ] || [ -z "$GITHUB_TOKEN" ] || [ -z "$SLACK_API_TOKEN" ]; then
-    echo >&2 "Following environmental variables need to be set: AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, GITHUB_TOKEN, SLACK_API_TOKEN"
+cd "$(dirname -- "${BASH_SOURCE[0]}")/.."
+source bin/versions.env
+
+CONTAINER_NAME=trino
+
+if docker inspect "$CONTAINER_NAME" >/dev/null 2>&1; then
+    echo >&2 "The $CONTAINER_NAME container already exists, remove it with: docker rm -f $CONTAINER_NAME"
     exit 1
 fi
 
-CONTAINER_NAME=trino
-TRINO_VERSION=484
-TRINO_GIT_VERSION=1.0
-TRINO_OPENAPI_VERSION=2.2
+function download_plugin() {
+    local name=$1
+    local version=$2
+    if [ ! -d "bin/$name-$version" ]; then
+        curl -fLsS -o "bin/$name-$version.zip" "https://github.com/nineinchnick/$name/releases/download/v$version/$name-$version.zip"
+        unzip -q "bin/$name-$version.zip" -d bin
+        rm "bin/$name-$version.zip"
+    fi
+}
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-cd "$SCRIPT_DIR" || exit 1
+function require_env() {
+    for name in "$@"; do
+        if [ -z "${!name:-}" ]; then
+            echo >&2 "The $name environment variable needs to be set"
+            exit 1
+        fi
+    done
+}
 
-if [ ! -d trino-git-$TRINO_GIT_VERSION ]; then
-    curl -fLOsS https://github.com/nineinchnick/trino-git/releases/download/v$TRINO_GIT_VERSION/trino-git-$TRINO_GIT_VERSION.zip
-    unzip trino-git-$TRINO_GIT_VERSION.zip
-fi
+mkdir -p hive-cache http-cache
+for dir in hive-cache http-cache; do
+    # the sync workflow gives the HTTP cache it restores to the user running Trino, so it can't be changed here
+    if [ -O "$dir" ]; then
+        chmod go+w "$dir"
+    fi
+done
+args=(
+    -v "$PWD/etc/config.properties:/etc/trino/config.properties"
+    -v "$PWD/etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties"
+    -v "$PWD/hive-cache:/opt/hive-cache"
+    -v "$PWD/catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties"
+)
+require_env AWS_REGION
 
-if [ ! -d trino-openapi-$TRINO_OPENAPI_VERSION ]; then
-    curl -fLOsS https://github.com/nineinchnick/trino-openapi/releases/download/v$TRINO_OPENAPI_VERSION/trino-openapi-$TRINO_OPENAPI_VERSION.zip
-    unzip trino-openapi-$TRINO_OPENAPI_VERSION.zip
-fi
+for catalog in "$@"; do
+    case "$catalog" in
+        git)
+            download_plugin trino-git "$TRINO_GIT_VERSION"
+            args+=(
+                -v "$PWD/bin/trino-git-$TRINO_GIT_VERSION:/usr/lib/trino/plugin/git"
+                -v "$PWD/catalog/git.properties:/etc/trino/catalog/git.properties"
+            )
+            ;;
+        github | slack)
+            download_plugin trino-openapi "$TRINO_OPENAPI_VERSION"
+            args+=(
+                -v "$PWD/bin/trino-openapi-$TRINO_OPENAPI_VERSION:/usr/lib/trino/plugin/openapi"
+                -v "$PWD/sync/specs/$catalog.json:/etc/trino/specs/$catalog.json"
+                -v "$PWD/catalog/$catalog.properties:/etc/trino/catalog/$catalog.properties"
+            )
+            if [ "$catalog" = github ]; then
+                require_env GITHUB_TOKEN
+                args+=(-v "$PWD/http-cache:/opt/http-cache")
+            else
+                require_env SLACK_API_TOKEN
+            fi
+            ;;
+        *)
+            echo >&2 "Unknown catalog: $catalog, use git, github, or slack"
+            exit 1
+            ;;
+    esac
+done
 
-cat <<EOF >config.properties
-coordinator=true
-node-scheduler.include-coordinator=true
-http-server.http.port=8080
-discovery.uri=http://localhost:8080
-query.max-memory-per-node=4086929818B
-cache-manager.config-files=etc/cache-manager-memory.properties,etc/cache-manager-alluxio.properties
-EOF
-
-mkdir -p "$SCRIPT_DIR"/hive-cache "$SCRIPT_DIR"/http-cache
-chmod 777 "$SCRIPT_DIR"/hive-cache "$SCRIPT_DIR"/http-cache
 docker run \
-    -v "$SCRIPT_DIR"/config.properties:/etc/trino/config.properties \
-    -v "$SCRIPT_DIR"/../etc/cache-manager-alluxio.properties:/etc/trino/cache-manager-alluxio.properties \
-    -v "$SCRIPT_DIR"/trino-git-$TRINO_GIT_VERSION:/usr/lib/trino/plugin/git \
-    -v "$SCRIPT_DIR"/trino-openapi-$TRINO_OPENAPI_VERSION:/usr/lib/trino/plugin/openapi \
-    -v "$SCRIPT_DIR"/../sync/specs/github.json:/etc/trino/specs/github.json \
-    -v "$SCRIPT_DIR"/../sync/specs/slack.json:/etc/trino/specs/slack.json \
-    -v "$SCRIPT_DIR"/../catalog/git.properties:/etc/trino/catalog/git.properties \
-    -v "$SCRIPT_DIR"/../catalog/github.properties:/etc/trino/catalog/github.properties \
-    -v "$SCRIPT_DIR"/../catalog/slack.properties:/etc/trino/catalog/slack.properties \
-    -v "$SCRIPT_DIR"/../catalog/trinocicd.properties:/etc/trino/catalog/trinocicd.properties \
-    -v "$SCRIPT_DIR"/hive-cache:/opt/hive-cache \
-    -v "$SCRIPT_DIR"/http-cache:/opt/http-cache \
-    -v "$SCRIPT_DIR"/../sql:/sql \
+    "${args[@]}" \
     -e AWS_ACCESS_KEY_ID \
     -e AWS_SECRET_ACCESS_KEY \
     -e AWS_SESSION_TOKEN \
@@ -67,18 +101,18 @@ docker run \
     -e GITHUB_TOKEN \
     -e SLACK_API_TOKEN \
     -p 8080:8080 \
-    --name $CONTAINER_NAME \
+    --name "$CONTAINER_NAME" \
     -d \
-    trinodb/trino:$TRINO_VERSION
+    "trinodb/trino:$TRINO_VERSION" >/dev/null
 
 i=0
-until status=$(docker inspect $CONTAINER_NAME --format "{{json .State.Health.Status }}") && echo "$status" | grep -q '"healthy"'; do
-    if [[ $((i++)) -ge 10 ]]; then
-        echo >&2 "🚨 Too many retries waiting for Trino to start"
+until status=$(docker inspect "$CONTAINER_NAME" --format "{{json .State.Health.Status }}") && echo "$status" | grep -q '"healthy"'; do
+    if [[ $((i++)) -ge 20 ]]; then
+        echo >&2 "Too many retries waiting for Trino to start, check: docker logs $CONTAINER_NAME"
         exit 1
     fi
     echo >&2 "Status is: $status, sleeping 10 seconds"
     sleep 10
 done
 
-echo >&2 "Status is: $status, connect to trino://localhost:8080/trinocicd/github"
+echo >&2 "Trino is ready, connect to trino://localhost:8080/trinocicd/github"
