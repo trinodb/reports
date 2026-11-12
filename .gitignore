@@ -122,3 +122,6 @@ _site
 .jekyll-metadata
 vendor
 .bundle
+
+# the local tables of bin/run-trino.sh --local
+/data

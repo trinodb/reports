@@ -59,6 +59,26 @@ SYNC_TRINO_URL=jdbc:trino://localhost:8080 SYNC_STEPS_DIR=sync/github SYNC_OWNER
   steps even if some fail, and exits with a non-zero code if any did.
 * The `tables` step creates all tables first, so every step can read them.
 
+### Without access to the bucket
+
+`bin/run-trino.sh --local` keeps the tables in `data/` on the local disk,
+instead of the S3 bucket, so anyone can build a copy of recent history with
+their own token, and run the reports on it:
+
+```shell
+export GITHUB_TOKEN=$(gh auth token)
+./bin/run-trino.sh --local git github
+SYNC_TRINO_URL=jdbc:trino://localhost:8080 SYNC_STEPS_DIR=sync/github SYNC_OWNER=trinodb SYNC_REPO=trino \
+    SYNC_SINCE=2026-10-01 SYNC_STEPS=tables,commits,issues,issue_comments,pulls,pull_commits,pull_stats,review_comments,reviews,users \
+    ./bin/sync.sh
+```
+
+The last 2 days take about 4 minutes, mostly reading commits, statistics, and
+reviews of every pull request, at 2 requests per second. The steps for CI,
+from `workflows` to `check_run_annotations`, make a request for every job and
+check run, so add them only to work on the CI and tests reports, with a
+`SYNC_SINCE` of a few days.
+
 Every step is safe to repeat, usually a `MERGE` keyed by an identifier. Steps
 reading children of parents, like jobs of workflow runs, read them in batches
 of 30 parents. A batch is the parents not read yet, or changed since then,
