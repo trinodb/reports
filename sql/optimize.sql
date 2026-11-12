@@ -41,6 +41,8 @@ ALTER TABLE check_runs EXECUTE remove_orphan_files(retention_threshold => '7d');
 ALTER TABLE check_run_annotations EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE check_run_annotations EXECUTE expire_snapshots(retention_threshold => '7d');
 ALTER TABLE check_run_annotations EXECUTE remove_orphan_files(retention_threshold => '7d');
+-- created before it was partitioned; optimize rewrites the older files into partitions
+ALTER TABLE sync_state SET PROPERTIES partitioning = ARRAY['step'];
 ALTER TABLE sync_state EXECUTE optimize(file_size_threshold => '30MB');
 ALTER TABLE sync_state EXECUTE expire_snapshots(retention_threshold => '7d');
 ALTER TABLE sync_state EXECUTE remove_orphan_files(retention_threshold => '7d');
