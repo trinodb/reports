@@ -64,7 +64,8 @@ function run_query() {
 
 function run_query_md() {
     local file=$1
-    run_query "$file" MARKDOWN | ansi2html --inline | sed 's,"\([^"]*\)"@https://\([^ ]*\) ,<a href="https://\2">\1</a> ,g'
+    # the Markdown output escapes characters like # with a backslash, which must not stay in the link
+    run_query "$file" MARKDOWN | ansi2html --inline | sed -e 's,"\([^"]*\)"@https://\([^ ]*\) ,<a href="https://\2">\1</a> ,g' -e ':a' -e 's,\(href="[^"\\]*\)\\,\1,;ta'
 }
 
 function run_query_mono() {
