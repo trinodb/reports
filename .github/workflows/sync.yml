@@ -116,7 +116,7 @@ jobs:
       - name: Compact tables written in batches
         if: ${{ !cancelled() }}
         run: |
-          docker exec -i trino trino --catalog trinocicd --schema github -f /dev/stdin <sql/compact.sql
+          docker exec -i trino trino --catalog trinocicd --schema github -f /dev/stdin <sync/maintenance/compact-github.sql
       - name: Show the rate limit
         if: always()
         run: |
