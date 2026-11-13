@@ -72,6 +72,22 @@ jobs:
               SYNC_REPO=$repo ./bin/sync.sh || failed=1
           done
           exit $failed
+      - name: Sync airlift repositories
+        if: ${{ !cancelled() }}
+        env:
+          SYNC_TRINO_URL: jdbc:trino://localhost:8080
+          SYNC_STEPS_DIR: sync/github
+          SYNC_STEPS: issues,issue_comments,pulls,reviews
+          SYNC_SESSION_PROPERTIES: github.http_cache_enabled:false
+          SYNC_OWNER: airlift
+          # libraries Trino is built on, reported on their own page; airdexlb is private, so the token can't read it
+          REPOSITORIES: airlift airbase regulator aircompressor provisio launcher vthreadtime zest airstyle slice classfile
+        run: |
+          failed=0
+          for repo in $REPOSITORIES; do
+              SYNC_REPO=$repo ./bin/sync.sh || failed=1
+          done
+          exit $failed
       - name: Compact tables written in batches
         if: ${{ !cancelled() }}
         run: |
