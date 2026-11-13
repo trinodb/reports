@@ -10,11 +10,11 @@ Failed runs is of the runs of the test's job, one chart character is one day (ol
 <pre><code>
                                    Test                                   | Failed runs |     Failures per day chart     | First  | In PRs |  Last  
 --------------------------------------------------------------------------+-------------+--------------------------------+--------+--------+--------
- TestBigQueryArrowTypeMapping.testJson                                    | 9 of 30     | ▂▂▂▂▂▂▂▂▂..................... | Oct 15 |      0 | <a href="https://github.com/trinodb/trino/actions/runs/39877255747/job/120166183757">Oct 23</a> 
  TestBigQueryAvroTypeMapping.testJson                                     | 9 of 30     | ▂▂▂▂▂▂▂▂▂..................... | Oct 15 |      0 | <a href="https://github.com/trinodb/trino/actions/runs/39877255747/job/120166183757">Oct 23</a> 
+ TestBigQueryArrowTypeMapping.testJson                                    | 9 of 30     | ▂▂▂▂▂▂▂▂▂..................... | Oct 15 |      0 | <a href="https://github.com/trinodb/trino/actions/runs/39877255747/job/120166183757">Oct 23</a> 
  TestHiveDynamicRowFiltering.testJoinWithMultipleDynamicFilters           | 8 of 366    | .........................▂█.▆. | Nov 09 |      6 | <a href="https://github.com/trinodb/trino/actions/runs/43187874314/job/131080341970">Nov 12</a> 
- TestAtLocal.testTimeWithTimeZone                                         | 7 of 295    | .................█▂........... | Nov 01 |      4 | <a href="https://github.com/trinodb/trino/actions/runs/41365932744/job/125026379957">Nov 02</a> 
  TestAtLocal.testTime                                                     | 7 of 295    | .................█▂........... | Nov 01 |      4 | <a href="https://github.com/trinodb/trino/actions/runs/41365932744/job/125026379957">Nov 02</a> 
+ TestAtLocal.testTimeWithTimeZone                                         | 7 of 295    | .................█▂........... | Nov 01 |      4 | <a href="https://github.com/trinodb/trino/actions/runs/41365932744/job/125026379957">Nov 02</a> 
  TestWorkerRestart.testRestartDuringQuery                                 | 6 of 359    | ..............▂.......▂..▆▂... | Oct 29 |     24 | <a href="https://github.com/trinodb/trino/actions/runs/42822485808/job/129852067424">Nov 10</a> 
  TestMemoryConnectorTest.testJoinLargeBuildSideDynamicFiltering           | 5 of 436    | ..........................█▂.. | Nov 10 |     13 | <a href="https://github.com/trinodb/trino/actions/runs/42982636482/job/130397019713">Nov 11</a> 
  TestMemoryConnectorTest.testSemiJoinLargeBuildSideDynamicFiltering       | 5 of 436    | ..........................█▂.. | Nov 10 |     13 | <a href="https://github.com/trinodb/trino/actions/runs/42982636482/job/130397019713">Nov 11</a> 
@@ -23,9 +23,9 @@ Failed runs is of the runs of the test's job, one chart character is one day (ol
  TestFakerQueries.testCreateTableAsSelect                                 | 3 of 436    | ....................▂.....▂.▂. | Nov 04 |      0 | <a href="https://github.com/trinodb/trino/actions/runs/43167732658/job/131014106147">Nov 12</a> 
  TestFakerQueries.testZipfDistribution                                    | 3 of 436    | ...................▂▂..▂...... | Nov 03 |      1 | <a href="https://github.com/trinodb/trino/actions/runs/42323554038/job/128253957825">Nov 07</a> 
  TestIcebergBigLakeVendedCredentials.initializationError                  | 3 of 459    | ...................▆.......... | Nov 03 |      1 | <a href="https://github.com/trinodb/trino/actions/runs/41564403847/job/125682889148">Nov 03</a> 
- TestIcebergBigLakeMetastoreConnectorSmokeTest.testCommentViewColumn      | 3 of 459    | ...........▆.................. | Oct 26 |      1 | <a href="https://github.com/trinodb/trino/actions/runs/40285903889/job/121449864631">Oct 26</a> 
- TestIcebergBigLakeMetastoreConnectorSmokeTest.testCommentView            | 3 of 459    | ...........▆.................. | Oct 26 |      1 | <a href="https://github.com/trinodb/trino/actions/runs/40285903889/job/121449864631">Oct 26</a> 
  TestIcebergBigLakeMetastoreConnectorSmokeTest.testView                   | 3 of 459    | ...........▆.................. | Oct 26 |      1 | <a href="https://github.com/trinodb/trino/actions/runs/40285903889/job/121449864631">Oct 26</a> 
+ TestIcebergBigLakeMetastoreConnectorSmokeTest.testCommentView            | 3 of 459    | ...........▆.................. | Oct 26 |      1 | <a href="https://github.com/trinodb/trino/actions/runs/40285903889/job/121449864631">Oct 26</a> 
+ TestIcebergBigLakeMetastoreConnectorSmokeTest.testCommentViewColumn      | 3 of 459    | ...........▆.................. | Oct 26 |      1 | <a href="https://github.com/trinodb/trino/actions/runs/40285903889/job/121449864631">Oct 26</a> 
  TestBigQueryAvroConnectorTest.testBigQueryExternalTable                  | 2 of 364    | ......................▂.....▂. | Nov 06 |      0 | <a href="https://github.com/trinodb/trino/actions/runs/43176846399/job/131043733443">Nov 12</a> 
  TestBigQueryAvroConnectorTest.testExecuteProcedure                       | 2 of 364    | .........................▂▂... | Nov 09 |      0 | <a href="https://github.com/trinodb/trino/actions/runs/42838425442/job/129907943252">Nov 10</a> 
  TestOracleConnectorTest.testInsertRowConcurrently                        | 2 of 351    | .............▂............▂... | Oct 28 |      0 | <a href="https://github.com/trinodb/trino/actions/runs/42726296593/job/129533377136">Nov 10</a> 
@@ -42,7 +42,7 @@ Failed runs is of the runs of the test's job, one chart character is one day (ol
  TestIcebergV2.testOptimizeNotNullViolation                               | 2 of 366    | .......▄...................... | Oct 22 |     12 | <a href="https://github.com/trinodb/trino/actions/runs/39740240594/job/119696046627">Oct 22</a> 
 (30 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/tests/01-failing-tests.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/tests/01-failing-tests.sql)
 
 ## Is a test failure in my pull request known?
 
@@ -60,8 +60,8 @@ Retried counts failures where the same job then passed on the same commit, which
 <tr><td>TestIcebergV2.testOptimizeNotNullViolation</td><td style="text-align: right">9</td><td style="text-align: right">12</td><td style="text-align: right">2</td><td>plugin/trino-iceberg</td><td>Data files after failed optimize do not match: 1 unexpected, 0 missing (actual count: 3, expected count: 2) Unexpected: </td><td><a href="https://github.com/trinodb/trino/actions/runs/40019142407/job/120639922887">Oct 23</a></td></tr>
 <tr><td>TestHiveDynamicRowFiltering.testJoinWithMultipleDynamicFilters</td><td style="text-align: right">5</td><td style="text-align: right">6</td><td style="text-align: right">8</td><td>plugin/trino-hive</td><td>Expecting actual: 1500L to be less than: 1500L</td><td><a href="https://github.com/trinodb/trino/actions/runs/43216434632/job/131180200309">Nov 12</a></td></tr>
 <tr><td>TestHiveConnectorTest.testWriterTaskCountLimitPartitionedScaleWritersEnabled</td><td style="text-align: right">2</td><td style="text-align: right">10</td><td style="text-align: right">2</td><td>plugin/trino-hive</td><td>expected: 4L but was: 3L</td><td><a href="https://github.com/trinodb/trino/actions/runs/40669116381/job/122751784666">Oct 28</a></td></tr>
-<tr><td>TestAtLocal.testTimeWithTimeZone</td><td style="text-align: right">1</td><td style="text-align: right">4</td><td style="text-align: right">7</td><td>core/trino-main</td><td>Multiple Failures (1 failure) -- failure 1 -- expected: 22:25:56-07:00 [picos = 80756000000000000, offset = -420] but wa</td><td><a href="https://github.com/trinodb/trino/actions/runs/41384754861/job/125083399509">Nov 02</a></td></tr>
 <tr><td>TestAtLocal.testTime</td><td style="text-align: right">1</td><td style="text-align: right">4</td><td style="text-align: right">7</td><td>core/trino-main</td><td>Multiple Failures (1 failure) -- failure 1 -- expected: 12:34:56-07:00 [picos = 45296000000000000, offset = -420] but wa</td><td><a href="https://github.com/trinodb/trino/actions/runs/41384754861/job/125083399509">Nov 02</a></td></tr>
+<tr><td>TestAtLocal.testTimeWithTimeZone</td><td style="text-align: right">1</td><td style="text-align: right">4</td><td style="text-align: right">7</td><td>core/trino-main</td><td>Multiple Failures (1 failure) -- failure 1 -- expected: 22:25:56-07:00 [picos = 80756000000000000, offset = -420] but wa</td><td><a href="https://github.com/trinodb/trino/actions/runs/41384754861/job/125083399509">Nov 02</a></td></tr>
 <tr><td>TestThreadPerDriverTaskExecutor.testLeafAdmissionRotatesAcrossTasks</td><td style="text-align: right">3</td><td style="text-align: right">4</td><td style="text-align: right">4</td><td>core/trino-main</td><td>expected: 1 but was: 0</td><td><a href="https://github.com/trinodb/trino/actions/runs/42507561301/job/128813751676">Nov 08</a></td></tr>
 <tr><td>TestHive4OnDataLake.testUnsupportedDropSchemaCascadeWithNonHiveTable</td><td style="text-align: right">2</td><td style="text-align: right">7</td><td style="text-align: right">2</td><td>plugin/trino-hive</td><td>Expecting HashSet: ["default", "functions", "information_schema", "hive_datalake", "tpch"] to contain: ["test_unsupporte</td><td><a href="https://github.com/trinodb/trino/actions/runs/40500149779/job/122176086687">Oct 27</a></td></tr>
 <tr><td>TestHiveRoles.testDropRole</td><td style="text-align: right">3</td><td style="text-align: right">3</td><td style="text-align: right">2</td><td>plugin/trino-hive</td><td>expected: ["role1", "admin"] but was: ["role1", "grant_revoke_role_existing_1", "admin"]</td><td><a href="https://github.com/trinodb/trino/actions/runs/40485809703/job/122145176065">Oct 27</a></td></tr>
@@ -79,15 +79,15 @@ Retried counts failures where the same job then passed on the same commit, which
 <tr><td>TestSqlServerConnectorTest.testInsertWriteBulkiness</td><td style="text-align: right">0</td><td style="text-align: right">3</td><td style="text-align: right">1</td><td>plugin/trino-sqlserver</td><td>expected: 1500 but was: 236</td><td><a href="https://github.com/trinodb/trino/actions/runs/40633533889/job/122636184691">Oct 28</a></td></tr>
 <tr><td>TestLegacyHiveRoles.testCreateRole</td><td style="text-align: right">1</td><td style="text-align: right">2</td><td style="text-align: right">1</td><td>plugin/trino-hive</td><td>expected: ["role1", "admin"] but was: ["role1", "grant_revoke_role_existing_1", "admin"]</td><td><a href="https://github.com/trinodb/trino/actions/runs/40478607863/job/122120179777">Oct 27</a></td></tr>
 <tr><td>TestHive3OnDataLake.testUnsupportedDropSchemaCascadeWithNonHiveTable</td><td style="text-align: right">1</td><td style="text-align: right">2</td><td style="text-align: right">1</td><td>plugin/trino-hive</td><td>Expecting HashSet: ["default", "functions", "information_schema", "hive_datalake", "tpch"] to contain: ["test_unsupporte</td><td><a href="https://github.com/trinodb/trino/actions/runs/40478607863/job/122103502473">Oct 27</a></td></tr>
-<tr><td>TestLegacyHiveRoles.testGrantNonExistingRole</td><td style="text-align: right">0</td><td style="text-align: right">3</td><td style="text-align: right">1</td><td>plugin/trino-hive</td><td>Expected query to fail: GRANT grant_revoke_role_existing_1 TO USER grant_revoke_existing_user_1 [QueryId: 20261027_09024</td><td><a href="https://github.com/trinodb/trino/actions/runs/40474722932/job/122090636620">Oct 27</a></td></tr>
 <tr><td>TestHiveRoles.testGrantNonExistingRole</td><td style="text-align: right">0</td><td style="text-align: right">3</td><td style="text-align: right">1</td><td>plugin/trino-hive</td><td>Expected query to fail: GRANT grant_revoke_role_existing_1 TO USER grant_revoke_existing_user_1 IN hive [QueryId: 202610</td><td><a href="https://github.com/trinodb/trino/actions/runs/40474722932/job/122090636620">Oct 27</a></td></tr>
+<tr><td>TestLegacyHiveRoles.testGrantNonExistingRole</td><td style="text-align: right">0</td><td style="text-align: right">3</td><td style="text-align: right">1</td><td>plugin/trino-hive</td><td>Expected query to fail: GRANT grant_revoke_role_existing_1 TO USER grant_revoke_existing_user_1 [QueryId: 20261027_09024</td><td><a href="https://github.com/trinodb/trino/actions/runs/40474722932/job/122090636620">Oct 27</a></td></tr>
+<tr><td>TestIcebergBigLakeMetastoreConnectorSmokeTest.testCommentViewColumn</td><td style="text-align: right">0</td><td style="text-align: right">1</td><td style="text-align: right">3</td><td>plugin/trino-iceberg, cloud-tests</td><td>Expecting throwable message: "Method not found." to contain: "Server does not support endpoint: POST /v1/{prefix}/namesp</td><td><a href="https://github.com/trinodb/trino/actions/runs/40321181551/job/121567328661">Oct 26</a></td></tr>
 <tr><td>TestIcebergBigLakeMetastoreConnectorSmokeTest.testCommentView</td><td style="text-align: right">0</td><td style="text-align: right">1</td><td style="text-align: right">3</td><td>plugin/trino-iceberg, cloud-tests</td><td>Expecting throwable message: "Method not found." to contain: "Server does not support endpoint: POST /v1/{prefix}/namesp</td><td><a href="https://github.com/trinodb/trino/actions/runs/40321181551/job/121567328661">Oct 26</a></td></tr>
 <tr><td>TestIcebergBigLakeMetastoreConnectorSmokeTest.testView</td><td style="text-align: right">0</td><td style="text-align: right">1</td><td style="text-align: right">3</td><td>plugin/trino-iceberg, cloud-tests</td><td>Expecting throwable message: "Method not found." to contain: "Server does not support endpoint: POST /v1/{prefix}/namesp</td><td><a href="https://github.com/trinodb/trino/actions/runs/40321181551/job/121567328661">Oct 26</a></td></tr>
-<tr><td>TestIcebergBigLakeMetastoreConnectorSmokeTest.testCommentViewColumn</td><td style="text-align: right">0</td><td style="text-align: right">1</td><td style="text-align: right">3</td><td>plugin/trino-iceberg, cloud-tests</td><td>Expecting throwable message: "Method not found." to contain: "Server does not support endpoint: POST /v1/{prefix}/namesp</td><td><a href="https://github.com/trinodb/trino/actions/runs/40321181551/job/121567328661">Oct 26</a></td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/tests/02-flaky-tests.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/tests/02-flaky-tests.sql)
 
 ## New test failures
 
@@ -108,7 +108,7 @@ Columns count as in the report above.
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/tests/03-new-failures.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/tests/03-new-failures.sql)
 
 ## Flaky jobs
 
@@ -138,7 +138,7 @@ Attempts where more than 4 jobs failed like this are outages, and are left out. 
  pt (SuiteHiveStorageFormats)             |     2 | 1543 | 0.1% | 5m 35s    | ...▃.▃........................ | <a href="https://github.com/trinodb/trino/actions/runs/39388712910/job/118517550570">Oct 20 07:53</a> <a href="https://github.com/trinodb/trino/actions/runs/39177624702/job/117824905504">Oct 18 23:49</a> 
 (18 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/tests/04-flaky-jobs.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/tests/04-flaky-jobs.sql)
 
 ## Why CI jobs fail
 
@@ -176,6 +176,6 @@ In pull requests most failures come from unfinished changes; in the merge queue 
  2026-08-17 | pull requests        |         251 |        1211 | 29%   | 48%     | 9%    | 0%       | 12%   | █████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒···· 
 (26 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/tests/05-failure-categories.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/tests/05-failure-categories.sql)
 
-Generated on Fri Nov 13 13:39:04 UTC 2026
+Generated on Fri Nov 13 14:10:30 UTC 2026

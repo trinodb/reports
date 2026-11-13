@@ -12,14 +12,14 @@ A response is the first review or comment from another person, or the merge. No 
 <tr><th>Author experience</th><th style="text-align: right">Pull requests</th><th>Merged</th><th>Closed without merging</th><th>Still open</th><th>No response</th><th>Median time to first response</th><th>Median time to merge</th><th>90% merged within</th></tr>
 </thead>
 <tbody>
-<tr><td>no merged PRs yet</td><td style="text-align: right">345</td><td>28%</td><td>53%</td><td>20%</td><td>36%</td><td>16h 15m</td><td>12d 13h</td><td>49d 9h</td></tr>
-<tr><td>1-9 merged PRs</td><td style="text-align: right">164</td><td>55%</td><td>27%</td><td>18%</td><td>17%</td><td>10h 26m</td><td>2d 4h</td><td>28d 5h</td></tr>
-<tr><td>10-99 merged PRs</td><td style="text-align: right">177</td><td>74%</td><td>13%</td><td>13%</td><td>7%</td><td>6h 10m</td><td>2d 10h</td><td>23d 21h</td></tr>
-<tr><td>100+ merged PRs</td><td style="text-align: right">929</td><td>86%</td><td>10%</td><td>4%</td><td>6%</td><td>2h 22m</td><td>13h 27m</td><td>6d 19h</td></tr>
+<tr><td>no merged PRs yet</td><td style="text-align: right">345</td><td>28%</td><td>53%</td><td>20%</td><td>36%</td><td>15h 40m</td><td>12d 13h</td><td>49d 9h</td></tr>
+<tr><td>1-9 merged PRs</td><td style="text-align: right">164</td><td>55%</td><td>27%</td><td>18%</td><td>17%</td><td>10h 16m</td><td>2d 4h</td><td>28d 5h</td></tr>
+<tr><td>10-99 merged PRs</td><td style="text-align: right">177</td><td>74%</td><td>13%</td><td>13%</td><td>7%</td><td>6h 08m</td><td>2d 9h</td><td>23d 21h</td></tr>
+<tr><td>100+ merged PRs</td><td style="text-align: right">929</td><td>86%</td><td>10%</td><td>4%</td><td>6%</td><td>2h 22m</td><td>13h 51m</td><td>6d 20h</td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/contributing/01-what-to-expect.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/contributing/01-what-to-expect.sql)
 
 ## Sign the CLA first
 
@@ -36,7 +36,7 @@ Pull requests without a signed CLA are never merged, and most get no response fr
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/contributing/02-sign-the-cla.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/contributing/02-sign-the-cla.sql)
 
 ## Is it getting better for newcomers?
 
@@ -59,7 +59,7 @@ The last two quarters are not final: many of their pull requests are still open,
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/contributing/03-newcomers-trend.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/contributing/03-newcomers-trend.sql)
 
 ## How long until a response, and until the merge?
 
@@ -83,7 +83,7 @@ Read a row like this: within 1 day, this share of first pull requests got a resp
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/contributing/04-how-long-it-takes.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/contributing/04-how-long-it-takes.sql)
 
 ## Time to merge per quarter
 
@@ -93,7 +93,7 @@ First pull requests are those of authors with no merged pull request before. The
 <pre><code>
     Quarter     | Merged | Median  | 90% within | 1m             1h          1d     1w    30d     1y | First PRs | Median for first PRs 
 ----------------+--------+---------+------------+----------------------------------------------------+-----------+----------------------
- 2026-Q4 so far |    372 | 1d 0h   | 24d 18h    |                   ───▒▒▒▒▒▒█▒▒▒▒▒───────           |        33 | 16d 23h              
+ 2026-Q4 so far |    373 | 1d 0h   | 24d 14h    |                   ───▒▒▒▒▒▒█▒▒▒▒▒───────           |        33 | 16d 23h              
  2026-Q3        |    529 | 21h 53m | 23d 2h     |                    ──▒▒▒▒▒▒█▒▒▒▒▒▒──────           |        52 | 10d 10h              
  2026-Q2        |    454 | 21h 08m | 20d 4h     |                   ───▒▒▒▒▒▒█▒▒▒▒▒──────            |        26 | 13d 0h               
  2026-Q1        |    407 | 15h 30m | 23d 13h    |                ───▒▒▒▒▒▒▒█▒▒▒▒▒▒▒───────           |        21 | 18d 9h               
@@ -127,7 +127,7 @@ First pull requests are those of authors with no merged pull request before. The
  2019-Q1        |    314 | 22h 38m | 7d 0h      |                  ────▒▒▒▒▒▒█▒▒▒▒───                |        32 | 2d 2h                
 (32 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/contributing/05-time-to-merge-per-quarter.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/contributing/05-time-to-merge-per-quarter.sql)
 
 ## Pull requests per quarter
 
@@ -137,7 +137,7 @@ When more people open pull requests but a smaller share is merged, reviewers can
 <pre><code>
     Quarter     | Opened | Authors | Merged | Still open |            Pull requests by size chart             
 ----------------+--------+---------+--------+------------+----------------------------------------------------
- 2026-Q4 so far |    530 |     107 | 61%    |        149 | ░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▓▓██                      
+ 2026-Q4 so far |    530 |     107 | 61%    |        148 | ░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▓▓██                      
  2026-Q3        |    856 |     179 | 62%    |         79 | ░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓█████    
  2026-Q2        |    690 |     139 | 68%    |         18 | ░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▓▓▓█████             
  2026-Q1        |    594 |     112 | 67%    |         10 | ░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓███                   
@@ -171,7 +171,7 @@ When more people open pull requests but a smaller share is merged, reviewers can
  2019-Q1        |    429 |      45 | 81%    |          0 | ░░░░░░░░░░░░░░▒▒▒▒▒▓▓██                            
 (32 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/contributing/06-pull-requests-per-quarter.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/contributing/06-pull-requests-per-quarter.sql)
 
 ## Do smaller pull requests merge faster?
 
@@ -188,15 +188,15 @@ Larger changes wait longer for the merge and are merged less often, most clearly
 <tr><td>first PRs</td><td>M</td><td style="text-align: right">91</td><td>38%</td><td>1d 11h</td><td>21d 4h</td><td>108d 15h</td></tr>
 <tr><td>first PRs</td><td>L</td><td style="text-align: right">28</td><td>32%</td><td>21h 01m</td><td>28d 16h</td><td>169d 10h</td></tr>
 <tr><td>first PRs</td><td>XL</td><td style="text-align: right">35</td><td>11%</td><td>5d 10h</td><td>103d 7h</td><td>124d 20h</td></tr>
-<tr><td>authors with merged PRs</td><td>XS</td><td style="text-align: right">393</td><td>90%</td><td>1h 05m</td><td>5h 01m</td><td>2d 11h</td></tr>
-<tr><td>authors with merged PRs</td><td>S</td><td style="text-align: right">696</td><td>88%</td><td>1h 49m</td><td>14h 20m</td><td>7d 8h</td></tr>
-<tr><td>authors with merged PRs</td><td>M</td><td style="text-align: right">533</td><td>79%</td><td>4h 37m</td><td>1d 3h</td><td>18d 15h</td></tr>
-<tr><td>authors with merged PRs</td><td>L</td><td style="text-align: right">144</td><td>67%</td><td>9h 39m</td><td>1d 21h</td><td>28d 5h</td></tr>
-<tr><td>authors with merged PRs</td><td>XL</td><td style="text-align: right">174</td><td>60%</td><td>18h 42m</td><td>6d 4h</td><td>75d 14h</td></tr>
+<tr><td>authors with merged PRs</td><td>XS</td><td style="text-align: right">393</td><td>90%</td><td>1h 06m</td><td>5h 04m</td><td>2d 11h</td></tr>
+<tr><td>authors with merged PRs</td><td>S</td><td style="text-align: right">696</td><td>88%</td><td>1h 41m</td><td>14h 32m</td><td>7d 6h</td></tr>
+<tr><td>authors with merged PRs</td><td>M</td><td style="text-align: right">533</td><td>79%</td><td>4h 34m</td><td>1d 4h</td><td>18d 19h</td></tr>
+<tr><td>authors with merged PRs</td><td>L</td><td style="text-align: right">144</td><td>67%</td><td>9h 37m</td><td>1d 22h</td><td>28d 5h</td></tr>
+<tr><td>authors with merged PRs</td><td>XL</td><td style="text-align: right">174</td><td>60%</td><td>19h 21m</td><td>6d 3h</td><td>75d 14h</td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/contributing/07-size.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/contributing/07-size.sql)
 
 ## What happens to pull requests that are not merged?
 
@@ -212,7 +212,7 @@ No CLA and No response count the not merged pull requests without a signed CLA, 
  100+ merged PRs   |        211 | 15%        | ████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░  | 14%   | 69%    | 17%  | 1%     | 36%         
 (4 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/contributing/08-not-merged.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/contributing/08-not-merged.sql)
 
 ## How fast do authors answer reviews?
 
@@ -235,7 +235,7 @@ This is the pace reviewers are used to: most authors answer within a day. An ans
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/contributing/09-author-response.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/contributing/09-author-response.sql)
 
 ## Where is review help needed?
 
@@ -247,16 +247,16 @@ Reviewers: the areas on top have the most pull requests that nobody answered yet
 <tr><th>Area</th><th style="text-align: right">Open</th><th style="text-align: right">Open without response</th><th style="text-align: right">Opened in 12 months</th><th>Merged</th><th>No response</th><th>Median time to first response</th><th>Median time to merge</th></tr>
 </thead>
 <tbody>
-<tr><td>(no area label)</td><td style="text-align: right">71</td><td style="text-align: right">17</td><td style="text-align: right">990</td><td>82%</td><td>7%</td><td>1h 59m</td><td>12h 45m</td></tr>
-<tr><td>docs</td><td style="text-align: right">77</td><td style="text-align: right">15</td><td style="text-align: right">351</td><td>60%</td><td>9%</td><td>14h 51m</td><td>4d 13h</td></tr>
-<tr><td>iceberg</td><td style="text-align: right">43</td><td style="text-align: right">7</td><td style="text-align: right">387</td><td>80%</td><td>5%</td><td>4h 41m</td><td>1d 2h</td></tr>
+<tr><td>(no area label)</td><td style="text-align: right">70</td><td style="text-align: right">17</td><td style="text-align: right">990</td><td>82%</td><td>7%</td><td>2h 04m</td><td>12h 35m</td></tr>
+<tr><td>docs</td><td style="text-align: right">77</td><td style="text-align: right">15</td><td style="text-align: right">351</td><td>60%</td><td>9%</td><td>15h 21m</td><td>4d 12h</td></tr>
+<tr><td>iceberg</td><td style="text-align: right">43</td><td style="text-align: right">7</td><td style="text-align: right">387</td><td>80%</td><td>5%</td><td>4h 44m</td><td>1d 2h</td></tr>
 <tr><td>lakehouse</td><td style="text-align: right">8</td><td style="text-align: right">3</td><td style="text-align: right">41</td><td>66%</td><td>5%</td><td>10h 44m</td><td>7d 0h</td></tr>
-<tr><td>hive</td><td style="text-align: right">19</td><td style="text-align: right">3</td><td style="text-align: right">142</td><td>72%</td><td>9%</td><td>3h 19m</td><td>1d 4h</td></tr>
+<tr><td>hive</td><td style="text-align: right">19</td><td style="text-align: right">3</td><td style="text-align: right">142</td><td>72%</td><td>9%</td><td>3h 12m</td><td>1d 4h</td></tr>
 <tr><td>ui</td><td style="text-align: right">5</td><td style="text-align: right">2</td><td style="text-align: right">63</td><td>79%</td><td>8%</td><td>7h 31m</td><td>22h 55m</td></tr>
 <tr><td>pinot</td><td style="text-align: right">3</td><td style="text-align: right">2</td><td style="text-align: right">10</td><td>60%</td><td>10%</td><td>4h 57m</td><td>2d 18h</td></tr>
-<tr><td>(many areas)</td><td style="text-align: right">8</td><td style="text-align: right">1</td><td style="text-align: right">130</td><td>68%</td><td>8%</td><td>9h 05m</td><td>1d 20h</td></tr>
+<tr><td>(many areas)</td><td style="text-align: right">8</td><td style="text-align: right">1</td><td style="text-align: right">130</td><td>68%</td><td>8%</td><td>9h 09m</td><td>1d 20h</td></tr>
 <tr><td>hudi</td><td style="text-align: right">4</td><td style="text-align: right">1</td><td style="text-align: right">12</td><td>50%</td><td>17%</td><td>6h 59m</td><td>3d 19h</td></tr>
-<tr><td>delta-lake</td><td style="text-align: right">8</td><td style="text-align: right">1</td><td style="text-align: right">109</td><td>86%</td><td>4%</td><td>5h 08m</td><td>2d 1h</td></tr>
+<tr><td>delta-lake</td><td style="text-align: right">8</td><td style="text-align: right">1</td><td style="text-align: right">109</td><td>86%</td><td>4%</td><td>4h 54m</td><td>2d 1h</td></tr>
 <tr><td>redshift</td><td style="text-align: right">3</td><td style="text-align: right">1</td><td style="text-align: right">33</td><td>73%</td><td>12%</td><td>1h 45m</td><td>18h 08m</td></tr>
 <tr><td>elasticsearch</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">10</td><td>70%</td><td>0%</td><td>15h 37m</td><td>1d 19h</td></tr>
 <tr><td>clickhouse</td><td style="text-align: right">3</td><td style="text-align: right">0</td><td style="text-align: right">14</td><td>71%</td><td>0%</td><td>14h 14m</td><td>1d 10h</td></tr>
@@ -272,7 +272,7 @@ Reviewers: the areas on top have the most pull requests that nobody answered yet
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/contributing/10-review-help-needed.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/contributing/10-review-help-needed.sql)
 
 ## Where is the focus?
 
@@ -297,19 +297,19 @@ The chart has one character per month, oldest on the left, and each row has its 
  faker           |   31 | 1%    |      10 | .▁.▁.▃.▂..▂█    
  hudi            |   25 | 1%    |      13 | ▃▃▄.█▆.▂▃▆▂.    
  clickhouse      |   19 | 1%    |       9 | ...▂▄▅▂▂▄▂▅█    
- elasticsearch   |   19 | 1%    |      10 | ▂▂.▅█▂▂.▂▄▄▄    
  sqlserver       |   19 | 1%    |      10 | █..▃▆█▆▆▃█.▆    
+ elasticsearch   |   19 | 1%    |      10 | ▂▂.▅█▂▂.▂▄▄▄    
  ignite          |   18 | 1%    |      16 | ▃▃▃.▆██▃█▆▃.    
- cassandra       |   15 | 1%    |      11 | ▂..▂█▄▆▆▂...    
  mongodb         |   15 | 1%    |       8 | ..▆..▂.▄.▄█▆    
- opensearch      |   13 | 0%    |       7 | .▂▂▂▂█..▂▂▂▄    
+ cassandra       |   15 | 1%    |      11 | ▂..▂█▄▆▆▂...    
  kafka           |   13 | 0%    |       9 | .▂.▇..▄.▂..█    
- oracle          |   12 | 0%    |      10 | .▂▂.▄...█▂▄▂    
- pinot           |   12 | 0%    |       8 | .▄█▄█▄▄.▄▄.█    
+ opensearch      |   13 | 0%    |       7 | .▂▂▂▂█..▂▂▂▄    
  druid           |   12 | 0%    |      10 | ▃.▆.█..▆▃.▆▃    
+ pinot           |   12 | 0%    |       8 | .▄█▄█▄▄.▄▄.█    
+ oracle          |   12 | 0%    |      10 | .▂▂.▄...█▂▄▂    
 (25 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/contributing/11-focus-areas.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/contributing/11-focus-areas.sql)
 
 ## Where does the code change?
 
@@ -346,7 +346,7 @@ The chart has one character per month, oldest on the left, and each row has its 
  lib/trino-filesystem                 |      67 | 2%    |      14 | █▄▃▂▄▄█▆▇.▄█    
 (25 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/contributing/12-code-changes.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/contributing/12-code-changes.sql)
 
 ## How many pull requests do people open?
 
@@ -365,7 +365,7 @@ If you plan a bigger change, start with a small one to learn how the review work
  50 or more               |      10 | 3%         | █                    |          1705 | 57%              | ████████████████████ | 100%           
 (7 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/contributing/13-prs-per-author.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/contributing/13-prs-per-author.sql)
 
 ## When are reviewers active?
 
@@ -375,15 +375,15 @@ Most reviews happen on weekdays, so a pull request opened on a Friday or a weeke
 <pre><code>
     Day    | 00    03    06    09    12    15    18    21 UTC | PRs opened | Median time to first response | Responded within a day 
 -----------+--------------------------------------------------+------------+-------------------------------+------------------------
- Monday    | ░░░░░░░░░░▒▒▓▓▓▓██▓▓▓▓▓▓▓▓▒▒▓▓▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒░░ |        368 | 2h 18m                        | 78%                    
- Tuesday   | ▒▒░░░░░░▒▒▒▒▒▒████████▓▓██▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒ |        380 | 3h 04m                        | 77%                    
- Wednesday | ░░░░░░▒▒▒▒▓▓▓▓▓▓████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▒▒▒▒▒▒ |        425 | 2h 20m                        | 77%                    
- Thursday  | ▒▒░░░░▒▒▒▒▒▒██▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒ |        416 | 3h 17m                        | 79%                    
- Friday    | ▒▒▒▒░░▒▒▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▒▒▓▓▒▒▓▓▒▒▒▒▒▒▒▒▒▒░░░░░░ |        387 | 2h 18m                        | 67%                    
+ Monday    | ░░░░░░░░░░▒▒▓▓▓▓██▓▓▓▓▓▓▓▓▒▒▓▓▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒░░ |        368 | 2h 17m                        | 78%                    
+ Tuesday   | ▒▒░░░░░░▒▒▒▒▒▒████████▓▓██▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒ |        380 | 2h 57m                        | 77%                    
+ Wednesday | ░░░░░░▒▒▒▒▓▓▓▓▓▓████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▒▒▒▒▒▒ |        425 | 2h 18m                        | 77%                    
+ Thursday  | ▒▒░░░░▒▒▒▒▒▒██▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒ |        416 | 3h 21m                        | 79%                    
+ Friday    | ▒▒▒▒░░▒▒▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▒▒▓▓▒▒▓▓▒▒▒▒▒▒▒▒▒▒░░░░░░ |        387 | 2h 11m                        | 67%                    
  Saturday  | ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ |        123 | 1d 5h                         | 42%                    
- Sunday    | ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ |        115 | 19h 28m                       | 54%                    
+ Sunday    | ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ |        115 | 18h 58m                       | 54%                    
 (7 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/contributing/14-when-reviewers-are-active.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/contributing/14-when-reviewers-are-active.sql)
 
-Generated on Fri Nov 13 13:38:28 UTC 2026
+Generated on Fri Nov 13 14:09:40 UTC 2026

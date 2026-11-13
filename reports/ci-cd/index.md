@@ -15,7 +15,7 @@ A merge queue or nightly run that fails points to a broken or flaky test on mast
  scheduled    |            7 | = 0%   | 57%            | 43%             | 43%     | 0%        | 0%     | .........██.██████...█.███...█ 
 (3 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/ci-cd/01-health.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/ci-cd/01-health.sql)
 
 ## Merge queue outcomes per week
 
@@ -40,7 +40,7 @@ A low success rate means that pull requests that passed their own checks fail af
  2026-08-17 |  687 |     71 |    384 |       232 | 16%          | ████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░ 
 (13 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/ci-cd/02-merge-queue-outcomes.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/ci-cd/02-merge-queue-outcomes.sql)
 
 ## Which jobs fail in the merge queue and nightly runs
 
@@ -76,7 +76,7 @@ Failure rate is failed / (passed + failed) runs of the job, re-runs included. On
  build-test-matrix                             |        1 |              1 |          0 | &lt;1%          | .....█........         
 (24 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/ci-cd/03-failing-jobs.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/ci-cd/03-failing-jobs.sql)
 
 ## How long a CI run takes
 
@@ -86,22 +86,22 @@ A pull request is tested twice: once on its own, and again in the merge queue be
 <pre><code>
     Week    | PR runs | PR median | PR P90  | Pull request chart | Queue runs | Queue median | Queue P90 |    Merge queue chart     
 ------------+---------+-----------+---------+--------------------+------------+--------------+-----------+--------------------------
- 2026-11-09 |     164 | 36m 15s   | 39m 55s | ██████████         |         69 | 44m 59s      | 1h 23m    | ████████████░░░░░░░░░░   
- 2026-11-02 |     171 | 36m 40s   | 44m 05s | ██████████░░       |         59 | 48m 20s      | 1h 05m    | █████████████░░░░        
- 2026-10-26 |     263 | 36m 01s   | 41m 32s | █████████░░        |         76 | 53m 08s      | 1h 07m    | ██████████████░░░░       
+ 2026-11-09 |     164 | 36m 12s   | 39m 55s | ██████████         |         69 | 44m 59s      | 1h 23m    | ████████████░░░░░░░░░░   
+ 2026-11-02 |     171 | 36m 41s   | 44m 05s | ██████████░░       |         59 | 48m 20s      | 1h 05m    | █████████████░░░░        
+ 2026-10-26 |     263 | 35m 47s   | 41m 30s | █████████░░        |         76 | 53m 08s      | 1h 07m    | ██████████████░░░░       
  2026-10-19 |     163 | 38m 00s   | 45m 05s | ██████████░░       |         72 | 52m 40s      | 1h 10m    | ██████████████░░░░░      
- 2026-10-12 |     162 | 37m 25s   | 41m 35s | ██████████░        |         74 | 1h 02m       | 1h 31m    | █████████████████░░░░░░░ 
- 2026-10-05 |     195 | 37m 41s   | 41m 29s | ██████████░        |         93 | 52m 25s      | 1h 28m    | ██████████████░░░░░░░░░  
- 2026-09-28 |     168 | 37m 39s   | 41m 46s | ██████████░        |         63 | 50m 39s      | 56m 45s   | █████████████░░          
- 2026-09-21 |     137 | 38m 10s   | 43m 05s | ██████████░        |         55 | 47m 21s      | 1h 03m    | ████████████░░░░░        
- 2026-09-14 |     231 | 37m 48s   | 41m 38s | ██████████░        |         99 | 54m 43s      | 1h 20m    | ██████████████░░░░░░░    
- 2026-09-07 |     125 | 38m 50s   | 43m 52s | ██████████░░       |         54 | 51m 21s      | 1h 06m    | █████████████░░░░        
- 2026-08-31 |      90 | 39m 05s   | 47m 08s | ██████████░░       |         30 | 41m 58s      | 52m 06s   | ███████████░░░           
- 2026-08-24 |     107 | 38m 51s   | 46m 43s | ██████████░░       |         42 | 44m 16s      | 51m 34s   | ████████████░░           
- 2026-08-17 |     173 | 53m 36s   | 1h 00m  | ██████████████░░   |         69 | 56m 53s      | 1h 14m    | ███████████████░░░░░     
+ 2026-10-12 |     162 | 37m 26s   | 41m 35s | ██████████░        |         74 | 1h 02m       | 1h 31m    | █████████████████░░░░░░░ 
+ 2026-10-05 |     195 | 37m 41s   | 41m 29s | ██████████░        |         93 | 52m 29s      | 1h 28m    | ██████████████░░░░░░░░░  
+ 2026-09-28 |     168 | 37m 38s   | 41m 46s | ██████████░        |         63 | 50m 39s      | 56m 45s   | █████████████░░          
+ 2026-09-21 |     137 | 38m 12s   | 43m 05s | ██████████░        |         55 | 47m 21s      | 1h 03m    | ████████████░░░░░        
+ 2026-09-14 |     231 | 37m 47s   | 41m 49s | ██████████░        |         99 | 54m 27s      | 1h 20m    | ██████████████░░░░░░░    
+ 2026-09-07 |     125 | 38m 48s   | 43m 52s | ██████████░░       |         54 | 51m 21s      | 1h 06m    | █████████████░░░░        
+ 2026-08-31 |      90 | 39m 00s   | 47m 08s | ██████████░░       |         30 | 41m 58s      | 52m 06s   | ███████████░░░           
+ 2026-08-24 |     107 | 38m 44s   | 46m 43s | ██████████░░       |         42 | 44m 16s      | 51m 34s   | ████████████░░           
+ 2026-08-17 |     173 | 53m 35s   | 1h 00m  | ██████████████░░   |         69 | 56m 53s      | 1h 14m    | ███████████████░░░░░     
 (13 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/ci-cd/04-run-duration.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/ci-cd/04-run-duration.sql)
 
 ## Runner hours per week
 
@@ -111,7 +111,7 @@ What CI costs: the time all jobs of all workflows ran on GitHub runners, by what
 <pre><code>
     Week    | Runner hours | Pull requests | Merge queue | Nightly | Merged PRs | Hours per merged PR |       Runner hours chart       
 ------------+--------------+---------------+-------------+---------+------------+---------------------+--------------------------------
- 2026-11-09 |         5192 | 64%           | 34%         | 2%      |         68 |                  76 | ██████████████▓▓▓▓▓▓▓          
+ 2026-11-09 |         5192 | 64%           | 34%         | 2%      |         69 |                  75 | ██████████████▓▓▓▓▓▓▓          
  2026-11-02 |         5164 | 71%           | 26%         | 3%      |         58 |                  89 | ███████████████▓▓▓▓▓▒          
  2026-10-26 |         6553 | 68%           | 30%         | 2%      |         76 |                  86 | ██████████████████▓▓▓▓▓▓▓▓▒    
  2026-10-19 |         7055 | 64%           | 31%         | 2%      |         71 |                  99 | ███████████████████▓▓▓▓▓▓▓▓▓░  
@@ -121,7 +121,7 @@ What CI costs: the time all jobs of all workflows ran on GitHub runners, by what
  2026-09-21 |         5206 | 71%           | 28%         | 0%      |         54 |                  96 | ███████████████▓▓▓▓▓▓          
 (8 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/ci-cd/05-runner-hours.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/ci-cd/05-runner-hours.sql)
 
 ## Which jobs take the most runner time
 
@@ -163,7 +163,7 @@ Change compares the median of the last 7 days with the 23 days before. Each char
  maven-checks 25.0.5                      | 1426 | 93%    | 15m 10s | 16m 30s |   309 | 1.2%  | ▼ -7%  |            ██████████▇█▇████▇▇ 
 (30 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/ci-cd/06-jobs-duration.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/ci-cd/06-jobs-duration.sql)
 
 ## Where runner time goes, by step
 
@@ -175,22 +175,22 @@ Steps other than the tests, like building, checking out, and setting up, are pai
 <tr><th>Step</th><th>Share of runner time</th><th>Median</th></tr>
 </thead>
 <tbody>
-<tr><td>Maven Tests</td><td>33%</td><td>5m 10s</td></tr>
-<tr><td>Product Tests (JUnit suites)</td><td>24%</td><td>2m 42s</td></tr>
-<tr><td>Maven Install</td><td>11%</td><td>1m 54s</td></tr>
-<tr><td>Product tests artifact</td><td>6%</td><td>46s</td></tr>
-<tr><td>Run .github/actions/setup</td><td>5%</td><td>30s</td></tr>
+<tr><td>Maven Tests</td><td>33%</td><td>5m 05s</td></tr>
+<tr><td>Product Tests (JUnit suites)</td><td>24%</td><td>2m 41s</td></tr>
+<tr><td>Maven Install</td><td>11%</td><td>1m 53s</td></tr>
+<tr><td>Product tests artifact</td><td>6%</td><td>47s</td></tr>
+<tr><td>Run .github/actions/setup</td><td>5%</td><td>29s</td></tr>
 <tr><td>Maven Checks</td><td>4%</td><td>11m 29s</td></tr>
 <tr><td>Run actions/checkout@v7.0.1</td><td>4%</td><td>24s</td></tr>
 <tr><td>Load Trino Docker image for product tests</td><td>2%</td><td>21s</td></tr>
 <tr><td>Error Prone Checks</td><td>1%</td><td>8m 51s</td></tr>
 <tr><td>Set up job</td><td>1%</td><td>7s</td></tr>
-<tr><td>Upload test results</td><td>1%</td><td>11s</td></tr>
+<tr><td>Upload test results</td><td>1%</td><td>12s</td></tr>
 <tr><td>Product test distribution</td><td>1%</td><td>7s</td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/ci-cd/07-runner-time-by-step.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/ci-cd/07-runner-time-by-step.sql)
 
 ## When CI is busy
 
@@ -210,7 +210,7 @@ So far, the number of running jobs has not gone above 500, and it stays at 500 f
  Sunday    | ░░░░░░▒░░░░░░░░░░▒▒░░░░▒     |                   20 |  399 
 (8 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/ci-cd/08-busy-hours.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/ci-cd/08-busy-hours.sql)
 
 ## How long jobs wait for a runner
 
@@ -222,11 +222,11 @@ If waits grow, CI has reached the most jobs it can run at once: see the peaks in
 <tr><th>Runner type</th><th style="text-align: right">Jobs</th><th>Median wait</th><th>P90 wait</th><th>Longest wait</th><th style="text-align: right">Waited over a minute</th></tr>
 </thead>
 <tbody>
-<tr><td>ubuntu-latest</td><td style="text-align: right">43637</td><td>2s</td><td>3s</td><td>4m 00s</td><td style="text-align: right">8</td></tr>
-<tr><td>macos-latest</td><td style="text-align: right">181</td><td>3s</td><td>8s</td><td>16s</td><td style="text-align: right">0</td></tr>
+<tr><td>ubuntu-latest</td><td style="text-align: right">43973</td><td>2s</td><td>3s</td><td>4m 00s</td><td style="text-align: right">8</td></tr>
+<tr><td>macos-latest</td><td style="text-align: right">182</td><td>3s</td><td>8s</td><td>16s</td><td style="text-align: right">0</td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/f0b64f1eb66752f70c6a96dba3a71c3b099348cf/sql/ci-cd/09-queue-time.sql)
+[query](https://github.com/trinodb/reports/blob/81f91fb3ec9096a375111c79420b9e3884eb5401/sql/ci-cd/09-queue-time.sql)
 
-Generated on Fri Nov 13 13:38:43 UTC 2026
+Generated on Fri Nov 13 14:10:00 UTC 2026
