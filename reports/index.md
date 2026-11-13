@@ -32,6 +32,10 @@ Growth of the community, where contributors live and which companies they work f
 
 Pull requests and issues of the clients and tools of Trino, like the Go and Python clients, the gateway, and the Helm charts: what waits for their maintainers, and who reviews.
 
+# [Airlift](https://trinodb.github.io/reports/reports/airlift/)
+
+Pull requests and issues of airlift, the libraries Trino is built on, like airlift itself, airbase, aircompressor, and slice: what waits for their maintainers, and who reviews.
+
 # [Hall of fame](https://trinodb.github.io/reports/reports/hall-of-fame/)
 
 New contributors, milestones, and the people who author, review, and merge the most.

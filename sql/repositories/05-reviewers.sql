@@ -6,13 +6,13 @@ responses AS (
     SELECT DISTINCT p.owner, p.repo, p.number, r.user_login AS reviewer
     FROM memory.default.repository_pull_requests p
     JOIN reviews r ON (r.owner, r.repo, r.pull_number) = (p.owner, p.repo, p.number)
-    WHERE r.user_login != p.author AND NOT memory.default.is_bot(r.user_login) AND NOT p.author_is_bot
+    WHERE p.owner = 'trinodb' AND r.user_login != p.author AND NOT memory.default.is_bot(r.user_login) AND NOT p.author_is_bot
       AND r.submitted_at >= current_date - INTERVAL '12' MONTH
     UNION
     SELECT DISTINCT p.owner, p.repo, p.number, c.user_login
     FROM memory.default.repository_pull_requests p
     JOIN issue_comments c ON (c.owner, c.repo, c.issue_number) = (p.owner, p.repo, p.number)
-    WHERE c.user_login != p.author AND NOT memory.default.is_bot(c.user_login) AND NOT p.author_is_bot
+    WHERE p.owner = 'trinodb' AND c.user_login != p.author AND NOT memory.default.is_bot(c.user_login) AND NOT p.author_is_bot
       AND c.created_at >= current_date - INTERVAL '12' MONTH
 )
 , per_reviewer AS (

@@ -1,6 +1,6 @@
 
 -- this is not a report, just a setup
--- pull requests and issues of the other repositories of trinodb, which the sync reads without their commits and CI,
+-- pull requests and issues of the other repositories of trinodb, and of airlift, which the sync reads without their commits and CI,
 -- so what happened in them is known only from comments and reviews
 
 DROP TABLE IF EXISTS memory.default.repository_pull_requests;
@@ -10,7 +10,7 @@ WITH
 pulls AS (
     SELECT *
     FROM pulls
-    WHERE owner = 'trinodb' AND repo != 'trino'
+    WHERE (owner = 'trinodb' AND repo != 'trino') OR owner = 'airlift'
 )
 , events AS (
     SELECT p.owner, p.repo, p.number, r.submitted_at AS event_at, 'review' AS kind, r.state AS detail, r.user_login AS actor, p.user_login AS author
@@ -80,7 +80,7 @@ issues_only AS (
     -- the table has pull requests too, and only some of them have pull_request_url set
     SELECT i.owner, i.repo, i.number, i.title, i.user_login, i.state, i.created_at, i.closed_at, i.labels
     FROM issues i
-    WHERE i.owner = 'trinodb' AND i.repo != 'trino'
+    WHERE ((i.owner = 'trinodb' AND i.repo != 'trino') OR i.owner = 'airlift')
       AND i.pull_request_url IS NULL
       AND NOT EXISTS (SELECT 1 FROM pulls p WHERE (p.owner, p.repo, p.number) = (i.owner, i.repo, i.number))
 )

@@ -5,7 +5,7 @@ WITH
 ranked AS (
     SELECT *, row_number() OVER (PARTITION BY owner, repo ORDER BY created_at) AS repo_rank
     FROM memory.default.repository_issues
-    WHERE state = 'open' AND NOT author_is_bot AND first_response_at IS NULL
+    WHERE owner = 'trinodb' AND state = 'open' AND NOT author_is_bot AND first_response_at IS NULL
       AND created_at >= current_date - INTERVAL '12' MONTH
 )
 SELECT

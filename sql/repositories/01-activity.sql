@@ -9,6 +9,7 @@ months AS (
 , repositories AS (
     SELECT DISTINCT owner, repo
     FROM memory.default.repository_pull_requests
+    WHERE owner = 'trinodb'
 )
 , pull_requests AS (
     SELECT

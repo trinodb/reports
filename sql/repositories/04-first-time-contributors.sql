@@ -7,7 +7,7 @@ firsts AS (
         *
       , row_number() OVER (PARTITION BY owner, repo, author ORDER BY created_at) AS rownum
     FROM memory.default.repository_pull_requests
-    WHERE NOT author_is_bot
+    WHERE owner = 'trinodb' AND NOT author_is_bot
 )
 SELECT
     repo AS "Repository"
