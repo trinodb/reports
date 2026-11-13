@@ -100894,6 +100894,13 @@
           "enabledForGitHubApps": true,
           "category": "orgs",
           "subcategory": "orgs"
+        },
+        "x-trino": {
+          "pageParam": "page",
+          "limitParam": "per_page",
+          "parameterDefaults": {
+            "per_page": 100
+          }
         }
       }
     },

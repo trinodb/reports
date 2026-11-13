@@ -21,11 +21,12 @@ checked AS (
     WHERE step = 'users' AND owner = 'trinodb' AND repo = 'trino'
     GROUP BY parent_id
 ),
+-- the version says what's read, so profiles saved without organizations are read again
 batch AS (
-    SELECT p.parent_id, p.login, CAST(date_trunc('quarter', current_date) AS varchar) AS version
+    SELECT p.parent_id, p.login, CAST(date_trunc('quarter', current_date) AS varchar) || ' with orgs' AS version
     FROM people p
     LEFT JOIN checked c ON c.parent_id = p.parent_id
-    WHERE c.version IS NULL OR c.version != CAST(date_trunc('quarter', current_date) AS varchar)
+    WHERE c.version IS NULL OR c.version != CAST(date_trunc('quarter', current_date) AS varchar) || ' with orgs'
     ORDER BY p.parent_id
     LIMIT 30
 )

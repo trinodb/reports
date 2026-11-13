@@ -5,5 +5,6 @@ CREATE TABLE IF NOT EXISTS trinocicd.github.users (
     company varchar,
     location varchar,
     created_at timestamp(6),
-    updated_at timestamp(6)
+    updated_at timestamp(6),
+    orgs array(varchar)
 );
