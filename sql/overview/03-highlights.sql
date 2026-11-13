@@ -1,5 +1,5 @@
 -- The last 30 days
--- What happened, and who made it happen. Say thanks, and welcome the people who just started. Bots are not counted. Companies come from GitHub profiles and commit emails, so people without one are not counted there.
+-- What happened, and who made it happen. Say thanks, and welcome the people who just started. Bots are not counted. Companies come from GitHub profiles, public organization memberships, and commit emails, so people without one are not counted there.
 WITH
 since AS (
     SELECT CAST(now() AT TIME ZONE 'UTC' AS timestamp(6)) - INTERVAL '30' DAY AS ts

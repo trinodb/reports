@@ -1,5 +1,5 @@
 -- Which companies contribute?
--- People who merged a pull request or reviewed one in the last 12 months, by the company in their GitHub profile, which they write themselves, so it can be missing or out of date. Reviews don't count reviews of a person's own pull requests.
+-- People who merged a pull request or reviewed one in the last 12 months, by the company in their GitHub profile, which they write themselves, so it can be missing or out of date, or else by their public GitHub organizations or commit emails. Reviews don't count reviews of a person's own pull requests.
 -- A project where one company writes or reviews most of the changes depends on its plans. More companies sharing reviews means pull requests from everyone move faster.
 WITH
 merged AS (
@@ -41,7 +41,7 @@ merged AS (
 , grouped AS (
     SELECT
         CASE
-            WHEN company IS NULL THEN 'No company in the profile or commits'
+            WHEN company IS NULL THEN 'No company in the profile, organizations, or commits'
             WHEN company_rank <= 15 THEN company
             ELSE 'Other companies'
         END AS company

@@ -1,12 +1,12 @@
 
 -- this is not a report, just a setup
 -- the company of every person, from the company in their GitHub profile, which they write themselves and keep up to date or not,
--- or else from the email domain of their recent commits
+-- or else from their public organization memberships, or else from the email domain of their recent commits
 CREATE TABLE IF NOT EXISTS memory.default.companies AS
 WITH
 -- organizations of projects, which people join to work on them, not because they're employed by them
 projects AS (
-    SELECT ARRAY['trinodb', 'trino', 'prestodb', 'prestosql', 'apache'] AS orgs
+    SELECT ARRAY['trinodb', 'trino', 'prestodb', 'prestosql', 'apache', 'airlift', 'jenkinsci'] AS orgs
 )
 , cleaned AS (
     SELECT
@@ -28,6 +28,25 @@ projects AS (
         END AS company
     FROM cleaned
     CROSS JOIN projects p
+)
+, memberships AS (
+    SELECT u.login, o.org
+    FROM trinocicd.github.users u
+    CROSS JOIN UNNEST(u.orgs) AS o (org)
+    CROSS JOIN projects p
+    WHERE NOT contains(p.orgs, lower(o.org))
+)
+, from_orgs AS (
+    -- an organization of one person is usually their own or a hobby, and one of many people is more likely an employer
+    SELECT m.login, max_by(m.org, ROW(s.people, m.org)) AS company
+    FROM memberships m
+    JOIN (
+        SELECT org, count(*) AS people
+        FROM memberships
+        GROUP BY org
+        HAVING count(*) >= 2
+    ) s ON s.org = m.org
+    GROUP BY m.login
 )
 , domains AS (
     SELECT DISTINCT gh.author_login AS login, lower(split_part(g.author_email, '@', 2)) AS domain
@@ -51,7 +70,10 @@ projects AS (
 , all_companies AS (
     SELECT login, company FROM named WHERE company IS NOT NULL
     UNION ALL
-    SELECT login, company FROM from_emails WHERE login NOT IN (SELECT login FROM named WHERE company IS NOT NULL)
+    SELECT login, company FROM from_orgs WHERE login NOT IN (SELECT login FROM named WHERE company IS NOT NULL)
+    UNION ALL
+    SELECT login, company FROM from_emails
+    WHERE login NOT IN (SELECT login FROM named WHERE company IS NOT NULL) AND login NOT IN (SELECT login FROM from_orgs)
 )
 , keyed AS (
     SELECT
