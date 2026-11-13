@@ -1,0 +1,37 @@
+---
+layout: base
+---
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+  </header>
+
+  <div class="post-content">
+    <nav class="toc">
+      <details open>
+        <summary>Table of contents</summary>
+        <ul id="toc-list"></ul>
+      </details>
+    </nav>
+    {{ content }}
+  </div>
+
+</article>
+
+<script>
+  const headings = document.querySelectorAll('.post-content h2');
+  const list = document.getElementById('toc-list');
+  if (headings.length === 0) {
+    list.parentElement.parentElement.remove();
+  } else {
+    headings.forEach(function(h) {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent;
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  }
+</script>
