@@ -18,7 +18,7 @@ When authors grow faster than reviewers, pull requests wait longer, so reviewing
  Was active for the first time         | ▆▅██▇▇▇▆▇▇▆█▅▄▅▅▇▆▅▆▅▆▇█   |          172 | ▲ +30%         |            554 | ▼ -13%         
 (6 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/01-active-people.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/01-active-people.sql)
 
 ## Do people come back?
 
@@ -38,7 +38,7 @@ If newcomers rarely come back, review their first pull requests sooner.
  2024-Q4 |     109 | █████████████▒▒▒▒▒▒░░░░░░░░░░░  | 45%       | 17%       | 38% | 27%                     | 41%                     
 (8 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/02-returning-authors.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/02-returning-authors.sql)
 
 ## Where do contributors live?
 
@@ -48,17 +48,17 @@ More regions mean that someone is awake to review and answer at any time of the 
 <pre><code>
     Year     | People | Americas | Europe, Africa, Middle East | South Asia | East Asia, Oceania |              Regions chart               
 -------------+--------+----------+-----------------------------+------------+--------------------+------------------------------------------
- 2026 so far |    199 | 36%      | 38%                         | 8%         | 18%                | ░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓███████ 
+ 2026 so far |    199 | 37%      | 38%                         | 8%         | 18%                | ░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓███████ 
  2025        |    154 | 38%      | 40%                         | 7%         | 14%                | ░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓██████ 
- 2024        |    203 | 37%      | 37%                         | 6%         | 19%                | ░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓████████ 
- 2023        |    172 | 44%      | 32%                         | 8%         | 16%                | ░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓███████ 
+ 2024        |    203 | 37%      | 38%                         | 6%         | 19%                | ░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓████████ 
+ 2023        |    172 | 44%      | 31%                         | 8%         | 17%                | ░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓███████ 
  2022        |    192 | 40%      | 32%                         | 6%         | 22%                | ░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓█████████ 
- 2021        |    158 | 46%      | 28%                         | 6%         | 20%                | ░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▓▓████████ 
+ 2021        |    158 | 46%      | 28%                         | 6%         | 19%                | ░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▓▓████████ 
  2020        |    157 | 48%      | 21%                         | 11%        | 20%                | ░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▓▓▓▓████████ 
  2019        |    141 | 48%      | 25%                         | 11%        | 16%                | ░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▓▓▓▓███████ 
 (8 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/03-regions.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/03-regions.sql)
 
 ## Which companies contribute?
 
@@ -70,7 +70,7 @@ A project where one company writes or reviews most of the changes depends on its
 <tr><th>Company</th><th style="text-align: right">People</th><th style="text-align: right">Merged PRs</th><th>Share of merged PRs</th><th style="text-align: right">Reviews</th><th>Share of reviews</th></tr>
 </thead>
 <tbody>
-<tr><td>Starburst</td><td style="text-align: right">34</td><td style="text-align: right">999</td><td>51%</td><td style="text-align: right">5104</td><td>59%</td></tr>
+<tr><td>Starburst</td><td style="text-align: right">34</td><td style="text-align: right">1001</td><td>51%</td><td style="text-align: right">5110</td><td>59%</td></tr>
 <tr><td>IceGuard</td><td style="text-align: right">2</td><td style="text-align: right">79</td><td>4%</td><td style="text-align: right">167</td><td>2%</td></tr>
 <tr><td>Amazon</td><td style="text-align: right">5</td><td style="text-align: right">27</td><td>1%</td><td style="text-align: right">70</td><td>1%</td></tr>
 <tr><td>simpligility technologies</td><td style="text-align: right">1</td><td style="text-align: right">11</td><td>1%</td><td style="text-align: right">66</td><td>1%</td></tr>
@@ -86,11 +86,11 @@ A project where one company writes or reviews most of the changes depends on its
 <tr><td>Naver</td><td style="text-align: right">1</td><td style="text-align: right">4</td><td>0%</td><td style="text-align: right">2</td><td>0%</td></tr>
 <tr><td>OpenAI</td><td style="text-align: right">2</td><td style="text-align: right">6</td><td>0%</td><td style="text-align: right">0</td><td>0%</td></tr>
 <tr><td>Other 50 companies</td><td style="text-align: right">53</td><td style="text-align: right">67</td><td>3%</td><td style="text-align: right">36</td><td>0%</td></tr>
-<tr><td>No company in the profile or commits</td><td style="text-align: right">128</td><td style="text-align: right">721</td><td>37%</td><td style="text-align: right">3110</td><td>36%</td></tr>
+<tr><td>No company in the profile or commits</td><td style="text-align: right">128</td><td style="text-align: right">721</td><td>37%</td><td style="text-align: right">3111</td><td>36%</td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/04-companies.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/04-companies.sql)
 
 ## How often does Trino release?
 
@@ -122,7 +122,7 @@ Long gaps mean that fixes wait longer to reach users.
      465 | 2024-11-21 |   21 | ██████                                |     259 |      38 |          6 | <a href="https://trino.io/docs/current/release/release-465.html">release notes</a> 
 (20 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/05-releases.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/05-releases.sql)
 
 ## Are issues handled as fast as they come in?
 
@@ -166,7 +166,7 @@ A backlog that keeps growing needs triage: close what is fixed or can't be repro
  2019-Q1        |    135 |     44 | ▲ +91          |              91 |                     ██████████│███                            
 (32 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/06-issues-flow.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/06-issues-flow.sql)
 
 ## How long do users wait for an answer?
 
@@ -210,7 +210,7 @@ Issues closed without a comment were often fixed or closed by their reporter. Th
  2019-Q1        |     53 | 22h 34m | 1807d 18h  |               ─────▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒────────── | 4%                 | 4%               
 (32 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/07-issues-first-response.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/07-issues-first-response.sql)
 
 ## Issues waiting for a first answer
 
@@ -222,40 +222,40 @@ If you know the area, ask for details, point to the documentation, or confirm th
 <tr><th>Issue</th><th>Title</th><th>Reporter</th><th>Waiting for</th><th style="text-align: right">Reactions</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="https://github.com/trinodb/trino/issues/32089">#32089</a></td><td>Cost estimates are unknown for most plans with aggregations, sorting, or window functions</td><td><a href="https://github.com/RafPe">RafPe</a></td><td>1d 23h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/32045">#32045</a></td><td>DuckDB connector no longer creates JDBC statement spans</td><td><a href="https://github.com/jiwen624">jiwen624</a></td><td>3d 10h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31976">#31976</a></td><td>Azure exchange writes fail with 409 BlobAlreadyExists when the SDK retries</td><td><a href="https://github.com/kevinsheth">kevinsheth</a></td><td>9d 13h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31948">#31948</a></td><td>Filter on a decimal column over Parquet integer data drops rows</td><td><a href="https://github.com/wombatu-kun">wombatu-kun</a></td><td>11d 19h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31925">#31925</a></td><td>Iceberg: table-wide NDV makes the optimizer misestimate partition-filtered joins when keys are skewed per partition</td><td><a href="https://github.com/sdaberdaku">sdaberdaku</a></td><td>13d 0h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31917">#31917</a></td><td>Proposal: use Iceberg partition statistics files for row count estimates</td><td><a href="https://github.com/sdaberdaku">sdaberdaku</a></td><td>13d 13h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31905">#31905</a></td><td>Parquet and ORC bloom filters treat -0.0 and 0.0 as different values</td><td><a href="https://github.com/wombatu-kun">wombatu-kun</a></td><td>13d 23h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31871">#31871</a></td><td>Report oversized join hashes as insufficient resource instead of internal failures</td><td><a href="https://github.com/jalpan-randeri">jalpan-randeri</a></td><td>15d 10h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31859">#31859</a></td><td>Delta Lake checkpoint writer ignores parquet.writer.delta-length-byte-array-encoding-enabled</td><td><a href="https://github.com/nikifor2014">nikifor2014</a></td><td>15d 18h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31854">#31854</a></td><td>Ranger: allow tag-based column SELECT to authorize COUNT(*) without tagging the table</td><td><a href="https://github.com/sadrabarani">sadrabarani</a></td><td>15d 21h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31812">#31812</a></td><td>Docs: cume_dist is documented as returning bigint but returns double</td><td><a href="https://github.com/MicroMilo">MicroMilo</a></td><td>17d 2h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31810">#31810</a></td><td>Iceberg connector: Table queries and SHOW TABLES fail with 403 Forbidden under table-only permissions</td><td><a href="https://github.com/lsherwin10">lsherwin10</a></td><td>17d 6h</td><td style="text-align: right">1</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31780">#31780</a></td><td>Add support for creating symlink-backed tables in the Hive connector</td><td><a href="https://github.com/findinpath">findinpath</a></td><td>19d 10h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31734">#31734</a></td><td>TrinoArray.getResultSet() is not supported</td><td><a href="https://github.com/rileythomp">rileythomp</a></td><td>21d 16h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31701">#31701</a></td><td>Proposal: Redis SQL source connector via ADBC or Flight SQL</td><td><a href="https://github.com/alberttwong">alberttwong</a></td><td>23d 10h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31672">#31672</a></td><td>Support unordered inserts in MongoDB connector</td><td><a href="https://github.com/seokyoung-naver">seokyoung-naver</a></td><td>24d 18h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31663">#31663</a></td><td>Support bounded vectored reads in the Parquet filesystem path</td><td><a href="https://github.com/nirupamsingh29">nirupamsingh29</a></td><td>24d 21h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31654">#31654</a></td><td>Add query-scoped CPU profiling with Web UI flame graphs</td><td><a href="https://github.com/Max-Cheng">Max-Cheng</a></td><td>25d 3h</td><td style="text-align: right">1</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31590">#31590</a></td><td>date_trunc('day', …) returns 23:00 of the previous day for Canadian zones after 2026-11-01 on master (Joda-Time 2.15.0 tz 2026e vs Temurin 25.0.4 tz 2026b)</td><td><a href="https://github.com/CyberNativeAI">CyberNativeAI</a></td><td>29d 23h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31568">#31568</a></td><td>Workload isolation within a single cluster</td><td><a href="https://github.com/tbaeg">tbaeg</a></td><td>31d 15h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31545">#31545</a></td><td>Flaky test TestDeltaQueryFailureRecoveryTest: "Encountered too many errors talking to a worker node"</td><td><a href="https://github.com/jiwen624">jiwen624</a></td><td>33d 1h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31460">#31460</a></td><td>Allow excluding datasets from OpenLineage events</td><td><a href="https://github.com/bimbolimbo">bimbolimbo</a></td><td>37d 18h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31399">#31399</a></td><td>Iceberg equality delete file with extra non-key columns ignored in file scan planning</td><td><a href="https://github.com/findinpath">findinpath</a></td><td>42d 19h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31351">#31351</a></td><td>Time travel configured using session properties</td><td><a href="https://github.com/technical-debt-collector">technical-debt-collector</a></td><td>45d 21h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31308">#31308</a></td><td>Trino shows stale (pre-truncation) data when reading a truncated Hive ACID table before compaction runs</td><td><a href="https://github.com/thierrycz">thierrycz</a></td><td>50d 16h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31302">#31302</a></td><td>Trino displays deleted rows from Hive ACID tables before compaction runs</td><td><a href="https://github.com/thierrycz">thierrycz</a></td><td>50d 20h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31273">#31273</a></td><td>Allow connectors to emit warnings through the SPI, like they can raise custom errors</td><td><a href="https://github.com/okayhooni">okayhooni</a></td><td>52d 0h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31250">#31250</a></td><td>Password authenticator rewrites only one user header after user mapping</td><td><a href="https://github.com/Amirmehdig">Amirmehdig</a></td><td>53d 16h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31248">#31248</a></td><td>Branch name is not recorded for source tables dependencies on Trino Materialized Views</td><td><a href="https://github.com/findinpath">findinpath</a></td><td>53d 21h</td><td style="text-align: right">0</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/issues/31238">#31238</a></td><td>Consolidation of Column-Level Access in Ranger Audit Logs</td><td><a href="https://github.com/hyska">hyska</a></td><td>55d 17h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/32089">#32089</a></td><td>Cost estimates are unknown for most plans with aggregations, sorting, or window functions</td><td><a href="https://github.com/RafPe">RafPe</a></td><td>2d 1h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/32045">#32045</a></td><td>DuckDB connector no longer creates JDBC statement spans</td><td><a href="https://github.com/jiwen624">jiwen624</a></td><td>3d 11h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31976">#31976</a></td><td>Azure exchange writes fail with 409 BlobAlreadyExists when the SDK retries</td><td><a href="https://github.com/kevinsheth">kevinsheth</a></td><td>9d 14h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31948">#31948</a></td><td>Filter on a decimal column over Parquet integer data drops rows</td><td><a href="https://github.com/wombatu-kun">wombatu-kun</a></td><td>11d 20h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31925">#31925</a></td><td>Iceberg: table-wide NDV makes the optimizer misestimate partition-filtered joins when keys are skewed per partition</td><td><a href="https://github.com/sdaberdaku">sdaberdaku</a></td><td>13d 1h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31917">#31917</a></td><td>Proposal: use Iceberg partition statistics files for row count estimates</td><td><a href="https://github.com/sdaberdaku">sdaberdaku</a></td><td>13d 15h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31905">#31905</a></td><td>Parquet and ORC bloom filters treat -0.0 and 0.0 as different values</td><td><a href="https://github.com/wombatu-kun">wombatu-kun</a></td><td>14d 0h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31871">#31871</a></td><td>Report oversized join hashes as insufficient resource instead of internal failures</td><td><a href="https://github.com/jalpan-randeri">jalpan-randeri</a></td><td>15d 11h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31859">#31859</a></td><td>Delta Lake checkpoint writer ignores parquet.writer.delta-length-byte-array-encoding-enabled</td><td><a href="https://github.com/nikifor2014">nikifor2014</a></td><td>15d 20h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31854">#31854</a></td><td>Ranger: allow tag-based column SELECT to authorize COUNT(*) without tagging the table</td><td><a href="https://github.com/sadrabarani">sadrabarani</a></td><td>15d 23h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31812">#31812</a></td><td>Docs: cume_dist is documented as returning bigint but returns double</td><td><a href="https://github.com/MicroMilo">MicroMilo</a></td><td>17d 3h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31810">#31810</a></td><td>Iceberg connector: Table queries and SHOW TABLES fail with 403 Forbidden under table-only permissions</td><td><a href="https://github.com/lsherwin10">lsherwin10</a></td><td>17d 7h</td><td style="text-align: right">1</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31780">#31780</a></td><td>Add support for creating symlink-backed tables in the Hive connector</td><td><a href="https://github.com/findinpath">findinpath</a></td><td>19d 11h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31734">#31734</a></td><td>TrinoArray.getResultSet() is not supported</td><td><a href="https://github.com/rileythomp">rileythomp</a></td><td>21d 18h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31701">#31701</a></td><td>Proposal: Redis SQL source connector via ADBC or Flight SQL</td><td><a href="https://github.com/alberttwong">alberttwong</a></td><td>23d 11h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31672">#31672</a></td><td>Support unordered inserts in MongoDB connector</td><td><a href="https://github.com/seokyoung-naver">seokyoung-naver</a></td><td>24d 19h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31663">#31663</a></td><td>Support bounded vectored reads in the Parquet filesystem path</td><td><a href="https://github.com/nirupamsingh29">nirupamsingh29</a></td><td>24d 22h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31654">#31654</a></td><td>Add query-scoped CPU profiling with Web UI flame graphs</td><td><a href="https://github.com/Max-Cheng">Max-Cheng</a></td><td>25d 5h</td><td style="text-align: right">1</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31590">#31590</a></td><td>date_trunc('day', …) returns 23:00 of the previous day for Canadian zones after 2026-11-01 on master (Joda-Time 2.15.0 tz 2026e vs Temurin 25.0.4 tz 2026b)</td><td><a href="https://github.com/CyberNativeAI">CyberNativeAI</a></td><td>30d 0h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31568">#31568</a></td><td>Workload isolation within a single cluster</td><td><a href="https://github.com/tbaeg">tbaeg</a></td><td>31d 17h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31545">#31545</a></td><td>Flaky test TestDeltaQueryFailureRecoveryTest: "Encountered too many errors talking to a worker node"</td><td><a href="https://github.com/jiwen624">jiwen624</a></td><td>33d 3h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31460">#31460</a></td><td>Allow excluding datasets from OpenLineage events</td><td><a href="https://github.com/bimbolimbo">bimbolimbo</a></td><td>37d 19h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31399">#31399</a></td><td>Iceberg equality delete file with extra non-key columns ignored in file scan planning</td><td><a href="https://github.com/findinpath">findinpath</a></td><td>42d 21h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31351">#31351</a></td><td>Time travel configured using session properties</td><td><a href="https://github.com/technical-debt-collector">technical-debt-collector</a></td><td>45d 23h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31308">#31308</a></td><td>Trino shows stale (pre-truncation) data when reading a truncated Hive ACID table before compaction runs</td><td><a href="https://github.com/thierrycz">thierrycz</a></td><td>50d 18h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31302">#31302</a></td><td>Trino displays deleted rows from Hive ACID tables before compaction runs</td><td><a href="https://github.com/thierrycz">thierrycz</a></td><td>50d 21h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31273">#31273</a></td><td>Allow connectors to emit warnings through the SPI, like they can raise custom errors</td><td><a href="https://github.com/okayhooni">okayhooni</a></td><td>52d 1h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31250">#31250</a></td><td>Password authenticator rewrites only one user header after user mapping</td><td><a href="https://github.com/Amirmehdig">Amirmehdig</a></td><td>53d 17h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31248">#31248</a></td><td>Branch name is not recorded for source tables dependencies on Trino Materialized Views</td><td><a href="https://github.com/findinpath">findinpath</a></td><td>53d 23h</td><td style="text-align: right">0</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/issues/31238">#31238</a></td><td>Consolidation of Column-Level Access in Ranger Audit Logs</td><td><a href="https://github.com/hyska">hyska</a></td><td>55d 19h</td><td style="text-align: right">0</td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/08-unanswered-issues.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/08-unanswered-issues.sql)
 
 ## What do users ask for?
 
@@ -295,7 +295,7 @@ Maintainers: this is the demand to plan for. Contributors: these are changes tha
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/09-most-wanted-issues.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/09-most-wanted-issues.sql)
 
 ## Which areas get the most issues?
 
@@ -336,7 +336,7 @@ A label with a growing backlog needs an owner. Labels like good first issue are 
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/10-issues-by-label.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/10-issues-by-label.sql)
 
 ## How active is Slack?
 
@@ -360,7 +360,7 @@ Joining or leaving a channel isn't counted as a message. A channel that gets qui
  trino-gateway     | ▂......█▂▃..▃.▂........▂.. |        2 | ▼ -85%  | ▄......█▄█..█.▄........▄.. |      1 | ▼ -83%  
 (12 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/11-slack-activity.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/11-slack-activity.sql)
 
 ## Who joins the Slack channels?
 
@@ -383,7 +383,7 @@ The weekly sync sees a member join or leave only on its next run, so the times a
  trino-gateway-dev |         325 |     53 |    2 | ▲ +51  | ▃▅██▂▄▂▃▃▄▂▃           | ......▁.▁...   
 (11 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/12-slack-members.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/12-slack-members.sql)
 
 ## Are questions on Slack answered?
 
@@ -410,7 +410,7 @@ An older sync saved the replies until August 2026, and missed some of them, so o
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/13-slack-questions-answered.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/13-slack-questions-answered.sql)
 
 ## Slack questions without an answer
 
@@ -435,7 +435,7 @@ Look through these channels for questions without a reply in their thread: even 
  2026-08-10 |         0 |        0 |       |                                |                           0 |                    0 
 (13 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/14-slack-unanswered-questions.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/14-slack-unanswered-questions.sql)
 
 ## When is the Slack community awake?
 
@@ -454,7 +454,7 @@ Ask when the cells are dark to get a quick answer; the next report shows where p
  Sunday    | ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ |      194 | 16:00        
 (7 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/15-slack-busy-hours.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/15-slack-busy-hours.sql)
 
 ## Where do people on Slack live?
 
@@ -472,7 +472,7 @@ Read it with the hours above: a question asked in the working hours of a large r
  Not set  |      5 | 1%    | █                              | UTC+0       |                                                        
 (6 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/16-slack-time-zones.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/16-slack-time-zones.sql)
 
 ## Who helps others on Slack?
 
@@ -502,6 +502,6 @@ Thank them, and if you know the answer to a question in troubleshooting or begin
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/community/17-slack-top-helpers.sql)
+[query](https://github.com/trinodb/reports/blob/c1a59d49140c985e9daa31737b2647bd9102da87/sql/community/17-slack-top-helpers.sql)
 
-Generated on Fri Nov 13 06:14:56 UTC 2026
+Generated on Fri Nov 13 07:43:57 UTC 2026
