@@ -13,6 +13,7 @@ minima:
     - reports/tests/index.md
     - reports/community/index.md
     - reports/repositories/index.md
+    - reports/airlift/index.md
     - reports/hall-of-fame/index.md
 
 exclude:

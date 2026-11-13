@@ -9,7 +9,7 @@ ranked AS (
             PARTITION BY owner, repo
             ORDER BY CASE review_state WHEN 'approved' THEN 1 WHEN 'no response' THEN 2 ELSE 3 END, coalesce(last_response_at, created_at)) AS repo_rank
     FROM memory.default.repository_pull_requests
-    WHERE state = 'open' AND NOT draft AND NOT author_is_bot
+    WHERE owner = 'trinodb' AND state = 'open' AND NOT draft AND NOT author_is_bot
 )
 SELECT
     repo AS "Repository"

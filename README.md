@@ -13,6 +13,7 @@ contribute, how CI is doing, and who the community is. They're generated every d
 | [Tests](https://trinodb.github.io/reports/reports/tests/)                    | broken and flaky tests, new failures, causes of failed jobs            | [`sql/tests`](sql/tests)               |
 | [Community](https://trinodb.github.io/reports/reports/community/)            | growth, regions, companies, releases, issues, Slack                    | [`sql/community`](sql/community)       |
 | [Clients and tools](https://trinodb.github.io/reports/reports/repositories/) | the other repositories: open pull requests and issues, reviewers       | [`sql/repositories`](sql/repositories) |
+| [Airlift](https://trinodb.github.io/reports/reports/airlift/)                | libraries Trino is built on: open pull requests and issues, reviewers  | [`sql/airlift`](sql/airlift)           |
 | [Hall of fame](https://trinodb.github.io/reports/reports/hall-of-fame/)      | new contributors, milestones, top authors, reviewers, and mergers      | [`sql/hall-of-fame`](sql/hall-of-fame) |
 
 Something wrong, or missing? [Open an issue](https://github.com/trinodb/reports/issues), or change a report: every
