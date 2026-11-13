@@ -105,10 +105,12 @@ and the second statement of the step saves them with their version in the
   because with it GitHub returns at most 1,000 runs, and a sync falling behind
   by about a day would miss runs.
 * Issues, their comments, pull requests, and their reviews are also read for
-  other repositories, listed in `sync.yml`, by running these steps again with
-  `SYNC_REPO`. The first sync reads all of their history, about 3,700
-  requests, mostly reviews of 3,500 pull requests, which takes about an hour.
-  Later syncs read only what changed.
+  other repositories of trinodb and airlift, listed in `sync.yml`, by running
+  these steps again with `SYNC_OWNER` and `SYNC_REPO`. The first sync reads all
+  of their history, mostly reviews, one request for every pull request: about
+  3,700 requests for 3,500 pull requests of trinodb, which takes about an
+  hour, and about 5,000 for 4,600 pull requests of airlift, which takes about
+  40 minutes. Later syncs read only what changed.
 * `users` reads profiles of people who opened or reviewed pull requests in the
   last 2 years, for their company and location, which reports group people
   by, and their public organization memberships, for the company of people
