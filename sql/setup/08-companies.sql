@@ -4,7 +4,11 @@
 -- or else from the email domain of their recent commits
 CREATE TABLE IF NOT EXISTS memory.default.companies AS
 WITH
-cleaned AS (
+-- organizations of projects, which people join to work on them, not because they're employed by them
+projects AS (
+    SELECT ARRAY['trinodb', 'trino', 'prestodb', 'prestosql', 'apache'] AS orgs
+)
+, cleaned AS (
     SELECT
         login
       -- former employers, like "@databricks ex-@aws"
@@ -19,10 +23,11 @@ cleaned AS (
             -- organizations, like "@starburstdata @trinodb", where the first one that isn't a project is the employer
             WHEN strpos(company, '@') > 0 THEN element_at(filter(
                 regexp_extract_all(company, '@([\p{L}\p{N}][\p{L}\p{N}_.-]*)', 1),
-                o -> lower(o) NOT IN ('trinodb', 'trino', 'prestodb', 'prestosql', 'apache')), 1)
+                o -> NOT contains(p.orgs, lower(o))), 1)
             ELSE regexp_replace(company, '(?i)[\s,]+(inc\.?|ltd\.?|llc|corp\.?|corporation|gmbh|co\., ltd\.?)$|\.(com|io|ai)$', '')
         END AS company
     FROM cleaned
+    CROSS JOIN projects p
 )
 , domains AS (
     SELECT DISTINCT gh.author_login AS login, lower(split_part(g.author_email, '@', 2)) AS domain
