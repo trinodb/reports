@@ -111,8 +111,10 @@ and the second statement of the step saves them with their version in the
   Later syncs read only what changed.
 * `users` reads profiles of people who opened or reviewed pull requests in the
   last 2 years, for their company and location, which reports group people
-  by. People change them, so they're read again every quarter. GitHub doesn't
-  return deleted accounts, which keep their last profile.
+  by, and their public organization memberships, for the company of people
+  who don't name one. People change them, so they're read again every
+  quarter. GitHub doesn't return deleted accounts, which keep their last
+  profile.
 
 `GITHUB_TOKEN` allows 15,000 requests per hour, shared with other workflows of
 this repository. The catalog allows 2 requests per second, so a sync uses at
@@ -122,7 +124,7 @@ one for every check run. Reading jobs is limited by GitHub, not by the request
 rate: a page of 50 jobs takes about 2.6 seconds. The HTTP cache is kept between
 syncs with `actions/cache`, so unchanged responses are revalidated, which
 doesn't count against the rate limit. The first sync of every quarter reads
-about 600 profiles, which takes about 10 minutes.
+about 600 profiles and their organizations, which takes about 10 minutes.
 
 ## Slack
 

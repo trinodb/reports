@@ -202,6 +202,17 @@
           }
         }
       }
+    },
+    "/users/{username}/orgs": {
+      "get": {
+        "x-trino": {
+          "pageParam": "page",
+          "limitParam": "per_page",
+          "parameterDefaults": {
+            "per_page": 100
+          }
+        }
+      }
     }
   }
 }
