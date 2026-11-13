@@ -6,14 +6,14 @@ ranked AS (
     SELECT
         *
       , row_number() OVER (
-            PARTITION BY repo
+            PARTITION BY owner, repo
             ORDER BY CASE review_state WHEN 'approved' THEN 1 WHEN 'no response' THEN 2 ELSE 3 END, coalesce(last_response_at, created_at)) AS repo_rank
     FROM memory.default.repository_pull_requests
     WHERE state = 'open' AND NOT draft AND NOT author_is_bot
 )
 SELECT
     repo AS "Repository"
-  , memory.default.link(format('#%d', number), format('https://github.com/trinodb/%s/pull/%d', repo, number)) AS "PR"
+  , memory.default.link(format('#%d', number), format('https://github.com/%s/%s/pull/%d', owner, repo, number)) AS "PR"
   , if(length(title) > 70, substr(title, 1, 67) || '...', title) AS "Title"
   , memory.default.user_link(author) AS "Author"
   , memory.default.human_duration(current_timestamp - created_at) AS "Open for"
