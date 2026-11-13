@@ -7,12 +7,13 @@ months AS (
     FROM unnest(sequence(date_trunc('month', current_date) - INTERVAL '23' MONTH, date_trunc('month', current_date), INTERVAL '1' MONTH)) AS t(month)
 )
 , repositories AS (
-    SELECT DISTINCT repo
+    SELECT DISTINCT owner, repo
     FROM memory.default.repository_pull_requests
 )
 , pull_requests AS (
     SELECT
-        repo
+        owner
+      , repo
       , count(*) FILTER (WHERE NOT author_is_bot AND created_at >= current_date - INTERVAL '12' MONTH) AS opened
       , count(*) FILTER (WHERE NOT author_is_bot AND merged_at >= current_date - INTERVAL '12' MONTH) AS merged
       , count(*) FILTER (WHERE author_is_bot AND created_at >= current_date - INTERVAL '12' MONTH) AS opened_by_bots
@@ -21,41 +22,43 @@ months AS (
       , approx_percentile(to_unixtime(first_response_at) - to_unixtime(created_at), 0.5)
             FILTER (WHERE NOT author_is_bot AND created_at >= current_date - INTERVAL '12' MONTH) AS median_response_seconds
     FROM memory.default.repository_pull_requests
-    GROUP BY repo
+    GROUP BY owner, repo
 )
 , issues AS (
     SELECT
-        repo
+        owner
+      , repo
       , count(*) FILTER (WHERE NOT author_is_bot AND created_at >= current_date - INTERVAL '12' MONTH) AS opened
       , count(*) FILTER (WHERE state = 'open') AS open_now
     FROM memory.default.repository_issues
-    GROUP BY repo
+    GROUP BY owner, repo
 )
 , people AS (
-    SELECT repo, count(DISTINCT login) AS people
+    SELECT owner, repo, count(DISTINCT login) AS people
     FROM (
-        SELECT repo, author AS login, created_at AS at FROM memory.default.repository_pull_requests
+        SELECT owner, repo, author AS login, created_at AS at FROM memory.default.repository_pull_requests
         UNION ALL
-        SELECT repo, author, created_at FROM memory.default.repository_issues
+        SELECT owner, repo, author, created_at FROM memory.default.repository_issues
         UNION ALL
-        SELECT repo, user_login, created_at FROM issue_comments WHERE owner = 'trinodb' AND repo != 'trino'
+        SELECT owner, repo, user_login, created_at FROM issue_comments WHERE owner = 'trinodb' AND repo != 'trino'
         UNION ALL
-        SELECT repo, user_login, submitted_at FROM reviews WHERE owner = 'trinodb' AND repo != 'trino'
+        SELECT owner, repo, user_login, submitted_at FROM reviews WHERE owner = 'trinodb' AND repo != 'trino'
     )
     WHERE at >= current_date - INTERVAL '12' MONTH AND NOT memory.default.is_bot(login)
-    GROUP BY repo
+    GROUP BY owner, repo
 )
 , per_month AS (
-    SELECT r.repo, m.month, count(p.number) AS opened
+    SELECT r.owner, r.repo, m.month, count(p.number) AS opened
     FROM repositories r
     CROSS JOIN months m
-    LEFT JOIN memory.default.repository_pull_requests p ON p.repo = r.repo AND NOT p.author_is_bot AND date_trunc('month', p.created_at) = m.month
-    GROUP BY r.repo, m.month
+    LEFT JOIN memory.default.repository_pull_requests p
+        ON (p.owner, p.repo) = (r.owner, r.repo) AND NOT p.author_is_bot AND date_trunc('month', p.created_at) = m.month
+    GROUP BY r.owner, r.repo, m.month
 )
 , trends AS (
-    SELECT repo, array_agg(opened * 1e0 ORDER BY month) AS opened
+    SELECT owner, repo, array_agg(opened * 1e0 ORDER BY month) AS opened
     FROM per_month
-    GROUP BY repo
+    GROUP BY owner, repo
 )
 SELECT
     r.repo AS "Repository"
@@ -69,9 +72,9 @@ SELECT
   , format('%d / %d', p.opened_by_bots, p.open_by_bots) AS "Bot PRs / open"
   , memory.default.sparkline(t.opened) AS "PRs per month, 24 months chart"
 FROM repositories r
-JOIN pull_requests p ON p.repo = r.repo
-LEFT JOIN issues i ON i.repo = r.repo
-LEFT JOIN people pe ON pe.repo = r.repo
-JOIN trends t ON t.repo = r.repo
+JOIN pull_requests p ON (p.owner, p.repo) = (r.owner, r.repo)
+LEFT JOIN issues i ON (i.owner, i.repo) = (r.owner, r.repo)
+LEFT JOIN people pe ON (pe.owner, pe.repo) = (r.owner, r.repo)
+JOIN trends t ON (t.owner, t.repo) = (r.owner, r.repo)
 ORDER BY p.opened + coalesce(i.opened, 0) DESC
 ;

@@ -3,14 +3,14 @@
 -- An answer, even a question or a label, tells the reporter that someone read it. Close the ones that are fixed or can't be reproduced.
 WITH
 ranked AS (
-    SELECT *, row_number() OVER (PARTITION BY repo ORDER BY created_at) AS repo_rank
+    SELECT *, row_number() OVER (PARTITION BY owner, repo ORDER BY created_at) AS repo_rank
     FROM memory.default.repository_issues
     WHERE state = 'open' AND NOT author_is_bot AND first_response_at IS NULL
       AND created_at >= current_date - INTERVAL '12' MONTH
 )
 SELECT
     repo AS "Repository"
-  , memory.default.link(format('#%d', number), format('https://github.com/trinodb/%s/issues/%d', repo, number)) AS "Issue"
+  , memory.default.link(format('#%d', number), format('https://github.com/%s/%s/issues/%d', owner, repo, number)) AS "Issue"
   , if(length(title) > 80, substr(title, 1, 77) || '...', title) AS "Title"
   , memory.default.user_link(author) AS "Author"
   , memory.default.human_duration(current_timestamp - created_at) AS "Open for"

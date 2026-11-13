@@ -5,14 +5,14 @@ WITH
 firsts AS (
     SELECT
         *
-      , row_number() OVER (PARTITION BY repo, author ORDER BY created_at) AS rownum
+      , row_number() OVER (PARTITION BY owner, repo, author ORDER BY created_at) AS rownum
     FROM memory.default.repository_pull_requests
     WHERE NOT author_is_bot
 )
 SELECT
     repo AS "Repository"
   , memory.default.user_link(author) AS "Author"
-  , memory.default.link(format('#%d', number), format('https://github.com/trinodb/%s/pull/%d', repo, number)) AS "First PR"
+  , memory.default.link(format('#%d', number), format('https://github.com/%s/%s/pull/%d', owner, repo, number)) AS "First PR"
   , format('%d-%02d-%02d', year(created_at), month(created_at), day(created_at)) AS "Opened"
   , if(draft AND state = 'open', 'draft', state) AS "State"
   , coalesce(memory.default.human_duration(first_response_at - created_at), if(state = 'open', 'none yet', 'none')) AS "First response"
