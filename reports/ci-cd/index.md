@@ -10,12 +10,12 @@ A merge queue or nightly run that fails points to a broken or flaky test on mast
 <pre><code>
   Started by  | Runs, 7 days | Change | Passed, 7 days | Previous 7 days | 30 days | Cancelled | Re-run | Passed per day, 30 days chart  
 --------------+--------------+--------+----------------+-----------------+---------+-----------+--------+--------------------------------
- merge queue  |          144 | ▲ +62% | 67%            | 74%             | 69%     | 22%       | 1%     | ▇▇▇█▆▆█▆▆▅▆▄▆▅▆▅██▃█▆▇▆▇▅▇▅▅▅▇ 
- pull request |          402 | ▼ -1%  | 79%            | 80%             | 76%     | 31%       | 6%     | ▆▆▇█▇▆▆▆▆▆▄█▆▆▆▇▆█▇▇▇▇▇▇▆▇▆▆▇▇ 
- scheduled    |            7 | = 0%   | 43%            | 57%             | 40%     | 0%        | 0%     | ..........██.██████...█.███... 
+ merge queue  |          132 | ▲ +48% | 67%            | 71%             | 69%     | 22%       | 2%     | ▇▇█▆▆█▆▆▅▆▄▆▅▆▅██▃█▆▇▆▇▅▇▅▅▅▇█ 
+ pull request |          383 | ▲ +1%  | 77%            | 83%             | 76%     | 30%       | 6%     | ▆▇█▇▆▆▆▆▆▄█▆▆▆▇▆█▇▇▇▇▇▇▆▇▆▆▇▇▇ 
+ scheduled    |            7 | = 0%   | 57%            | 43%             | 43%     | 0%        | 0%     | .........██.██████...█.███...█ 
 (3 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/ci-cd/01-health.sql)
+[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/ci-cd/01-health.sql)
 
 ## Merge queue outcomes per week
 
@@ -25,7 +25,7 @@ A low success rate means that pull requests that passed their own checks fail af
 <pre><code>
     Week    | Runs | Passed | Failed | Cancelled | Success rate |     Passed, failed, cancelled chart      
 ------------+------+--------+--------+-----------+--------------+------------------------------------------
- 2026-11-09 |  118 |     58 |     31 |        29 | 65%          | ████████████████████▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░ 
+ 2026-11-09 |  122 |     62 |     31 |        29 | 67%          | ████████████████████▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░ 
  2026-11-02 |   84 |     59 |     20 |         5 | 75%          | ████████████████████████████▒▒▒▒▒▒▒▒▒▒░░ 
  2026-10-26 |  127 |     79 |     38 |        10 | 68%          | █████████████████████████▒▒▒▒▒▒▒▒▒▒▒▒░░░ 
  2026-10-19 |  130 |     72 |     40 |        18 | 64%          | ██████████████████████▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░ 
@@ -40,7 +40,7 @@ A low success rate means that pull requests that passed their own checks fail af
  2026-08-17 |  687 |     71 |    384 |       232 | 16%          | ████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░ 
 (13 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/ci-cd/02-merge-queue-outcomes.sql)
+[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/ci-cd/02-merge-queue-outcomes.sql)
 
 ## Which jobs fail in the merge queue and nightly runs
 
@@ -50,32 +50,32 @@ Failure rate is failed / (passed + failed) runs of the job, re-runs included. On
 <pre><code>
                       Job                      | Failures | In merge queue | In nightly | Failure rate | Failures per day chart 
 -----------------------------------------------+----------+----------------+------------+--------------+------------------------
- test (plugin/trino-bigquery)                  |       13 |             11 |          2 | 8%           | ...▃▃.▆█..▃▆▃▆         
- test (core/trino-main)                        |       11 |              9 |          2 | 8%           | ▂.█▂▂▂.▂......         
- test (plugin/trino-base-...ugin/trino-thrift) |       11 |             10 |          1 | 6%           | ....▂▄..▂..█▂▂         
- test (plugin/trino-hive)                      |       10 |              7 |          3 | 6%           | ......▂...▂█▂▆         
- test (testing/trino-tests)                    |        5 |              5 |          0 | 3%           | .......▃..█▃..         
- mvnd-build                                    |        3 |              3 |          0 | 5%           | ..........█...         
- pt (SuiteDeltaLakeDatabricks154)              |        3 |              3 |          0 | 2%           | .....█.....██.         
- pt (SuiteAzure)                               |        3 |              2 |          1 | 2%           | ....█........▄         
- test (plugin/trino-iceberg, cloud-tests)      |        3 |              2 |          1 | 1%           | ....█.........         
- test (plugin/trino-bigquery, cloud-tests-2)   |        2 |              0 |          2 | 14%          | ....█..█......         
- pt (SuiteHiveTransactional)                   |        2 |              2 |          0 | 1%           | ......█.....█.         
- pt (SuiteDeltaLakeOss)                        |        2 |              2 |          0 | 1%           | ........█...█.         
- test (plugin/trino-elasticsearch)             |        2 |              1 |          1 | 1%           | ...█........█.         
- pt (SuiteDeltaLakeDatabricks18)               |        1 |              1 |          0 | 1%           | ...........█..         
- test (plugin/trino-oracle)                    |        1 |              0 |          1 | 1%           | ...........█..         
- pt (SuiteIceberg)                             |        1 |              1 |          0 | 1%           | ............█.         
- test (plugin/trino-postgresql)                |        1 |              0 |          1 | 1%           | ...█..........         
- pt (SuiteIcebergVariants)                     |        1 |              1 |          0 | 1%           | ............█.         
- test (plugin/trino-delta-lake)                |        1 |              1 |          0 | 1%           | .........█....         
- test (plugin/trino-mongodb)                   |        1 |              1 |          0 | 1%           | ..█...........         
- pt (SuiteHmsOnly)                             |        1 |              1 |          0 | &lt;1%          | .............█         
- test-other-modules                            |        1 |              1 |          0 | &lt;1%          | ............█.         
- build-test-matrix                             |        1 |              1 |          0 | &lt;1%          | ......█.......         
+ test (plugin/trino-bigquery)                  |       13 |             11 |          2 | 9%           | ..▃▃.▆█..▃▆▃▆.         
+ test (plugin/trino-base-...ugin/trino-thrift) |       11 |             10 |          1 | 6%           | ...▂▄..▂..█▂▂.         
+ test (core/trino-main)                        |       10 |              8 |          2 | 8%           | .█▂▂▂.▂.......         
+ test (plugin/trino-hive)                      |       10 |              7 |          3 | 7%           | .....▂...▂█▂▆.         
+ test (testing/trino-tests)                    |        5 |              5 |          0 | 3%           | ......▃..█▃...         
+ mvnd-build                                    |        3 |              3 |          0 | 5%           | .........█....         
+ pt (SuiteDeltaLakeDatabricks154)              |        3 |              3 |          0 | 2%           | ....█.....██..         
+ pt (SuiteAzure)                               |        3 |              2 |          1 | 2%           | ...█........▄.         
+ test (plugin/trino-iceberg, cloud-tests)      |        3 |              2 |          1 | 2%           | ...█..........         
+ test (plugin/trino-bigquery, cloud-tests-2)   |        2 |              0 |          2 | 14%          | ...█..█.......         
+ pt (SuiteHiveTransactional)                   |        2 |              2 |          0 | 2%           | .....█.....█..         
+ pt (SuiteDeltaLakeOss)                        |        2 |              2 |          0 | 1%           | .......█...█..         
+ test (plugin/trino-elasticsearch)             |        2 |              1 |          1 | 1%           | ..█........█..         
+ pt (SuiteDeltaLakeDatabricks18)               |        1 |              1 |          0 | 1%           | ..........█...         
+ test (plugin/trino-oracle)                    |        1 |              0 |          1 | 1%           | ..........█...         
+ pt (SuiteIceberg)                             |        1 |              1 |          0 | 1%           | ...........█..         
+ test (plugin/trino-postgresql)                |        1 |              0 |          1 | 1%           | ..█...........         
+ pt (SuiteIcebergVariants)                     |        1 |              1 |          0 | 1%           | ...........█..         
+ test (plugin/trino-delta-lake)                |        1 |              1 |          0 | 1%           | ........█.....         
+ test (plugin/trino-mongodb)                   |        1 |              1 |          0 | 1%           | .█............         
+ pt (SuiteHmsOnly)                             |        1 |              1 |          0 | 1%           | ............█.         
+ test-other-modules                            |        1 |              1 |          0 | &lt;1%          | ...........█..         
+ build-test-matrix                             |        1 |              1 |          0 | &lt;1%          | .....█........         
 (23 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/ci-cd/03-failing-jobs.sql)
+[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/ci-cd/03-failing-jobs.sql)
 
 ## How long a CI run takes
 
@@ -85,22 +85,22 @@ A pull request is tested twice: once on its own, and again in the merge queue be
 <pre><code>
     Week    | PR runs | PR median | PR P90  | Pull request chart | Queue runs | Queue median | Queue P90 |    Merge queue chart     
 ------------+---------+-----------+---------+--------------------+------------+--------------+-----------+--------------------------
- 2026-11-09 |     130 | 36m 27s   | 40m 04s | ██████████░        |         56 | 46m 41s      | 1h 23m    | ████████████░░░░░░░░░░   
- 2026-11-02 |     171 | 36m 44s   | 44m 05s | ██████████░░       |         59 | 48m 20s      | 1h 05m    | █████████████░░░░        
- 2026-10-26 |     263 | 35m 40s   | 41m 28s | █████████░░        |         76 | 53m 08s      | 1h 07m    | ██████████████░░░░       
- 2026-10-19 |     163 | 38m 01s   | 45m 05s | ██████████░░       |         72 | 51m 58s      | 1h 10m    | ██████████████░░░░░      
- 2026-10-12 |     162 | 37m 24s   | 41m 35s | ██████████░        |         74 | 1h 02m       | 1h 31m    | █████████████████░░░░░░░ 
- 2026-10-05 |     195 | 37m 41s   | 41m 29s | ██████████░        |         93 | 52m 25s      | 1h 28m    | ██████████████░░░░░░░░░  
- 2026-09-28 |     168 | 37m 40s   | 41m 46s | ██████████░        |         63 | 50m 39s      | 56m 45s   | █████████████░░          
- 2026-09-21 |     137 | 38m 12s   | 43m 05s | ██████████░        |         55 | 47m 21s      | 1h 03m    | ████████████░░░░░        
- 2026-09-14 |     231 | 37m 47s   | 41m 39s | ██████████░        |         99 | 54m 21s      | 1h 20m    | ██████████████░░░░░░░    
- 2026-09-07 |     125 | 38m 49s   | 43m 52s | ██████████░░       |         54 | 51m 21s      | 1h 06m    | █████████████░░░░        
- 2026-08-31 |      90 | 38m 59s   | 47m 08s | ██████████░░       |         30 | 41m 58s      | 52m 06s   | ███████████░░░           
- 2026-08-24 |     107 | 38m 46s   | 46m 43s | ██████████░░       |         42 | 44m 16s      | 51m 34s   | ████████████░░           
- 2026-08-17 |     173 | 53m 42s   | 1h 00m  | ██████████████░░   |         69 | 56m 53s      | 1h 14m    | ███████████████░░░░░     
+ 2026-11-09 |     148 | 36m 11s   | 40m 00s | ██████████░        |         60 | 51m 22s      | 1h 24m    | █████████████░░░░░░░░░   
+ 2026-11-02 |     171 | 36m 45s   | 44m 05s | ██████████░░       |         59 | 48m 20s      | 1h 05m    | █████████████░░░░        
+ 2026-10-26 |     263 | 35m 47s   | 41m 30s | █████████░░        |         76 | 53m 08s      | 1h 07m    | ██████████████░░░░       
+ 2026-10-19 |     163 | 38m 02s   | 45m 05s | ██████████░░       |         72 | 52m 40s      | 1h 10m    | ██████████████░░░░░      
+ 2026-10-12 |     162 | 37m 20s   | 41m 35s | ██████████░        |         74 | 1h 02m       | 1h 31m    | █████████████████░░░░░░░ 
+ 2026-10-05 |     195 | 37m 42s   | 41m 29s | ██████████░        |         93 | 52m 10s      | 1h 28m    | ██████████████░░░░░░░░░  
+ 2026-09-28 |     168 | 37m 47s   | 41m 46s | ██████████░        |         63 | 50m 39s      | 56m 45s   | █████████████░░          
+ 2026-09-21 |     137 | 38m 16s   | 43m 05s | ██████████░        |         55 | 47m 21s      | 1h 03m    | ████████████░░░░░        
+ 2026-09-14 |     231 | 37m 47s   | 41m 40s | ██████████░        |         99 | 54m 14s      | 1h 20m    | ██████████████░░░░░░░    
+ 2026-09-07 |     125 | 38m 53s   | 43m 52s | ██████████░░       |         54 | 51m 21s      | 1h 06m    | █████████████░░░░        
+ 2026-08-31 |      90 | 39m 05s   | 47m 08s | ██████████░░       |         30 | 41m 58s      | 52m 06s   | ███████████░░░           
+ 2026-08-24 |     107 | 38m 51s   | 46m 43s | ██████████░░       |         42 | 44m 16s      | 51m 34s   | ████████████░░           
+ 2026-08-17 |     173 | 53m 40s   | 1h 00m  | ██████████████░░   |         69 | 56m 53s      | 1h 14m    | ███████████████░░░░░     
 (13 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/ci-cd/04-run-duration.sql)
+[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/ci-cd/04-run-duration.sql)
 
 ## Runner hours per week
 
@@ -110,7 +110,7 @@ What CI costs: the time all jobs of all workflows ran on GitHub runners, by what
 <pre><code>
     Week    | Runner hours | Pull requests | Merge queue | Nightly | Merged PRs | Hours per merged PR |       Runner hours chart       
 ------------+--------------+---------------+-------------+---------+------------+---------------------+--------------------------------
- 2026-11-09 |         4374 | 61%           | 36%         | 2%      |         55 |                  80 | ███████████▓▓▓▓▓▓▒             
+ 2026-11-09 |         4787 | 63%           | 34%         | 2%      |         59 |                  81 | ████████████▓▓▓▓▓▓▓░           
  2026-11-02 |         5164 | 71%           | 26%         | 3%      |         58 |                  89 | ███████████████▓▓▓▓▓▒          
  2026-10-26 |         6553 | 68%           | 30%         | 2%      |         76 |                  86 | ██████████████████▓▓▓▓▓▓▓▓▒    
  2026-10-19 |         7055 | 64%           | 31%         | 2%      |         71 |                  99 | ███████████████████▓▓▓▓▓▓▓▓▓░  
@@ -120,7 +120,7 @@ What CI costs: the time all jobs of all workflows ran on GitHub runners, by what
  2026-09-21 |         5206 | 71%           | 28%         | 0%      |         54 |                  96 | ███████████████▓▓▓▓▓▓          
 (8 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/ci-cd/05-runner-hours.sql)
+[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/ci-cd/05-runner-hours.sql)
 
 ## Which jobs take the most runner time
 
@@ -130,39 +130,39 @@ Change compares the median of the last 7 days with the 23 days before. Each char
 <pre><code>
                    Job                    | Runs | Passed | Median  |   P90   | Hours | Share | Change | Median per day, 30 days chart  
 ------------------------------------------+------+--------+---------+---------+-------+-------+--------+--------------------------------
- test (testing/trino-tests)               | 1826 | 94%    | 29m 31s | 31m 47s |   748 | 2.8%  | ▼ -8%  | ██████████████████▇████▇█████▇ 
- test (plugin/trino-ic... floci-and-avro) | 1735 | 98%    | 30m 22s | 32m 56s |   737 | 2.8%  | ▼ -3%  | ███▇██████████████████████████ 
- pt (SuiteIceberg)                        | 1694 | 99%    | 26m 46s | 30m 34s |   689 | 2.6%  | = 0%   | ██████████████████████████████ 
- pt (SuiteDeltaLakeOss)                   | 1584 | 100%   | 29m 08s | 32m 31s |   657 | 2.5%  | ▼ -6%  | ███▇██████▇███████████████████ 
- test (plugin/trino-iceberg)              | 1744 | 96%    | 25m 51s | 28m 07s |   642 | 2.4%  | ▼ -6%  | ████▇████████████████████▇███▇ 
- test (testing/trino-f...t-tolerant-hive) | 1885 | 98%    | 21m 59s | 23m 42s |   597 | 2.2%  | ▼ -6%  | ████████████████████████▇█████ 
- pt (SuiteHiveTransactional)              | 1556 | 98%    | 23m 16s | 25m 39s |   556 | 2.1%  | ▼ -3%  | ██████████████████████████████ 
- error-prone-checks                       | 2166 | 95%    | 11m 53s | 32m 36s |   508 | 1.9%  | ▲ +79% | ▃▃▃▄▄▄▄▅▃▆▇▇▇▄▃▇▅▂▂▆▄▇▅▇█▇▇▇▄▃ 
- pt (SuiteIcebergVariants)                | 1695 | 99%    | 17m 57s | 20m 08s |   481 | 1.8%  | ▼ -2%  | ██████████████████████████████ 
- maven-checks 28-ea                       | 2186 | 93%    | 15m 14s | 16m 32s |   476 | 1.8%  | ▼ -1%  | ██████████▇█████████████▇█████ 
- test (plugin/trino-delta-lake)           | 1520 | 98%    | 20m 51s | 23m 22s |   470 | 1.8%  | = 0%   | ██████████████████████████████ 
- maven-checks 27                          | 2186 | 93%    | 14m 56s | 16m 13s |   470 | 1.8%  | ▼ -3%  | ███▇▇███████████████████▇█████ 
- test (plugin/trino-hive)                 | 1485 | 94%    | 21m 26s | 23m 47s |   468 | 1.8%  | ▼ -6%  | █████████████████▇█████▇▇███▇█ 
- test (plugin/trino-hive, test-parquet)   | 1473 | 99%    | 19m 51s | 23m 35s |   443 | 1.7%  | ▲ +2%  | ▇▇▇▇▇▇▇▇████████████████▇█████ 
- test (plugin/trino-druid)                | 1231 | 98%    | 23m 03s | 26m 51s |   428 | 1.6%  | ▼ -17% | ██████████████▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 
- test (core/trino-main)                   | 1184 | 95%    | 25m 37s | 27m 38s |   421 | 1.6%  | ▼ -4%  | ██████████████▇████▇█████▇██▇█ 
- test (testing/trino-f...olerant-iceberg) | 1881 | 98%    | 14m 19s | 15m 24s |   407 | 1.5%  | ▼ -3%  | ██████████████████████████████ 
- pt (SuiteDeltaLakeDatabricks18)          | 1508 | 99%    | 3m 04s  | 47m 52s |   399 | 1.5%  | ▼ -12% | ▁▁▁█▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▆█ 
- pt (SuiteStorageFormatsDetailed)         | 1694 | 100%   | 13m 22s | 15m 25s |   367 | 1.4%  | ▼ -5%  | ████████████████████████████▇▇ 
- test (plugin/trino-hive, fte-tests)      | 1472 | 99%    | 16m 08s | 17m 14s |   366 | 1.4%  | ▲ +1%  | ██████████████████████████████ 
- test (plugin/trino-iceberg, fte-tests)   | 1731 | 99%    | 13m 22s | 14m 33s |   363 | 1.4%  | ▲ +1%  | ██████████████████████████████ 
- artifact-checks                          | 2169 | 98%    | 10m 17s | 11m 39s |   344 | 1.3%  | ▲ +4%  | █▇█▇▇█████████████████████████ 
- test-other-modules                       | 2166 | 97%    | 10m 48s | 16m 27s |   339 | 1.3%  | ▲ +17% | ▄▇▄▇▆▇▆█▇▇▇██▆▅▇▅▂▆▇▄█▇▇████▆▄ 
- pt (SuiteCompatibility)                  | 1693 | 100%   | 11m 58s | 14m 10s |   334 | 1.3%  | ▼ -5%  | ████████████████████████████▇▇ 
- test (plugin/trino-de...lake, fte-tests) | 1518 | 99%    | 13m 55s | 15m 11s |   331 | 1.2%  | = 0%   | ██████████████████████████████ 
- pt (SuiteTpcds)                          | 1550 | 100%   | 13m 34s | 15m 42s |   331 | 1.2%  | ▼ -6%  | █████████████████▇██████▇█████ 
- pt (SuiteKafka)                          | 1434 | 100%   | 13m 55s | 15m 58s |   323 | 1.2%  | ▼ -5%  | ████████████████████████████▇▇ 
- test-jdbc-compatibility                  | 2168 | 97%    | 10m 05s | 13m 21s |   314 | 1.2%  | ▲ +6%  | ▆▇▅▇▆▇▇▇█▇█▆▇▆▆▇▆▃▅▇▅▇▇▇▇▇▇▇▆▆ 
- test (plugin/trino-postgresql)           | 1242 | 98%    | 16m 09s | 18m 36s |   311 | 1.2%  | ▼ -3%  | ███████████████▇██▇▇█▇██▇▇▇▇▇▇ 
- pt (SuiteDeltaLakeDatabricks154)         | 1507 | 99%    | 3m 20s  | 41m 50s |   299 | 1.1%  | ▼ -8%  | ▁▁▁▁▁▁▁▁▁▁▁▅▂▁▁▁▁▁▁▁▂▁▁▁▁▁▁▁██ 
+ test (testing/trino-tests)               | 1798 | 94%    | 29m 33s | 31m 47s |   737 | 2.8%  | ▼ -8%  | █████████████████▇████▇█████▇▇ 
+ test (plugin/trino-ic... floci-and-avro) | 1704 | 98%    | 30m 22s | 32m 59s |   724 | 2.8%  | ▼ -3%  | ██▇███████████████████████████ 
+ pt (SuiteIceberg)                        | 1661 | 99%    | 26m 43s | 30m 35s |   675 | 2.6%  | ▼ -1%  | ██████████████████████████████ 
+ pt (SuiteDeltaLakeOss)                   | 1555 | 100%   | 29m 04s | 32m 30s |   642 | 2.5%  | ▼ -6%  | ██▇██████▇████████████████████ 
+ test (plugin/trino-iceberg)              | 1713 | 96%    | 25m 50s | 28m 10s |   631 | 2.4%  | ▼ -6%  | ███▇█████▇█████████████▇▇█▇█▇█ 
+ test (testing/trino-f...t-tolerant-hive) | 1861 | 98%    | 21m 59s | 23m 43s |   590 | 2.3%  | ▼ -7%  | ███████████████████████▇██████ 
+ pt (SuiteHiveTransactional)              | 1523 | 98%    | 23m 12s | 25m 31s |   543 | 2.1%  | ▼ -3%  | ██████████████████████████████ 
+ error-prone-checks                       | 2139 | 95%    | 12m 10s | 32m 42s |   507 | 1.9%  | ▲ +53% | ▃▃▄▄▄▄▅▃▆▇▇▇▄▃▇▅▂▂▆▄▇▅▇█▇▇▇▄▄▃ 
+ pt (SuiteIcebergVariants)                | 1662 | 99%    | 17m 57s | 20m 06s |   471 | 1.8%  | ▼ -3%  | ██████████████████████████████ 
+ maven-checks 28-ea                       | 2152 | 93%    | 15m 15s | 16m 34s |   470 | 1.8%  | ▼ -2%  | █████████▇█████████████▇█████▇ 
+ test (plugin/trino-delta-lake)           | 1501 | 98%    | 20m 51s | 23m 19s |   464 | 1.8%  | = 0%   | ██████████████████████████████ 
+ maven-checks 27                          | 2152 | 93%    | 14m 58s | 16m 13s |   462 | 1.8%  | ▼ -5%  | ██▇▇███████████████████▇█████▇ 
+ test (plugin/trino-hive)                 | 1462 | 94%    | 21m 28s | 23m 49s |   461 | 1.8%  | ▼ -5%  | ████████████████▇█████▇▇███▇██ 
+ test (plugin/trino-hive, test-parquet)   | 1450 | 99%    | 19m 54s | 23m 37s |   437 | 1.7%  | ▲ +2%  | ▇▇▇▇▇▇▇███████████████▇▇██████ 
+ test (plugin/trino-druid)                | 1220 | 98%    | 22m 34s | 26m 51s |   422 | 1.6%  | ▼ -17% | █████████████▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▆ 
+ test (core/trino-main)                   | 1173 | 95%    | 25m 31s | 27m 41s |   416 | 1.6%  | ▼ -9%  | █████████████▇████▇█████▇██▇▇█ 
+ test (testing/trino-f...olerant-iceberg) | 1857 | 98%    | 14m 18s | 15m 25s |   402 | 1.5%  | ▼ -4%  | ██████████████████████████████ 
+ pt (SuiteDeltaLakeDatabricks18)          | 1458 | 99%    | 3m 07s  | 47m 53s |   387 | 1.5%  | ▼ -4%  | ▁▁█▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▂▁▁▁▁▁▁▁▆▆▇ 
+ test (plugin/trino-hive, fte-tests)      | 1449 | 99%    | 16m 10s | 17m 14s |   361 | 1.4%  | = 0%   | ██████████████████████████████ 
+ pt (SuiteStorageFormatsDetailed)         | 1661 | 100%   | 13m 19s | 15m 24s |   358 | 1.4%  | ▼ -6%  | ███████████████████████████▇▇▇ 
+ test (plugin/trino-iceberg, fte-tests)   | 1700 | 99%    | 13m 22s | 14m 35s |   356 | 1.4%  | ▲ +1%  | ██████████████████████████████ 
+ artifact-checks                          | 2141 | 98%    | 10m 21s | 11m 40s |   341 | 1.3%  | ▲ +3%  | ▇█▇▇██████████████████████████ 
+ test-other-modules                       | 2139 | 97%    | 10m 50s | 16m 30s |   335 | 1.3%  | ▲ +6%  | ▇▄▇▆▇▆█▇▇▇██▆▅▇▅▂▆▇▄█▇▇████▆▄▃ 
+ test (plugin/trino-de...lake, fte-tests) | 1499 | 99%    | 13m 56s | 15m 13s |   328 | 1.3%  | ▼ -1%  | ██████████████████████████████ 
+ pt (SuiteCompatibility)                  | 1660 | 100%   | 11m 56s | 14m 07s |   326 | 1.2%  | ▼ -7%  | ███████████████████████████▇▇█ 
+ pt (SuiteTpcds)                          | 1517 | 100%   | 13m 32s | 15m 42s |   323 | 1.2%  | ▼ -7%  | ████████████████▇██████▇██████ 
+ pt (SuiteKafka)                          | 1396 | 100%   | 13m 54s | 16m 00s |   313 | 1.2%  | ▼ -5%  | ███████████████████████████▇▇▇ 
+ test-jdbc-compatibility                  | 2141 | 97%    | 10m 05s | 13m 21s |   310 | 1.2%  | ▲ +1%  | ▇▅▇▆▇▇▇█▇█▆▇▆▆▇▆▃▅▇▅▇▇▇▇▇▇▇▆▆▅ 
+ test (plugin/trino-postgresql)           | 1231 | 98%    | 16m 10s | 18m 33s |   308 | 1.2%  | ▼ -4%  | ██████████████▇██▇▇█▇██▇▇▇▇▇▇▇ 
+ maven-checks 25.0.5                      | 1388 | 93%    | 15m 11s | 16m 30s |   301 | 1.2%  | ▼ -6%  |            ██████████▇█▇████▇█ 
 (30 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/ci-cd/06-jobs-duration.sql)
+[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/ci-cd/06-jobs-duration.sql)
 
 ## Where runner time goes, by step
 
@@ -174,22 +174,22 @@ Steps other than the tests, like building, checking out, and setting up, are pai
 <tr><th>Step</th><th>Share of runner time</th><th>Median</th></tr>
 </thead>
 <tbody>
-<tr><td>Maven Tests</td><td>33%</td><td>5m 12s</td></tr>
-<tr><td>Product Tests (JUnit suites)</td><td>25%</td><td>2m 44s</td></tr>
-<tr><td>Maven Install</td><td>10%</td><td>1m 55s</td></tr>
+<tr><td>Maven Tests</td><td>33%</td><td>5m 21s</td></tr>
+<tr><td>Product Tests (JUnit suites)</td><td>24%</td><td>2m 41s</td></tr>
+<tr><td>Maven Install</td><td>11%</td><td>1m 54s</td></tr>
 <tr><td>Product tests artifact</td><td>6%</td><td>48s</td></tr>
 <tr><td>Run .github/actions/setup</td><td>5%</td><td>30s</td></tr>
+<tr><td>Maven Checks</td><td>4%</td><td>11m 34s</td></tr>
 <tr><td>Run actions/checkout@v7.0.1</td><td>4%</td><td>24s</td></tr>
-<tr><td>Maven Checks</td><td>4%</td><td>11m 36s</td></tr>
-<tr><td>Load Trino Docker image for product tests</td><td>2%</td><td>23s</td></tr>
-<tr><td>Error Prone Checks</td><td>1%</td><td>9m 12s</td></tr>
+<tr><td>Load Trino Docker image for product tests</td><td>2%</td><td>22s</td></tr>
+<tr><td>Error Prone Checks</td><td>1%</td><td>8m 55s</td></tr>
 <tr><td>Set up job</td><td>1%</td><td>7s</td></tr>
-<tr><td>Upload test results</td><td>1%</td><td>12s</td></tr>
+<tr><td>Upload test results</td><td>1%</td><td>11s</td></tr>
 <tr><td>Product test distribution</td><td>1%</td><td>7s</td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/ci-cd/07-runner-time-by-step.sql)
+[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/ci-cd/07-runner-time-by-step.sql)
 
 ## When CI is busy
 
@@ -203,13 +203,13 @@ So far, the number of running jobs has not gone above 500, and it stays at 500 f
  Monday    | ▒░░░░░▓▓▒▒▒▒▓▓▓▒▓▓▒▒░▒░▒     |                   48 |  474 
  Tuesday   | ▒░░░░▒▒▒▒▒▓▓▓▓▓▒▒▒▒▒▒░░░     |                   46 |  489 
  Wednesday | ▒░░░▒▒▓▓▒░▒▒▒▒▒▒▒▒▒░▒▒▒▒     |                   45 |  473 
- Thursday  | ▒░░░░░▒▒▒▒░▒▒░▒░▒▒▒░▒▒░░     |                   34 |  248 
+ Thursday  | ▒░░░░░▒▓▒▒▒▒▒▒▒▒▒▒░░▒▒▒▒     |                   39 |  323 
  Friday    | ░░░▒▒▒▓▒▓░▓▓▓▒▒▓█▒▒▒▒▒░░     |                   51 |  400 
  Saturday  | ░░░░░░░░░░░░░░░░░░░░░░░░     |                   13 |  188 
  Sunday    | ░░░░░░▒░░░░░░░░░░▒▒░░░░▒     |                   20 |  399 
 (8 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/ci-cd/08-busy-hours.sql)
+[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/ci-cd/08-busy-hours.sql)
 
 ## How long jobs wait for a runner
 
@@ -221,11 +221,11 @@ If waits grow, CI has reached the most jobs it can run at once: see the peaks in
 <tr><th>Runner type</th><th style="text-align: right">Jobs</th><th>Median wait</th><th>P90 wait</th><th>Longest wait</th><th style="text-align: right">Waited over a minute</th></tr>
 </thead>
 <tbody>
-<tr><td>ubuntu-latest</td><td style="text-align: right">38710</td><td>2s</td><td>3s</td><td>4m 00s</td><td style="text-align: right">8</td></tr>
-<tr><td>macos-latest</td><td style="text-align: right">153</td><td>3s</td><td>8s</td><td>16s</td><td style="text-align: right">0</td></tr>
+<tr><td>ubuntu-latest</td><td style="text-align: right">40679</td><td>2s</td><td>3s</td><td>4m 00s</td><td style="text-align: right">8</td></tr>
+<tr><td>macos-latest</td><td style="text-align: right">162</td><td>3s</td><td>8s</td><td>16s</td><td style="text-align: right">0</td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/25c0bc616592321a77e5ef9da7c1c649c283e32f/sql/ci-cd/09-queue-time.sql)
+[query](https://github.com/trinodb/reports/blob/a1d9081001b41f064bc4e191448d33f4cf1399dd/sql/ci-cd/09-queue-time.sql)
 
-Generated on Thu Nov 12 18:46:10 UTC 2026
+Generated on Fri Nov 13 06:14:07 UTC 2026
