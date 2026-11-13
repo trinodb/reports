@@ -10,22 +10,22 @@ Failed runs is of the runs of the test's job, one chart character is one day (ol
 <pre><code>
                                    Test                                   | Failed runs |     Failures per day chart     | First  | In PRs |  Last  
 --------------------------------------------------------------------------+-------------+--------------------------------+--------+--------+--------
- TestBigQueryAvroTypeMapping.testJson                                     | 9 of 30     | ▂▂▂▂▂▂▂▂▂..................... | Oct 15 |      0 | <a href="https://github.com/trinodb/trino/actions/runs/39877255747/job/120166183757">Oct 23</a> 
  TestBigQueryArrowTypeMapping.testJson                                    | 9 of 30     | ▂▂▂▂▂▂▂▂▂..................... | Oct 15 |      0 | <a href="https://github.com/trinodb/trino/actions/runs/39877255747/job/120166183757">Oct 23</a> 
+ TestBigQueryAvroTypeMapping.testJson                                     | 9 of 30     | ▂▂▂▂▂▂▂▂▂..................... | Oct 15 |      0 | <a href="https://github.com/trinodb/trino/actions/runs/39877255747/job/120166183757">Oct 23</a> 
  TestHiveDynamicRowFiltering.testJoinWithMultipleDynamicFilters           | 8 of 367    | .........................▂█.▆. | Nov 09 |      6 | <a href="https://github.com/trinodb/trino/actions/runs/43187874314/job/131080341970">Nov 12</a> 
  TestAtLocal.testTime                                                     | 7 of 296    | .................█▂........... | Nov 01 |      4 | <a href="https://github.com/trinodb/trino/actions/runs/41365932744/job/125026379957">Nov 02</a> 
  TestAtLocal.testTimeWithTimeZone                                         | 7 of 296    | .................█▂........... | Nov 01 |      4 | <a href="https://github.com/trinodb/trino/actions/runs/41365932744/job/125026379957">Nov 02</a> 
  TestWorkerRestart.testRestartDuringQuery                                 | 6 of 360    | ..............▂.......▂..▆▂... | Oct 29 |     24 | <a href="https://github.com/trinodb/trino/actions/runs/42822485808/job/129852067424">Nov 10</a> 
- TestMemoryConnectorTest.testSemiJoinLargeBuildSideDynamicFiltering       | 5 of 437    | ..........................█▂.. | Nov 10 |     13 | <a href="https://github.com/trinodb/trino/actions/runs/42982636482/job/130397019713">Nov 11</a> 
  TestMemoryConnectorTest.testJoinLargeBuildSideDynamicFiltering           | 5 of 437    | ..........................█▂.. | Nov 10 |     13 | <a href="https://github.com/trinodb/trino/actions/runs/42982636482/job/130397019713">Nov 11</a> 
+ TestMemoryConnectorTest.testSemiJoinLargeBuildSideDynamicFiltering       | 5 of 437    | ..........................█▂.. | Nov 10 |     13 | <a href="https://github.com/trinodb/trino/actions/runs/42982636482/job/130397019713">Nov 11</a> 
  TestHive3OnDataLake.testFlushPartitionCache                              | 4 of 367    | .............▂.......▂....▂▂.. | Oct 28 |      0 | <a href="https://github.com/trinodb/trino/actions/runs/42929383265/job/130224672041">Nov 11</a> 
  TestThreadPerDriverTaskExecutor.testLeafAdmissionRotatesAcrossTasks      | 4 of 296    | ...............▂...▂▂.▂....... | Oct 30 |      4 | <a href="https://github.com/trinodb/trino/actions/runs/42135011951/job/127621593426">Nov 06</a> 
  TestFakerQueries.testCreateTableAsSelect                                 | 3 of 437    | ....................▂.....▂.▂. | Nov 04 |      0 | <a href="https://github.com/trinodb/trino/actions/runs/43167732658/job/131014106147">Nov 12</a> 
  TestFakerQueries.testZipfDistribution                                    | 3 of 437    | ...................▂▂..▂...... | Nov 03 |      1 | <a href="https://github.com/trinodb/trino/actions/runs/42323554038/job/128253957825">Nov 07</a> 
  TestIcebergBigLakeVendedCredentials.initializationError                  | 3 of 460    | ...................▆.......... | Nov 03 |      1 | <a href="https://github.com/trinodb/trino/actions/runs/41564403847/job/125682889148">Nov 03</a> 
- TestIcebergBigLakeMetastoreConnectorSmokeTest.testCommentView            | 3 of 460    | ...........▆.................. | Oct 26 |      1 | <a href="https://github.com/trinodb/trino/actions/runs/40285903889/job/121449864631">Oct 26</a> 
- TestIcebergBigLakeMetastoreConnectorSmokeTest.testView                   | 3 of 460    | ...........▆.................. | Oct 26 |      1 | <a href="https://github.com/trinodb/trino/actions/runs/40285903889/job/121449864631">Oct 26</a> 
  TestIcebergBigLakeMetastoreConnectorSmokeTest.testCommentViewColumn      | 3 of 460    | ...........▆.................. | Oct 26 |      1 | <a href="https://github.com/trinodb/trino/actions/runs/40285903889/job/121449864631">Oct 26</a> 
+ TestIcebergBigLakeMetastoreConnectorSmokeTest.testView                   | 3 of 460    | ...........▆.................. | Oct 26 |      1 | <a href="https://github.com/trinodb/trino/actions/runs/40285903889/job/121449864631">Oct 26</a> 
+ TestIcebergBigLakeMetastoreConnectorSmokeTest.testCommentView            | 3 of 460    | ...........▆.................. | Oct 26 |      1 | <a href="https://github.com/trinodb/trino/actions/runs/40285903889/job/121449864631">Oct 26</a> 
  TestBigQueryAvroConnectorTest.testBigQueryExternalTable                  | 2 of 365    | ......................▂.....▂. | Nov 06 |      0 | <a href="https://github.com/trinodb/trino/actions/runs/43176846399/job/131043733443">Nov 12</a> 
  TestBigQueryAvroConnectorTest.testExecuteProcedure                       | 2 of 365    | .........................▂▂... | Nov 09 |      0 | <a href="https://github.com/trinodb/trino/actions/runs/42838425442/job/129907943252">Nov 10</a> 
  TestOracleConnectorTest.testInsertRowConcurrently                        | 2 of 352    | .............▂............▂... | Oct 28 |      0 | <a href="https://github.com/trinodb/trino/actions/runs/42726296593/job/129533377136">Nov 10</a> 
@@ -42,7 +42,7 @@ Failed runs is of the runs of the test's job, one chart character is one day (ol
  TestIcebergV2.testOptimizeNotNullViolation                               | 2 of 367    | .......▄...................... | Oct 22 |     12 | <a href="https://github.com/trinodb/trino/actions/runs/39740240594/job/119696046627">Oct 22</a> 
 (30 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/tests/01-failing-tests.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/tests/01-failing-tests.sql)
 
 ## Is a test failure in my pull request known?
 
@@ -87,7 +87,7 @@ Retried counts failures where the same job then passed on the same commit, which
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/tests/02-flaky-tests.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/tests/02-flaky-tests.sql)
 
 ## New test failures
 
@@ -101,14 +101,14 @@ Columns count as in the report above.
 <tbody>
 <tr><td>TestMemoryConnectorTest</td><td style="text-align: right">2</td><td>testJoinLargeBuildSideDynamicFiltering, testSemiJoinLargeBuildSideDynamicFiltering</td><td>Nov 08</td><td style="text-align: right">5</td><td style="text-align: right">13</td><td style="text-align: right">6</td><td>expected: [60139, 3977] but was: [60175, 3977]</td><td><a href="https://github.com/trinodb/trino/actions/runs/43212839825/job/131165334696">Nov 12</a></td></tr>
 <tr><td>TestBigQueryAvroConnectorTest</td><td style="text-align: right">7</td><td>testBigQueryExternalTable, testCountColumn, testDeleteWithSubquery</td><td>Nov 06</td><td style="text-align: right">9</td><td style="text-align: right">0</td><td style="text-align: right">1</td><td>expected: 1L but was: 0L</td><td><a href="https://github.com/trinodb/trino/actions/runs/43176846399/job/131043733443">Nov 12</a></td></tr>
-<tr><td>TestIcebergParquetFaultTolerantExecutionConnectorTest</td><td style="text-align: right">19</td><td>testAlterPartitionColumnPreservesExistingPartitions, testBucketPartitionFilterIncluded, testBucketedJoinOnDecimal</td><td>Nov 09</td><td style="text-align: right">0</td><td style="text-align: right">3</td><td style="text-align: right">0</td><td>Execution of 'actual' query 20261111_114619_00355_ugbyf failed: CREATE TABLE test_create_partitioned_table_as WITH (form</td><td><a href="https://github.com/trinodb/trino/actions/runs/43013512392/job/130499747272">Nov 11</a></td></tr>
+<tr><td>TestIcebergParquetFaultTolerantExecutionConnectorTest</td><td style="text-align: right">19</td><td>testAlterPartitionColumnPreservesExistingPartitions, testBucketPartitionFilterIncluded, testBucketedJoinOnDecimal</td><td>Nov 09</td><td style="text-align: right">0</td><td style="text-align: right">3</td><td style="text-align: right">0</td><td>Operation not supported by `ObjectWriteContext` of type tools.jackson.core.ObjectWriteContext$Base</td><td><a href="https://github.com/trinodb/trino/actions/runs/43013512392/job/130499747272">Nov 11</a></td></tr>
 <tr><td>TestIcebergV2ParquetConnectorTest</td><td style="text-align: right">2</td><td>testColumnTypeEvolutionWithStatistics, testSplitPruningFromDataFileStatistics</td><td>Nov 09</td><td style="text-align: right">0</td><td style="text-align: right">2</td><td style="text-align: right">0</td><td>Expecting actual: 1434B to be less than: 1434B</td><td><a href="https://github.com/trinodb/trino/actions/runs/42806536292/job/129797866769">Nov 10</a></td></tr>
 <tr><td>TestIcebergV3ParquetConnectorTest</td><td style="text-align: right">2</td><td>testColumnTypeEvolutionWithStatistics, testSplitPruningFromDataFileStatistics</td><td>Nov 09</td><td style="text-align: right">0</td><td style="text-align: right">2</td><td style="text-align: right">0</td><td>Expecting actual: 1434B to be less than: 1434B</td><td><a href="https://github.com/trinodb/trino/actions/runs/42806536292/job/129797866769">Nov 10</a></td></tr>
 <tr><td>TestHiveConnectorTest</td><td style="text-align: right">4</td><td>testCreateSchemaWithAuthorizationForRole, testPredicatePushdownWithLambdaExpression, testSchemaAuthorizationForRole</td><td>Nov 11</td><td style="text-align: right">0</td><td style="text-align: right">2</td><td style="text-align: right">0</td><td>Could not write roleGrants</td><td><a href="https://github.com/trinodb/trino/actions/runs/43284803691/job/131416275309">Nov 12</a></td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/tests/03-new-failures.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/tests/03-new-failures.sql)
 
 ## Flaky jobs
 
@@ -138,7 +138,7 @@ Attempts where more than 4 jobs failed like this are outages, and are left out. 
  pt (SuiteHiveStorageFormats)             |     2 | 1552 | 0.1% | 5m 35s    | ...▃.▃........................ | <a href="https://github.com/trinodb/trino/actions/runs/39388712910/job/118517550570">Oct 20 07:53</a> <a href="https://github.com/trinodb/trino/actions/runs/39177624702/job/117824905504">Oct 18 23:49</a> 
 (18 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/tests/04-flaky-jobs.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/tests/04-flaky-jobs.sql)
 
 ## Why CI jobs fail
 
@@ -176,6 +176,6 @@ In pull requests most failures come from unfinished changes; in the merge queue 
  2026-08-17 | pull requests        |         251 |        1211 | 29%   | 48%     | 9%    | 0%       | 12%   | █████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒···· 
 (26 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/tests/05-failure-categories.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/tests/05-failure-categories.sql)
 
-Generated on Fri Nov 13 19:34:36 UTC 2026
+Generated on Fri Nov 13 19:41:23 UTC 2026

@@ -23,7 +23,7 @@ Work that waits on maintainers, reviewers, or anyone who can answer, and how muc
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/overview/01-needs-attention.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/overview/01-needs-attention.sql)
 
 ## The project in numbers
 
@@ -35,8 +35,8 @@ Response numbers are for pull requests opened at least 7 days before the end of 
 ---------------+-------------------------------------+--------------+------------------+-------------------+----------------+----------------+-----------------------------------------------------
  Pull requests | Opened by people                    | 402          | ▲ +28% better    | ▅▃▄▅▆▄▅▆▅▆▇█      | 2975           | ▲ +45% better  | <a href="https://trinodb.github.io/reports/reports/contributing/#pull-requests-per-quarter">Pull requests per quarter</a>                           
                | Merged                              | 251          | ▼ -7% worse      | ▅▃▄▄▅▅▅▆▄▅██      | 1976           | ▲ +26% better  | <a href="https://trinodb.github.io/reports/reports/contributing/#pull-requests-per-quarter">Pull requests per quarter</a>                           
-               | Median time to merge                | 19h 02m      | ▼ -30% better    | ▄█▃▂▃▅▅▄▄▅▆▄      | 20h 11m        | ▲ +59% worse   | <a href="https://trinodb.github.io/reports/reports/contributing/#time-to-merge-per-quarter">Time to merge per quarter</a>                           
-               | Median time to first response       | 10h 11m      | ▲ +71% worse     | ▂▇▅▃▃▃▄█▆▇▅█      | 5h 36m         | ▲ +105% worse  | <a href="https://trinodb.github.io/reports/reports/maintaining/#how-fast-do-reviewers-respond">How fast do reviewers respond?</a>                      
+               | Median time to merge                | 19h 02m      | ▼ -30% better    | ▄█▃▂▃▅▅▄▄▅▆▄      | 20h 07m        | ▲ +64% worse   | <a href="https://trinodb.github.io/reports/reports/contributing/#time-to-merge-per-quarter">Time to merge per quarter</a>                           
+               | Median time to first response       | 10h 11m      | ▲ +71% worse     | ▂▇▅▃▃▃▄█▆▇▅█      | 5h 41m         | ▲ +105% worse  | <a href="https://trinodb.github.io/reports/reports/maintaining/#how-fast-do-reviewers-respond">How fast do reviewers respond?</a>                      
                | No response within 7 days           | 21%          | ▲ +5 pts worse   | ▂▄▅▃▄▅▅█▇▆▄▆      | 18%            | ▲ +6 pts worse | <a href="https://trinodb.github.io/reports/reports/maintaining/#waiting-on-reviewers-pick-from-the-top">Waiting on reviewers: pick from the top</a>             
                | Open now                            | 298          | = 0% steady      | ▄▄▅▅▅▆▇▇██▇▇      | 298            | ▲ +78% worse   | <a href="https://trinodb.github.io/reports/reports/maintaining/#is-the-backlog-growing">Is the backlog growing?</a>                             
  People        | Opened a pull request               | 82           | ▼ -6% worse      | ▄▅▅▆▆▅▇▇▇███      | 389            | ▲ +59% better  | <a href="https://trinodb.github.io/reports/reports/community/#is-the-community-growing">Is the community growing?</a>                           
@@ -45,10 +45,10 @@ Response numbers are for pull requests opened at least 7 days before the end of 
  Issues        | Opened                              | 72           | ▼ -4%            | ▅▄██▅▅▅▄▆██▇      | 727            | ▼ -9%          | <a href="https://trinodb.github.io/reports/reports/community/#are-issues-handled-as-fast-as-they-come-in">Are issues handled as fast as they come in?</a>         
                | Open now                            | 2465         | = 0% steady      | ████████████      | 2465           | ▲ +5% worse    | <a href="https://trinodb.github.io/reports/reports/community/#which-areas-get-the-most-issues">Which areas get the most issues?</a>                    
  CI            | Merge queue success rate            | 69%          | ▲ +15 pts better |      ▅▆▇▆▄▇█      | 47%            |                | <a href="https://trinodb.github.io/reports/reports/ci-cd/#which-jobs-fail-in-the-merge-queue-and-nightly-runs">Which jobs fail in the merge queue and nightly runs</a> 
-               | Median duration of a passing PR run | 36m 28s      | ▼ -3% steady     | █████████▇▆▆      | 42m 13s        |                | <a href="https://trinodb.github.io/reports/reports/ci-cd/#how-long-a-ci-run-takes">How long a CI run takes</a>                             
+               | Median duration of a passing PR run | 36m 28s      | ▼ -3% steady     | █████████▇▆▆      | 42m 26s        |                | <a href="https://trinodb.github.io/reports/reports/ci-cd/#how-long-a-ci-run-takes">How long a CI run takes</a>                             
 (13 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/overview/02-headline-numbers.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/overview/02-headline-numbers.sql)
 
 ## The last 30 days
 
@@ -70,6 +70,6 @@ What happened, and who made it happen. Say thanks, and welcome the people who ju
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/overview/03-highlights.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/overview/03-highlights.sql)
 
-Generated on Fri Nov 13 19:33:52 UTC 2026
+Generated on Fri Nov 13 19:40:30 UTC 2026

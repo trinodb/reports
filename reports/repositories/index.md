@@ -10,7 +10,7 @@ A repository with many open pull requests or issues, or a slow first response, n
 <pre><code>
      Repository      | People | PRs | Merged | First response | Open PRs | Issues | Open issues | Bot PRs / open | PRs per month, 24 months chart 
 ---------------------+--------+-----+--------+----------------+----------+--------+-------------+----------------+--------------------------------
- trino-gateway       |     75 | 173 |    116 | 14h 19m        |       36 |     53 |         119 | 404 / 1        | ▄▄▅▃▂▂▄▅▃▂▃▂▃▆▅▃▂▂▃▃▂▄█▂       
+ trino-gateway       |     75 | 173 |    116 | 13h 58m        |       36 |     53 |         119 | 404 / 1        | ▄▄▅▃▂▂▄▅▃▂▃▂▃▆▅▃▂▂▃▃▂▄█▂       
  trino-go-client     |      8 |  94 |     87 | 2d 23h         |        3 |     39 |           2 | 0 / 0          | .▁▁▁▁▁.▁▁▁.▂▁...▁..▁▁▄█▃       
  charts              |     46 |  60 |     39 | 1d 13h         |        5 |     16 |          11 | 18 / 3         | ▄▆▃▆▄█▃▄.▃..▂▄▁▄▆▃▄▂▂▂█.       
  trino-python-client |     37 |  52 |     29 | 4d 1h          |       27 |     20 |          33 | 0 / 0          | ▆▆▆▂▃▂▃▃▂.▁.▂▃▁▃▃▂▅█▆▅▄▁       
@@ -20,7 +20,7 @@ A repository with many open pull requests or issues, or a slow first response, n
  trino-csharp-client |     10 |   4 |      0 | 7h 46m         |       11 |      3 |          14 | 0 / 0          | █▄▄▅▅.....▂..▂▂......▄..       
 (8 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/repositories/01-activity.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/repositories/01-activity.sql)
 
 ## Open pull requests
 
@@ -34,21 +34,21 @@ Merge or close approved pull requests, answer the ones without a response, and a
 <tbody>
 <tr><td>charts</td><td><a href="https://github.com/trinodb/charts/pull/468">#468</a></td><td>Release Trino Gateway chart 1.23.0</td><td><a href="https://github.com/mosabua">mosabua</a></td><td>23d 23h</td><td>no response</td><td></td></tr>
 <tr><td>charts</td><td><a href="https://github.com/trinodb/charts/pull/471">#471</a></td><td>Add HTTPRoute support to the Trino Gateway chart</td><td><a href="https://github.com/sdaberdaku">sdaberdaku</a></td><td>16d 0h</td><td>no response</td><td></td></tr>
-<tr><td>charts</td><td><a href="https://github.com/trinodb/charts/pull/472">#472</a></td><td>Allow an existing Secret for the Trino Gateway configuration</td><td><a href="https://github.com/sdaberdaku">sdaberdaku</a></td><td>15d 23h</td><td>no response</td><td></td></tr>
+<tr><td>charts</td><td><a href="https://github.com/trinodb/charts/pull/472">#472</a></td><td>Allow an existing Secret for the Trino Gateway configuration</td><td><a href="https://github.com/sdaberdaku">sdaberdaku</a></td><td>16d 0h</td><td>no response</td><td></td></tr>
 <tr><td>charts</td><td><a href="https://github.com/trinodb/charts/pull/178">#178</a></td><td>Test with dynamic catalogs</td><td><a href="https://github.com/nineinchnick">nineinchnick</a></td><td>895d 8h</td><td>commented</td><td>893d 3h</td></tr>
 <tr><td>charts</td><td><a href="https://github.com/trinodb/charts/pull/409">#409</a></td><td>Add query-manager.required-workers guidance to KEDA documentation</td><td><a href="https://github.com/jmealo">jmealo</a></td><td>231d 1h</td><td>commented</td><td>34d 6h</td></tr>
 <tr><td>grafana-trino</td><td><a href="https://github.com/trinodb/grafana-trino/pull/389">#389</a></td><td>Add a setting to limit the rows read from a query</td><td><a href="https://github.com/MaelNedellec">MaelNedellec</a></td><td>1d 3h</td><td>no response</td><td></td></tr>
 <tr><td>grafana-trino</td><td><a href="https://github.com/trinodb/grafana-trino/pull/382">#382</a></td><td>Allow excluding impersonation for Grafana alerts</td><td><a href="https://github.com/vinzee">vinzee</a></td><td>16d 17h</td><td>commented</td><td>11d 1h</td></tr>
 <tr><td>grafana-trino</td><td><a href="https://github.com/trinodb/grafana-trino/pull/365">#365</a></td><td>Add optional asynchronous query polling</td><td><a href="https://github.com/Flgado">Flgado</a></td><td>38d 0h</td><td>commented</td><td>3d 8h</td></tr>
 <tr><td>trino-csharp-client</td><td><a href="https://github.com/trinodb/trino-csharp-client/pull/4">#4</a></td><td>Add release labelling</td><td><a href="https://github.com/mosabua">mosabua</a></td><td>694d 22h</td><td>approved</td><td>692d 19h</td></tr>
-<tr><td>trino-csharp-client</td><td><a href="https://github.com/trinodb/trino-csharp-client/pull/15">#15</a></td><td>Fix error deserialization with non-empty suppressed filed</td><td><a href="https://github.com/stelmukhov">stelmukhov</a></td><td>623d 8h</td><td>approved</td><td>600d 23h</td></tr>
-<tr><td>trino-csharp-client</td><td><a href="https://github.com/trinodb/trino-csharp-client/pull/21">#21</a></td><td>Add the toString override to build the role header string</td><td><a href="https://github.com/SaravananPrasadh-SP">SaravananPrasadh-SP</a></td><td>599d 4h</td><td>approved</td><td>591d 22h</td></tr>
+<tr><td>trino-csharp-client</td><td><a href="https://github.com/trinodb/trino-csharp-client/pull/15">#15</a></td><td>Fix error deserialization with non-empty suppressed filed</td><td><a href="https://github.com/stelmukhov">stelmukhov</a></td><td>623d 8h</td><td>approved</td><td>601d 0h</td></tr>
+<tr><td>trino-csharp-client</td><td><a href="https://github.com/trinodb/trino-csharp-client/pull/21">#21</a></td><td>Add the toString override to build the role header string</td><td><a href="https://github.com/SaravananPrasadh-SP">SaravananPrasadh-SP</a></td><td>599d 5h</td><td>approved</td><td>591d 22h</td></tr>
 <tr><td>trino-csharp-client</td><td><a href="https://github.com/trinodb/trino-csharp-client/pull/26">#26</a></td><td>Fix httpClient initialization in StatementClientV1 class.</td><td><a href="https://github.com/Szychulski">Szychulski</a></td><td>563d 9h</td><td>approved</td><td>512d 0h</td></tr>
 <tr><td>trino-csharp-client</td><td><a href="https://github.com/trinodb/trino-csharp-client/pull/13">#13</a></td><td>Fix NaN values handling in the progressPercentage property</td><td><a href="https://github.com/stelmukhov">stelmukhov</a></td><td>630d 8h</td><td>approved</td><td>267d 5h</td></tr>
 <tr><td>trino-csharp-client</td><td><a href="https://github.com/trinodb/trino-csharp-client/pull/34">#34</a></td><td>Add release flow for nuget.org</td><td><a href="https://github.com/mosabua">mosabua</a></td><td>266d 17h</td><td>approved</td><td>266d 9h</td></tr>
 <tr><td>trino-csharp-client</td><td><a href="https://github.com/trinodb/trino-csharp-client/pull/33">#33</a></td><td>bugfix: json response fails because of wrong field type "suppressed"</td><td><a href="https://github.com/razgaou">razgaou</a></td><td>289d 8h</td><td>no response</td><td></td></tr>
 <tr><td>trino-csharp-client</td><td><a href="https://github.com/trinodb/trino-csharp-client/pull/25">#25</a></td><td>Fix case when cancellation token was requested but query was not ca...</td><td><a href="https://github.com/MAF1N">MAF1N</a></td><td>581d 4h</td><td>commented</td><td>573d 1h</td></tr>
-<tr><td>trino-gateway</td><td><a href="https://github.com/trinodb/trino-gateway/pull/923">#923</a></td><td>Refactor routing logics and remove unused lookups</td><td><a href="https://github.com/oneonestar">oneonestar</a></td><td>269d 11h</td><td>approved</td><td>18d 2h</td></tr>
+<tr><td>trino-gateway</td><td><a href="https://github.com/trinodb/trino-gateway/pull/923">#923</a></td><td>Refactor routing logics and remove unused lookups</td><td><a href="https://github.com/oneonestar">oneonestar</a></td><td>269d 12h</td><td>approved</td><td>18d 2h</td></tr>
 <tr><td>trino-gateway</td><td><a href="https://github.com/trinodb/trino-gateway/pull/1380">#1380</a></td><td>Tighten routing fallback tests and error responses</td><td><a href="https://github.com/Chaho12">Chaho12</a></td><td>16d 11h</td><td>approved</td><td>16d 6h</td></tr>
 <tr><td>trino-gateway</td><td><a href="https://github.com/trinodb/trino-gateway/pull/1223">#1223</a></td><td>Support current Trino in cluster stats monitors</td><td><a href="https://github.com/mosabua">mosabua</a></td><td>100d 13h</td><td>approved</td><td>14d 17h</td></tr>
 <tr><td>trino-gateway</td><td><a href="https://github.com/trinodb/trino-gateway/pull/1279">#1279</a></td><td>Fix corruption and truncation of proxied responses</td><td><a href="https://github.com/nandaqmr">nandaqmr</a></td><td>54d 1h</td><td>approved</td><td>10d 21h</td></tr>
@@ -62,21 +62,21 @@ Merge or close approved pull requests, answer the ones without a response, and a
 <tr><td>trino-js-client</td><td><a href="https://github.com/trinodb/trino-js-client/pull/994">#994</a></td><td>Export the Trino header names</td><td><a href="https://github.com/mosabua">mosabua</a></td><td>45d 19h</td><td>no response</td><td></td></tr>
 <tr><td>trino-js-client</td><td><a href="https://github.com/trinodb/trino-js-client/pull/1003">#1003</a></td><td>Add AbortSignal support to query</td><td><a href="https://github.com/arcman7">arcman7</a></td><td>35d 23h</td><td>no response</td><td></td></tr>
 <tr><td>trino-js-client</td><td><a href="https://github.com/trinodb/trino-js-client/pull/855">#855</a></td><td>feat: add jwt auth (#524)</td><td><a href="https://github.com/emmc15">emmc15</a></td><td>483d 15h</td><td>commented</td><td>289d 2h</td></tr>
-<tr><td>trino-js-client</td><td><a href="https://github.com/trinodb/trino-js-client/pull/944">#944</a></td><td>add abortSignal support to query()</td><td><a href="https://github.com/SamBove">SamBove</a></td><td>353d 22h</td><td>commented</td><td>70d 19h</td></tr>
+<tr><td>trino-js-client</td><td><a href="https://github.com/trinodb/trino-js-client/pull/944">#944</a></td><td>add abortSignal support to query()</td><td><a href="https://github.com/SamBove">SamBove</a></td><td>353d 22h</td><td>commented</td><td>70d 20h</td></tr>
 <tr><td>trino-js-client</td><td><a href="https://github.com/trinodb/trino-js-client/pull/956">#956</a></td><td>Remove axios in favor of native fetch + undici</td><td><a href="https://github.com/GeoBradDev">GeoBradDev</a></td><td>176d 18h</td><td>commented</td><td>34d 19h</td></tr>
-<tr><td>trino-python-client</td><td><a href="https://github.com/trinodb/trino-python-client/pull/400">#400</a></td><td>add an option to deferred fetch result in Cursor.execute()</td><td><a href="https://github.com/dungdm93">dungdm93</a></td><td>1193d 10h</td><td>approved</td><td>1142d 10h</td></tr>
+<tr><td>trino-python-client</td><td><a href="https://github.com/trinodb/trino-python-client/pull/400">#400</a></td><td>add an option to deferred fetch result in Cursor.execute()</td><td><a href="https://github.com/dungdm93">dungdm93</a></td><td>1193d 10h</td><td>approved</td><td>1142d 11h</td></tr>
 <tr><td>trino-python-client</td><td><a href="https://github.com/trinodb/trino-python-client/pull/322">#322</a></td><td>Add type hints for sqlalchemy</td><td><a href="https://github.com/damian3031">damian3031</a></td><td>1400d 10h</td><td>no response</td><td></td></tr>
 <tr><td>trino-python-client</td><td><a href="https://github.com/trinodb/trino-python-client/pull/631">#631</a></td><td>Add literal_processor to TIMESTAMP, TIME and DATE SQLAlchemy types</td><td><a href="https://github.com/hashhar">hashhar</a></td><td>87d 4h</td><td>no response</td><td></td></tr>
 <tr><td>trino-python-client</td><td><a href="https://github.com/trinodb/trino-python-client/pull/645">#645</a></td><td>Acknowledge spooled segments once decoded</td><td><a href="https://github.com/aminghadersohi">aminghadersohi</a></td><td>48d 5h</td><td>no response</td><td></td></tr>
-<tr><td>trino-python-client</td><td><a href="https://github.com/trinodb/trino-python-client/pull/646">#646</a></td><td>Use GitHub App token in Python versions update workflow</td><td><a href="https://github.com/hashhar">hashhar</a></td><td>42d 2h</td><td>no response</td><td></td></tr>
+<tr><td>trino-python-client</td><td><a href="https://github.com/trinodb/trino-python-client/pull/646">#646</a></td><td>Use GitHub App token in Python versions update workflow</td><td><a href="https://github.com/hashhar">hashhar</a></td><td>42d 3h</td><td>no response</td><td></td></tr>
 <tr><td>trino-python-client</td><td><a href="https://github.com/trinodb/trino-python-client/pull/647">#647</a></td><td>Enable SQL compilation caching for the ignore-nulls window functions</td><td><a href="https://github.com/rebkwok">rebkwok</a></td><td>28d 5h</td><td>no response</td><td></td></tr>
 <tr><td>trino-python-client</td><td><a href="https://github.com/trinodb/trino-python-client/pull/648">#648</a></td><td>docs: document all Connection parameters in docstring and README</td><td><a href="https://github.com/Shahzeb-DataEngineer">Shahzeb-DataEngineer</a></td><td>21d 14h</td><td>no response</td><td></td></tr>
 <tr><td>trino-python-client</td><td><a href="https://github.com/trinodb/trino-python-client/pull/650">#650</a></td><td>Quote schema and table in SQLAlchemy partitions lookup</td><td><a href="https://github.com/RaphaelFakhri">RaphaelFakhri</a></td><td>19d 11h</td><td>no response</td><td></td></tr>
-<tr><td>trino-query-ui</td><td><a href="https://github.com/trinodb/trino-query-ui/pull/93">#93</a></td><td>Verify formatted SQL with the lexer</td><td><a href="https://github.com/mosabua">mosabua</a></td><td>29d 14h</td><td>no response</td><td></td></tr>
+<tr><td>trino-query-ui</td><td><a href="https://github.com/trinodb/trino-query-ui/pull/93">#93</a></td><td>Verify formatted SQL with the lexer</td><td><a href="https://github.com/mosabua">mosabua</a></td><td>29d 15h</td><td>no response</td><td></td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/repositories/02-open-pull-requests.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/repositories/02-open-pull-requests.sql)
 
 ## Issues without an answer
 
@@ -95,7 +95,7 @@ An answer, even a question or a label, tells the reporter that someone read it. 
 <tr><td>trino-csharp-client</td><td><a href="https://github.com/trinodb/trino-csharp-client/issues/36">#36</a></td><td>Nuget package</td><td><a href="https://github.com/jzabroski">jzabroski</a></td><td>211d 2h</td></tr>
 <tr><td>trino-gateway</td><td><a href="https://github.com/trinodb/trino-gateway/issues/822">#822</a></td><td>Avoid FixedHostPortGenericContainer in TestOIDC</td><td><a href="https://github.com/ebyhr">ebyhr</a></td><td>314d 10h</td></tr>
 <tr><td>trino-gateway</td><td><a href="https://github.com/trinodb/trino-gateway/issues/878">#878</a></td><td>Routing rules execute all matching rules' actions instead of stopping at firs...</td><td><a href="https://github.com/Setsushin">Setsushin</a></td><td>288d 9h</td></tr>
-<tr><td>trino-gateway</td><td><a href="https://github.com/trinodb/trino-gateway/issues/1171">#1171</a></td><td>Extending Trino Gateway to route to Kyuubi (and beyond Trino)</td><td><a href="https://github.com/Chaho12">Chaho12</a></td><td>126d 15h</td></tr>
+<tr><td>trino-gateway</td><td><a href="https://github.com/trinodb/trino-gateway/issues/1171">#1171</a></td><td>Extending Trino Gateway to route to Kyuubi (and beyond Trino)</td><td><a href="https://github.com/Chaho12">Chaho12</a></td><td>126d 16h</td></tr>
 <tr><td>trino-gateway</td><td><a href="https://github.com/trinodb/trino-gateway/issues/1217">#1217</a></td><td>Allow a backend cluster to belong to multiple routing groups (1:1 -&gt; 1:N)</td><td><a href="https://github.com/Chaho12">Chaho12</a></td><td>101d 12h</td></tr>
 <tr><td>trino-gateway</td><td><a href="https://github.com/trinodb/trino-gateway/issues/1219">#1219</a></td><td>ClusterStatsHttpMonitor is broken with Trino 483+</td><td><a href="https://github.com/mosabua">mosabua</a></td><td>100d 15h</td></tr>
 <tr><td>trino-gateway</td><td><a href="https://github.com/trinodb/trino-gateway/issues/1235">#1235</a></td><td>Routing group follow-up requests fail in multi-pod trino-gateway's</td><td><a href="https://github.com/hpopuri2">hpopuri2</a></td><td>92d 10h</td></tr>
@@ -115,7 +115,7 @@ An answer, even a question or a label, tells the reporter that someone read it. 
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/repositories/03-unanswered-issues.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/repositories/03-unanswered-issues.sql)
 
 ## First-time contributors
 
@@ -160,7 +160,7 @@ A quick first response keeps new people coming back. Thank them, and point them 
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/repositories/04-first-time-contributors.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/repositories/04-first-time-contributors.sql)
 
 ## Who reviews
 
@@ -183,6 +183,6 @@ When one person reviews almost everything, the repository stops when they're awa
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/repositories/05-reviewers.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/repositories/05-reviewers.sql)
 
-Generated on Fri Nov 13 19:35:08 UTC 2026
+Generated on Fri Nov 13 19:42:01 UTC 2026

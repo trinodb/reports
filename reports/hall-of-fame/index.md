@@ -24,7 +24,7 @@ People whose first pull request was merged in the last 30 days, newest first. If
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/hall-of-fame/01-welcome.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/01-welcome.sql)
 
 ## Milestones
 
@@ -45,7 +45,7 @@ People whose 10th, 25th, 50th, 100th, 250th, 500th, or 1000th pull request was m
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/hall-of-fame/02-milestones.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/02-milestones.sql)
 
 ## Top authors of the last 12 months
 
@@ -76,7 +76,7 @@ People with the most merged pull requests in the last 12 months. The change is t
    19 | ▼ 10   |                   17 | ██                             | <a href="https://github.com/koszti">koszti</a>            
 (20 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/hall-of-fame/03-top-authors.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/03-top-authors.sql)
 
 ## Top reviewers of the last 12 months
 
@@ -107,7 +107,7 @@ People who reviewed the most pull requests of other people in the last 12 months
    20 | ▲ 25   |                     20 | █                              | <a href="https://github.com/koszti">koszti</a>          
 (20 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/hall-of-fame/04-top-reviewers.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/04-top-reviewers.sql)
 
 ## Top mergers of the last 12 months
 
@@ -132,7 +132,7 @@ Maintainers who merged the most pull requests of other people in the last 12 mon
    14 | ▼ 6    |                    1 | ▏                              | <a href="https://github.com/hashhar">hashhar</a>       
 (14 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/hall-of-fame/05-top-mergers.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/05-top-mergers.sql)
 
 ## Who reviews whom
 
@@ -159,7 +159,7 @@ Use it to find who reviews the work in an author's area, so who to ask for a rev
  p3tr0sz           |                25 | ░ ░ ▒ ░   ░ ▓ ░   ░     |                 
 (15 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/hall-of-fame/06-who-reviews-whom.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/06-who-reviews-whom.sql)
 
 ## Who merges whose work
 
@@ -194,7 +194,7 @@ A long-standing pair often means a mentor, or the go-to maintainer for an area. 
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/hall-of-fame/07-author-merger-pairs.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/07-author-merger-pairs.sql)
 
 ## Steady contributors
 
@@ -226,7 +226,7 @@ Steady, long-term work keeps the project going, even when it never tops a rankin
             18 |                 66 | ▄▇▄█▁▂.▁▃.▄▅▅.▄▂▆▁.▃▂.▄. | <a href="https://github.com/ksobolew">ksobolew</a>      
 (20 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/hall-of-fame/08-steady-contributors.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/08-steady-contributors.sql)
 
 ## All-time top 10
 
@@ -250,6 +250,6 @@ The people who authored, reviewed, and merged the most pull requests since the p
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/hall-of-fame/09-all-time.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/09-all-time.sql)
 
-Generated on Fri Nov 13 19:35:15 UTC 2026
+Generated on Fri Nov 13 19:42:09 UTC 2026

@@ -14,15 +14,15 @@ The age columns count from when the pull request got into its state. Newcomers h
 <tbody>
 <tr><td>Approved, not merged</td><td>Maintainers</td><td style="text-align: right">39</td><td style="text-align: right">7</td><td style="text-align: right">10</td><td style="text-align: right">12</td><td style="text-align: right">5</td><td style="text-align: right">7</td><td style="text-align: right">5</td><td>24d 3h</td><td style="text-align: right">3</td><td style="text-align: right">9</td></tr>
 <tr><td>No response yet</td><td>Reviewers</td><td style="text-align: right">48</td><td style="text-align: right">14</td><td style="text-align: right">8</td><td style="text-align: right">19</td><td style="text-align: right">11</td><td style="text-align: right">10</td><td style="text-align: right">0</td><td>24d 9h</td><td style="text-align: right">8</td><td style="text-align: right">6</td></tr>
-<tr><td>Author replied, waiting on reviewers</td><td>Reviewers</td><td style="text-align: right">63</td><td style="text-align: right">20</td><td style="text-align: right">10</td><td style="text-align: right">11</td><td style="text-align: right">24</td><td style="text-align: right">10</td><td style="text-align: right">8</td><td>46d 5h</td><td style="text-align: right">11</td><td style="text-align: right">23</td></tr>
+<tr><td>Author replied, waiting on reviewers</td><td>Reviewers</td><td style="text-align: right">63</td><td style="text-align: right">20</td><td style="text-align: right">10</td><td style="text-align: right">11</td><td style="text-align: right">24</td><td style="text-align: right">10</td><td style="text-align: right">8</td><td>46d 6h</td><td style="text-align: right">11</td><td style="text-align: right">23</td></tr>
 <tr><td>Reviewer replied, waiting on the author</td><td>Author</td><td style="text-align: right">61</td><td style="text-align: right">12</td><td style="text-align: right">11</td><td style="text-align: right">12</td><td style="text-align: right">12</td><td style="text-align: right">9</td><td style="text-align: right">17</td><td>45d 11h</td><td style="text-align: right">10</td><td style="text-align: right">33</td></tr>
 <tr><td>CLA not signed</td><td>Author</td><td style="text-align: right">49</td><td style="text-align: right">49</td><td style="text-align: right">11</td><td style="text-align: right">28</td><td style="text-align: right">9</td><td style="text-align: right">0</td><td style="text-align: right">1</td><td>16d 9h</td><td style="text-align: right">8</td><td style="text-align: right">1</td></tr>
-<tr><td>Draft</td><td>Author</td><td style="text-align: right">38</td><td style="text-align: right">7</td><td style="text-align: right">12</td><td style="text-align: right">14</td><td style="text-align: right">7</td><td style="text-align: right">4</td><td style="text-align: right">1</td><td>16d 13h</td><td style="text-align: right">9</td><td style="text-align: right">11</td></tr>
+<tr><td>Draft</td><td>Author</td><td style="text-align: right">38</td><td style="text-align: right">7</td><td style="text-align: right">12</td><td style="text-align: right">14</td><td style="text-align: right">7</td><td style="text-align: right">4</td><td style="text-align: right">1</td><td>16d 14h</td><td style="text-align: right">9</td><td style="text-align: right">11</td></tr>
 <tr><td>All open pull requests</td><td></td><td style="text-align: right">298</td><td style="text-align: right">109</td><td style="text-align: right">62</td><td style="text-align: right">96</td><td style="text-align: right">68</td><td style="text-align: right">40</td><td style="text-align: right">32</td><td>24d 14h</td><td style="text-align: right">49</td><td style="text-align: right">83</td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/maintaining/01-triage.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/maintaining/01-triage.sql)
 
 ## First pull requests without any response
 
@@ -51,7 +51,7 @@ Marked stale: the stale bot closes it 21 days after marking it, unless someone a
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/maintaining/02-newcomers-without-response.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/maintaining/02-newcomers-without-response.sql)
 
 ## Approved, not merged
 
@@ -105,7 +105,7 @@ Check that the author answered all comments and that CI passed. Bots' pull reque
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/maintaining/03-approved-not-merged.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/maintaining/03-approved-not-merged.sql)
 
 ## Waiting on reviewers: pick from the top
 
@@ -150,7 +150,7 @@ First come authors with fewer than 10 merged pull requests whose pull request th
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/maintaining/04-waiting-on-reviewers.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/maintaining/04-waiting-on-reviewers.sql)
 
 ## Waiting on the author for over 4 weeks
 
@@ -167,7 +167,7 @@ The stale bot closes inactive pull requests by itself, but never those labeled s
 <tr><td><a href="https://github.com/trinodb/trino/pull/15288">#15288</a></td><td>Add a new optimization rule: query fusion</td><td><a href="https://github.com/weiatwork">weiatwork</a></td><td>reviewer replied</td><td style="text-align: right">1036</td><td><a href="https://github.com/SongChujun">SongChujun</a></td><td>XL</td><td>stale-ignore</td></tr>
 <tr><td><a href="https://github.com/trinodb/trino/pull/16558">#16558</a></td><td>add header authentication support for the web-ui</td><td><a href="https://github.com/kenandominic">kenandominic</a></td><td>reviewer replied</td><td style="text-align: right">996</td><td><a href="https://github.com/Chaho12">Chaho12</a></td><td>S</td><td>stale-ignore</td></tr>
 <tr><td><a href="https://github.com/trinodb/trino/pull/21243">#21243</a></td><td>include null audience only if no additional audiences configured</td><td><a href="https://github.com/PratikDeshpande">PratikDeshpande</a></td><td>CLA not signed</td><td style="text-align: right">963</td><td></td><td>XS</td><td>stale-ignore</td></tr>
-<tr><td><a href="https://github.com/trinodb/trino/pull/17288">#17288</a></td><td>Fill TupleDomain and expression in Constraint passed to ConnectorSplit</td><td><a href="https://github.com/findepi">findepi</a></td><td>reviewer replied</td><td style="text-align: right">951</td><td><a href="https://github.com/mosabua">mosabua</a></td><td>S</td><td>stale-ignore</td></tr>
+<tr><td><a href="https://github.com/trinodb/trino/pull/17288">#17288</a></td><td>Fill TupleDomain and expression in Constraint passed to ConnectorSplit</td><td><a href="https://github.com/findepi">findepi</a></td><td>reviewer replied</td><td style="text-align: right">952</td><td><a href="https://github.com/mosabua">mosabua</a></td><td>S</td><td>stale-ignore</td></tr>
 <tr><td><a href="https://github.com/trinodb/trino/pull/21060">#21060</a></td><td>Add writer and scale writer stats</td><td><a href="https://github.com/gaurav8297">gaurav8297</a></td><td>reviewer replied</td><td style="text-align: right">948</td><td><a href="https://github.com/sopel39">sopel39</a></td><td>M</td><td>stale-ignore</td></tr>
 <tr><td><a href="https://github.com/trinodb/trino/pull/21196">#21196</a></td><td>Use only single-parameter argument conventions</td><td><a href="https://github.com/kasiafi">kasiafi</a></td><td>reviewer replied</td><td style="text-align: right">921</td><td><a href="https://github.com/mosabua">mosabua</a></td><td>S</td><td>stale-ignore</td></tr>
 <tr><td><a href="https://github.com/trinodb/trino/pull/21558">#21558</a></td><td>Fix table function execution without partitioning (v2)</td><td><a href="https://github.com/findepi">findepi</a></td><td>reviewer replied</td><td style="text-align: right">896</td><td><a href="https://github.com/tbaeg">tbaeg</a></td><td>M</td><td>stale-ignore</td></tr>
@@ -195,7 +195,7 @@ The stale bot closes inactive pull requests by itself, but never those labeled s
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/maintaining/05-waiting-on-author.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/maintaining/05-waiting-on-author.sql)
 
 ## Review requests and review load per person
 
@@ -240,7 +240,7 @@ GitHub drops a request once the person reviews, so old requests mean nobody answ
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/maintaining/06-review-queue.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/maintaining/06-review-queue.sql)
 
 ## Is the backlog growing?
 
@@ -276,7 +276,7 @@ Closed by the stale bot is part of closed. Bots' pull requests are not counted. 
  2024-12 |    195 |    141 |     44 |           15 | ▲ +10      |         254 | ████████████████████████████████         
 (24 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/maintaining/07-backlog-trend.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/maintaining/07-backlog-trend.sql)
 
 ## How fast do reviewers respond?
 
@@ -298,7 +298,7 @@ Authors who wait days for each round lose context and interest; if the share ans
  over 3 months       |        51 | 1%    | 100%       | █                                        
 (10 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/maintaining/08-reviewer-response-time.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/maintaining/08-reviewer-response-time.sql)
 
 ## Reviews per merged pull request
 
@@ -308,21 +308,21 @@ A rising share merged without a review means changes go in unchecked; a single r
 <pre><code>
   Month  | Merged | No review | 1 reviewer |  2  | 3 or more |     None ·, 1 ▒, 2 ▓, 3+ █     | Median response | P90 response 
 ---------+--------+-----------+------------+-----+-----------+--------------------------------+-----------------+--------------
- 2026-11 |    108 | 0%        | 68%        | 29% | 4%        | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓█ | 5h 48m          | 7d 3h        
- 2026-10 |    265 | 0%        | 64%        | 28% | 8%        | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓██ | 4h 42m          | 7d 14h       
- 2026-09 |    218 | 0%        | 62%        | 31% | 6%        | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓██ | 5h 40m          | 6d 16h       
- 2026-08 |    144 | 0%        | 54%        | 37% | 9%        | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓███ | 5h 51m          | 9d 20h       
- 2026-07 |    167 | 0%        | 54%        | 32% | 13%       | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓████ | 3h 41m          | 15d 22h      
- 2026-06 |    193 | 0%        | 63%        | 26% | 11%       | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓███ | 5h 19m          | 6d 23h       
- 2026-05 |    145 | 0%        | 59%        | 29% | 12%       | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓████ | 4h 41m          | 4d 6h        
- 2026-04 |    116 | 0%        | 45%        | 35% | 20%       | ▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓██████ | 3h 34m          | 5d 5h        
- 2026-03 |    170 | 1%        | 48%        | 26% | 25%       | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓███████ | 2h 46m          | 4d 8h        
- 2026-02 |    133 | 0%        | 55%        | 34% | 11%       | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓███ | 2h 51m          | 8d 16h       
- 2026-01 |    104 | 0%        | 38%        | 39% | 22%       | ▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓███████ | 7h 18m          | 6d 21h       
- 2025-12 |    120 | 0%        | 51%        | 37% | 13%       | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓████ | 5h 20m          | 8d 18h       
+ 2026-11 |    108 | 0%        | 68%        | 29% | 4%        | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓█ | 5h 44m          | 7d 3h        
+ 2026-10 |    265 | 0%        | 64%        | 28% | 8%        | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓██ | 4h 42m          | 7d 11h       
+ 2026-09 |    218 | 0%        | 62%        | 31% | 6%        | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓██ | 5h 39m          | 6d 18h       
+ 2026-08 |    144 | 0%        | 54%        | 37% | 9%        | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓███ | 5h 52m          | 10d 12h      
+ 2026-07 |    167 | 0%        | 54%        | 32% | 13%       | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓████ | 3h 37m          | 13d 20h      
+ 2026-06 |    193 | 0%        | 63%        | 26% | 11%       | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓███ | 4h 51m          | 7d 20h       
+ 2026-05 |    145 | 0%        | 59%        | 29% | 12%       | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓████ | 4h 50m          | 4d 10h       
+ 2026-04 |    116 | 0%        | 45%        | 35% | 20%       | ▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓██████ | 3h 37m          | 5d 5h        
+ 2026-03 |    170 | 1%        | 48%        | 26% | 25%       | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓███████ | 2h 53m          | 4d 16h       
+ 2026-02 |    133 | 0%        | 55%        | 34% | 11%       | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓███ | 2h 42m          | 8d 11h       
+ 2026-01 |    104 | 0%        | 38%        | 39% | 22%       | ▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓███████ | 7h 22m          | 6d 21h       
+ 2025-12 |    120 | 0%        | 51%        | 37% | 13%       | ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓████ | 5h 21m          | 8d 17h       
 (12 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/maintaining/09-review-coverage.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/maintaining/09-review-coverage.sql)
 
 ## How concentrated is reviewing?
 
@@ -342,7 +342,7 @@ When a few people do most reviews, the project stalls when they are away, and th
  2025 Q1 |        53 |     864 | 63%   | 80%    |            4 | █████████████████████████▓▓▓▓▓▓▓░░░░░░░░ 
 (8 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/maintaining/10-review-concentration.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/maintaining/10-review-concentration.sql)
 
 ## Who reviews
 
@@ -378,7 +378,7 @@ A growing share of regular contributors and contributors takes load off maintain
  2024-12 |     298 | 77%         | 22%     | 1%           | 1%        | 0%   | ███████████████████████████████▓▓▓▓▓▓▓▓▒ 
 (24 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/maintaining/11-reviews-by-role.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/maintaining/11-reviews-by-role.sql)
 
 ## What bots do
 
@@ -390,7 +390,7 @@ Activity is the number of pull requests, reviews, and comments per month, one ch
 ------------------------------------+------------+--------+--------+------+---------------+---------+----------+---------------------
  coderabbitai[bot]                  |          0 |      0 |      0 |    0 |               |     920 |      981 | ...▁▂▁▁▂▁▁█▂        
  github-actions[bot]                |          0 |      0 |      0 |    0 |               |       0 |     1824 | ▄▃▃▄▅▃█▆▇▇█▃        
- dependabot[bot]                    |       1043 |    812 |    231 |    0 | 3h 15m        |       0 |      246 | ▆▄████▇▅▅▃▅▂        
+ dependabot[bot]                    |       1043 |    812 |    231 |    0 | 3h 13m        |       0 |      246 | ▆▄████▇▅▅▃▅▂        
  cla-bot[bot]                       |          0 |      0 |      0 |    0 |               |       0 |      638 | ▃▇▅██▁......        
  copilot-pull-request-reviewer[bot] |          0 |      0 |      0 |    0 |               |     208 |        0 | ▃▃▅█▄▇▄▁▁▁▃▁        
  starburstdata-automation           |          0 |      0 |      0 |    0 |               |       0 |      202 | ▃▂▇▇▃.▂█....        
@@ -398,6 +398,6 @@ Activity is the number of pull requests, reviews, and comments per month, one ch
  sourcery-ai[bot]                   |          0 |      0 |      0 |    0 |               |       1 |        0 | █...........        
 (8 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/8c956a35fc3622b816d0c735103cbd8ed1dbeb91/sql/maintaining/12-automation.sql)
+[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/maintaining/12-automation.sql)
 
-Generated on Fri Nov 13 19:34:03 UTC 2026
+Generated on Fri Nov 13 19:40:42 UTC 2026
