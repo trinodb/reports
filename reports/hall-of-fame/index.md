@@ -20,11 +20,10 @@ People whose first pull request was merged in the last 30 days, newest first. If
 <tr><td>2026-10-17</td><td><a href="https://github.com/Licht-T">Licht-T</a></td><td><a href="https://github.com/trinodb/trino/pull/29295">#29295</a></td><td>Speed up DATE component extraction with fast-date algorithm</td><td>169d 10h</td><td><a href="https://github.com/raunaqmorarka">raunaqmorarka</a></td></tr>
 <tr><td>2026-10-16</td><td><a href="https://github.com/Abhijeetsng97">Abhijeetsng97</a></td><td><a href="https://github.com/trinodb/trino/pull/31623">#31623</a></td><td>Remove redundant metadata request from GCS existence checks</td><td>3h 57m</td><td><a href="https://github.com/raunaqmorarka">raunaqmorarka</a></td></tr>
 <tr><td>2026-10-16</td><td><a href="https://github.com/SomSamantray">SomSamantray</a></td><td><a href="https://github.com/trinodb/trino/pull/31540">#31540</a></td><td>Fix Iceberg inferred metrics limit</td><td>5d 16h</td><td><a href="https://github.com/raunaqmorarka">raunaqmorarka</a></td></tr>
-<tr><td>2026-10-15</td><td><a href="https://github.com/Planet-X">Planet-X</a></td><td><a href="https://github.com/trinodb/trino/pull/30612">#30612</a></td><td>Add snapshot-loading-mode to Iceberg REST catalog</td><td>69d 10h</td><td><a href="https://github.com/ebyhr">ebyhr</a></td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/01-welcome.sql)
+[query](https://github.com/trinodb/reports/blob/a7732d94bbde2da46e4dd1e29824b9aad9f9824b/sql/hall-of-fame/01-welcome.sql)
 
 ## Milestones
 
@@ -45,7 +44,7 @@ People whose 10th, 25th, 50th, 100th, 250th, 500th, or 1000th pull request was m
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/02-milestones.sql)
+[query](https://github.com/trinodb/reports/blob/a7732d94bbde2da46e4dd1e29824b9aad9f9824b/sql/hall-of-fame/02-milestones.sql)
 
 ## Top authors of the last 12 months
 
@@ -54,7 +53,7 @@ People with the most merged pull requests in the last 12 months. The change is t
 <pre><code>
  Rank | Change | Merged pull requests |                                |      Person       
 ------+--------+----------------------+--------------------------------+-------------------
-    1 | ▲ 14   |                  289 | ██████████████████████████████ | <a href="https://github.com/findepi">findepi</a>           
+    1 | ▲ 13   |                  288 | ██████████████████████████████ | <a href="https://github.com/findepi">findepi</a>           
     2 | ▼ 1    |                  277 | █████████████████████████████  | <a href="https://github.com/wendigo">wendigo</a>           
     3 | ▼ 1    |                  244 | █████████████████████████      | <a href="https://github.com/ebyhr">ebyhr</a>             
     4 | ▲ 1    |                  125 | █████████████                  | <a href="https://github.com/raunaqmorarka">raunaqmorarka</a>     
@@ -66,7 +65,7 @@ People with the most merged pull requests in the last 12 months. The change is t
    10 | ▲ 17   |                   40 | ████                           | <a href="https://github.com/gertjanal">gertjanal</a>         
    11 | ▼ 5    |                   35 | ████                           | <a href="https://github.com/losipiuk">losipiuk</a>          
    12 | ▲ 22   |                   31 | ███                            | <a href="https://github.com/piotrrzysko">piotrrzysko</a>       
-   13 | new    |                   26 | ███                            | <a href="https://github.com/JohnFitzpatrick44">JohnFitzpatrick44</a> 
+   13 | new    |                   27 | ███                            | <a href="https://github.com/JohnFitzpatrick44">JohnFitzpatrick44</a> 
    14 | new    |                   25 | ███                            | <a href="https://github.com/jiwen624">jiwen624</a>          
    15 | new    |                   21 | ██                             | <a href="https://github.com/p3tr0sz">p3tr0sz</a>           
    16 | ▲ 22   |                   19 | ██                             | <a href="https://github.com/tbaeg">tbaeg</a>             
@@ -76,7 +75,7 @@ People with the most merged pull requests in the last 12 months. The change is t
    19 | ▼ 10   |                   17 | ██                             | <a href="https://github.com/koszti">koszti</a>            
 (20 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/03-top-authors.sql)
+[query](https://github.com/trinodb/reports/blob/a7732d94bbde2da46e4dd1e29824b9aad9f9824b/sql/hall-of-fame/03-top-authors.sql)
 
 ## Top reviewers of the last 12 months
 
@@ -85,10 +84,10 @@ People who reviewed the most pull requests of other people in the last 12 months
 <pre><code>
  Rank | Change | Reviewed pull requests |                                |     Person      
 ------+--------+------------------------+--------------------------------+-----------------
-    1 | =      |                    673 | ██████████████████████████████ | <a href="https://github.com/wendigo">wendigo</a>         
-    2 | =      |                    571 | █████████████████████████      | <a href="https://github.com/ebyhr">ebyhr</a>           
+    1 | =      |                    674 | ██████████████████████████████ | <a href="https://github.com/wendigo">wendigo</a>         
+    2 | =      |                    572 | █████████████████████████      | <a href="https://github.com/ebyhr">ebyhr</a>           
     3 | ▲ 10   |                    516 | ███████████████████████        | <a href="https://github.com/findepi">findepi</a>         
-    4 | ▼ 1    |                    477 | █████████████████████          | <a href="https://github.com/raunaqmorarka">raunaqmorarka</a>   
+    4 | ▼ 1    |                    478 | █████████████████████          | <a href="https://github.com/raunaqmorarka">raunaqmorarka</a>   
     5 | =      |                    301 | █████████████                  | <a href="https://github.com/chenjian2664">chenjian2664</a>    
     6 | ▲ 4    |                    177 | ████████                       | <a href="https://github.com/findinpath">findinpath</a>      
     7 | ▼ 3    |                    163 | ███████                        | <a href="https://github.com/losipiuk">losipiuk</a>        
@@ -107,7 +106,7 @@ People who reviewed the most pull requests of other people in the last 12 months
    20 | ▲ 25   |                     20 | █                              | <a href="https://github.com/koszti">koszti</a>          
 (20 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/04-top-reviewers.sql)
+[query](https://github.com/trinodb/reports/blob/a7732d94bbde2da46e4dd1e29824b9aad9f9824b/sql/hall-of-fame/04-top-reviewers.sql)
 
 ## Top mergers of the last 12 months
 
@@ -116,7 +115,7 @@ Maintainers who merged the most pull requests of other people in the last 12 mon
 <pre><code>
  Rank | Change | Merged pull requests |                                |    Person     
 ------+--------+----------------------+--------------------------------+---------------
-    1 | =      |                  275 | ██████████████████████████████ | <a href="https://github.com/ebyhr">ebyhr</a>         
+    1 | =      |                  276 | ██████████████████████████████ | <a href="https://github.com/ebyhr">ebyhr</a>         
     2 | =      |                  161 | ██████████████████             | <a href="https://github.com/wendigo">wendigo</a>       
     3 | =      |                  117 | █████████████                  | <a href="https://github.com/raunaqmorarka">raunaqmorarka</a> 
     4 | ▲ 8    |                  105 | ███████████                    | <a href="https://github.com/findepi">findepi</a>       
@@ -132,7 +131,7 @@ Maintainers who merged the most pull requests of other people in the last 12 mon
    14 | ▼ 6    |                    1 | ▏                              | <a href="https://github.com/hashhar">hashhar</a>       
 (14 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/05-top-mergers.sql)
+[query](https://github.com/trinodb/reports/blob/a7732d94bbde2da46e4dd1e29824b9aad9f9824b/sql/hall-of-fame/05-top-mergers.sql)
 
 ## Who reviews whom
 
@@ -142,7 +141,7 @@ Use it to find who reviews the work in an author's area, so who to ask for a rev
 <pre><code>
       Author       | PRs with a review | A B C D E F G H I J K L |  Reviewer key   
 -------------------+-------------------+-------------------------+-----------------
- wendigo           |               341 |   ░ ▒ ▒ ░ ░ ░ ░ ░ ░ ░ ░ | A <a href="https://github.com/wendigo">wendigo</a>       
+ wendigo           |               342 |   ░ ▒ ▒ ░ ░ ░ ░ ░ ░ ░ ░ | A <a href="https://github.com/wendigo">wendigo</a>       
  findepi           |               305 | ▓ ░   ░ ░ ░ ░ ░ ░ ░ ░ ░ | B <a href="https://github.com/ebyhr">ebyhr</a>         
  ebyhr             |               261 | ▒   ░ ░ ▒ ░ ░ ░ ░ ░ ░   | C <a href="https://github.com/findepi">findepi</a>       
  raunaqmorarka     |               131 | ▓ ░ ░   ░ ░ ░ ░   ░ ░   | D <a href="https://github.com/raunaqmorarka">raunaqmorarka</a> 
@@ -154,12 +153,12 @@ Use it to find who reviews the work in an author's area, so who to ask for a rev
  gertjanal         |                50 | ▒ ░ ░ ░ ░     ░ ░ ░ ░ ░ | J <a href="https://github.com/Praveen2112">Praveen2112</a>   
  losipiuk          |                39 | ▒   ▓ ░ ░     ░ ░       | K <a href="https://github.com/dain">dain</a>          
  piotrrzysko       |                34 | ░ ░ ▓ ░ ░ ░   ░   ░     | L <a href="https://github.com/kokosing">kokosing</a>      
- JohnFitzpatrick44 |                32 | ░ ▓ ░ ░ ░ ░ ░       ░   |                 
+ JohnFitzpatrick44 |                33 | ░ ▓ ░ ░ ░ ░ ░       ░   |                 
  jiwen624          |                30 | ░ ░ ▓ ▒ ░ ░   ░     ░   |                 
  p3tr0sz           |                25 | ░ ░ ▒ ░   ░ ▓ ░   ░     |                 
 (15 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/06-who-reviews-whom.sql)
+[query](https://github.com/trinodb/reports/blob/a7732d94bbde2da46e4dd1e29824b9aad9f9824b/sql/hall-of-fame/06-who-reviews-whom.sql)
 
 ## Who merges whose work
 
@@ -173,7 +172,7 @@ A long-standing pair often means a mentor, or the go-to maintainer for an area. 
 <tbody>
 <tr><td><a href="https://github.com/findinpath">findinpath</a></td><td><a href="https://github.com/ebyhr">ebyhr</a></td><td style="text-align: right">56</td><td>67%</td><td style="text-align: right">177</td><td>2021</td></tr>
 <tr><td><a href="https://github.com/chenjian2664">chenjian2664</a></td><td><a href="https://github.com/ebyhr">ebyhr</a></td><td style="text-align: right">21</td><td>49%</td><td style="text-align: right">145</td><td>2022</td></tr>
-<tr><td><a href="https://github.com/JohnFitzpatrick44">JohnFitzpatrick44</a></td><td><a href="https://github.com/ebyhr">ebyhr</a></td><td style="text-align: right">18</td><td>72%</td><td style="text-align: right">18</td><td>2025</td></tr>
+<tr><td><a href="https://github.com/JohnFitzpatrick44">JohnFitzpatrick44</a></td><td><a href="https://github.com/ebyhr">ebyhr</a></td><td style="text-align: right">19</td><td>73%</td><td style="text-align: right">19</td><td>2025</td></tr>
 <tr><td><a href="https://github.com/ebyhr">ebyhr</a></td><td><a href="https://github.com/wendigo">wendigo</a></td><td style="text-align: right">18</td><td>51%</td><td style="text-align: right">162</td><td>2023</td></tr>
 <tr><td><a href="https://github.com/gertjanal">gertjanal</a></td><td><a href="https://github.com/wendigo">wendigo</a></td><td style="text-align: right">17</td><td>44%</td><td style="text-align: right">20</td><td>2025</td></tr>
 <tr><td><a href="https://github.com/piotrrzysko">piotrrzysko</a></td><td><a href="https://github.com/findepi">findepi</a></td><td style="text-align: right">17</td><td>57%</td><td style="text-align: right">17</td><td>2025</td></tr>
@@ -194,7 +193,7 @@ A long-standing pair often means a mentor, or the go-to maintainer for an area. 
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/07-author-merger-pairs.sql)
+[query](https://github.com/trinodb/reports/blob/a7732d94bbde2da46e4dd1e29824b9aad9f9824b/sql/hall-of-fame/07-author-merger-pairs.sql)
 
 ## Steady contributors
 
@@ -204,9 +203,9 @@ Steady, long-term work keeps the project going, even when it never tops a rankin
 <pre><code>
  Months active | Merged or reviewed |      Last 24 months      |    Person     
 ---------------+--------------------+--------------------------+---------------
-            24 |               2297 | ▅▄▄▄▄▃▃▄▃▄▅▅▆▅▇█▇█▇▅█▇█▃ | <a href="https://github.com/ebyhr">ebyhr</a>         
-            24 |               2204 | ▃▄▆▄▃▂▃▃▃▄█▅▃▃█▆▄▂▇▇▃▃▄▃ | <a href="https://github.com/wendigo">wendigo</a>       
-            24 |               1060 | ▃▂▂▂▃▃▄▂▃▅▃▃▃▂▃▃▃▃▂▆▃██▅ | <a href="https://github.com/raunaqmorarka">raunaqmorarka</a> 
+            24 |               2298 | ▅▄▄▄▄▃▃▄▃▄▅▅▆▅▇█▇█▇▅█▇█▃ | <a href="https://github.com/ebyhr">ebyhr</a>         
+            24 |               2205 | ▃▄▆▄▃▂▃▃▃▄█▅▃▃█▆▄▂▇▇▃▃▄▃ | <a href="https://github.com/wendigo">wendigo</a>       
+            24 |               1061 | ▃▂▂▂▃▃▄▂▃▅▃▃▃▂▃▃▃▃▂▆▃██▅ | <a href="https://github.com/raunaqmorarka">raunaqmorarka</a> 
             24 |                767 | ▂▂▃▂▃▄▅▇▇▆▇▇██▅█▆▃▃▂▃▆▇▅ | <a href="https://github.com/chenjian2664">chenjian2664</a>  
             24 |                515 | ▆▇█▄▅▂▆▄▁▄▅▃▂▂▅▅▂▃▃▃▁▃▅▁ | <a href="https://github.com/losipiuk">losipiuk</a>      
             24 |                346 | ▂▃▄▃▁▁▂▁▂▂▅▃▄▁▆▄▂▆██▁▃▄▁ | <a href="https://github.com/martint">martint</a>       
@@ -226,7 +225,7 @@ Steady, long-term work keeps the project going, even when it never tops a rankin
             18 |                 66 | ▄▇▄█▁▂.▁▃.▄▅▅.▄▂▆▁.▃▂.▄. | <a href="https://github.com/ksobolew">ksobolew</a>      
 (20 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/08-steady-contributors.sql)
+[query](https://github.com/trinodb/reports/blob/a7732d94bbde2da46e4dd1e29824b9aad9f9824b/sql/hall-of-fame/08-steady-contributors.sql)
 
 ## All-time top 10
 
@@ -237,19 +236,19 @@ The people who authored, reviewed, and merged the most pull requests since the p
 <tr><th style="text-align: right">Rank</th><th>Author</th><th style="text-align: right">Merged pull requests</th><th>Reviewer</th><th style="text-align: right">Reviewed pull requests</th><th>Merger</th><th style="text-align: right">Merged for others</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align: right">1</td><td><a href="https://github.com/findepi">findepi</a></td><td style="text-align: right">2383</td><td><a href="https://github.com/findepi">findepi</a></td><td style="text-align: right">4320</td><td><a href="https://github.com/ebyhr">ebyhr</a></td><td style="text-align: right">1325</td></tr>
-<tr><td style="text-align: right">2</td><td><a href="https://github.com/ebyhr">ebyhr</a></td><td style="text-align: right">1688</td><td><a href="https://github.com/ebyhr">ebyhr</a></td><td style="text-align: right">3151</td><td><a href="https://github.com/findepi">findepi</a></td><td style="text-align: right">1184</td></tr>
-<tr><td style="text-align: right">3</td><td><a href="https://github.com/wendigo">wendigo</a></td><td style="text-align: right">1457</td><td><a href="https://github.com/wendigo">wendigo</a></td><td style="text-align: right">2590</td><td><a href="https://github.com/martint">martint</a></td><td style="text-align: right">717</td></tr>
+<tr><td style="text-align: right">1</td><td><a href="https://github.com/findepi">findepi</a></td><td style="text-align: right">2383</td><td><a href="https://github.com/findepi">findepi</a></td><td style="text-align: right">4320</td><td><a href="https://github.com/ebyhr">ebyhr</a></td><td style="text-align: right">1326</td></tr>
+<tr><td style="text-align: right">2</td><td><a href="https://github.com/ebyhr">ebyhr</a></td><td style="text-align: right">1688</td><td><a href="https://github.com/ebyhr">ebyhr</a></td><td style="text-align: right">3152</td><td><a href="https://github.com/findepi">findepi</a></td><td style="text-align: right">1184</td></tr>
+<tr><td style="text-align: right">3</td><td><a href="https://github.com/wendigo">wendigo</a></td><td style="text-align: right">1457</td><td><a href="https://github.com/wendigo">wendigo</a></td><td style="text-align: right">2591</td><td><a href="https://github.com/martint">martint</a></td><td style="text-align: right">717</td></tr>
 <tr><td style="text-align: right">4</td><td><a href="https://github.com/electrum">electrum</a></td><td style="text-align: right">848</td><td><a href="https://github.com/losipiuk">losipiuk</a></td><td style="text-align: right">2237</td><td><a href="https://github.com/wendigo">wendigo</a></td><td style="text-align: right">707</td></tr>
 <tr><td style="text-align: right">5</td><td><a href="https://github.com/martint">martint</a></td><td style="text-align: right">671</td><td><a href="https://github.com/electrum">electrum</a></td><td style="text-align: right">2167</td><td><a href="https://github.com/electrum">electrum</a></td><td style="text-align: right">640</td></tr>
 <tr><td style="text-align: right">6</td><td><a href="https://github.com/sopel39">sopel39</a></td><td style="text-align: right">643</td><td><a href="https://github.com/martint">martint</a></td><td style="text-align: right">2020</td><td><a href="https://github.com/sopel39">sopel39</a></td><td style="text-align: right">487</td></tr>
 <tr><td style="text-align: right">7</td><td><a href="https://github.com/raunaqmorarka">raunaqmorarka</a></td><td style="text-align: right">551</td><td><a href="https://github.com/kokosing">kokosing</a></td><td style="text-align: right">1851</td><td><a href="https://github.com/kokosing">kokosing</a></td><td style="text-align: right">452</td></tr>
 <tr><td style="text-align: right">8</td><td><a href="https://github.com/losipiuk">losipiuk</a></td><td style="text-align: right">523</td><td><a href="https://github.com/hashhar">hashhar</a></td><td style="text-align: right">1678</td><td><a href="https://github.com/losipiuk">losipiuk</a></td><td style="text-align: right">381</td></tr>
-<tr><td style="text-align: right">9</td><td><a href="https://github.com/mosabua">mosabua</a></td><td style="text-align: right">462</td><td><a href="https://github.com/raunaqmorarka">raunaqmorarka</a></td><td style="text-align: right">1626</td><td><a href="https://github.com/hashhar">hashhar</a></td><td style="text-align: right">379</td></tr>
+<tr><td style="text-align: right">9</td><td><a href="https://github.com/mosabua">mosabua</a></td><td style="text-align: right">462</td><td><a href="https://github.com/raunaqmorarka">raunaqmorarka</a></td><td style="text-align: right">1627</td><td><a href="https://github.com/hashhar">hashhar</a></td><td style="text-align: right">379</td></tr>
 <tr><td style="text-align: right">10</td><td><a href="https://github.com/dain">dain</a></td><td style="text-align: right">438</td><td><a href="https://github.com/sopel39">sopel39</a></td><td style="text-align: right">1509</td><td><a href="https://github.com/raunaqmorarka">raunaqmorarka</a></td><td style="text-align: right">367</td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/0544c4064d92f4066f6e50002e6e68677654a8f7/sql/hall-of-fame/09-all-time.sql)
+[query](https://github.com/trinodb/reports/blob/a7732d94bbde2da46e4dd1e29824b9aad9f9824b/sql/hall-of-fame/09-all-time.sql)
 
-Generated on Fri Nov 13 19:42:09 UTC 2026
+Generated on Sat Nov 14 06:14:28 UTC 2026
