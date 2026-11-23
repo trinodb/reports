@@ -10,20 +10,20 @@ A repository with many open pull requests or issues, or a slow first response, n
 <pre><code>
   Repository   | People | PRs | Merged | First response | Open PRs | Issues | Open issues | Bot PRs / open | PRs per month, 24 months chart 
 ---------------+--------+-----+--------+----------------+----------+--------+-------------+----------------+--------------------------------
- airlift       |     50 | 348 |    261 | 5h 54m         |       79 |     11 |          66 | 244 / 0        | ▂▃▄▃▁▁▁▂▂▄▄▄▅▆▃█▁▄█▅▃▅▄▅       
- regulator     |      2 | 288 |    282 | 13d 7h         |        1 |      0 |           0 | 0 / 0          | ...................▁.▁▃█       
- aircompressor |     35 |  51 |     37 | 16h 28m        |       12 |      6 |          19 | 60 / 1         | ...▁▁.▂.....▅▂▅▁.▁▂▂.▅█▄       
+ airlift       |     50 | 349 |    263 | 5h 32m         |       78 |     11 |          66 | 246 / 0        | ▂▃▄▃▁▁▁▂▂▄▄▄▅▆▃█▁▄█▅▃▅▄▅       
+ regulator     |      3 | 289 |    282 | 13d 7h         |        2 |      0 |           0 | 0 / 0          | ...................▁.▁▃█       
+ aircompressor |     36 |  51 |     37 | 16h 28m        |       12 |      7 |          20 | 62 / 3         | ...▁▁.▂.....▅▂▅▁.▁▂▂.▅█▄       
  airbase       |     12 |  34 |     30 | 15m 10s        |        4 |     11 |          13 | 420 / 0        | .▁▂▂.▁▁█▅▂▆▁▁▅.▂▃▅▅▁▅▂▅.       
  airstyle      |      5 |  26 |     26 | 9h 40m         |        0 |      2 |           1 | 0 / 0          | .................█▁▁....       
  slice         |      9 |  23 |     18 | 7h 28m         |        5 |      0 |           1 | 0 / 0          | ..▂...▄.▂....▄▃█▃..▃▂▃▃▄       
- launcher      |     11 |  16 |     12 | 59m 30s        |        2 |      0 |           0 | 32 / 2         | .▂▄.▄.▄.▂▄▇▄▂.▄.▂.▂▄█▂▄.       
+ launcher      |     11 |  16 |     12 | 59m 30s        |        2 |      0 |           0 | 33 / 1         | .▂▄.▄.▄.▂▄▇▄▂.▄.▂.▂▄█▂▄.       
  zest          |      6 |  12 |      6 | 1d 10h         |        6 |      0 |           0 | 31 / 1         | ....................▃▁█.       
  vthreadtime   |      4 |   9 |      7 | 1d 13h         |        0 |      1 |           0 | 37 / 1         | ...................▂..██       
- provisio      |      7 |   8 |      7 | 1h 30m         |        1 |      0 |          10 | 43 / 9         | .................▃▆█..▃▃       
- classfile     |      2 |   4 |      4 |                |        0 |      0 |           0 | 16 / 3         | .....................▃.█       
+ provisio      |      7 |   9 |      8 | 1h 30m         |        1 |      0 |          10 | 43 / 2         | .................▃▆█..▃▆       
+ classfile     |      2 |   5 |      4 |                |        1 |      0 |           0 | 16 / 3         | .....................▂.█       
 (11 rows)
 </code></pre>
-[query](https://github.com/trinodb/reports/blob/6b0f3f1f89db4398ed564c0e89e48381c42e7512/sql/airlift/01-activity.sql)
+[query](https://github.com/trinodb/reports/blob/1bcb148c5a54ffcc2703bb3166944bb40a0a759a/sql/airlift/01-activity.sql)
 
 ## Open pull requests
 
@@ -35,43 +35,44 @@ Merge or close approved pull requests, answer the ones without a response, and a
 <tr><th>Repository</th><th>PR</th><th>Title</th><th>Author</th><th>Open for</th><th>Review</th><th>Last response</th></tr>
 </thead>
 <tbody>
-<tr><td>airbase</td><td><a href="https://github.com/airlift/airbase/pull/270">#270</a></td><td>Docker container builder/publish for Airlift</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>1934d 3h</td><td>no response</td><td></td></tr>
-<tr><td>airbase</td><td><a href="https://github.com/airlift/airbase/pull/394">#394</a></td><td>Load junit-extensions for surefire tests</td><td><a href="https://github.com/findepi">findepi</a></td><td>1020d 17h</td><td>commented</td><td>355d 20h</td></tr>
-<tr><td>airbase</td><td><a href="https://github.com/airlift/airbase/pull/1350">#1350</a></td><td>Move checkstyle cache to project root directory</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>87d 15h</td><td>commented</td><td>82d 17h</td></tr>
-<tr><td>airbase</td><td><a href="https://github.com/airlift/airbase/pull/1409">#1409</a></td><td>Add dependabot cooldown</td><td><a href="https://github.com/findepi">findepi</a></td><td>37d 22h</td><td>changes requested</td><td>37d 15h</td></tr>
-<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/155">#155</a></td><td>Add zlib decompressor</td><td><a href="https://github.com/electrum">electrum</a></td><td>1482d 7h</td><td>approved</td><td>697d 4h</td></tr>
-<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/394">#394</a></td><td>Remove bundled PPC64LE native libraries</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>26d 11h</td><td>approved</td><td>3d 9h</td></tr>
-<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/142">#142</a></td><td>Add support for LZ4 frame format</td><td><a href="https://github.com/findepi">findepi</a></td><td>1684d 14h</td><td>no response</td><td></td></tr>
-<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/302">#302</a></td><td>Fix out-of-bounds read in ZstdIncrementalFrameDecompressor</td><td><a href="https://github.com/Marcono1234">Marcono1234</a></td><td>524d 16h</td><td>no response</td><td></td></tr>
-<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/399">#399</a></td><td>[1/4] Fix compression buffer safety and resource lifetimes</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>24d 11h</td><td>no response</td><td></td></tr>
-<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/400">#400</a></td><td>[2/4] Allow safepoints during long native codec and hash calls</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>24d 11h</td><td>no response</td><td></td></tr>
-<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/401">#401</a></td><td>[3/4] Reuse staging buffers and avoid copies for simple heap blocks</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>24d 11h</td><td>no response</td><td></td></tr>
-<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/305">#305</a></td><td>Extend validation for user-provided `MemorySegment`</td><td><a href="https://github.com/Marcono1234">Marcono1234</a></td><td>351d 4h</td><td>commented</td><td>153d 13h</td></tr>
-<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/566">#566</a></td><td>Update to Takari lifecycle</td><td><a href="https://github.com/electrum">electrum</a></td><td>3323d 10h</td><td>approved</td><td>3311d 7h</td></tr>
-<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/843">#843</a></td><td>Add additional JAX-RS tests</td><td><a href="https://github.com/electrum">electrum</a></td><td>2397d 11h</td><td>approved</td><td>1840d 7h</td></tr>
-<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/1207">#1207</a></td><td>Config option to enable setting IP_TOS on the http client socket</td><td><a href="https://github.com/wenjianhn">wenjianhn</a></td><td>881d 17h</td><td>approved</td><td>837d 15h</td></tr>
-<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/1165">#1165</a></td><td>Fix HTTP request builder setHeader case sensitivity</td><td><a href="https://github.com/findepi">findepi</a></td><td>918d 20h</td><td>approved</td><td>753d 20h</td></tr>
-<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/2031">#2031</a></td><td>Fix exception on empty TabularData, allow CompositeData in MetricsC...</td><td><a href="https://github.com/gertjanal">gertjanal</a></td><td>141d 11h</td><td>approved</td><td>117d 9h</td></tr>
-<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/2152">#2152</a></td><td>Add fast path for JSON content type detection</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>60d 11h</td><td>approved</td><td>27d 13h</td></tr>
-<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/2227">#2227</a></td><td>Add AsyncBodyGenerator to HTTP client</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>9d 13h</td><td>approved</td><td>8d 21h</td></tr>
-<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/2230">#2230</a></td><td>Log response size in HTTP client request log</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>5d 13h</td><td>approved</td><td>5d 12h</td></tr>
-<tr><td>launcher</td><td><a href="https://github.com/airlift/launcher/pull/59">#59</a></td><td>Use latest JVM config when undefined</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>89d 20h</td><td>no response</td><td></td></tr>
-<tr><td>launcher</td><td><a href="https://github.com/airlift/launcher/pull/64">#64</a></td><td>Update golang to 1.27.1 and modernize</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>67d 18h</td><td>no response</td><td></td></tr>
-<tr><td>provisio</td><td><a href="https://github.com/airlift/provisio/pull/202">#202</a></td><td>Preserve POMs when provisioning archives</td><td><a href="https://github.com/electrum">electrum</a></td><td>1h 31m</td><td>no response</td><td></td></tr>
-<tr><td>regulator</td><td><a href="https://github.com/airlift/regulator/pull/288">#288</a></td><td>Drop optimizations that do not pay their way</td><td><a href="https://github.com/dain">dain</a></td><td>22h 52m</td><td>no response</td><td></td></tr>
-<tr><td>slice</td><td><a href="https://github.com/airlift/slice/pull/193">#193</a></td><td>Improve hashing performance</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>233d 10h</td><td>approved</td><td>233d 9h</td></tr>
-<tr><td>slice</td><td><a href="https://github.com/airlift/slice/pull/196">#196</a></td><td>Speed up Slice search, UTF-8 case conversion, and trims</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>132d 7h</td><td>no response</td><td></td></tr>
-<tr><td>slice</td><td><a href="https://github.com/airlift/slice/pull/173">#173</a></td><td>Move Slice to use MemorySegment</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>873d 16h</td><td>commented</td><td>873d 1h</td></tr>
-<tr><td>zest</td><td><a href="https://github.com/airlift/zest/pull/36">#36</a></td><td>Add binder attributes set with Guice.withAttribute</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>26d 18h</td><td>no response</td><td></td></tr>
-<tr><td>zest</td><td><a href="https://github.com/airlift/zest/pull/38">#38</a></td><td>Add @EmptyIfUnbound for optional injection of unbound types</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>21d 20h</td><td>no response</td><td></td></tr>
-<tr><td>zest</td><td><a href="https://github.com/airlift/zest/pull/34">#34</a></td><td>Add @BoundFor, a binding qualifier that takes a class</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>26d 19h</td><td>commented</td><td>26d 18h</td></tr>
-<tr><td>zest</td><td><a href="https://github.com/airlift/zest/pull/33">#33</a></td><td>Add Binder.rebind() for replacing an existing binding</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>26d 20h</td><td>commented</td><td>26d 17h</td></tr>
-<tr><td>zest</td><td><a href="https://github.com/airlift/zest/pull/32">#32</a></td><td>Add DynamicProvider, a provider with an injected @Provides method</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>26d 21h</td><td>commented</td><td>25d 10h</td></tr>
-<tr><td>zest</td><td><a href="https://github.com/airlift/zest/pull/35">#35</a></td><td>Add Binder.asSingleton() and SingletonModule</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>26d 19h</td><td>commented</td><td>23d 11h</td></tr>
+<tr><td>airbase</td><td><a href="https://github.com/airlift/airbase/pull/270">#270</a></td><td>Docker container builder/publish for Airlift</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>1935d 3h</td><td>no response</td><td></td></tr>
+<tr><td>airbase</td><td><a href="https://github.com/airlift/airbase/pull/394">#394</a></td><td>Load junit-extensions for surefire tests</td><td><a href="https://github.com/findepi">findepi</a></td><td>1021d 17h</td><td>commented</td><td>356d 20h</td></tr>
+<tr><td>airbase</td><td><a href="https://github.com/airlift/airbase/pull/1350">#1350</a></td><td>Move checkstyle cache to project root directory</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>88d 15h</td><td>commented</td><td>83d 17h</td></tr>
+<tr><td>airbase</td><td><a href="https://github.com/airlift/airbase/pull/1409">#1409</a></td><td>Add dependabot cooldown</td><td><a href="https://github.com/findepi">findepi</a></td><td>38d 22h</td><td>changes requested</td><td>38d 15h</td></tr>
+<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/155">#155</a></td><td>Add zlib decompressor</td><td><a href="https://github.com/electrum">electrum</a></td><td>1483d 7h</td><td>approved</td><td>698d 4h</td></tr>
+<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/394">#394</a></td><td>Remove bundled PPC64LE native libraries</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>27d 11h</td><td>approved</td><td>4d 9h</td></tr>
+<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/142">#142</a></td><td>Add support for LZ4 frame format</td><td><a href="https://github.com/findepi">findepi</a></td><td>1685d 14h</td><td>no response</td><td></td></tr>
+<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/302">#302</a></td><td>Fix out-of-bounds read in ZstdIncrementalFrameDecompressor</td><td><a href="https://github.com/Marcono1234">Marcono1234</a></td><td>525d 16h</td><td>no response</td><td></td></tr>
+<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/399">#399</a></td><td>[1/4] Fix compression buffer safety and resource lifetimes</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>25d 11h</td><td>no response</td><td></td></tr>
+<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/400">#400</a></td><td>[2/4] Allow safepoints during long native codec and hash calls</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>25d 11h</td><td>no response</td><td></td></tr>
+<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/401">#401</a></td><td>[3/4] Reuse staging buffers and avoid copies for simple heap blocks</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>25d 11h</td><td>no response</td><td></td></tr>
+<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/pull/305">#305</a></td><td>Extend validation for user-provided `MemorySegment`</td><td><a href="https://github.com/Marcono1234">Marcono1234</a></td><td>352d 4h</td><td>commented</td><td>154d 13h</td></tr>
+<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/566">#566</a></td><td>Update to Takari lifecycle</td><td><a href="https://github.com/electrum">electrum</a></td><td>3324d 10h</td><td>approved</td><td>3312d 7h</td></tr>
+<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/843">#843</a></td><td>Add additional JAX-RS tests</td><td><a href="https://github.com/electrum">electrum</a></td><td>2398d 11h</td><td>approved</td><td>1841d 7h</td></tr>
+<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/1207">#1207</a></td><td>Config option to enable setting IP_TOS on the http client socket</td><td><a href="https://github.com/wenjianhn">wenjianhn</a></td><td>882d 17h</td><td>approved</td><td>838d 16h</td></tr>
+<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/1165">#1165</a></td><td>Fix HTTP request builder setHeader case sensitivity</td><td><a href="https://github.com/findepi">findepi</a></td><td>919d 20h</td><td>approved</td><td>754d 20h</td></tr>
+<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/2031">#2031</a></td><td>Fix exception on empty TabularData, allow CompositeData in MetricsC...</td><td><a href="https://github.com/gertjanal">gertjanal</a></td><td>142d 11h</td><td>approved</td><td>118d 9h</td></tr>
+<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/2152">#2152</a></td><td>Add fast path for JSON content type detection</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>61d 11h</td><td>approved</td><td>28d 13h</td></tr>
+<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/2227">#2227</a></td><td>Add AsyncBodyGenerator to HTTP client</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>10d 13h</td><td>approved</td><td>9d 21h</td></tr>
+<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/pull/2230">#2230</a></td><td>Log response size in HTTP client request log</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>6d 13h</td><td>approved</td><td>6d 12h</td></tr>
+<tr><td>classfile</td><td><a href="https://github.com/airlift/classfile/pull/21">#21</a></td><td>Add CompiledUnit rebind for bound constants</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>6h 04m</td><td>no response</td><td></td></tr>
+<tr><td>launcher</td><td><a href="https://github.com/airlift/launcher/pull/59">#59</a></td><td>Use latest JVM config when undefined</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>90d 20h</td><td>no response</td><td></td></tr>
+<tr><td>launcher</td><td><a href="https://github.com/airlift/launcher/pull/64">#64</a></td><td>Update golang to 1.27.1 and modernize</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>68d 18h</td><td>no response</td><td></td></tr>
+<tr><td>provisio</td><td><a href="https://github.com/airlift/provisio/pull/203">#203</a></td><td>Release Provisio under io.airlift</td><td><a href="https://github.com/electrum">electrum</a></td><td>11h 38m</td><td>approved</td><td>11h 07m</td></tr>
+<tr><td>regulator</td><td><a href="https://github.com/airlift/regulator/pull/288">#288</a></td><td>Drop optimizations that do not pay their way</td><td><a href="https://github.com/dain">dain</a></td><td>1d 22h</td><td>no response</td><td></td></tr>
+<tr><td>slice</td><td><a href="https://github.com/airlift/slice/pull/193">#193</a></td><td>Improve hashing performance</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>234d 10h</td><td>approved</td><td>234d 9h</td></tr>
+<tr><td>slice</td><td><a href="https://github.com/airlift/slice/pull/196">#196</a></td><td>Speed up Slice search, UTF-8 case conversion, and trims</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>133d 7h</td><td>no response</td><td></td></tr>
+<tr><td>slice</td><td><a href="https://github.com/airlift/slice/pull/173">#173</a></td><td>Move Slice to use MemorySegment</td><td><a href="https://github.com/wendigo">wendigo</a></td><td>874d 16h</td><td>commented</td><td>874d 1h</td></tr>
+<tr><td>zest</td><td><a href="https://github.com/airlift/zest/pull/36">#36</a></td><td>Add binder attributes set with Guice.withAttribute</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>27d 18h</td><td>no response</td><td></td></tr>
+<tr><td>zest</td><td><a href="https://github.com/airlift/zest/pull/38">#38</a></td><td>Add @EmptyIfUnbound for optional injection of unbound types</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>22d 20h</td><td>no response</td><td></td></tr>
+<tr><td>zest</td><td><a href="https://github.com/airlift/zest/pull/34">#34</a></td><td>Add @BoundFor, a binding qualifier that takes a class</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>27d 19h</td><td>commented</td><td>27d 19h</td></tr>
+<tr><td>zest</td><td><a href="https://github.com/airlift/zest/pull/33">#33</a></td><td>Add Binder.rebind() for replacing an existing binding</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>27d 20h</td><td>commented</td><td>27d 17h</td></tr>
+<tr><td>zest</td><td><a href="https://github.com/airlift/zest/pull/32">#32</a></td><td>Add DynamicProvider, a provider with an injected @Provides method</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>27d 21h</td><td>commented</td><td>26d 10h</td></tr>
+<tr><td>zest</td><td><a href="https://github.com/airlift/zest/pull/35">#35</a></td><td>Add Binder.asSingleton() and SingletonModule</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>27d 19h</td><td>commented</td><td>24d 11h</td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/6b0f3f1f89db4398ed564c0e89e48381c42e7512/sql/airlift/02-open-pull-requests.sql)
+[query](https://github.com/trinodb/reports/blob/1bcb148c5a54ffcc2703bb3166944bb40a0a759a/sql/airlift/02-open-pull-requests.sql)
 
 ## Issues without an answer
 
@@ -83,15 +84,16 @@ An answer, even a question or a label, tells the reporter that someone read it. 
 <tr><th>Repository</th><th>Issue</th><th>Title</th><th>Author</th><th>Open for</th></tr>
 </thead>
 <tbody>
-<tr><td>airbase</td><td><a href="https://github.com/airlift/airbase/issues/1120">#1120</a></td><td>Add checkstyle rule CommentsIndentation</td><td><a href="https://github.com/electrum">electrum</a></td><td>262d 22h</td></tr>
-<tr><td>airbase</td><td><a href="https://github.com/airlift/airbase/issues/1177">#1177</a></td><td>Add additional check style rules</td><td><a href="https://github.com/electrum">electrum</a></td><td>210d 11h</td></tr>
-<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/issues/1887">#1887</a></td><td>Inconsistent http-client documentation</td><td><a href="https://github.com/shivamvishal">shivamvishal</a></td><td>227d 19h</td></tr>
-<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/issues/2021">#2021</a></td><td>[MCP] 2026 protocol</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>147d 23h</td></tr>
-<tr><td>airstyle</td><td><a href="https://github.com/airlift/airstyle/issues/28">#28</a></td><td>Unused import is kept when its name appears elsewhere in the file</td><td><a href="https://github.com/findepi">findepi</a></td><td>31d 20h</td></tr>
+<tr><td>airbase</td><td><a href="https://github.com/airlift/airbase/issues/1120">#1120</a></td><td>Add checkstyle rule CommentsIndentation</td><td><a href="https://github.com/electrum">electrum</a></td><td>263d 22h</td></tr>
+<tr><td>airbase</td><td><a href="https://github.com/airlift/airbase/issues/1177">#1177</a></td><td>Add additional check style rules</td><td><a href="https://github.com/electrum">electrum</a></td><td>211d 11h</td></tr>
+<tr><td>aircompressor</td><td><a href="https://github.com/airlift/aircompressor/issues/422">#422</a></td><td>Pure-Java zstd decoder rejects a 2-byte zero Number_of_Sequences (zeroSeq_2B ...</td><td><a href="https://github.com/DicksonWu654">DicksonWu654</a></td><td>19h 22m</td></tr>
+<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/issues/1887">#1887</a></td><td>Inconsistent http-client documentation</td><td><a href="https://github.com/shivamvishal">shivamvishal</a></td><td>228d 19h</td></tr>
+<tr><td>airlift</td><td><a href="https://github.com/airlift/airlift/issues/2021">#2021</a></td><td>[MCP] 2026 protocol</td><td><a href="https://github.com/Randgalt">Randgalt</a></td><td>148d 23h</td></tr>
+<tr><td>airstyle</td><td><a href="https://github.com/airlift/airstyle/issues/28">#28</a></td><td>Unused import is kept when its name appears elsewhere in the file</td><td><a href="https://github.com/findepi">findepi</a></td><td>32d 20h</td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/6b0f3f1f89db4398ed564c0e89e48381c42e7512/sql/airlift/03-unanswered-issues.sql)
+[query](https://github.com/trinodb/reports/blob/1bcb148c5a54ffcc2703bb3166944bb40a0a759a/sql/airlift/03-unanswered-issues.sql)
 
 ## First-time contributors
 
@@ -103,6 +105,8 @@ A quick first response keeps new people coming back. Thank them, and point them 
 <tr><th>Repository</th><th>Author</th><th>First PR</th><th>Opened</th><th>State</th><th>First response</th></tr>
 </thead>
 <tbody>
+<tr><td>classfile</td><td><a href="https://github.com/wendigo">wendigo</a></td><td><a href="https://github.com/airlift/classfile/pull/21">#21</a></td><td>2026-11-23</td><td>open</td><td>none yet</td></tr>
+<tr><td>regulator</td><td><a href="https://github.com/wendigo">wendigo</a></td><td><a href="https://github.com/airlift/regulator/pull/289">#289</a></td><td>2026-11-22</td><td>draft</td><td>none yet</td></tr>
 <tr><td>airlift</td><td><a href="https://github.com/2748109647">2748109647</a></td><td><a href="https://github.com/airlift/airlift/pull/2258">#2258</a></td><td>2026-11-21</td><td>open</td><td>none yet</td></tr>
 <tr><td>aircompressor</td><td><a href="https://github.com/2748109647">2748109647</a></td><td><a href="https://github.com/airlift/aircompressor/pull/412">#412</a></td><td>2026-11-13</td><td>open</td><td>3d 19h</td></tr>
 <tr><td>slice</td><td><a href="https://github.com/a-narsudinov">a-narsudinov</a></td><td><a href="https://github.com/airlift/slice/pull/202">#202</a></td><td>2026-11-04</td><td>closed</td><td>7h 28m</td></tr>
@@ -131,12 +135,10 @@ A quick first response keeps new people coming back. Thank them, and point them 
 <tr><td>regulator</td><td><a href="https://github.com/dain">dain</a></td><td><a href="https://github.com/airlift/regulator/pull/1">#1</a></td><td>2026-07-25</td><td>merged</td><td>none</td></tr>
 <tr><td>airlift</td><td><a href="https://github.com/huw0">huw0</a></td><td><a href="https://github.com/airlift/airlift/pull/2067">#2067</a></td><td>2026-07-24</td><td>closed</td><td>1h 12m</td></tr>
 <tr><td>launcher</td><td><a href="https://github.com/grantatspothero">grantatspothero</a></td><td><a href="https://github.com/airlift/launcher/pull/51">#51</a></td><td>2026-07-17</td><td>merged</td><td>19m 58s</td></tr>
-<tr><td>airlift</td><td><a href="https://github.com/gertjanal">gertjanal</a></td><td><a href="https://github.com/airlift/airlift/pull/2031">#2031</a></td><td>2026-07-03</td><td>open</td><td>24d 1h</td></tr>
-<tr><td>aircompressor</td><td><a href="https://github.com/dfa1">dfa1</a></td><td><a href="https://github.com/airlift/aircompressor/pull/356">#356</a></td><td>2026-06-21</td><td>closed</td><td>none</td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/6b0f3f1f89db4398ed564c0e89e48381c42e7512/sql/airlift/04-first-time-contributors.sql)
+[query](https://github.com/trinodb/reports/blob/1bcb148c5a54ffcc2703bb3166944bb40a0a759a/sql/airlift/04-first-time-contributors.sql)
 
 ## Who reviews
 
@@ -148,19 +150,19 @@ When one person reviews almost everything, the repository stops when they're awa
 <tr><th>Repository</th><th style="text-align: right">Reviewed PRs</th><th style="text-align: right">Reviewers</th><th>Seen by the top reviewer</th><th>Top reviewers (PRs)</th></tr>
 </thead>
 <tbody>
-<tr><td>airlift</td><td style="text-align: right">316</td><td style="text-align: right">30</td><td>45%</td><td>wendigo (143), findepi (57), Randgalt (44), electrum (43)</td></tr>
+<tr><td>airlift</td><td style="text-align: right">317</td><td style="text-align: right">30</td><td>45%</td><td>wendigo (143), findepi (57), Randgalt (44), electrum (43)</td></tr>
 <tr><td>aircompressor</td><td style="text-align: right">44</td><td style="text-align: right">19</td><td>50%</td><td>electrum (22), dain (12), wendigo (10), martint (2)</td></tr>
 <tr><td>airbase</td><td style="text-align: right">34</td><td style="text-align: right">9</td><td>62%</td><td>wendigo (21), findepi (11), electrum (4), martint (3)</td></tr>
 <tr><td>slice</td><td style="text-align: right">21</td><td style="text-align: right">6</td><td>48%</td><td>dain (10), electrum (7), wendigo (5), findepi (3)</td></tr>
 <tr><td>launcher</td><td style="text-align: right">13</td><td style="text-align: right">7</td><td>69%</td><td>findepi (9), martint (3), wendigo (3), electrum (1)</td></tr>
 <tr><td>zest</td><td style="text-align: right">10</td><td style="text-align: right">5</td><td>30%</td><td>dain (3), jvanzyl (3), wendigo (3), electrum (2)</td></tr>
 <tr><td>vthreadtime</td><td style="text-align: right">7</td><td style="text-align: right">4</td><td>57%</td><td>dain (4), raunaqmorarka (2), wendigo (2), electrum (1)</td></tr>
+<tr><td>provisio</td><td style="text-align: right">6</td><td style="text-align: right">3</td><td>83%</td><td>wendigo (5), jvanzyl (1), mosabua (1)</td></tr>
 <tr><td>airstyle</td><td style="text-align: right">4</td><td style="text-align: right">1</td><td>100%</td><td>electrum (4)</td></tr>
-<tr><td>provisio</td><td style="text-align: right">4</td><td style="text-align: right">3</td><td>75%</td><td>wendigo (3), jvanzyl (1), mosabua (1)</td></tr>
 <tr><td>regulator</td><td style="text-align: right">1</td><td style="text-align: right">1</td><td>100%</td><td>dain (1)</td></tr>
 </tbody>
 </table>
 
-[query](https://github.com/trinodb/reports/blob/6b0f3f1f89db4398ed564c0e89e48381c42e7512/sql/airlift/05-reviewers.sql)
+[query](https://github.com/trinodb/reports/blob/1bcb148c5a54ffcc2703bb3166944bb40a0a759a/sql/airlift/05-reviewers.sql)
 
-Generated on Sun Nov 22 06:15:27 UTC 2026
+Generated on Mon Nov 23 06:20:54 UTC 2026
